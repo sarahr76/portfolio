@@ -7,6 +7,9 @@ export const site = {
     { label: 'Process', to: '/process' },
     { label: 'About', to: '/about' },
   ],
+  linkedin: 'https://www.linkedin.com/in/sarahloebker',
+  // Add a public email here when you decide which one to publish; the contact card appears automatically.
+  email: '',
   resume: { label: 'Résumé', href: '/resume.pdf' },
   contact: { label: 'Contact', to: '/about#contact' },
 } as const
