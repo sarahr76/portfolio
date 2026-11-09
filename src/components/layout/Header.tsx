@@ -39,9 +39,14 @@ export function Header() {
         <Link className={styles.logo} to="/">{site.name}</Link>
 
         <nav className={styles.nav} aria-label="Main">
-          {site.nav.map((item) => (
-            <NavLink key={item.label} className={linkClass} to={item.to}>{item.label}</NavLink>
-          ))}
+          {site.nav.map((item) =>
+            item.to.includes('#') ? (
+              // Hash links point inside a page, so they are never "current".
+              <Link key={item.label} className={styles.navLink} to={item.to}>{item.label}</Link>
+            ) : (
+              <NavLink key={item.label} className={linkClass} to={item.to}>{item.label}</NavLink>
+            ),
+          )}
           <a className={styles.navLink} href={site.resume.href}>{site.resume.label}</a>
           <Button to={site.contact.to}>{site.contact.label}</Button>
         </nav>
