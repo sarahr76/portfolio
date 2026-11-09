@@ -1,0 +1,4 @@
+.strip { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-5); margin: var(--space-5) 0 0; padding: var(--space-4) 0 0; border-top: 1px solid var(--color-line); }
+.stat { display: grid; gap: 2px; min-width: 88px; }
+.stat dd { margin: 0; font-family: var(--font-mono); font-size: 1.1875rem; font-variant-numeric: tabular-nums; }
+.stat dt { order: 2; font-family: var(--font-mono); font-size: var(--text-label); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-soft); }

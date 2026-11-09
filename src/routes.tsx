@@ -3,6 +3,8 @@ import { Layout } from './components/layout/Layout'
 import { Home } from './pages/Home'
 import { NotFound } from './pages/NotFound'
 import { StyleGuide } from './pages/StyleGuide'
+import { CaseStudy } from './pages/CaseStudy'
+import { caseStudies } from './content/caseStudies'
 
 export const routes: RouteRecord[] = [
   {
@@ -11,6 +13,12 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, element: <Home /> },
       { path: 'style', element: <StyleGuide /> },
+      {
+        path: 'work/:slug',
+        element: <CaseStudy />,
+        // One prerendered page per case study that has content.
+        getStaticPaths: () => caseStudies.map((c) => `work/${c.slug}`),
+      },
       // Prerendered at /404/ and copied to /404.html after build (see scripts/copy-404.mjs).
       { path: '404', element: <NotFound /> },
       { path: '*', element: <NotFound /> },

@@ -1,0 +1,18 @@
+.shot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  padding: var(--space-3);
+  border: 1.5px dashed var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-sand);
+  color: var(--color-ink-soft);
+  font-size: var(--text-small);
+  text-align: center;
+}
+.phone { aspect-ratio: 9 / 19.5; max-width: 180px; border-radius: 26px; }
+.img { width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--color-line); }
