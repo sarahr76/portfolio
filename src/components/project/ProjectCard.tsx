@@ -10,12 +10,14 @@ type Props = {
   to: string
   imageSrc?: string
   imageAlt?: string
+  /** Compact card with no image box, for projects without visuals. */
+  textOnly?: boolean
 }
 
-export function ProjectCard({ kicker, title, summary, tags, to, imageSrc, imageAlt = '' }: Props) {
+export function ProjectCard({ kicker, title, summary, tags, to, imageSrc, imageAlt = '', textOnly = false }: Props) {
   return (
     <article className={styles.card}>
-      {imageSrc ? (
+      {textOnly ? null : imageSrc ? (
         <img src={imageSrc} alt={imageAlt} loading="lazy" style={{ width: '100%', height: 'auto' }} />
       ) : (
         <div className={styles.image} aria-hidden="true">Project image</div>

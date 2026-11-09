@@ -13,17 +13,20 @@ export type Decision = {
 
 export type CaseStudy = {
   slug: string
+  /** Placeholder pages get noindex until this is removed. */
+  draft?: boolean
   title: string
   kicker: string
   tagline: string
   dek: string
   description: string
   meta: { role: string; timeline: string; tools: string; deliverables: string }
-  stats: readonly { value: string; label: string }[]
-  hero: Shot
+  stats?: readonly { value: string; label: string }[]
+  /** Omit for text-only pages: no empty image box is rendered. */
+  hero?: Shot
   summary: { problem: string; did: string; result: string }
-  problem: { heading: string; paragraphs: readonly string[]; constraintsIntro: string; constraints: readonly string[] }
-  system: {
+  problem: { heading: string; paragraphs: readonly string[]; constraintsIntro?: string; constraints?: readonly string[] }
+  system?: {
     intro: string
     palette: readonly { name: string; hex: string; note: string }[]
     paletteTitle: string
@@ -35,7 +38,7 @@ export type CaseStudy = {
   process: { heading: string; intro: string; items: readonly { title: string; text: string }[] }
   outcomes: {
     heading: string
-    shipped: readonly { title: string; text: string }[]
+    shipped?: readonly { title: string; text: string }[]
     honest: string
   }
   next: { title: string; to: string }
@@ -227,5 +230,80 @@ export const foxed: CaseStudy = {
   next: { title: 'Plumbing company website', to: '/work/plumbing' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed]
+const placeholderDecision = (n: number): Decision => ({
+  title: `[Decision ${n}]`,
+  tag: '[One line: what made this call interesting]',
+  problem: '[What was wrong with the obvious approach?]',
+  approach: '[What you did instead, and the options you weighed.]',
+  outcome: '[What changed because of it. Qualitative is fine; no confidential numbers.]',
+})
+
+export const adminConsole: CaseStudy = {
+  slug: 'admin-console',
+  draft: true,
+  title: 'A multi-module SaaS admin console',
+  kicker: 'Professional work · Previous employer · Text only',
+  tagline: '[One line: what it helped administrators do]',
+  dek: '[Two or three sentences: what the product is, who uses it, and your part in it. Keep it anonymous: no product, client or employer names.]',
+  description:
+    'Text-only case study: designing and systematizing a multi-module SaaS admin console. Product details are kept anonymous.',
+  meta: {
+    role: 'Senior UX/UI designer',
+    timeline: '[Dates or duration]',
+    tools: '[Figma, React, ...]',
+    deliverables: '[Design system, specs, flows, ...]',
+  },
+  summary: {
+    problem: '[One or two sentences on the problem.]',
+    did: '[One or two sentences on what you did.]',
+    result: '[One or two sentences on the outcome, described qualitatively.]',
+  },
+  problem: {
+    heading: '[A headline that states the problem]',
+    paragraphs: [
+      '[Context: who the administrators are and what made the product hard to use or hard to scale.]',
+      '[Constraints: team, timeline, legacy, technical limits. Anything you can say without breaking confidentiality.]',
+    ],
+  },
+  decisions: {
+    heading: 'The choices that shaped the product',
+    intro: '[One sentence on how you chose which decisions to show.]',
+    items: [placeholderDecision(1), placeholderDecision(2), placeholderDecision(3)],
+  },
+  process: {
+    heading: 'How I worked',
+    intro: '[One or two sentences on your role and the people around you.]',
+    items: [
+      { title: '[Step 1]', text: '[What you did and why.]' },
+      { title: '[Step 2]', text: '[What you did and why.]' },
+      { title: '[Step 3]', text: '[What you did and why.]' },
+    ],
+  },
+  outcomes: {
+    heading: 'Outcomes and what I learned',
+    honest:
+      '[What changed, described qualitatively unless you have approved numbers. Then what you learned or would do differently.]',
+  },
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
+export const constructionPlatform: CaseStudy = {
+  ...adminConsole,
+  slug: 'construction-platform',
+  title: 'An AI-first construction platform',
+  tagline: '[One line: what it helped construction teams do]',
+  dek: '[Two or three sentences: what the product is, who uses it, and your part in it. Keep it anonymous: no product, client or employer names.]',
+  description:
+    'Text-only case study: designing an AI-first construction software platform. Product details are kept anonymous.',
+  problem: {
+    heading: '[A headline that states the problem]',
+    paragraphs: [
+      '[Context: who the users are (for example, site and office teams) and what was hard about their work.]',
+      '[What was different about designing for AI-first features, and the constraints you worked within.]',
+    ],
+  },
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
+export const caseStudies: readonly CaseStudy[] = [foxed, adminConsole, constructionPlatform]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)

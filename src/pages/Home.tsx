@@ -58,9 +58,27 @@ export function Home() {
         <div className="container">
           <h2 id="work-title" style={{ marginBottom: 'var(--space-5)' }}>Selected work</h2>
           <div className={styles.workGrid}>
-            {projects.map((p) => (
+            {projects.filter((p) => p.group === 'selected').map((p) => (
               <ProjectCard
                 key={p.slug}
+                kicker={p.kicker}
+                title={p.title}
+                summary={p.summary}
+                tags={p.tags}
+                to={`/work/${p.slug}`}
+              />
+            ))}
+          </div>
+
+          <h3 style={{ margin: 'var(--space-6) 0 var(--space-1)' }}>Professional work</h3>
+          <p style={{ marginBottom: 'var(--space-4)', color: 'var(--color-ink-soft)', maxWidth: 'var(--reading-width)' }}>
+            Past employer projects, shared as text only and kept anonymous.
+          </p>
+          <div className={styles.proGrid}>
+            {projects.filter((p) => p.group === 'professional').map((p) => (
+              <ProjectCard
+                key={p.slug}
+                textOnly
                 kicker={p.kicker}
                 title={p.title}
                 summary={p.summary}

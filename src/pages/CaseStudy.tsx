@@ -11,7 +11,7 @@ import { StatStrip } from '../components/project/StatStrip'
 import { NotFound } from './NotFound'
 import styles from './CaseStudy.module.css'
 
-const toc = [
+const tocAll = [
   ['problem', 'Problem'],
   ['system', 'Design system'],
   ['decisions', 'Key decisions'],
@@ -24,6 +24,10 @@ export function CaseStudy() {
   const cs = getCaseStudy(slug)
   if (!cs) return <NotFound />
 
+  // Text-only pages have no design system section, so the nav and numbering adapt.
+  const toc = tocAll.filter(([id]) => id !== 'system' || cs.system)
+  const num = (id: string) => String(toc.findIndex(([t]) => t === id) + 1).padStart(2, '0')
+
   const tocLinks = toc.map(([id, label]) => (
     <li key={id}><a href={`#${id}`}>{label}</a></li>
   ))
@@ -33,6 +37,7 @@ export function CaseStudy() {
       <Head>
         <title>{`${cs.title} case study | Sarah Reilly`}</title>
         <meta name="description" content={cs.description} />
+        {cs.draft && <meta name="robots" content="noindex" />}
         <meta property="og:title" content={`${cs.title}: ${cs.tagline}`} />
         <meta property="og:description" content={cs.description} />
       </Head>
@@ -43,10 +48,10 @@ export function CaseStudy() {
         <p className={styles.tagline}>{cs.tagline}</p>
         <p className={styles.dek}>{cs.dek}</p>
         <CaseStudyMeta {...cs.meta} />
-        <StatStrip stats={cs.stats} />
+        {cs.stats && <StatStrip stats={cs.stats} />}
       </header>
 
-      <div className={`container ${styles.hero}`}><Shot {...cs.hero} /></div>
+      {cs.hero && <div className={`container ${styles.hero}`}><Shot {...cs.hero} /></div>}
 
       <section className={styles.band} aria-label="The 30-second version">
         <div className="container">
@@ -73,18 +78,21 @@ export function CaseStudy() {
 
         <div className={styles.content}>
           <section id="problem">
-            <SectionHeader label="01 · The problem" title={cs.problem.heading} />
+            <SectionHeader label={`${num('problem')} · The problem`} title={cs.problem.heading} />
             <div className={styles.prose}>
               {cs.problem.paragraphs.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
-              <p><strong>{cs.problem.constraintsIntro}</strong></p>
+              {cs.problem.constraintsIntro && <p><strong>{cs.problem.constraintsIntro}</strong></p>}
             </div>
-            <ul className={styles.constraints}>
-              {cs.problem.constraints.map((c) => <li key={c}>{c}</li>)}
-            </ul>
+            {cs.problem.constraints && (
+              <ul className={styles.constraints}>
+                {cs.problem.constraints.map((c) => <li key={c}>{c}</li>)}
+              </ul>
+            )}
           </section>
 
+          {cs.system && (
           <section id="system">
-            <SectionHeader label="02 · Design system" title="A system decided before a single screen was drawn">
+            <SectionHeader label={`${num('system')} · Design system`} title="A system decided before a single screen was drawn">
               {cs.system.intro}
             </SectionHeader>
             <div className={styles.exhibits}>
@@ -117,9 +125,10 @@ export function CaseStudy() {
               </Card>
             </div>
           </section>
+          )}
 
           <section id="decisions">
-            <SectionHeader label="03 · Key decisions" title={cs.decisions.heading}>
+            <SectionHeader label={`${num('decisions')} · Key decisions`} title={cs.decisions.heading}>
               {cs.decisions.intro}
             </SectionHeader>
             {cs.decisions.items.map((d, i) => <CaseFile key={d.title} n={i + 1} decision={d} />)}
@@ -131,7 +140,7 @@ export function CaseStudy() {
           </section>
 
           <section id="process">
-            <SectionHeader label="04 · Process" title={cs.process.heading}>{cs.process.intro}</SectionHeader>
+            <SectionHeader label={`${num('process')} · Process`} title={cs.process.heading}>{cs.process.intro}</SectionHeader>
             <ol className={styles.steps}>
               {cs.process.items.map((s) => (
                 <li key={s.title}><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
@@ -140,12 +149,14 @@ export function CaseStudy() {
           </section>
 
           <section id="outcomes">
-            <SectionHeader label="05 · Outcomes" title={cs.outcomes.heading} />
-            <ul className={styles.shipped}>
-              {cs.outcomes.shipped.map((s) => (
-                <li key={s.title}><b>{s.title}</b>{s.text}</li>
-              ))}
-            </ul>
+            <SectionHeader label={`${num('outcomes')} · Outcomes`} title={cs.outcomes.heading} />
+            {cs.outcomes.shipped && (
+              <ul className={styles.shipped}>
+                {cs.outcomes.shipped.map((s) => (
+                  <li key={s.title}><b>{s.title}</b>{s.text}</li>
+                ))}
+              </ul>
+            )}
             <p className={styles.honest}><strong>Honestly: </strong>{cs.outcomes.honest}</p>
           </section>
         </div>
