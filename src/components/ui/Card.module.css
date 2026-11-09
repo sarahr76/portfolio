@@ -1,0 +1,9 @@
+.card {
+  background: var(--color-sand);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+.outline {
+  background: transparent;
+  border: 1px solid var(--color-line);
+}

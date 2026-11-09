@@ -1,0 +1,10 @@
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin: 0;
+  padding-top: var(--space-3);
+  border-top: 2px solid var(--color-ink);
+}
+.meta dd { margin: 2px 0 0; }
+@media (min-width: 720px) { .meta { grid-template-columns: repeat(4, 1fr); } }
