@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { site } from '../../content/site'
 import { Button } from '../ui/Button'
+import { ExternalLink } from '../ui/ExternalLink'
 import styles from './Header.module.css'
 
 const linkClass = ({ isActive }: { isActive: boolean }) => `${styles.navLink}${isActive ? ' active' : ''}`
@@ -47,7 +48,7 @@ export function Header() {
               <NavLink key={item.label} className={linkClass} to={item.to}>{item.label}</NavLink>
             ),
           )}
-          <a className={styles.navLink} href={site.resume.href}>{site.resume.label}</a>
+          <ExternalLink className={styles.navLink} href={site.resume.href} kind="PDF">{site.resume.label}</ExternalLink>
           <Button to={site.contact.to}>{site.contact.label}</Button>
         </nav>
 
@@ -85,7 +86,7 @@ export function Header() {
           {site.nav.map((item) => (
             <li key={item.label}><Link className={styles.overlayLink} to={item.to}>{item.label}</Link></li>
           ))}
-          <li><a className={styles.overlayLink} href={site.resume.href}>{site.resume.label}</a></li>
+          <li><ExternalLink className={styles.overlayLink} href={site.resume.href} kind="PDF">{site.resume.label}</ExternalLink></li>
         </ul>
         <Button to={site.contact.to}>{site.contact.label}</Button>
       </div>

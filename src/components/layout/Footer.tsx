@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { site } from '../../content/site'
+import { ExternalLink } from '../ui/ExternalLink'
 import styles from './Footer.module.css'
 
 export function Footer() {
@@ -11,7 +12,7 @@ export function Footer() {
             {site.nav.map((item) => (
               <li key={item.label}><Link to={item.to}>{item.label}</Link></li>
             ))}
-            <li><a href={site.resume.href}>{site.resume.label}</a></li>
+            <li><ExternalLink href={site.resume.href} kind="PDF">{site.resume.label}</ExternalLink></li>
           </ul>
         </nav>
         <p className={styles.copy}>© {new Date().getFullYear()} {site.name}</p>

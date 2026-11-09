@@ -27,8 +27,8 @@ export function About() {
               {about.intro.map((p) => <p key={p.slice(0, 20)}>{p}</p>)}
             </div>
             <div className={styles.actions}>
-              <Button href={site.resume.href}>Download résumé</Button>
-              <Button variant="secondary" href={site.linkedin}>Connect on LinkedIn</Button>
+              <Button href={site.resume.href} external kind="PDF">View résumé</Button>
+              <Button variant="secondary" href={site.linkedin} external>Connect on LinkedIn</Button>
             </div>
           </div>
         </section>
@@ -98,13 +98,13 @@ export function About() {
             <Card outline>
               <div className={styles.contactCard}>
                 <p className="label">LinkedIn</p>
-                <Button variant={site.email ? 'secondary' : 'primary'} href={site.linkedin}>Open profile ↗</Button>
+                <Button variant={site.email ? 'secondary' : 'primary'} href={site.linkedin} external>Open profile</Button>
               </div>
             </Card>
             <Card outline>
               <div className={styles.contactCard}>
                 <p className="label">Résumé (PDF)</p>
-                <Button variant="secondary" href={site.resume.href}>Download ↓</Button>
+                <Button variant="secondary" href={site.resume.href} external kind="PDF">Open PDF</Button>
               </div>
             </Card>
           </div>

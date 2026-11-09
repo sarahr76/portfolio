@@ -151,7 +151,7 @@ export function Home() {
           </p>
           <div className={styles.actions}>
             <Button to="/about#contact">Email me</Button>
-            <Button variant="secondary" href="/resume.pdf">Download résumé</Button>
+            <Button variant="secondary" href="/resume.pdf" external kind="PDF">View résumé</Button>
           </div>
         </div>
       </section>
