@@ -5,6 +5,7 @@ import { NotFound } from './pages/NotFound'
 import { StyleGuide } from './pages/StyleGuide'
 import { CaseStudy } from './pages/CaseStudy'
 import { About } from './pages/About'
+import { Process } from './pages/Process'
 import { caseStudies } from './content/caseStudies'
 
 export const routes: RouteRecord[] = [
@@ -14,6 +15,7 @@ export const routes: RouteRecord[] = [
     children: [
       { index: true, element: <Home /> },
       { path: 'about', element: <About /> },
+      { path: 'process', element: <Process /> },
       { path: 'style', element: <StyleGuide /> },
       {
         path: 'work/:slug',

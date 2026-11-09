@@ -18,9 +18,9 @@ const peek = [
 ] as const
 
 const approach = [
-  { title: 'Understand', text: '[One or two lines on how you start: research, audits, real users.]' },
-  { title: 'Systemize', text: '[One or two lines on tokens, components and rules.]' },
-  { title: 'Build & refine', text: '[One or two lines on shipping it and iterating in code.]' },
+  { title: 'Understand', text: 'I learn the domain and the people first, then write the problem down so a team can build against it.' },
+  { title: 'Systemize', text: 'Tokens, components and written rules get decided early, so every screen builds on the same foundation.' },
+  { title: 'Build & refine', text: 'I can build what I design, and I use it for real before it ships.' },
 ] as const
 
 export function Home() {
