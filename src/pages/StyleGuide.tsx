@@ -38,7 +38,7 @@ export function StyleGuide() {
   return (
     <>
       <Head>
-        <title>Style guide | Sarah</title>
+        <title>Style guide | Sarah Reilly</title>
         <meta name="robots" content="noindex" />
       </Head>
 

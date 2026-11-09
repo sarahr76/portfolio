@@ -1,7 +1,7 @@
 // Site-wide content. Edit here, not inside components.
 export const site = {
-  name: 'Sarah', // TODO: add last name when ready
-  title: 'Sarah | UX/UI designer',
+  name: 'Sarah Reilly',
+  title: 'Sarah Reilly | UX/UI designer',
   nav: [
     { label: 'Work', to: '/#work' },
     { label: 'Process', to: '/process' },

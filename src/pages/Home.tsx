@@ -27,12 +27,12 @@ export function Home() {
   return (
     <>
       <Head>
-        <title>Sarah | UX/UI designer who builds design systems</title>
+        <title>Sarah Reilly | UX/UI designer who builds design systems</title>
         <meta
           name="description"
-          content="Portfolio of Sarah, a senior UX/UI designer who designs and builds design systems."
+          content="Portfolio of Sarah Reilly, a senior UX/UI designer who designs and builds design systems."
         />
-        <meta property="og:title" content="Sarah | UX/UI designer who builds design systems" />
+        <meta property="og:title" content="Sarah Reilly | UX/UI designer who builds design systems" />
       </Head>
 
       {/* 1. Hero */}
