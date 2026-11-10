@@ -63,6 +63,24 @@ export const projects: readonly ProjectSummary[] = [
     tags: ['UX/UI design', 'AI-first product'],
     group: 'professional',
   },
+  // Placeholder: Digital Canvas (Promevo). Kept anonymous (no names) until Sarah supplies the details.
+  {
+    slug: 'professional-4',
+    kicker: 'Professional work · Text only',
+    title: '[Project title]',
+    summary: '[One line on the problem and your part in it.]',
+    tags: ['UX/UI design'],
+    group: 'professional',
+  },
+  // Placeholder: Safewave (Promevo). Kept anonymous (no names) until Sarah supplies the details.
+  {
+    slug: 'professional-5',
+    kicker: 'Professional work · Text only',
+    title: '[Project title]',
+    summary: '[One line on the problem and your part in it.]',
+    tags: ['UX/UI design'],
+    group: 'professional',
+  },
   {
     slug: 'tallymark',
     kicker: 'Small project · Designed & built',

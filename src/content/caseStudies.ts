@@ -577,6 +577,26 @@ export const constructionPlatform: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
+// Placeholder: Digital Canvas (Promevo). Anonymous until Sarah supplies the details.
+export const professionalFour: CaseStudy = {
+  ...textOnlyTemplate,
+  slug: 'professional-4',
+  title: '[Project title]',
+  tagline: '[One line: what it helped people do]',
+  description: 'Text-only case study of a previous-employer project. Details are kept anonymous.',
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
+// Placeholder: Safewave (Promevo). Anonymous until Sarah supplies the details.
+export const professionalFive: CaseStudy = {
+  ...textOnlyTemplate,
+  slug: 'professional-5',
+  title: '[Project title]',
+  tagline: '[One line: what it helped people do]',
+  description: 'Text-only case study of a previous-employer project. Details are kept anonymous.',
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
 export const thinkingDifferently: CaseStudy = {
   slug: 'thinking-differently',
   // Draft until the client has OK'd showing her logo and brand name. Remove to publish.
@@ -1358,5 +1378,5 @@ export const tallymark: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, thinkingDifferently, tallymark]
+export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, professionalFour, professionalFive, thinkingDifferently, tallymark]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)
