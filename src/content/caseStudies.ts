@@ -1,6 +1,6 @@
 // Case study content. Edit text here; the CaseStudy page renders it with one shared template.
 
-export type Shot = { label: string; src?: string; alt?: string }
+export type Shot = { label: string; src?: string; alt?: string; caption?: string }
 
 export type Decision = {
   title: string
@@ -25,7 +25,14 @@ export type CaseStudy = {
   /** Omit for text-only pages: no empty image box is rendered. */
   hero?: Shot
   summary: { problem: string; did: string; result: string }
-  problem: { heading: string; paragraphs: readonly string[]; constraintsIntro?: string; constraints?: readonly string[] }
+  problem: {
+    heading: string
+    paragraphs: readonly string[]
+    constraintsIntro?: string
+    constraints?: readonly string[]
+    /** Phone screens shown after the constraints, side by side. */
+    shots?: readonly Shot[]
+  }
   system?: {
     intro: string
     palette: readonly { name: string; hex: string; note: string }[]
@@ -86,6 +93,20 @@ export const foxed: CaseStudy = {
       'Never host a word of story content.',
       'Never require an account.',
       'Never run a server.',
+    ],
+    shots: [
+      {
+        label: 'About Foxed screen',
+        src: '/foxed/about-foxed.webp',
+        alt: 'The About Foxed screen. A card reads “Made by a fan, for fans: Foxed is your bookshelf, not a reading app. It doesn’t host, copy, or display any stories.” A second card reads “Your data stays here: no accounts, no servers, no analytics, no ads.”',
+        caption: 'The three constraints, in the app’s own words.',
+      },
+      {
+        label: 'Fic detail screen',
+        src: '/foxed/fic-detail.webp',
+        alt: 'A fic detail screen for a sample story, “salt & honey.” It shows a generated cover, word count, a progress card with a “View on AO3” button, and the note “Reading happens on AO3. Authors see your hits and kudos.” Status and shelf controls sit below.',
+        caption: 'Reading happens on AO3, so authors get every hit and kudos.',
+      },
     ],
   },
   system: {
@@ -164,7 +185,12 @@ export const foxed: CaseStudy = {
           'Every reward moment is tiered deliberately, by how often it should happen. Daily streaks stay almost silent: a calendar mark, with a “pressed leaf” forgiving one missed day automatically. Wax-seal achievements are rare and get the one genuinely animated moment in the whole app. A yearly Recap, in the style of a music-streaming “wrapped,” is the single big annual event. Nothing competes for the same moment twice.',
         outcome:
           'A reward system with a point of view about restraint, and a system that made room to remove a tier that wasn’t earning its place (see the last decision).',
-        shot: { label: 'Screenshot: streak calendar and yearly Recap card' },
+        shot: {
+          label: 'Screenshot: streak calendar and yearly Recap card',
+          src: '/foxed/recap-october.webp',
+          alt: 'The monthly recap for October. Three stat cards show finished, words and days read. A week-by-week bar chart is followed by a short line of copy, “You came out strong at the start of October,” and a list of what was still being read.',
+          caption: 'The monthly recap: one quiet, voicey summary instead of badges.',
+        },
       },
       {
         title: 'Reading Focus',
@@ -187,7 +213,7 @@ export const foxed: CaseStudy = {
           'Cutting a feature doesn’t have to mean deciding its fate forever, or throwing away data a reader already built up. If it’s ever worth a second look, flipping the flag back on picks up exactly where it left off.',
       },
     ],
-    gallery: [{ label: 'Home' }, { label: 'Library' }, { label: 'Fic detail' }],
+    gallery: [{ label: 'Home' }, { label: 'Library' }],
   },
   process: {
     heading: 'Built solo, with Claude Code as the implementation partner',

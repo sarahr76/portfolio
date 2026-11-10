@@ -88,6 +88,11 @@ export function CaseStudy() {
                 {cs.problem.constraints.map((c) => <li key={c}>{c}</li>)}
               </ul>
             )}
+            {cs.problem.shots && (
+              <div className={styles.pair}>
+                {cs.problem.shots.map((s) => <Shot key={s.label} phone {...s} />)}
+              </div>
+            )}
           </section>
 
           {cs.system && (

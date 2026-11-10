@@ -16,3 +16,6 @@
 }
 .phone { aspect-ratio: 9 / 19.5; max-width: 180px; border-radius: 26px; }
 .img { width: 100%; height: auto; border-radius: var(--radius-md); border: 1px solid var(--color-line); }
+.imgPhone { max-width: 280px; border-radius: 28px; display: block; }
+.figure { margin: 0; display: flex; flex-direction: column; gap: var(--space-2); align-items: center; }
+.caption { max-width: 280px; font-size: var(--text-small); color: var(--color-ink-soft); text-align: center; }

@@ -21,7 +21,7 @@ export function CaseFile({ n, decision }: { n: number; decision: Decision }) {
             <p>{text}</p>
           </div>
         ))}
-        {decision.shot && <div className={styles.shot}><Shot {...decision.shot} /></div>}
+        {decision.shot && <div className={styles.shot}><Shot phone {...decision.shot} /></div>}
       </div>
     </article>
   )
