@@ -32,6 +32,9 @@ export const projects: readonly ProjectSummary[] = [
     summary: 'A website and brand guide for a family plumbing company, with the brand written down as a small design system.',
     tags: ['Web design', 'Design system'],
     group: 'selected',
+    imageSrc: '/plumbing/hero.webp',
+    imageSrcMobile: '/plumbing/hero-mobile.webp',
+    imageAlt: 'Reilly Plumbing, a website and brand guide for a family plumbing company: the headline “Honest plumbing, made easy to ask for.” beside three phone screens.',
   },
   {
     slug: 'flower-shop',
