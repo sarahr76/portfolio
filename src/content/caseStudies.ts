@@ -364,7 +364,7 @@ const placeholderDecision = (n: number): Decision => ({
   outcome: '[What changed because of it. Qualitative is fine; no confidential numbers.]',
 })
 
-export const adminConsole: CaseStudy = {
+const textOnlyTemplate: CaseStudy = {
   slug: 'admin-console',
   draft: true,
   title: 'A multi-module SaaS admin console',
@@ -413,8 +413,118 @@ export const adminConsole: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
+export const adminConsole: CaseStudy = {
+  ...textOnlyTemplate,
+  slug: 'admin-console',
+  draft: true,
+  title: 'A multi-module SaaS admin console',
+  kicker: 'Professional work · Previous employer · Text only',
+  tagline: 'Helping IT administrators manage a whole workspace from one console, and automate the routine parts.',
+  dek: 'A multi-module admin tool that IT administrators use to manage a company’s workspace: users, policies and automations. With one other designer, I designed its flows and interface patterns and built the component system that kept every module consistent.',
+  description:
+    'Text-only case study: designing and systematizing a multi-module SaaS admin console. Product details are kept anonymous.',
+  meta: {
+    role: 'UX/UI designer, working with one other designer',
+    timeline: '[Dates or duration]',
+    tools: 'Figma, Material UI, React',
+    deliverables: 'A two-layer component library and token set, a developer documentation hub, and flows and specs for rule-based automation',
+  },
+  summary: {
+    problem:
+      'Every module was growing its own patterns, and the people using it make changes that affect an entire company, so inconsistency was costly. [Confirm]',
+    did: 'Set up a two-layer component system (Material UI underneath, our own tokens on top), organized the design files so a larger team could work in them, and designed the automation features, including a rule builder.',
+    result:
+      '[Describe the outcome qualitatively: for example, fewer one-off components, faster handoffs, a clearer automation story. Only what you can stand behind.]',
+  },
+  problem: {
+    heading: 'Many modules, and no shared habits',
+    paragraphs: [
+      'The product is a multi-module console: users, policies, automation and more, each with its own screens. Its users are IT administrators, and a change they make can reach every employee at a company. That raises the cost of a mistake, so predictable patterns matter more than novelty.',
+      '[Confirm or reword: how things looked when you started, and what was hard for administrators or for developers.]',
+    ],
+    constraintsIntro: 'The constraints:',
+    constraints: [
+      'A small design team: two designers, with a more experienced designer joining partway through.',
+      'An existing component library (Material UI) that the product already depended on, so starting over was not an option.',
+      '[Add any others you can share: live product, release pressure, legacy screens.]',
+    ],
+  },
+  decisions: {
+    heading: 'The choices that shaped the product',
+    intro:
+      'Four calls where the easy version would have caused trouble later: one about the system underneath, two about how the interface behaves, and one about the hardest feature.',
+    items: [
+      {
+        title: 'Two layers, not a fork',
+        tag: 'Own the tokens, leave the library alone',
+        problem:
+          'Restyling every component of a library until it looks like your product is the usual route, and it makes every future upgrade painful.',
+        approach:
+          'Material UI stays largely intact as the base layer. The product owns a second layer of token overrides on top: its brand hue, an accent color, and semantic color scales. The design files mirror this, in three files: Design System, Product and Working.',
+        outcome:
+          'Developers get one theme file instead of a pile of overrides, and designers have a clear rule about where a change belongs.',
+      },
+      {
+        title: 'Four ways to open something, and when to use each',
+        tag: 'A hierarchy, so every team stops choosing differently',
+        problem:
+          'Without a rule, each feature picks its own container: a full page here, a modal there, a drawer somewhere else. Administrators can’t build habits on that.',
+        approach:
+          'Four levels, chosen by the weight of the task: full-page steppers for long, multi-step jobs; single-step modals for quick decisions; drawers for details and edits alongside the page; and alert modals for confirmations. Small questions get settled the same way, such as where filter controls go inside a multi-step stepper. [Confirm the filter example.]',
+        outcome:
+          'New screens start from a decision tree instead of a blank canvas, and reviews can point to a rule instead of a preference.',
+      },
+      {
+        title: 'Color that means something in a confirmation',
+        tag: 'Amber for reversible, red for destructive',
+        problem:
+          'When every confirmation dialog is red, administrators learn to click through red. The one that really matters, deleting something for good, looks like all the others.',
+        approach:
+          'Confirmations follow a color convention: amber when an action can be undone, such as disabling something, and red only when it can’t. The wording follows the same split.',
+        outcome:
+          'Red keeps its meaning, and the rare destructive action stands out.',
+      },
+      {
+        title: 'Two kinds of automation, kept apart',
+        tag: 'Scheduled policies and real-time rules',
+        problem:
+          'Both features sound like “automation.” One runs on a schedule and the other reacts to events as they happen, and an administrator choosing the wrong one gets the wrong result.',
+        approach:
+          'An automation landing page that explains the difference up front, and a rule builder structured as a sequence: pick the trigger, choose the sources it listens to (each event maps to the types of source it can come from), then add conditions, with clear AND/OR logic between them.',
+        outcome:
+          '[Describe what changed: how administrators use it, what got easier, what you learned.]',
+      },
+    ],
+  },
+  process: {
+    heading: 'How I worked',
+    intro:
+      'I worked alongside one other designer, with developers and product owners. [Confirm the people around you.]',
+    items: [
+      {
+        title: 'Audit, then name what exists',
+        text: 'I audited and expanded the styles in the design file so every color, type and spacing choice had a name before it became a component.',
+      },
+      {
+        title: 'Reorganize for a bigger team',
+        text: 'Ahead of a more experienced designer joining, I restructured the design files into three (system, product and working), so a newcomer could tell what was settled and what was in progress.',
+      },
+      {
+        title: 'Write it down where developers will find it',
+        text: 'I built a browser-based documentation hub, seeded with the real token data and a downloadable theme file. I also set up a structured design-review checklist, with edge cases specific to this product: dark mode, audit trails, destructive actions and multi-tenant scope.',
+      },
+    ],
+  },
+  outcomes: {
+    heading: 'Outcomes and what I learned',
+    honest:
+      '[What changed, described qualitatively unless you have approved numbers. Then what you learned or would do differently.]',
+  },
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
 export const constructionPlatform: CaseStudy = {
-  ...adminConsole,
+  ...textOnlyTemplate,
   slug: 'construction-platform',
   title: 'An AI-first construction platform',
   tagline: '[One line: what it helped construction teams do]',
