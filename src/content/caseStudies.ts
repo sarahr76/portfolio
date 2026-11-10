@@ -392,8 +392,8 @@ export const thinkingDifferently: CaseStudy = {
   description:
     'A small brand guide for a coaching practice: one painted mark, one typeface, four logo versions and clear rules for print and digital use.',
   meta: {
-    role: '[Confirm your role: e.g. brand guide & logo system]',
-    timeline: '[Dates or duration]',
+    role: 'Brand identity & guide, built around the client’s paintings',
+    timeline: 'About two weeks',
     tools: '[Confirm tools: e.g. Claude Design, Canva]',
     deliverables: 'Brand guide (PDF), logo versions, colour and type specs, print notes',
   },
@@ -558,7 +558,7 @@ export const thinkingDifferently: CaseStudy = {
       { title: 'Applications', text: 'Business card, documents, stickers, email, website' },
     ],
     honest:
-      'This is a small project for a small practice, so there are no metrics to report. Still to do: a vector version of the mark and a simplified one-colour version for small sizes and stamps. The painting is the identity, and the guide’s job is to protect it.',
+      'This is a small project for a small practice, so there are no metrics to report. The client later chose a different direction, so the guide was never put into use. Still to do on the guide itself: a vector version of the mark and a simplified one-colour version for small sizes and stamps. The painting is the identity, and the guide’s job is to protect it.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
