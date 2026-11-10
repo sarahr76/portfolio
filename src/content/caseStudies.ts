@@ -259,6 +259,12 @@ export const foxed: CaseStudy = {
             alt: 'The Your year screen: 321k words read this year, a twelve-day streak shown as a row of dots, a progress bar toward a 1.0M-word goal, a monthly bar chart, and a row of seven wax seals with one earned.',
             caption: 'Your year: the streak is a row of dots, and seals fill in slowly.',
           },
+          {
+            label: 'Monthly recap, November',
+            src: '/foxed/recap-november.webp',
+            alt: 'The November recap. Three stat cards show 0 finished, 235k words and 10 days read. A week-by-week bar chart is followed by the line “The 8 to 14 stretch was where November really happened,” and a list of four fics still being read with their word counts this month.',
+            caption: 'A month with nothing finished still gets a real story, not an empty card.',
+          },
         ],
       },
       {
