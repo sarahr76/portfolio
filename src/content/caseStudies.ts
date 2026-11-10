@@ -1380,6 +1380,7 @@ export const tallymark: CaseStudy = {
       title: 'Rules the screens follow',
       items: [
         'Sheets stay white with dark ink in light and dark mode, because they model paper.',
+        'Dark mode lightens the blues and puts dark text on them, rather than keeping white text on a saturated fill.',
         'Body and secondary text clear 5:1 contrast in both themes.',
         'Red and green are never the only cue; each comes with a word.',
         'Focus rings are always visible: 3 px, with a 2 px offset.',
@@ -1447,6 +1448,24 @@ export const tallymark: CaseStudy = {
           maxWidth: 440,
           width: 937,
           height: 1212,
+        },
+      },
+      {
+        title: 'Light and dark, with paper that stays paper',
+        tag: 'Two themes, one printed page',
+        problem:
+          'Teachers and parents use the app at all hours, on screens set to light or dark. But a printed sheet is always black ink on white paper, so a dark preview that turned the sheet dark would lie about what comes out of the printer.',
+        approach:
+          'The app follows the device’s color setting. In dark mode the page and panels go navy, and the primary and secondary blues lighten with dark text on them, instead of staying saturated with white text. The highlighter dims to a muted gold behind the key word, and the pen red lightens so it still reads. The sheet itself is the exception: it stays white with dark ink in both themes, because it models paper. I checked body and secondary text against the 5:1 contrast target in both.',
+        outcome:
+          'The interface is comfortable in a dim room, and the preview always shows what will actually print.',
+        shot: {
+          label: 'Light and dark themes side by side',
+          src: '/tallymark-study/light-dark.webp',
+          alt: 'The Tallymark app in its light theme (pale blue-grey page, navy primary button) beside its dark theme (navy page, light blue buttons). In both, the preview sheet stays white with dark letters.',
+          wide: true,
+          width: 1600,
+          height: 500,
         },
       },
       {
