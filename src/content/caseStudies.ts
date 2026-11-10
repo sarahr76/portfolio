@@ -559,20 +559,125 @@ export const adminConsole: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const constructionPlatform: CaseStudy = {
+export const ebbetsAI: CaseStudy = {
   ...textOnlyTemplate,
-  slug: 'construction-platform',
-  title: 'An AI-first construction platform',
-  tagline: '[One line: what it helped construction teams do]',
-  dek: '[Two or three sentences: what the product is, who uses it, and your part in it. Keep it anonymous: no product, client or employer names.]',
+  slug: 'ebbetsai',
+  // Draft: confirm with Sarah that the product name and pilot details can be shown. Remove `draft` to publish.
+  draft: true,
+  title: 'EbbetsAI',
+  kicker: 'Professional work · Previous employer · Text only',
+  tagline: 'An AI-first construction platform, from an empty canvas to a pilot-ready product.',
+  dek: 'A construction platform built from the ground up over about a year. I set the product direction, ran research with the pilot team, designed the Submittals and RFI workflows, and turned the plan into requirements and tickets the developers could build from, working with a designer who built out the final components and styling.',
   description:
-    'Text-only case study: designing an AI-first construction software platform. Product details are kept anonymous.',
+    'Text-only case study: product and design direction for EbbetsAI, an AI-first construction software platform, from first concepts to a pilot-ready product.',
+  meta: {
+    role: 'Product and design direction, with a designer who built the final components and styling',
+    timeline: 'About a year, from first concepts to a pilot-ready product',
+    tools: 'Figma Make, AI tools for research and design [confirm any others, e.g. Figma]',
+    deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, about 75 feature tickets, a pilot research kit and a 66-item backlog',
+  },
+  stats: [
+    { value: '~1 yr', label: 'Concept to pilot-ready' },
+    { value: '~75', label: 'Submittals tickets' },
+    { value: '6', label: 'Epics' },
+    { value: '66', label: 'Backlog items' },
+  ],
+  summary: {
+    problem:
+      'Construction teams lose profit to poor communication and follow-through, with paperwork scattered across too many places.',
+    did: 'Set the product direction, designed Submittals and RFIs around keeping a person in the loop, ran research with the pilot team, and turned the plan into PRDs and about 75 tickets.',
+    result:
+      'A working core platform and a pilot team warming to the AI-first direction, with Submittals and RFIs scoped, wireframed and ready for the next phase.',
+  },
   problem: {
-    heading: '[A headline that states the problem]',
+    heading: 'Profit lost between the steps',
     paragraphs: [
-      '[Context: who the users are (for example, site and office teams) and what was hard about their work.]',
-      '[What was different about designing for AI-first features, and the constraints you worked within.]',
+      'A large share of a construction team’s time goes to tasks that end up off schedule or add little value. Communication breaks down between the different parts of the process, and paperwork is scattered across too many places.',
+      'The goal was a single platform that keeps project information connected and uses AI to take the repetitive work off people’s plates. EbbetsAI was built from an empty canvas, with the next phase focused on the two workflows that matter most to construction teams: submittals and RFIs.',
     ],
+    constraintsIntro: 'The conditions:',
+    constraints: [
+      'A small team, so each person covered more than one role.',
+      'A pilot team that started out unsure how yet another application would help them.',
+      'A product with no starting point, and two complex workflows still to be designed.',
+    ],
+  },
+  decisions: {
+    heading: 'The choices that shaped the product',
+    intro:
+      'Most of the thinking went into making an AI-first product feel trustworthy and keeping people’s follow-through visible. These are the calls that mattered most.',
+    items: [
+      {
+        title: 'Keep a person in the loop',
+        tag: 'An AI-first workflow people can trust',
+        problem:
+          'In construction, mistakes are costly. A tool that acted on its own, without a way to check it, would not earn the pilot team’s trust.',
+        approach:
+          'The AI does the first pass. When a PDF loads, it highlights the submittal items it extracts, using a combination of AI and rules. The project coordinator reviews the highlights and accepts or edits them before the log is finalized. Each entry keeps a link back to its spec source, and a coordinator can attach an alternative document when no spec sheet exists.',
+        outcome:
+          'The AI removes the repetitive work, and the coordinator always has the final say.',
+      },
+      {
+        title: 'Three jobs in one place',
+        tag: 'Less copying, more reviewing',
+        problem:
+          'Reviewing submittals, adding log entries and creating cover sheets meant a lot of copying and pasting between documents.',
+        approach:
+          'Submittals became a four-screen chain: spec-to-log automation; cover sheets that fill in from the log; a split screen with the document and the AI’s analysis side by side; and a revision timeline, where older rejection cycles collapse into an archive so the current revision stays in focus.',
+        outcome:
+          'Designed to cut review time significantly, so people spend less time copying and more time reviewing what matters.',
+      },
+      {
+        title: 'Make RFI follow-through visible',
+        tag: 'Questions shouldn’t fall through the cracks',
+        problem:
+          'RFIs sit at the heart of the communication problem: a question goes out, and the answer, or the missing answer, can be easy to lose.',
+        approach:
+          'A Kanban board with five statuses (Draft, Pending, Submitted, Responded, Closed) and swimlanes for cost impact, time impact and priority. A tiered approval flow, where the coordinator drafts and a manager approves before anything goes to the owner. Automated reminders for overdue responses, with custom frequency. Related submittals, tasks, change orders and emails linked inside the RFI. Admin reopen controls that require a logged justification. And AI summaries, so a 20-response thread can be understood quickly.',
+        outcome:
+          'Nothing requires hunting through other screens, and overdue items don’t depend on someone remembering them.',
+      },
+      {
+        title: 'Reuse the full detail view',
+        tag: 'One version, not two',
+        problem:
+          'A slide-in preview for RFIs would have been a second, lighter version of the same information.',
+        approach:
+          'We reused the full detail view instead of building a separate preview.',
+        outcome:
+          'The experience stays consistent, and there is only one version to maintain.',
+      },
+    ],
+  },
+  process: {
+    heading: 'How I worked',
+    intro:
+      'On a small team, my work spanned product direction, UX/UI design, research, requirements and tickets. Here is how those pieces fit together.',
+    items: [
+      {
+        title: 'Start fast, with concepts',
+        text: 'We began with the core CRM features every project team needs: a dashboard, projects with their own sub-navigation, contacts, companies, tasks, activities, and admin and user settings. I developed the direction in Figma Make alongside my own ideas, which let me put many concepts in front of the team quickly. I handed those to our designer, who built out the final components and visual style, so we could spend our time improving the experience instead of building every small piece from scratch.',
+      },
+      {
+        title: 'Earn the pilot team’s trust',
+        text: 'I prepared and supported user interview and demo sessions: interview note templates, demo scripts with SAY, DO and WATCH columns, a facilitator guide, and a synthesis of what we heard. Once they saw the AI-first direction the product was built on, the pilot team began to buy in, and their feedback fed a backlog that shaped what we prioritized next.',
+      },
+      {
+        title: 'Turn big ideas into buildable work',
+        text: 'For each major feature I wrote a combined PRD covering goals, scope, flows and edge cases. I broke the Submittals PRD into about 75 feature tickets across six epics, wrote a scoping proposal with low-fidelity wireframes to help stakeholders decide what belonged in a first version, and organized a 66-item backlog from meetings with the pilot team.',
+      },
+    ],
+  },
+  outcomes: {
+    heading: 'Where it stood, and what I learned',
+    shipped: [
+      { title: 'The core platform', text: 'Dashboard, projects, contacts, companies, tasks, activities, and admin and user settings' },
+      { title: 'A pilot research kit', text: 'Interview templates, SAY, DO and WATCH demo scripts, a facilitator guide and a synthesis' },
+      { title: 'Submittals and RFIs, ready for the next phase', text: 'Scoped, wireframed and broken into tickets' },
+      { title: 'A 66-item backlog', text: 'Organized from meetings with the pilot team' },
+    ],
+    honest:
+      'By the time I left, the core platform was in place and the pilot team was warming to the AI-first direction. I don’t have measured results to share. On a small team my role grew into a mix of UX/UI designer, requirements writer and ticket writer. If I did it again, I would work out early where my role sits within a small team, so I could be deliberate about which hat I was wearing instead of picking them up as I went. Using AI tools for both research and design let a small team move quickly across the whole process.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
@@ -1378,5 +1483,5 @@ export const tallymark: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, professionalFour, professionalFive, thinkingDifferently, tallymark]
+export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, ebbetsAI, professionalFour, professionalFive, thinkingDifferently, tallymark]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)

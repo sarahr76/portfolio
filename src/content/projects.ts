@@ -56,11 +56,11 @@ export const projects: readonly ProjectSummary[] = [
     group: 'professional',
   },
   {
-    slug: 'construction-platform',
+    slug: 'ebbetsai',
     kicker: 'Professional work · Text only',
-    title: 'An AI-first construction platform',
-    summary: '[One line on the problem and your part in it.]',
-    tags: ['UX/UI design', 'AI-first product'],
+    title: 'EbbetsAI',
+    summary: 'An AI-first construction platform, built from an empty canvas to a pilot. I set the direction, designed Submittals and RFIs, and turned the plan into tickets.',
+    tags: ['Product & UX/UI design', 'AI-first product'],
     group: 'professional',
   },
   // Placeholder: Digital Canvas. Details to come from Sarah.
