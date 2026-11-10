@@ -47,3 +47,5 @@
   .tocDesktop { display: block; position: sticky; top: var(--space-4); align-self: start; }
   .exhibits { grid-template-columns: 1fr 1fr; }
 }
+.live { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-bottom: var(--space-5); }
+.live p { margin: 0; max-width: 36ch; font-size: var(--text-small, 0.9rem); color: var(--color-ink-soft); }

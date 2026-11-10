@@ -9,6 +9,7 @@ import { CaseFile } from '../components/project/CaseFile'
 import { CaseStudyMeta } from '../components/project/CaseStudyMeta'
 import { StatStrip } from '../components/project/StatStrip'
 import { NotFound } from './NotFound'
+import { Button } from '../components/ui/Button'
 import styles from './CaseStudy.module.css'
 
 const tocAll = [
@@ -47,6 +48,12 @@ export function CaseStudy() {
         <h1 style={{ marginTop: 'var(--space-2)' }}>{cs.title}</h1>
         <p className={styles.tagline}>{cs.tagline}</p>
         <p className={styles.dek}>{cs.dek}</p>
+        {cs.liveSite && (
+          <div className={styles.live}>
+            <Button href={cs.liveSite.href} external>{cs.liveSite.label}</Button>
+            {cs.liveSite.note && <p>{cs.liveSite.note}</p>}
+          </div>
+        )}
         <CaseStudyMeta {...cs.meta} />
         {cs.stats && <StatStrip stats={cs.stats} />}
       </header>

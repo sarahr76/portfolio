@@ -29,6 +29,8 @@ export type CaseStudy = {
   slug: string
   /** Placeholder pages get noindex until this is removed. */
   draft?: boolean
+  /** A live site or prototype to link under the intro. */
+  liveSite?: { label: string; href: string; note?: string }
   title: string
   kicker: string
   tagline: string
@@ -763,6 +765,11 @@ export const plumbing: CaseStudy = {
   draft: true,
   title: 'Reilly Plumbing',
   kicker: 'Case study 02 · A family business',
+  liveSite: {
+    label: 'View the live site',
+    href: 'https://plumbing-site.sarahmreilly76.workers.dev/',
+    note: 'A design demo with placeholder business details. The request form sends nothing.',
+  },
   tagline: 'Honest plumbing from a family you can trust.',
   dek: 'A website and brand guide for a family-owned plumbing company, designed so a worried homeowner can say what’s going on and know what happens next. The brand was written down as a small design system, so the site stays consistent from phone to desktop.',
   description:
