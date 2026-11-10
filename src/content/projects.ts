@@ -38,7 +38,7 @@ export const projects: readonly ProjectSummary[] = [
     kicker: 'Professional work · Text only',
     title: 'A multi-module SaaS admin console',
     summary: '[One line on the problem and your part in it.]',
-    tags: ['Senior UX/UI', 'Design system'],
+    tags: ['UX/UI design', 'Design system'],
     group: 'professional',
   },
   {
@@ -46,7 +46,7 @@ export const projects: readonly ProjectSummary[] = [
     kicker: 'Professional work · Text only',
     title: 'An AI-first construction platform',
     summary: '[One line on the problem and your part in it.]',
-    tags: ['Senior UX/UI', 'AI-first product'],
+    tags: ['UX/UI design', 'AI-first product'],
     group: 'professional',
   },
 ]

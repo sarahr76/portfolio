@@ -30,7 +30,7 @@ export function Home() {
         <title>Sarah Reilly | UX/UI designer who builds design systems</title>
         <meta
           name="description"
-          content="Portfolio of Sarah Reilly, a senior UX/UI designer who designs and builds design systems."
+          content="Portfolio of Sarah Reilly, a UX/UI designer who designs and builds design systems."
         />
         <meta property="og:title" content="Sarah Reilly | UX/UI designer who builds design systems" />
       </Head>
@@ -45,7 +45,7 @@ export function Home() {
               <Button to="/#work">See my work</Button>
               <Button variant="secondary" to="/about#contact">Get in touch</Button>
             </div>
-            <p className={styles.status}>Senior UX/UI designer · open to remote roles, full-time or part-time</p>
+            <p className={styles.status}>UX/UI designer · open to remote roles, full-time or part-time</p>
           </div>
           <div className={styles.portrait} role="img" aria-label="Placeholder for a portrait photo">
             Photo goes here

@@ -248,7 +248,7 @@ export const adminConsole: CaseStudy = {
   description:
     'Text-only case study: designing and systematizing a multi-module SaaS admin console. Product details are kept anonymous.',
   meta: {
-    role: 'Senior UX/UI designer',
+    role: 'UX/UI designer',
     timeline: '[Dates or duration]',
     tools: '[Figma, React, ...]',
     deliverables: '[Design system, specs, flows, ...]',

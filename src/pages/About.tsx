@@ -12,7 +12,7 @@ export function About() {
         <title>About | Sarah Reilly</title>
         <meta
           name="description"
-          content="Sarah Reilly is a senior UX/UI designer in Cincinnati, Ohio, who designs and builds design systems. Open to remote roles."
+          content="Sarah Reilly is a UX/UI designer in Cincinnati, Ohio, who designs and builds design systems. Open to remote roles."
         />
       </Head>
 
