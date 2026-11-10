@@ -228,10 +228,10 @@ export const foxed: CaseStudy = {
         outcome:
           'A reward system with a point of view about restraint, and a system that made room to remove a tier that wasn’t earning its place (see the last decision).',
         shot: {
-          label: 'Screenshot: streak calendar and yearly Recap card',
-          src: '/foxed/recap-october.webp',
-          alt: 'The monthly recap for October. Three stat cards show finished, words and days read. A week-by-week bar chart is followed by a short line of copy, “You came out strong at the start of October,” and a list of what was still being read.',
-          caption: 'The monthly recap: one quiet, voicey summary instead of badges.',
+          label: 'A wax-seal achievement',
+          src: '/foxed/seal.webp',
+          alt: 'A bottom sheet over a fic page: a terracotta wax seal with a flame, the label “A seal, pressed,” the title “Slow Burn Survivor,” and the line “198,000 words. You saw it all the way through.” above a Lovely button.',
+          caption: 'A seal, pressed: rare, quiet, and the one animated moment in the app.',
         },
       },
       {
@@ -243,6 +243,12 @@ export const foxed: CaseStudy = {
           'Reading Focus is a single switch. Flip it, and every AO3- and fic-specific surface across the entire app disappears at once: filters, stat cards, the favorite-tags widget, the AO3 footer link, the Waiting status. Flip it back and nothing was lost. It was all just hidden, not deleted.',
         outcome:
           'The inverse of feature-flag sprawl: one well-placed decision point instead of a dozen half-measures scattered through the app.',
+        shot: {
+          label: 'Reading Focus setting',
+          src: '/foxed/reading-focus.webp',
+          alt: 'The AO3 & Library settings screen. Under Reading Focus, two choices: Fic & books, selected, and Books only. Below are the AO3 account, blocked tags and following sections.',
+          caption: 'Two plain choices, with the effect explained in one sentence.',
+        },
       },
       {
         title: 'Cutting the Ink Cellar',
@@ -261,6 +267,18 @@ export const foxed: CaseStudy = {
         src: '/foxed/blind-date.webp',
         alt: 'The Blind Date with a Story screen: a wrapped parcel tied with a green ribbon and a tag reading “an evening, a fandom you’ve read before, domestic,” with mood chips above and an Unwrap it button below.',
         caption: 'Blind Date with a Story: a gift-wrapped pick from your own Waiting list.',
+      },
+      {
+        label: 'Welcome sheet',
+        src: '/foxed/welcome.webp',
+        alt: 'The first-run welcome sheet, “Welcome to Foxed,” over the Home screen. Three points: your bookshelf, not a reading app; everything stays on your phone; unofficial, and proudly so. A Start shelving button sits below.',
+        caption: 'First run: three honest sentences, including that nothing leaves your phone.',
+      },
+      {
+        label: 'Onboarding',
+        src: '/foxed/onboarding.webp',
+        alt: 'The first onboarding screen: a book icon and a small heart above “Track every fic and book,” with a Next button and four progress dots.',
+        caption: 'Onboarding starts with one idea per screen.',
       },
       { label: 'Library' },
     ],
