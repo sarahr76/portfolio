@@ -473,6 +473,15 @@ export const adminConsole: CaseStudy = {
           'I redesigned them as full-page steppers where each step fits cleanly on the page, and used the same pattern in every module.',
         outcome:
           'Long forms are easier to navigate and easier to fill in, and the experience works the same way wherever you meet it.',
+        shot: {
+          label: 'Diagram: one container for each kind of task',
+          src: '/gpanel-containers.webp',
+          alt: 'A simplified illustration of three containers: a full-page stepper for long, linear data entry; a drawer for details about one thing; and a modal for quick confirmations, with amber for actions that can be undone and red for destructive ones.',
+          caption: 'A simplified illustration of the three containers. Not the real interface.',
+          wide: true,
+          width: 1400,
+          height: 720,
+        },
       },
       {
         title: 'One drawer for details, flexible inside',
@@ -503,6 +512,15 @@ export const adminConsole: CaseStudy = {
           'I redesigned it as a single “If → Then → Do” layout with a summary card that keeps everything set so far visible in one place. Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
         outcome:
           'Rules read the way people think about them: if this happens, under these conditions, do this. Users see the whole rule without navigating between steps.',
+        shot: {
+          label: 'Diagram: the If, Then, Do rule layout',
+          src: '/gpanel-rule-builder.webp',
+          alt: 'A simplified illustration of a rule on one screen: If a new user is created, Then under the conditions department is Sales or location is Remote, Do add to a group and notify an admin, with a summary card on the right that reads the whole rule back.',
+          caption: 'A simplified illustration of the layout, with made-up example content. Not the real interface.',
+          wide: true,
+          width: 1400,
+          height: 579,
+        },
       },
     ],
   },
