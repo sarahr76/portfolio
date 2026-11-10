@@ -205,6 +205,12 @@ export const foxed: CaseStudy = {
             alt: 'A bottom sheet titled “The Nightstand is full.” It shows the fic moving in and a list of four items that could go back on the Shelf, with Make the swap and Leave it on the Shelf buttons.',
             caption: 'Adding to a full Nightstand opens a swap, not a silent success.',
           },
+          {
+            label: 'Library, Nightstand view',
+            src: '/foxed/library-nightstand.webp',
+            alt: 'The My Library screen filtered to To Read, with Nightstand selected. The line “You already said yes to these, no debate, just next in line” sits above two reorderable cards, one ebook and one fic, each at 0%.',
+            caption: 'The Nightstand in the Library: “You already said yes to these.”',
+          },
         ],
       },
       {
@@ -301,7 +307,6 @@ export const foxed: CaseStudy = {
         alt: 'The first onboarding screen: a book icon and a small heart above “Track every fic and book,” with a Next button and four progress dots.',
         caption: 'Onboarding starts with one idea per screen.',
       },
-      { label: 'Library' },
     ],
   },
   process: {
