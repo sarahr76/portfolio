@@ -587,7 +587,7 @@ export const ebbetsAI: CaseStudy = {
       'Construction teams lose profit to poor communication and follow-through, with paperwork scattered across too many places.',
     did: 'Set the product direction, designed document and email ingestion, Submittals and RFIs, ran research with the pilot team, and turned the plan into PRDs and about 75 tickets.',
     result:
-      'A working core platform and a pilot team warming to the AI-first direction, with Submittals and RFIs scoped, wireframed and ready for the next phase.',
+      'A working core platform, with document and email ingestion running in the pilot, and a pilot team warming to the AI-first direction. Submittals and RFIs were scoped, wireframed and ready for the next phase.',
   },
   problem: {
     heading: 'Profit lost between the steps',
@@ -608,14 +608,14 @@ export const ebbetsAI: CaseStudy = {
       'Most of the thinking went into making project information easy to find, making an AI-first product feel trustworthy, and keeping follow-through visible. These are the calls that mattered most.',
     items: [
       {
-        title: 'Let the AI do the filing',
+        title: 'Let the AI do the filing, and let people correct it',
         tag: 'Document and email ingestion',
         problem:
           'Project information lived in too many places, mainly SharePoint and email, and a lot of a team’s time went to finding things and organizing them by hand.',
         approach:
-          'The platform ingests documents from SharePoint and emails. The AI reads them, writes a summary, auto-tags the items and organizes them, so the information arrives already sorted.',
+          'The platform ingests documents from SharePoint and emails. The AI reads them, writes a summary, auto-tags the items and organizes them, so the information arrives already sorted. My design partner and I designed everything the user sees: how the documents appear in the app and how the AI’s information is displayed. People can correct, edit or delete anything the AI did, and then view, search and filter the results, with saved views for the ones they return to.',
         outcome:
-          'People can go in and easily view and search for items, instead of hunting through folders and inboxes.',
+          'It worked in the pilot, and it was the part the pilot team seemed most interested in: having items sorted and tagged for them automatically, and then easy to find.',
       },
       {
         title: 'Keep a person in the loop',
@@ -681,7 +681,7 @@ export const ebbetsAI: CaseStudy = {
   outcomes: {
     heading: 'Where it stood, and what I learned',
     shipped: [
-      { title: 'Document and email ingestion', text: 'AI reads SharePoint documents and emails, summarizes them, tags them and organizes them for easy viewing and search' },
+      { title: 'Document and email ingestion', text: 'Working in the pilot: AI reads SharePoint documents and emails, summarizes, tags and organizes them, and users can correct, edit, delete, search and filter' },
       { title: 'The core platform', text: 'Dashboard, projects, contacts, companies, tasks, activities, and admin and user settings' },
       { title: 'A pilot research kit', text: 'Interview note templates, a facilitator guide and a synthesis of what we heard' },
       { title: 'Submittals and RFIs, ready for the next phase', text: 'Scoped, wireframed and broken into tickets' },
