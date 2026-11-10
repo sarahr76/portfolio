@@ -49,8 +49,8 @@ export function Home() {
             </div>
             <p className={styles.status}>UX/UI designer · open to remote roles, full-time or part-time</p>
           </div>
-          <div className={styles.portrait} role="img" aria-label="Placeholder for a portrait photo">
-            Photo goes here
+          <div className={styles.portrait}>
+            <img src="/desk-illustration.svg" width={400} height={400} alt="Illustration of a designer’s desk: a laptop showing a color palette, a mug, a plant and a sketchbook." />
           </div>
         </section>
       </div>
@@ -156,7 +156,7 @@ export function Home() {
       {/* 5. About teaser */}
       <section className={styles.section} aria-labelledby="about-title">
         <div className={`container ${styles.about}`}>
-          <div className={styles.avatar} role="img" aria-label="Placeholder for a small photo">Small photo</div>
+          <div className={styles.avatar}><img src="/desk-illustration.svg" width={200} height={200} alt="" /></div>
           <div>
             <h2 id="about-title">A little about me</h2>
             <p style={{ marginTop: 'var(--space-2)', maxWidth: 'var(--reading-width)', color: 'var(--color-ink-soft)' }}>

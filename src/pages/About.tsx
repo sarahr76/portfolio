@@ -18,8 +18,8 @@ export function About() {
 
       <div className="container">
         <section className={styles.intro} aria-labelledby="about-title">
-          <div className={styles.photo} role="img" aria-label="Placeholder for a portrait photo">
-            Warm portrait goes here
+          <div className={styles.photo}>
+            <img src="/desk-illustration.svg" width={320} height={400} alt="Illustration of a designer’s desk: a laptop showing a color palette, a mug, a plant and a sketchbook." />
           </div>
           <div>
             <h1 id="about-title">Hi, I’m Sarah.</h1>
