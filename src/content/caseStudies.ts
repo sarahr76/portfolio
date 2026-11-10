@@ -509,13 +509,13 @@ export const adminConsole: CaseStudy = {
         problem:
           'Creating a rule involves trigger logic, a Sources panel that maps events to source types, and condition blocks with AND/OR patterns. The original stepper-style wizard made people move back and forth to check how their choices fit together. A second problem was conceptual: helping users tell apart two kinds of automation, Policies (scheduled, time-driven) and the Rules Engine (real-time, event-driven), on the Automation landing page.',
         approach:
-          'I redesigned it as a single “If → Then → Do” layout with a summary card that keeps everything set so far visible in one place. Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
+          'I redesigned it as a single page with three sections, When, If and Then, and a summary card that keeps everything set so far visible in one place. The page also warns when a similar rule already exists and previews the estimated impact before you save. [Confirm those two details.] Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
         outcome:
           'Rules read the way people think about them: if this happens, under these conditions, do this. Users see the whole rule without navigating between steps.',
         shot: {
-          label: 'Diagram: the If, Then, Do rule layout',
+          label: 'Diagram: the When, If, Then rule layout',
           src: '/gpanel-rule-builder.webp',
-          alt: 'A simplified illustration of a rule on one screen: If a new user is created, Then under the conditions department is Sales or location is Remote, Do add to a group and notify an admin, with a summary card on the right that reads the whole rule back.',
+          alt: 'A simplified illustration of a rule on one screen, in three parts: When a new user is created, If department is Sales or location is Remote, Then add to a group and notify an admin. A summary card on the right reads the whole rule back.',
           caption: 'A simplified illustration of the layout, with made-up example content. Not the real interface.',
           wide: true,
           width: 1400,
