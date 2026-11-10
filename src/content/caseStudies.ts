@@ -585,7 +585,15 @@ export const flowerShop: CaseStudy = {
     { value: '2', label: 'Layouts each' },
     { value: '2', label: 'Typefaces' },
   ],
-  hero: { label: 'Hero: home page, desktop and mobile side by side' },
+  hero: {
+    label: 'Hero: home page',
+    src: '/petals/hero.webp',
+    srcMobile: '/petals/hero-mobile.webp',
+    alt: 'The Petals-n-Glass home page. A sage-green arch holds an illustrated vase of flowers beside the headline “Flowers, gathered gently.” and the buttons Shop bouquets and Visit the shop.',
+    priority: true,
+    width: 1400,
+    height: 758,
+  },
   summary: {
     problem:
       'People shop for flowers for a moment, not a product, and florist sites often hand them a long grid and leave them to sort it out. [Confirm or reword: the problem you set out to solve.]',
@@ -658,7 +666,13 @@ export const flowerShop: CaseStudy = {
           'The home page leads with “Find the right flowers”: everyday bouquets, sympathy and remembrance, weddings and events, and gifts and glass. Weddings & Events and Gifts & Glass get their own pages and their own place in a four-item navigation.',
         outcome:
           'A first-time visitor can tell where they belong in one look, and the shop’s bigger services have a front door of their own. [Add why you grouped it this way.]',
-        shot: { label: 'Screenshot: home page, “Find the right flowers”', wide: true },
+        shot: {
+          label: 'Find the right flowers',
+          src: '/petals/occasions.webp',
+          alt: 'The “Find the right flowers” section: four cards for everyday bouquets, sympathy and remembrance, weddings and events, and gifts and glass, each with a one-line description and a link.',
+          caption: 'Four occasions, each with a short promise and a way in.',
+          wide: true,
+        },
       },
       {
         title: 'Put the answers where the question comes up',
@@ -669,7 +683,13 @@ export const flowerShop: CaseStudy = {
           'The product page says it before the button: free in-shop pickup, local delivery for $10, order by 1pm for same day. The cart repeats the delivery line and points to free pickup, and checkout turns the choice into its first question.',
         outcome:
           'Nothing about cost or timing is a surprise by the time someone reaches payment. In the prototype the total moves from $98 to $108 as the choice changes.',
-        shot: { label: 'Screenshot: product page with size picker and delivery note', wide: true },
+        shot: {
+          label: 'Product page',
+          src: '/petals/product.webp',
+          alt: 'The Garden Tulip Wrap product page. An illustration of tulips in kraft paper on the left. On the right: a size picker (Standard $48, Deluxe $62, Grand $78), an optional card message, an Add to cart button, and a note reading “Free in-shop pickup. Local delivery $10, order by 1pm for same-day.”',
+          caption: 'Size, card message and the delivery note sit together, above the details.',
+          wide: true,
+        },
       },
       {
         title: 'One question changes the form',
@@ -689,6 +709,26 @@ export const flowerShop: CaseStudy = {
           'The mobile menu is full screen, with large links and a card pinned to the bottom: today’s hours, the address, and two buttons, Order flowers and Call the shop.',
         outcome: 'The two most likely next steps are one thumb away from anywhere on the site.',
         shot: { label: 'Screenshot: mobile menu, open' },
+      },
+    ],
+    gallery: [
+      {
+        label: 'Weddings & Events, mobile',
+        src: '/petals/m-weddings.webp',
+        alt: 'The Weddings & Events page on a phone: the headline “Flowers for the day you’ve been planning.”, two buttons, and a note that wedding florals start at $850.',
+        caption: 'Weddings & Events, mobile.',
+      },
+      {
+        label: 'Gifts & Glass, mobile',
+        src: '/petals/m-gifts.webp',
+        alt: 'The Gifts & Glass page on a phone: a two-column grid of gifts including a glass bud vase, a soy candle, a pressed flower frame and a ceramic planter, each with a price and an Add to order button.',
+        caption: 'Gifts & Glass, mobile.',
+      },
+      {
+        label: 'Product, mobile',
+        src: '/petals/m-product.webp',
+        alt: 'The Garden Tulip Wrap product page on a phone, with the illustration, size picker, card message field and a full-width Add to cart button.',
+        caption: 'Product page, mobile.',
       },
     ],
   },
