@@ -227,12 +227,20 @@ export const foxed: CaseStudy = {
           'Every reward moment is tiered deliberately, by how often it should happen. Daily streaks stay almost silent: a calendar mark, with a “pressed leaf” forgiving one missed day automatically. Wax-seal achievements are rare and get the one genuinely animated moment in the whole app. A yearly Recap, in the style of a music-streaming “wrapped,” is the single big annual event. Nothing competes for the same moment twice.',
         outcome:
           'A reward system with a point of view about restraint, and a system that made room to remove a tier that wasn’t earning its place (see the last decision).',
-        shot: {
+        shots: [
+          {
           label: 'A wax-seal achievement',
           src: '/foxed/seal.webp',
           alt: 'A bottom sheet over a fic page: a terracotta wax seal with a flame, the label “A seal, pressed,” the title “Slow Burn Survivor,” and the line “198,000 words. You saw it all the way through.” above a Lovely button.',
           caption: 'A seal, pressed: rare, quiet, and the one animated moment in the app.',
         },
+          {
+            label: 'Stats: Your year',
+            src: '/foxed/stats.webp',
+            alt: 'The Your year screen: 321k words read this year, a twelve-day streak shown as a row of dots, a progress bar toward a 1.0M-word goal, a monthly bar chart, and a row of seven wax seals with one earned.',
+            caption: 'Your year: the streak is a row of dots, and seals fill in slowly.',
+          },
+        ],
       },
       {
         title: 'Reading Focus',
