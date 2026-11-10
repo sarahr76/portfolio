@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tallymark · Printable fluency sheets and games</title>
+<meta name="description" content="Printable fluency sheets, bingo, flashcards and matching cards for letters, numbers, shapes, colors and words. A fresh scramble every week, teacher scoring copies, class lists and progress charts. Free, and nothing leaves your browser.">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1b2f5e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tallymark">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="top no-print">
+  <div class="top-in">
+    <a class="brand" href="#make" aria-label="Tallymark home">
+      <svg class="mark" viewBox="0 0 40 32" aria-hidden="true"><g class="bars"><path d="M7 5v22M14 5v22M21 5v22M28 5v22"/></g><path class="slash" d="M2 23L36 8"/></svg>
+      <span class="word">Tallymark</span>
+    </a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#make" data-tab="make">Make sheets</a>
+      <a href="#class" data-tab="class">Classes</a>
+      <a href="#progress" data-tab="progress">Progress</a>
+    </nav>
+    <button type="button" class="btn small" id="installBtn" hidden>Install app</button>
+  </div>
+</header>
+
+<main class="no-print">
+
+  <!-- MAKE -->
+  <section class="view" id="view-make" data-view="make">
+    <div class="intro">
+      <h1>Sheets and games, <mark>scrambled fresh</mark> every week.</h1>
+      <p>Pick what to make and what to practice, then print or save a PDF. Timed sheets come with a teacher copy for scoring. Bingo, flashcards and matching cards use the same content.</p>
+    </div>
+
+    <div class="make">
+      <form class="controls" id="controls" autocomplete="off">
+        <fieldset>
+          <legend>What to make</legend>
+          <div class="seg col fmt" id="formatSeg" role="radiogroup" aria-label="What to make"></div>
+          <div id="formatOpts" class="opts"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>What to practice</legend>
+          <div class="group"><h3>Letters</h3><div class="chips" id="chips-letters"></div>
+            <label class="field" for="letters">Only these letters <span class="sub">(blank means all 26)</span>
+              <input type="text" id="letters" maxlength="26" autocapitalize="off" spellcheck="false" placeholder="a b c d e"></label></div>
+          <div class="group"><h3>Numbers</h3><div class="chips" id="chips-numbers"></div></div>
+          <div class="group"><h3>Shapes and colors</h3><div class="chips" id="chips-shapes"></div></div>
+          <div class="group"><h3>Sight words</h3><div class="chips" id="chips-sight"></div></div>
+          <details class="group" id="d-phonics"><summary>Phonics words <span class="badge" id="badge-phonics"></span></summary><div class="chips" id="chips-phonics"></div></details>
+          <details class="group" id="d-themes"><summary>Word themes <span class="badge" id="badge-themes"></span></summary><div class="chips" id="chips-themes"></div></details>
+          <div class="group"><h3>Your own list</h3><div class="chips" id="chips-custom"></div>
+            <div id="customBox" hidden>
+              <label class="field" for="customTitle">Title<input type="text" id="customTitle" maxlength="50" placeholder="Short vowels"></label>
+              <label class="field" for="customText">Items <span class="sub">(separate with spaces, commas or new lines)</span>
+                <textarea id="customText" rows="4" spellcheck="false" placeholder="cat hat mat sat pat"></textarea></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Scramble</legend>
+          <div class="seg" role="radiogroup" aria-label="Scramble by">
+            <label><input type="radio" name="mode" value="weekly"><span>Every week</span></label>
+            <label><input type="radio" name="mode" value="code"><span>My own code</span></label>
+          </div>
+          <div id="weeklyBox" class="ctl">
+            <button type="button" class="btn small" id="wkPrev" aria-label="Earlier week">&lsaquo;</button>
+            <span id="wkLabel" class="wk" aria-live="polite"></span>
+            <button type="button" class="btn small" id="wkNext" aria-label="Later week">&rsaquo;</button>
+            <button type="button" class="btn small" id="wkNow" hidden>This week</button>
+          </div>
+          <div id="codeBox" class="ctl" hidden>
+            <label class="field" for="code">Code<input type="text" id="code" maxlength="40" placeholder="Room 12 Unit 3"></label>
+          </div>
+          <p class="note" id="scrambleNote"></p>
+          <button type="button" class="btn" id="reshuffle">Shuffle again</button>
+        </fieldset>
+
+        <fieldset id="fsStudents">
+          <legend>Students</legend>
+          <label class="field" for="classSel">Class<select id="classSel"></select></label>
+          <div class="seg col" role="radiogroup" aria-label="Sheets for students" id="stuMode">
+            <label><input type="radio" name="studentMode" value="same"><span>Same sheet for everyone</span></label>
+            <label><input type="radio" name="studentMode" value="diff"><span>A different sheet for each student</span></label>
+          </div>
+          <div class="seg col" role="radiogroup" aria-label="Names on pages" id="nameMode">
+            <label><input type="radio" name="names" value="blank"><span>Blank name lines</span></label>
+            <label><input type="radio" name="names" value="filled"><span>Print each student's name</span></label>
+          </div>
+          <p class="note" id="studentNote"></p>
+          <div class="chips">
+            <label class="chip" id="chipStudent"><input type="checkbox" id="copyStudent"> <span id="lblStudent">Student copies</span></label>
+            <label class="chip" id="chipTeacher"><input type="checkbox" id="copyTeacher"> <span id="lblTeacher">Teacher copies</span></label>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="preview">
+        <div class="bar">
+          <div class="bar-main">
+            <button type="button" class="btn primary" id="printBtn">Print</button>
+            <button type="button" class="btn primary alt" id="pdfBtn">Save PDF</button>
+          </div>
+          <span class="count" id="count" role="status" aria-live="polite"></span>
+        </div>
+        <div class="sheets" id="sheets"></div>
+        <p class="note" id="moreNote"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASSES -->
+  <section class="view" id="view-class" data-view="class" hidden>
+    <div class="intro">
+      <h1>Your <mark>classes</mark>.</h1>
+      <p>Add the children you time. Names are saved on this device only, so nothing is uploaded and no account is needed.</p>
+    </div>
+    <div class="class-layout">
+      <aside class="panel" id="classList"></aside>
+      <div class="panel" id="classEditor"></div>
+    </div>
+  </section>
+
+  <!-- PROGRESS -->
+  <section class="view" id="view-progress" data-view="progress" hidden>
+    <div class="intro">
+      <h1>Watch the <mark>numbers climb</mark>.</h1>
+      <p>After each timing, enter what was reached and how many errors. Tallymark works out the score and charts it week by week.</p>
+    </div>
+    <div id="progressBody"></div>
+  </section>
+</main>
+
+<footer class="foot-site no-print">
+  <p><strong>Privacy.</strong> Tallymark stores class lists and scores only on this device. Nothing is sent to a server, and there are no accounts or analytics.</p>
+  <p class="credits"><strong>Credits.</strong> Letterforms in Andika and Inter (SIL Open Font License). PDFs made with jsPDF (MIT). Sight words follow the Dolch lists (public domain). To install on an iPhone or iPad, tap Share, then Add to Home Screen.</p>
+</footer>
+
+<div id="printRoot" aria-hidden="true"></div>
+
+<script src="vendor/jspdf.umd.min.js"></script>
+<script src="js/fonts-data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/items.js"></script>
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/pdfkit.js"></script>
+<script src="js/formats/fluency.js"></script>
+<script src="js/formats/bingo.js"></script>
+<script src="js/formats/cards.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
