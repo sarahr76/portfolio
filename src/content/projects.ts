@@ -40,6 +40,9 @@ export const projects: readonly ProjectSummary[] = [
     summary: 'A concept site for a neighborhood flower boutique: nine pages in desktop and mobile, from first browse to checkout.',
     tags: ['Web design', 'Design system'],
     group: 'selected',
+    imageSrc: '/petals/hero.webp',
+    imageSrcMobile: '/petals/hero-mobile.webp',
+    imageAlt: 'Petals-n-Glass, a concept flower boutique site: the headline “Flowers for every occasion, made simple.” beside three phone screens.',
   },
   {
     slug: 'admin-console',

@@ -589,10 +589,10 @@ export const flowerShop: CaseStudy = {
     label: 'Hero: home page',
     src: '/petals/hero.webp',
     srcMobile: '/petals/hero-mobile.webp',
-    alt: 'The Petals-n-Glass home page. A sage-green arch holds an illustrated vase of flowers beside the headline “Flowers, gathered gently.” and the buttons Shop bouquets and Visit the shop.',
+    alt: 'Petals-n-Glass, a concept site for a flower boutique: the headline “Flowers for every occasion, made simple.” beside three phones showing the gifts page, a bouquet page and the weddings page.',
     priority: true,
-    width: 1400,
-    height: 758,
+    width: 1600,
+    height: 900,
   },
   summary: {
     problem:
