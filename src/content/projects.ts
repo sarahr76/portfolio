@@ -28,8 +28,8 @@ export const projects: readonly ProjectSummary[] = [
   {
     slug: 'plumbing',
     kicker: '02 · Client work',
-    title: 'Plumbing company website',
-    summary: 'A clear, trustworthy website for a family plumbing company. [Refine this line]',
+    title: 'Reilly Plumbing',
+    summary: 'A website and brand guide for a family plumbing company, with the brand written down as a small design system.',
     tags: ['Web design', 'Design system'],
     group: 'selected',
   },

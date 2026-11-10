@@ -353,7 +353,7 @@ export const foxed: CaseStudy = {
     honest:
       'Foxed is in private beta, shared with a handful of friends via TestFlight. This isn’t a growth story with a user count worth bragging about. It’s a depth-of-craft one. The goal was never scale; it was building something specific and well-loved for people who actually live in this niche, including myself. One open design question is still sitting unresolved on purpose: whether streak milestones should stay silent or become a rare wax seal.',
   },
-  next: { title: 'Plumbing company website', to: '/work/plumbing' },
+  next: { title: 'Reilly Plumbing', to: '/work/plumbing' },
 }
 
 const placeholderDecision = (n: number): Decision => ({
@@ -757,6 +757,166 @@ export const thinkingDifferently: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
+export const plumbing: CaseStudy = {
+  slug: 'plumbing',
+  // Draft: bracketed lines need Sarah's own words. Remove `draft` to publish.
+  draft: true,
+  title: 'Reilly Plumbing',
+  kicker: 'Case study 02 · A family business',
+  tagline: 'Honest plumbing from a family you can trust.',
+  dek: 'A website and brand guide for a family-owned plumbing company, designed so a worried homeowner can say what’s going on and know what happens next. The brand was written down as a small design system, so the site stays consistent from phone to desktop.',
+  description:
+    'A website and design system for a family-owned plumbing company: a warm, plain-spoken brand, five components, and a guide that never invents facts.',
+  meta: {
+    role: 'UX/UI design, brand guide and design system',
+    timeline: '[Dates or duration]',
+    tools: '[Confirm tools: e.g. Claude Design, Claude Code] · Fraunces, DM Sans',
+    deliverables: 'Mobile and desktop page designs, a brand guide with tokens, voice and five components, and live component previews',
+  },
+  stats: [
+    { value: '16', label: 'Color tokens' },
+    { value: '15', label: 'Text styles' },
+    { value: '5', label: 'Components' },
+    { value: '2', label: 'Layouts' },
+  ],
+  hero: { label: 'Hero: Reilly Plumbing, desktop and mobile home pages' },
+  summary: {
+    problem:
+      'Someone with a leak or a clog wants to know whether this company can help and what happens when they ask. Trade-company sites often answer with jargon and a “contact us” button.',
+    did: 'Designed the pages for phone and desktop, then wrote the brand down as a design system: a voice, 16 color tokens, a type scale and five components, with rules for what never to do.',
+    result:
+      '[Is the site live? Say so plainly, and what the family has said about it.]',
+  },
+  problem: {
+    heading: 'A stressed customer, a plain question',
+    paragraphs: [
+      'Reilly Plumbing is a family-owned local company. People who reach the site usually have something wrong at home: a leak, a clog, a water heater that stopped. They aren’t browsing. They want to know whether this is the right company and what happens next. [Confirm or reword.]',
+      'The business already had its character, a family you can trust, but nothing written down to keep a site true to it. [Add what existed before: a logo, a flyer, an older site.]',
+    ],
+    constraintsIntro: 'The design works inside a few constraints:',
+    constraints: [
+      'Real business details (phone, email, service area, license number) weren’t final, so the guide treats them as bracketed placeholders.',
+      'Mobile first: a four-tab bottom bar below 768px, and a header with links from 768px up.',
+      'No claims without a source: no years in business, ratings, guarantees or response times.',
+    ],
+  },
+  system: {
+    title: 'A brand written down before the screens multiplied',
+    intro:
+      'Excerpts from the guide: a deep forest green with one gold accent on a warm cream ground, a serif for headings and a plain sans for everything else.',
+    paletteTitle: 'Palette: forest, one gold accent, warm neutrals',
+    palette: [
+      { name: 'Forest', hex: '#1F4D3A', note: 'Brand fill: buttons, hero panels' },
+      { name: 'Deep', hex: '#14382A', note: 'Headings and the footer' },
+      { name: 'Gold', hex: '#E5B454', note: 'The only accent, on dark grounds' },
+      { name: 'Gold ink', hex: '#8A5A12', note: 'Eyebrow labels on light grounds' },
+      { name: 'Cream', hex: '#F8F4EA', note: 'Page ground' },
+      { name: 'Sage', hex: '#E3EDE6', note: 'Active nav pill, icon circles' },
+    ],
+    type: {
+      title: 'Type: a sturdy serif and a plain sans',
+      rows: [
+        { role: 'Display', spec: 'Fraunces 600, for headlines and the wordmark only' },
+        { role: 'Body', spec: 'DM Sans 16 px, for everything else' },
+        { role: 'Eyebrows', spec: 'DM Sans Bold, 13 px, capitals, in gold ink' },
+        { role: 'Scale', spec: 'Four display sizes, from 58 px on the desktop hero to 30 px on mobile titles' },
+      ],
+    },
+    voice: {
+      quote: 'Write like a neighbor who happens to know plumbing: warm, plain-spoken, confident, never salesy.',
+      lines: [
+        '“Honest plumbing from a family you can trust.”',
+        '“From a leaky faucet to a burst pipe, we treat your home like our own.”',
+        '“Tell us what’s going on.”',
+      ],
+    },
+    rules: {
+      title: 'Rules the screens follow',
+      items: [
+        'Gold is the only accent, and never text on a light ground.',
+        'No gradients and no shadows: surfaces separate by fill or a 1 px line.',
+        'Every tappable control is at least 44 px tall.',
+        'Focus rings are always visible: 2 px, with a 2 px offset.',
+        'Never invent facts: business details stay in brackets until the owner supplies them.',
+      ],
+    },
+  },
+  decisions: {
+    heading: 'The choices that shaped the system',
+    intro: 'Not a page-by-page tour. These are the calls that made the guide useful to the next person who touches the site.',
+    items: [
+      {
+        title: 'Write the voice down first',
+        tag: 'Words are part of the design system',
+        problem:
+          'Trade-company sites tend to lean on jargon and a “contact us” button, which leaves a worried customer guessing what happens next.',
+        approach:
+          'The guide sets a voice (a neighbor who happens to know plumbing), asks for everyday words like “leak” and “drain,” and says what happens next instead of hiding behind “contact us.” Headings and buttons use sentence case, and an exclamation point appears only to say thanks.',
+        outcome:
+          'Copy that sounds like the family, and a rule a future writer can follow without asking.',
+      },
+      {
+        title: 'Never invent facts',
+        tag: 'Honest placeholders instead of made-up claims',
+        problem:
+          'It’s tempting to fill a small-business site with years in business, ratings and “24/7.” If any of it is wrong, it costs the family the trust the site is selling.',
+        approach:
+          'Every business detail is a bracketed placeholder until the owner supplies it: [Phone], [Cities we serve], [License #], [Family photo]. The guide forbids claims about ratings, guarantees, prices or response times without a source.',
+        outcome:
+          'The design could be finished without guessing, and nothing on the site can be untrue by accident.',
+      },
+      {
+        title: 'Contrast is written into the tokens',
+        tag: 'Accessibility as a property of the system',
+        problem:
+          'Accessibility checked at the end is accessibility fixed late, screen by screen.',
+        approach:
+          'Each color token records where it may be used and the contrast it clears. Cream text on forest clears 4.5:1; gold is only for fills and small icons, so text on a light ground uses a separate gold ink; form borders use their own darker line color at about 3.7:1, and decorative lines never serve as a control border.',
+        outcome:
+          'A designer or developer picking a color can see whether it’s allowed there, and the accessible choice is the default one.',
+      },
+      {
+        title: 'The phone gets its own navigation',
+        tag: 'A four-tab bar, then a header at 768px',
+        problem:
+          'On a phone, a header with several links and a phone number crowds the screen right when someone with a leak needs a clear next step.',
+        approach:
+          'Below 768px the site uses a four-tab bottom bar: Home, Services, Request and Family. From 768px up it becomes a header with links, the phone number and one Request service button. The active tab is marked with a pill and a bolder label, never color alone.',
+        outcome:
+          'The most important action, asking for service, is one thumb-tap away on a phone, and the desktop version keeps the same four destinations.',
+      },
+    ],
+  },
+  process: {
+    heading: 'How I worked',
+    intro: '[One or two sentences on working with the family: who gave feedback, and how.]',
+    items: [
+      {
+        title: 'Design the pages',
+        text: '[Describe designing the mobile and desktop pages: home, services, request service, the family and the confirmation.]',
+      },
+      {
+        title: 'Write the system down',
+        text: 'With the screens in hand, I wrote the guide: tokens with usage notes, a voice, and five components (button, form controls, logo, navigation and service card), each with guidance and a live preview.',
+      },
+      {
+        title: 'Build from the guide',
+        text: '[Describe building the site from the guide, and what you used.]',
+      },
+    ],
+  },
+  outcomes: {
+    heading: 'What came out of it',
+    shipped: [
+      { title: 'A brand and design system guide', text: 'Tokens, voice, rules and five components, each with live previews' },
+      { title: 'Mobile and desktop layouts', text: 'Designed for a request-service flow that ends in a clear confirmation' },
+    ],
+    honest:
+      '[Is the site live, and what has the family said? Say what’s still placeholder: the real logo, family photos and business details.]',
+  },
+  next: { title: 'Petals-n-Glass', to: '/work/flower-shop' },
+}
+
 export const flowerShop: CaseStudy = {
   slug: 'flower-shop',
   // Draft: bracketed lines need Sarah's own words. Remove `draft` to publish.
@@ -980,5 +1140,5 @@ export const flowerShop: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, flowerShop, adminConsole, constructionPlatform, thinkingDifferently]
+export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, thinkingDifferently]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)
