@@ -84,3 +84,10 @@ img, svg { max-width: 100%; display: block; }
   white-space: nowrap;
   border: 0;
 }
+
+/* Scroll reveal (see components/ui/useReveal.ts). Visible by default; hidden only once JS arms it. */
+[data-reveal] { transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+[data-reveal='pending'] { opacity: 0; transform: translateY(16px); }
+[data-reveal='shown'] { opacity: 1; transform: none; }
+[data-reveal]:nth-child(3n + 2) { transition-delay: 70ms; }
+[data-reveal]:nth-child(3n + 3) { transition-delay: 140ms; }

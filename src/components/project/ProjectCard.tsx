@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { TagList } from '../ui/Tag'
 import styles from './ProjectCard.module.css'
+import { useReveal } from '../ui/useReveal'
 
 type Props = {
   kicker: string
@@ -17,8 +18,9 @@ type Props = {
 }
 
 export function ProjectCard({ kicker, title, summary, tags, to, imageSrc, imageAlt = '', imageSrcMobile, textOnly = false }: Props) {
+  const reveal = useReveal<HTMLElement>()
   return (
-    <article className={styles.card}>
+    <article ref={reveal} className={styles.card}>
       {textOnly ? null : imageSrc ? (
         <picture>
           {imageSrcMobile && <source media="(max-width: 719px)" srcSet={imageSrcMobile} />}

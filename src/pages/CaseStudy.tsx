@@ -9,6 +9,7 @@ import { CaseFile } from '../components/project/CaseFile'
 import { CaseStudyMeta } from '../components/project/CaseStudyMeta'
 import { StatStrip } from '../components/project/StatStrip'
 import { NotFound } from './NotFound'
+import { Reveal } from '../components/ui/Reveal'
 import { Button } from '../components/ui/Button'
 import styles from './CaseStudy.module.css'
 
@@ -61,14 +62,14 @@ export function CaseStudy() {
       {cs.hero && <div className={`container ${styles.hero}`}><Shot {...cs.hero} /></div>}
 
       <section className={styles.band} aria-label="The 30-second version">
-        <div className="container">
+        <Reveal className="container">
           <p className="label" style={{ marginBottom: 'var(--space-3)' }}>The 30-second version</p>
           <div className={styles.three}>
             <div><h3>The problem</h3><p>{cs.summary.problem}</p></div>
             <div><h3>What I did</h3><p>{cs.summary.did}</p></div>
             <div><h3>The result</h3><p>{cs.summary.result}</p></div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <div className={`container ${styles.layout}`}>
@@ -84,7 +85,7 @@ export function CaseStudy() {
         </aside>
 
         <div className={styles.content}>
-          <section id="problem">
+          <Reveal as="section" id="problem">
             <SectionHeader label={`${num('problem')} · The problem`} title={cs.problem.heading} />
             <div className={styles.prose}>
               {cs.problem.paragraphs.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
@@ -100,10 +101,10 @@ export function CaseStudy() {
                 {cs.problem.shots.map((s) => <Shot key={s.label} phone {...s} />)}
               </div>
             )}
-          </section>
+          </Reveal>
 
           {cs.system && (
-          <section id="system">
+          <Reveal as="section" id="system">
             <SectionHeader label={`${num('system')} · Design system`} title={cs.system.title ?? 'A system decided before a single screen was drawn'}>
               {cs.system.intro}
             </SectionHeader>
@@ -136,10 +137,10 @@ export function CaseStudy() {
                 </ul>
               </Card>
             </div>
-          </section>
+          </Reveal>
           )}
 
-          <section id="decisions">
+          <Reveal as="section" id="decisions">
             <SectionHeader label={`${num('decisions')} · Key decisions`} title={cs.decisions.heading}>
               {cs.decisions.intro}
             </SectionHeader>
@@ -149,18 +150,18 @@ export function CaseStudy() {
                 {cs.decisions.gallery.map((s) => <Shot key={s.label} phone {...s} />)}
               </div>
             )}
-          </section>
+          </Reveal>
 
-          <section id="process">
+          <Reveal as="section" id="process">
             <SectionHeader label={`${num('process')} · Process`} title={cs.process.heading}>{cs.process.intro}</SectionHeader>
             <ol className={styles.steps}>
               {cs.process.items.map((s) => (
                 <li key={s.title}><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
               ))}
             </ol>
-          </section>
+          </Reveal>
 
-          <section id="outcomes">
+          <Reveal as="section" id="outcomes">
             <SectionHeader label={`${num('outcomes')} · Outcomes`} title={cs.outcomes.heading} />
             {cs.outcomes.shipped && (
               <ul className={styles.shipped}>
@@ -170,7 +171,7 @@ export function CaseStudy() {
               </ul>
             )}
             <p className={styles.honest}><strong>Honestly: </strong>{cs.outcomes.honest}</p>
-          </section>
+          </Reveal>
         </div>
       </div>
 

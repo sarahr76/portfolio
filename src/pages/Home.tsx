@@ -2,6 +2,7 @@ import { Head } from 'vite-react-ssg'
 import { Link } from 'react-router-dom'
 import { projects } from '../content/projects'
 import { Button } from '../components/ui/Button'
+import { Reveal } from '../components/ui/Reveal'
 import { Card } from '../components/ui/Card'
 import { SectionHeader } from '../components/ui/SectionHeader'
 import { TokenCaption } from '../components/ui/TokenCaption'
@@ -117,7 +118,7 @@ export function Home() {
 
       {/* 3. System peek */}
       <section className={`${styles.section} ${styles.band}`} aria-labelledby="peek-title">
-        <div className="container">
+        <Reveal className="container">
           <h2 id="peek-title">A peek at how I build systems</h2>
           <div className={styles.swatches}>
             {peek.map(([token, hex]) => (
@@ -134,7 +135,7 @@ export function Home() {
             ))}
           </div>
           <Button variant="secondary" to="/process">See the process →</Button>
-        </div>
+        </Reveal>
       </section>
 
       {/* 4. How I work */}
@@ -155,7 +156,7 @@ export function Home() {
 
       {/* 5. About teaser */}
       <section className={styles.section} aria-labelledby="about-title">
-        <div className={`container ${styles.about}`}>
+        <Reveal className={`container ${styles.about}`}>
           <div className={styles.avatar}><img src="/desk-illustration.svg" width={200} height={200} alt="" /></div>
           <div>
             <h2 id="about-title">A little about me</h2>
@@ -164,12 +165,12 @@ export function Home() {
             </p>
             <p style={{ marginTop: 'var(--space-3)' }}><Link to="/about">More about me →</Link></p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       {/* 6. Closing call to action */}
       <section className={`${styles.section} ${styles.band} ${styles.cta}`} aria-labelledby="cta-title">
-        <div className="container">
+        <Reveal className="container">
           <h2 id="cta-title">Let's talk</h2>
           <p style={{ marginTop: 'var(--space-2)', color: 'var(--color-ink-soft)' }}>
             Looking for a remote UX/UI design role, full-time or part-time.
@@ -178,7 +179,7 @@ export function Home() {
             <Button to="/about#contact">Email me</Button>
             <Button variant="secondary" href="/resume.pdf" external kind="PDF">View résumé</Button>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   )
