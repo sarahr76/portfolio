@@ -6,6 +6,9 @@ export type ProjectSummary = {
   summary: string
   tags: readonly string[]
   group: 'selected' | 'professional'
+  imageSrc?: string
+  imageAlt?: string
+  imageSrcMobile?: string
 }
 
 export const projects: readonly ProjectSummary[] = [
@@ -16,6 +19,9 @@ export const projects: readonly ProjectSummary[] = [
     summary: 'A local-only reading tracker for fanfic readers, built around how people really read.',
     tags: ['Product design', 'Design system', 'React Native'],
     group: 'selected',
+    imageSrc: '/foxed/hero.webp',
+    imageSrcMobile: '/foxed/hero-mobile.webp',
+    imageAlt: 'Foxed, an iOS reading tracker: three phones showing a fic detail screen, the Home screen, and a yearly recap.',
   },
   {
     slug: 'plumbing',

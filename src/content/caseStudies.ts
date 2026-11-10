@@ -1,6 +1,15 @@
 // Case study content. Edit text here; the CaseStudy page renders it with one shared template.
 
-export type Shot = { label: string; src?: string; alt?: string; caption?: string }
+export type Shot = {
+  label: string
+  src?: string
+  srcMobile?: string
+  alt?: string
+  caption?: string
+  priority?: boolean
+  width?: number
+  height?: number
+}
 
 export type Decision = {
   title: string
@@ -73,7 +82,15 @@ export const foxed: CaseStudy = {
     { value: '9', label: 'Themes' },
     { value: '0', label: 'Servers' },
   ],
-  hero: { label: 'Hero: best Foxed screen or a short product clip' },
+  hero: {
+    label: 'Hero: best Foxed screen or a short product clip',
+    src: '/foxed/hero.webp',
+    srcMobile: '/foxed/hero-mobile.webp',
+    alt: 'Foxed, an iOS app. Headline: “Your reading, well-loved.” Three phones show a fic detail screen with reading progress, the Home screen with Currently Reading, Waiting on Update and Nightstand sections, and a yearly recap reading “8.4M words this year.”',
+    priority: true,
+    width: 1600,
+    height: 900,
+  },
   summary: {
     problem:
       'Readers who live on AO3 track progress across tabs, bookmarks and memory, and no tool treats a fic and a book as the same kind of finished.',

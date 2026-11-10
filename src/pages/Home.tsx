@@ -66,6 +66,9 @@ export function Home() {
                 summary={p.summary}
                 tags={p.tags}
                 to={`/work/${p.slug}`}
+                imageSrc={p.imageSrc}
+                imageSrcMobile={p.imageSrcMobile}
+                imageAlt={p.imageAlt}
               />
             ))}
           </div>
@@ -84,6 +87,9 @@ export function Home() {
                 summary={p.summary}
                 tags={p.tags}
                 to={`/work/${p.slug}`}
+                imageSrc={p.imageSrc}
+                imageSrcMobile={p.imageSrcMobile}
+                imageAlt={p.imageAlt}
               />
             ))}
           </div>

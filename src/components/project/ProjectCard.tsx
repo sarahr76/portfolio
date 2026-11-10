@@ -10,15 +10,20 @@ type Props = {
   to: string
   imageSrc?: string
   imageAlt?: string
+  /** Narrow-screen crop, swapped in below 720px. */
+  imageSrcMobile?: string
   /** Compact card with no image box, for projects without visuals. */
   textOnly?: boolean
 }
 
-export function ProjectCard({ kicker, title, summary, tags, to, imageSrc, imageAlt = '', textOnly = false }: Props) {
+export function ProjectCard({ kicker, title, summary, tags, to, imageSrc, imageAlt = '', imageSrcMobile, textOnly = false }: Props) {
   return (
     <article className={styles.card}>
       {textOnly ? null : imageSrc ? (
-        <img src={imageSrc} alt={imageAlt} loading="lazy" style={{ width: '100%', height: 'auto' }} />
+        <picture>
+          {imageSrcMobile && <source media="(max-width: 719px)" srcSet={imageSrcMobile} />}
+          <img src={imageSrc} alt={imageAlt} width={1600} height={900} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block' }} />
+        </picture>
       ) : (
         <div className={styles.image} aria-hidden="true">Project image</div>
       )}
