@@ -512,8 +512,7 @@ export const adminConsole: CaseStudy = {
           'I redesigned it as a single page with three sections, When, If and Then, and a summary card that keeps everything set so far visible in one place. The page also warns when a similar rule already exists and previews the estimated impact before you save. [Confirm those two details.] Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
         outcome:
           'Rules read the way people think about them: if this happens, under these conditions, do this. Users see the whole rule without navigating between steps.',
-        shots: [
-          {
+        shot: {
           label: 'Illustration: the Create rule page',
           src: '/gpanel-create-rule.webp',
           alt: 'A simplified illustration of the Create rule page. Steps along the top read Basic info, When, If and Then. Three stacked sections follow: basic information, When this happens with a trigger event, a warning about a similar rule, frequency and trigger sources, and If these conditions are met, which is empty. A dark Rule summary card on the right fills in as the rule is built and shows an estimated impact preview.',
@@ -521,17 +520,7 @@ export const adminConsole: CaseStudy = {
           wide: true,
           width: 1400,
           height: 1174,
-          },
-          {
-          label: 'Diagram: the When, If, Then rule layout',
-          src: '/gpanel-rule-builder.webp',
-          alt: 'A simplified illustration of a rule on one screen, in three parts: When a new user is created, If department is Sales or location is Remote, Then add to a group and notify an admin. A summary card on the right reads the whole rule back.',
-          caption: 'A simplified illustration of the layout, with made-up example content. Not the real interface.',
-          wide: true,
-          width: 1400,
-          height: 579,
-          },
-        ],
+        },
       },
     ],
   },
