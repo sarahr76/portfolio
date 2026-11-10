@@ -419,106 +419,122 @@ export const adminConsole: CaseStudy = {
   draft: true,
   title: 'A multi-module SaaS admin console',
   kicker: 'Professional work · Previous employer · Text only',
-  tagline: 'Helping IT administrators manage a whole workspace from one console, and automate the routine parts.',
-  dek: 'A multi-module admin tool that IT administrators use to manage a company’s workspace: users, policies and automations. With one other designer, I designed its flows and interface patterns and built the component system that kept every module consistent.',
+  tagline: 'Making a growing admin console modern, consistent and easier to use.',
+  dek: 'A multi-module SaaS tool that gives administrators one place to manage their company’s workspace. Over about four years, with one other designer and the development team, I redesigned its patterns and built the component library that keeps every module consistent.',
   description:
     'Text-only case study: designing and systematizing a multi-module SaaS admin console. Product details are kept anonymous.',
   meta: {
-    role: 'UX/UI designer, working with one other designer',
-    timeline: '[Dates or duration]',
+    role: 'UX/UI designer, with one other designer and the development team',
+    timeline: 'About four years',
     tools: 'Figma, Material UI, React',
-    deliverables: 'A two-layer component library and token set, a developer documentation hub, and flows and specs for rule-based automation',
+    deliverables: 'A two-layer component library and token set, a developer documentation hub, full-page steppers, a drawer pattern, a rule builder, and design-to-dev handoff tickets',
   },
   summary: {
     problem:
-      'Every module was growing its own patterns, and the people using it make changes that affect an entire company, so inconsistency was costly. [Confirm]',
-    did: 'Set up a two-layer component system (Material UI underneath, our own tokens on top), organized the design files so a larger team could work in them, and designed the automation features, including a rule builder.',
+      'As the product grew, its patterns drifted: the same kind of task looked and behaved differently from screen to screen.',
+    did: 'Built a two-layer component system on top of Material UI, chose one container for each kind of task and made it identical everywhere, and redesigned the most logic-heavy feature, rule creation, around how people think about rules.',
     result:
-      '[Describe the outcome qualitatively: for example, fewer one-off components, faster handoffs, a clearer automation story. Only what you can stand behind.]',
+      'The product became easier to navigate and use, components became consistent, and developers could add new APIs and features without starting each screen from scratch.',
   },
   problem: {
-    heading: 'Many modules, and no shared habits',
+    heading: 'The same task looked different on every screen',
     paragraphs: [
-      'The product is a multi-module console: users, policies, automation and more, each with its own screens. Its users are IT administrators, and a change they make can reach every employee at a company. That raises the cost of a mistake, so predictable patterns matter more than novelty.',
-      '[Confirm or reword: how things looked when you started, and what was hard for administrators or for developers.]',
+      'The product gives administrators a single place to manage their company’s workspace across several modules. As it grew, each module built up its own habits, so a creation flow, a details view or a confirmation could look and behave differently depending on where you were.',
+      'The goal, shared with my design partner, was twofold: make the application more modern and easier for clients to use, and give product, design and development a more organized way of working together.',
     ],
     constraintsIntro: 'The constraints:',
     constraints: [
-      'A small design team: two designers, with a more experienced designer joining partway through.',
-      'An existing component library (Material UI) that the product already depended on, so starting over was not an option.',
-      '[Add any others you can share: live product, release pressure, legacy screens.]',
+      'A small design team: two designers, working closely with the developers.',
+      'An existing component library (Material UI) the product already depended on, so starting over was not an option.',
+      'A live product that kept growing, as developers added new APIs and features.',
     ],
   },
   decisions: {
     heading: 'The choices that shaped the product',
     intro:
-      'Four calls where the easy version would have caused trouble later: one about the system underneath, two about how the interface behaves, and one about the hardest feature.',
+      'Most of the usability gains came from one idea: pick the right container for each kind of task, then make it identical everywhere. The system underneath, and one deliberate exception, complete the picture.',
     items: [
       {
-        title: 'Two layers, not a fork',
-        tag: 'Own the tokens, leave the library alone',
+        title: 'Two layers, not a custom library',
+        tag: 'Own what makes it distinct, keep the rest',
         problem:
-          'Restyling every component of a library until it looks like your product is the usual route, and it makes every future upgrade painful.',
+          'A fully custom component library would have given total control, and a maintenance burden to match.',
         approach:
-          'Material UI stays largely intact as the base layer. The product owns a second layer of token overrides on top: its brand hue, an accent color, and semantic color scales. The design files mirror this, in three files: Design System, Product and Working.',
+          'A two-layer system on top of Material UI. The base stays largely intact, and the product’s own token overrides sit on top. I also split the design files into three (Design System, Product and Working) so exploration never got tangled with finished work, and built a browser-based documentation hub where developers could look up real token data and component specs.',
         outcome:
-          'Developers get one theme file instead of a pile of overrides, and designers have a clear rule about where a change belongs.',
+          'The product keeps its own identity without the cost of maintaining a custom library, and designers and developers share one source of truth.',
       },
       {
-        title: 'Four ways to open something, and when to use each',
-        tag: 'A hierarchy, so every team stops choosing differently',
+        title: 'Full-page steppers instead of popup wizards',
+        tag: 'Give long flows room to breathe',
         problem:
-          'Without a rule, each feature picks its own container: a full page here, a modal there, a drawer somewhere else. Administrators can’t build habits on that.',
+          'Creation flows involve many fields. The original popup wizards couldn’t hold that much information without cramming it in or making people scroll.',
         approach:
-          'Four levels, chosen by the weight of the task: full-page steppers for long, multi-step jobs; single-step modals for quick decisions; drawers for details and edits alongside the page; and alert modals for confirmations. Small questions get settled the same way, such as where filter controls go inside a multi-step stepper. [Confirm the filter example.]',
+          'I redesigned them as full-page steppers where each step fits cleanly on the page, and used the same pattern in every module.',
         outcome:
-          'New screens start from a decision tree instead of a blank canvas, and reviews can point to a rule instead of a preference.',
+          'Long forms are easier to navigate and easier to fill in, and the experience works the same way wherever you meet it.',
       },
       {
-        title: 'Color that means something in a confirmation',
-        tag: 'Amber for reversible, red for destructive',
+        title: 'One drawer for details, flexible inside',
+        tag: 'Consistent structure, adaptable content',
         problem:
-          'When every confirmation dialog is red, administrators learn to click through red. The one that really matters, deleting something for good, looks like all the others.',
+          'Details pages relied on modals that varied from screen to screen. The hard part of fixing that: a details view has to show very different information depending on what’s being viewed.',
         approach:
-          'Confirmations follow a color convention: amber when an action can be undone, such as disabling something, and red only when it can’t. The wording follows the same split.',
+          'A single drawer pattern with one consistent structure and styling, and contents that flex within it to suit the type of data.',
         outcome:
-          'Red keeps its meaning, and the rare destructive action stands out.',
+          'Details feel familiar everywhere, and a new screen can reuse the drawer instead of inventing another modal.',
       },
       {
-        title: 'Two kinds of automation, kept apart',
-        tag: 'Scheduled policies and real-time rules',
+        title: 'Modals, but only for what they’re good at',
+        tag: 'Color that signals risk',
         problem:
-          'Both features sound like “automation.” One runs on a schedule and the other reacts to events as they happen, and an administrator choosing the wrong one gets the wrong result.',
+          'With modals handling everything, quick confirmations and heavy tasks had been getting the same treatment.',
         approach:
-          'An automation landing page that explains the difference up front, and a rule builder structured as a sequence: pick the trigger, choose the sources it listens to (each event maps to the types of source it can come from), then add conditions, with clear AND/OR logic between them.',
+          'Modals are reserved for quick confirmations and alerts. Amber marks reversible actions and red marks destructive ones, so the color itself signals how risky the action is.',
         outcome:
-          '[Describe what changed: how administrators use it, what got easier, what you learned.]',
+          'Red keeps its meaning, and people can tell at a glance how careful to be.',
+      },
+      {
+        title: 'The rule builder breaks our own rule',
+        tag: 'A deliberate exception to the stepper',
+        problem:
+          'Creating a rule involves trigger logic, a Sources panel that maps events to source types, and condition blocks with AND/OR patterns. The original stepper-style wizard made people move back and forth to check how their choices fit together. A second problem was conceptual: telling users apart the two kinds of automation, Policies (scheduled, time-driven) and the Rules Engine (real-time, event-driven), on the Automation landing page.',
+        approach:
+          'I redesigned it as a single “If → Then → Do” layout with a summary card that keeps everything set so far visible in one place. Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
+        outcome:
+          'Rules read the way people think about them: if this happens, under these conditions, do this. Users see the whole rule without navigating between steps.',
       },
     ],
   },
   process: {
     heading: 'How I worked',
     intro:
-      'I worked alongside one other designer, with developers and product owners. [Confirm the people around you.]',
+      'I worked with one other designer and the development team. When the product started I was primarily a developer, and I moved into design as it grew. Having worked on both sides shaped how I handled handoff.',
     items: [
       {
-        title: 'Audit, then name what exists',
-        text: 'I audited and expanded the styles in the design file so every color, type and spacing choice had a name before it became a component.',
+        title: 'Build the library, then keep it in one place',
+        text: 'I built out the Figma component library and organized the files so a newcomer could tell what was settled and what was still exploration.',
       },
       {
-        title: 'Reorganize for a bigger team',
-        text: 'Ahead of a more experienced designer joining, I restructured the design files into three (system, product and working), so a newcomer could tell what was settled and what was in progress.',
+        title: 'Make the system easy to look up',
+        text: 'The documentation hub gave developers real token data and component specs in the browser, so they didn’t have to ask what a value was.',
       },
       {
-        title: 'Write it down where developers will find it',
-        text: 'I built a browser-based documentation hub, seeded with the real token data and a downloadable theme file. I also set up a structured design-review checklist, with edge cases specific to this product: dark mode, audit trails, destructive actions and multi-tenant scope.',
+        title: 'Hand off in terms developers already know',
+        text: 'Because the patterns were consistent, tickets could point to a known component instead of describing something new each time. I also built a reusable workflow that turns Figma screens into spec docs and dev tickets, mapped against the token system.',
       },
     ],
   },
   outcomes: {
     heading: 'Outcomes and what I learned',
+    shipped: [
+      { title: 'Easier to use', text: 'Consistent steppers, drawers and components across modules' },
+      { title: 'Smoother handoff', text: 'Work flowed from product to design to development with less back-and-forth' },
+      { title: 'Clearer tickets', text: 'Developers needed fewer clarifying questions' },
+      { title: 'Reusable pieces', text: 'New screens built from existing patterns, even as new APIs and features arrived' },
+    ],
     honest:
-      '[What changed, described qualitatively unless you have approved numbers. Then what you learned or would do differently.]',
+      'If I did it again, I’d build the component library much earlier, before the patterns had a chance to drift. Having worked on both the development and design sides, I now see a shared library as the foundation of a design system rather than something to tidy up afterward.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
