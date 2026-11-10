@@ -576,6 +576,16 @@ export const ebbetsAI: CaseStudy = {
     tools: 'Figma Make, AI tools for research and design [confirm any others, e.g. Figma]',
     deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, about 75 feature tickets, a pilot research kit and a 66-item backlog',
   },
+  hero: {
+    label: 'Diagram: one project, five kinds of work',
+    src: '/ebbetsai/roles.webp',
+    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, a facilitator guide and synthesis), UX/UI design (document and email ingestion, the Submittals flow, the RFI board, with final components and styling built out by a designer), requirements (a PRD per feature), and tickets and backlog (about 75 Submittals tickets across six epics, a 66-item backlog).',
+    caption: 'A simplified illustration of how the work fit together. Not a project plan.',
+    priority: true,
+    wide: true,
+    width: 1400,
+    height: 821,
+  },
   stats: [
     { value: '~1 yr', label: 'Concept to pilot-ready' },
     { value: '~75', label: 'Submittals tickets' },
@@ -616,6 +626,15 @@ export const ebbetsAI: CaseStudy = {
           'The platform ingests documents from SharePoint and emails. The AI reads them, writes a summary, auto-tags the items and organizes them, so the information arrives already sorted. My design partner and I designed everything the user sees: how the documents appear in the app and how the AI’s information is displayed. People can correct, edit or delete anything the AI did, and then view, search and filter the results, with saved views for the ones they return to.',
         outcome:
           'It worked in the pilot, and it was the part the pilot team seemed most interested in: having items sorted and tagged for them automatically, and then easy to find.',
+        shot: {
+          label: 'Diagram: document and email ingestion',
+          src: '/ebbetsai/ingestion.webp',
+          alt: 'A simplified diagram: documents from SharePoint and emails flow into the AI, which summarizes, auto-tags and organizes them. A person can then view, search, correct, edit or delete anything the AI did.',
+          caption: 'A simplified illustration of the flow, not the real interface.',
+          wide: true,
+          width: 1400,
+          height: 743,
+        },
       },
       {
         title: 'Keep a person in the loop',
@@ -636,6 +655,15 @@ export const ebbetsAI: CaseStudy = {
           'Submittals became a four-screen chain: spec-to-log automation; cover sheets that fill in from the log; a split screen with the document and the AI’s analysis side by side; and a revision timeline, where older rejection cycles collapse into an archive so the current revision stays in focus.',
         outcome:
           'Designed to cut review time significantly, so people spend less time copying and more time reviewing what matters.',
+        shot: {
+          label: 'Diagram: the Submittals flow',
+          src: '/ebbetsai/submittals.webp',
+          alt: 'A simplified diagram of the Submittals flow as a chain of connected screens.',
+          caption: 'A simplified illustration of the Submittals flow, not the real interface.',
+          wide: true,
+          width: 1400,
+          height: 771,
+        },
       },
       {
         title: 'Make RFI follow-through visible',
