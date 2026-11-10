@@ -699,7 +699,24 @@ export const flowerShop: CaseStudy = {
           'The first choice at checkout, “How would you like it?”, swaps the next block: recipient, date and address for delivery; a date and time slot for pickup. Details, card message and payment stay put, and the summary relabels its fee line to match.',
         outcome:
           'Each person sees only the fields they need, and a gift for someone else gets a recipient name and delivery date up front.',
-        shot: { label: 'Screenshot: checkout, delivery and pickup states', wide: true },
+        shots: [
+          {
+            label: 'Checkout, delivery selected',
+            src: '/petals/checkout.webp',
+            alt: 'Desktop checkout page. Local delivery is selected above fields for details, delivery address, gift message and payment, with an order summary on the right totaling $108.',
+            caption: 'Delivery selected. The address block appears only for delivery; the pickup state is still to come.',
+            wide: true,
+            width: 1400,
+            height: 1516,
+            maxWidth: 640,
+          },
+          {
+            label: 'Mobile checkout',
+            src: '/petals/m-checkout.webp',
+            alt: 'Mobile checkout: order summary first, then two large choices for local delivery and in-shop pickup, then the first details fields.',
+            caption: 'On a phone the summary comes first and the choice stacks.',
+          },
+        ],
       },
       {
         title: 'The phone gets its own front door',
