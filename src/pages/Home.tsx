@@ -106,9 +106,10 @@ export function Home() {
           </div>
 
           {smallProjects.length > 0 && <h3 style={{ margin: 'var(--space-6) 0 var(--space-4)' }}>Smaller projects</h3>}
-          <div className={styles.workGrid}>
+          <div className={styles.smallGrid}>
             {smallProjects.map((p) => (
               <ProjectCard
+                compact
                 key={p.slug}
                 kicker={p.kicker}
                 title={p.title}
