@@ -725,7 +725,11 @@ export const flowerShop: CaseStudy = {
         approach:
           'The mobile menu is full screen, with large links and a card pinned to the bottom: today’s hours, the address, and two buttons, Order flowers and Call the shop.',
         outcome: 'The two most likely next steps are one thumb away from anywhere on the site.',
-        shot: { label: 'Screenshot: mobile menu, open' },
+        shot: {
+          label: 'Mobile menu, open',
+          src: '/petals/m-menu.webp',
+          alt: 'The open mobile menu: four large links (Bouquets, Weddings & Events, Gifts & Glass, Visit) and, pinned at the bottom, today’s hours, the shop address, and the buttons Order flowers and Call the shop.',
+        },
       },
     ],
     gallery: [
