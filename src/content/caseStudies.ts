@@ -18,6 +18,8 @@ export type Decision = {
   approach: string
   outcome: string
   shot?: Shot
+  /** Several screens for one decision, shown side by side. Takes precedence over `shot`. */
+  shots?: readonly Shot[]
 }
 
 export type CaseStudy = {
@@ -124,6 +126,12 @@ export const foxed: CaseStudy = {
         alt: 'A fic detail screen for a sample story, “salt & honey.” It shows a generated cover, word count, a progress card with a “View on AO3” button, and the note “Reading happens on AO3. Authors see your hits and kudos.” Status and shelf controls sit below.',
         caption: 'Reading happens on AO3, so authors get every hit and kudos.',
       },
+      {
+        label: 'All caught up sheet',
+        src: '/foxed/caught-up.webp',
+        alt: 'A sheet over the fic detail reading “You’re all caught up. All 12 chapters read, the rest is up to Mystery_author,” with the buttons Mark as Waiting on update and Keep it in Reading.',
+        caption: 'Caught up on a work in progress isn’t finished. It’s waiting on the author.',
+      },
     ],
   },
   system: {
@@ -180,7 +188,20 @@ export const foxed: CaseStudy = {
           'Split “To Read” into two shelves: a capacity-limited Nightstand (your real next-up queue: 8 by default, adjustable from 4 to 12) and a looser Shelf for “maybe someday.” Add a ninth book to a full Nightstand and nothing silently succeeds. A swap sheet opens, asking what comes off before the new one goes on.',
         outcome:
           'The decision happens at the cheapest possible moment, when adding one thing, instead of later, staring at an unmanageable pile. It also surfaced real engineering edge cases worth naming: a modal-presentation race that could silently swallow the swap sheet, and a capacity-check race when two adds landed in the same instant. Committing to a constraint meaning something is what made those bugs visible at all.',
-        shot: { label: 'Screenshot: Nightstand full, swap sheet open' },
+        shots: [
+          {
+            label: 'Fic detail with Nightstand and Shelf toggle',
+            src: '/foxed/fic-detail-wip.webp',
+            alt: 'A fic detail screen for a sample story, “A well loved fanfiction,” sitting on The Shelf. A progress card shows Chapter 3, 25%. The status card offers Nightstand or The Shelf, with the line “The Nook: the maybe pile, unsure reads and stray tabs.”',
+            caption: 'Two shelves: the Nightstand for next up, The Shelf for maybe someday.',
+          },
+          {
+            label: 'Nightstand is full swap sheet',
+            src: '/foxed/swap-sheet.webp',
+            alt: 'A bottom sheet titled “The Nightstand is full.” It shows the fic moving in and a list of four items that could go back on the Shelf, with Make the swap and Leave it on the Shelf buttons.',
+            caption: 'Adding to a full Nightstand opens a swap, not a silent success.',
+          },
+        ],
       },
       {
         title: 'The Companion',
@@ -230,7 +251,15 @@ export const foxed: CaseStudy = {
           'Cutting a feature doesn’t have to mean deciding its fate forever, or throwing away data a reader already built up. If it’s ever worth a second look, flipping the flag back on picks up exactly where it left off.',
       },
     ],
-    gallery: [{ label: 'Home' }, { label: 'Library' }],
+    gallery: [
+      {
+        label: 'Blind Date with a Story',
+        src: '/foxed/blind-date.webp',
+        alt: 'The Blind Date with a Story screen: a wrapped parcel tied with a green ribbon and a tag reading “an evening, a fandom you’ve read before, domestic,” with mood chips above and an Unwrap it button below.',
+        caption: 'Blind Date with a Story: a gift-wrapped pick from your own Waiting list.',
+      },
+      { label: 'Library' },
+    ],
   },
   process: {
     heading: 'Built solo, with Claude Code as the implementation partner',

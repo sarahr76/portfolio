@@ -9,6 +9,7 @@ export function CaseFile({ n, decision }: { n: number; decision: Decision }) {
     ['Approach', decision.approach],
     ['Outcome', decision.outcome],
   ] as const
+  const shots = decision.shots ?? (decision.shot ? [decision.shot] : [])
   return (
     <article className={styles.file}>
       <div className={styles.num} aria-hidden="true">{String(n).padStart(2, '0')}</div>
@@ -21,7 +22,11 @@ export function CaseFile({ n, decision }: { n: number; decision: Decision }) {
             <p>{text}</p>
           </div>
         ))}
-        {decision.shot && <div className={styles.shot}><Shot phone {...decision.shot} /></div>}
+        {shots.length > 0 && (
+          <div className={styles.shot}>
+            {shots.map((s) => <Shot key={s.label} phone {...s} />)}
+          </div>
+        )}
       </div>
     </article>
   )
