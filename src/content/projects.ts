@@ -36,8 +36,8 @@ export const projects: readonly ProjectSummary[] = [
   {
     slug: 'flower-shop',
     kicker: '03 · Self-initiated concept',
-    title: 'Flower shop website',
-    summary: 'A concept site for a local florist, designed from a brief I set myself. [Refine this line]',
+    title: 'Petals-n-Glass',
+    summary: 'A concept site for a neighborhood flower boutique: nine pages in desktop and mobile, from first browse to checkout.',
     tags: ['Web design', 'Design system'],
     group: 'selected',
   },

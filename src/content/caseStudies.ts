@@ -563,5 +563,167 @@ export const thinkingDifferently: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, adminConsole, constructionPlatform, thinkingDifferently]
+export const flowerShop: CaseStudy = {
+  slug: 'flower-shop',
+  // Draft: bracketed lines need Sarah's own words. Remove `draft` to publish.
+  draft: true,
+  title: 'Petals-n-Glass',
+  kicker: 'Case study 03 · Self-initiated concept',
+  tagline: 'Flowers, gathered gently.',
+  dek: 'A self-initiated concept for a neighborhood flower boutique: the whole path from first browse to a placed order, designed for desktop and mobile, with a florist’s eye for how people actually shop for flowers.',
+  description:
+    'Self-initiated concept: a neighborhood flower boutique designed across nine pages in desktop and mobile, from an occasion-led home page through product, cart and checkout.',
+  meta: {
+    role: 'UX/UI design (self-initiated)',
+    timeline: '[Dates or duration]',
+    tools: '[Confirm tools: e.g. Claude Design] · Fraunces, Nunito Sans',
+    deliverables: 'Nine pages in desktop and mobile, a mobile menu, and clickable product, cart and checkout flows',
+  },
+  stats: [
+    { value: '19', label: 'Screens' },
+    { value: '9', label: 'Pages' },
+    { value: '2', label: 'Layouts each' },
+    { value: '2', label: 'Typefaces' },
+  ],
+  hero: { label: 'Hero: home page, desktop and mobile side by side' },
+  summary: {
+    problem:
+      'People shop for flowers for a moment, not a product, and florist sites often hand them a long grid and leave them to sort it out. [Confirm or reword: the problem you set out to solve.]',
+    did: 'Designed nine pages in desktop and mobile, from an occasion-led home page through product, cart, checkout and confirmation, in a warm sage-and-terracotta system with two typefaces.',
+    result:
+      'A complete, clickable concept for one shop. It is a self-initiated design, not a live site, so there are no metrics to report.',
+  },
+  problem: {
+    heading: 'People shop for a moment, not for “flowers”.',
+    paragraphs: [
+      'A neighborhood flower shop sells things people rarely browse for fun. They arrive with an occasion: a birthday, a thank-you, a funeral, a wedding. The site starts from the occasion instead of a catalog.',
+      'This is a self-initiated concept, and I spent years working as a florist, so I designed it around the practical questions a customer has at the counter. [Add the questions you remember hearing most: what is it for, how big, when can it be there, can you add a note.]',
+    ],
+    constraintsIntro: 'The design works inside a few constraints:',
+    constraints: [
+      'One small shop: ordering ends in pickup or local delivery, not shipping.',
+      'Same-day matters: orders placed by 1pm can go out the same day.',
+      'The phone is first-class: every page has a mobile layout.',
+    ],
+  },
+  system: {
+    title: 'A small system with a florist’s palette',
+    intro:
+      'Excerpts from the design: sage for structure, one terracotta accent, and cream and sand as the ground.',
+    paletteTitle: 'Palette: sage, one warm accent, soft neutrals',
+    palette: [
+      { name: 'Sage', hex: '#4A6044', note: 'Buttons, icons, active states' },
+      { name: 'Forest', hex: '#2F3D2B', note: 'Text and headings' },
+      { name: 'Terracotta', hex: '#9A5238', note: 'Eyebrow labels, hover, accents' },
+      { name: 'Cream', hex: '#F6F2E9', note: 'Page background' },
+      { name: 'Sand', hex: '#EAE2D0', note: 'Summary cards and notices' },
+      { name: 'Mist', hex: '#DDE5D3', note: 'Image panels, step numbers' },
+    ],
+    type: {
+      title: 'Type: a soft serif and a plain sans',
+      rows: [
+        { role: 'Display', spec: 'Fraunces Light, for headlines, prices and card titles' },
+        { role: 'Body', spec: 'Nunito Sans, 16–18 px, for everything else' },
+        { role: 'Eyebrows', spec: 'Nunito Sans Bold, uppercase, wide tracking, in terracotta' },
+        { role: 'Buttons', spec: 'Pills, 48–60 px tall' },
+      ],
+    },
+    voice: {
+      quote: 'Copy sounds like a florist talking across the counter: warm and short.',
+      lines: [
+        '“Flowers, gathered gently.”',
+        '“Tell us who the flowers are for and we will build something that fits.”',
+        '“Fresh blooms are waiting.”',
+      ],
+    },
+    rules: {
+      title: 'Rules the screens follow',
+      items: [
+        'Tap targets are at least 44 px; most buttons are 48–60 px.',
+        'Every choice that changes the order (size, delivery or pickup) is a real button that exposes its state.',
+        'Fields have visible labels, not placeholders alone.',
+        'Quantity changes announce themselves to screen readers.',
+      ],
+    },
+  },
+  decisions: {
+    heading: 'The choices that shaped the design',
+    intro: 'Not a page-by-page tour. These are the calls where the obvious layout would have worked less well.',
+    items: [
+      {
+        title: 'Organize by occasion',
+        tag: 'The home page asks who the flowers are for',
+        problem: 'A flat grid of arrangements makes the visitor do the sorting.',
+        approach:
+          'The home page leads with “Find the right flowers”: everyday bouquets, sympathy and remembrance, weddings and events, and gifts and glass. Weddings & Events and Gifts & Glass get their own pages and their own place in a four-item navigation.',
+        outcome:
+          'A first-time visitor can tell where they belong in one look, and the shop’s bigger services have a front door of their own. [Add why you grouped it this way.]',
+        shot: { label: 'Screenshot: home page, “Find the right flowers”', wide: true },
+      },
+      {
+        title: 'Put the answers where the question comes up',
+        tag: 'Delivery, pickup and same-day timing before the button',
+        problem:
+          'Delivery cost and timing are often learned at checkout, a familiar reason people abandon an order.',
+        approach:
+          'The product page says it before the button: free in-shop pickup, local delivery for $10, order by 1pm for same day. The cart repeats the delivery line and points to free pickup, and checkout turns the choice into its first question.',
+        outcome:
+          'Nothing about cost or timing is a surprise by the time someone reaches payment. In the prototype the total moves from $98 to $108 as the choice changes.',
+        shot: { label: 'Screenshot: product page with size picker and delivery note', wide: true },
+      },
+      {
+        title: 'One question changes the form',
+        tag: 'Delivery or pickup decides which fields appear',
+        problem: 'One long form asks pickup customers for an address they don’t have.',
+        approach:
+          'The first choice at checkout, “How would you like it?”, swaps the next block: recipient, date and address for delivery; a date and time slot for pickup. Details, card message and payment stay put, and the summary relabels its fee line to match.',
+        outcome:
+          'Each person sees only the fields they need, and a gift for someone else gets a recipient name and delivery date up front.',
+        shot: { label: 'Screenshot: checkout, delivery and pickup states', wide: true },
+      },
+      {
+        title: 'The phone gets its own front door',
+        tag: 'A mobile menu that answers “are you open?”',
+        problem: 'On a phone, the next step is often just to order or to call.',
+        approach:
+          'The mobile menu is full screen, with large links and a card pinned to the bottom: today’s hours, the address, and two buttons, Order flowers and Call the shop.',
+        outcome: 'The two most likely next steps are one thumb away from anywhere on the site.',
+        shot: { label: 'Screenshot: mobile menu, open' },
+      },
+    ],
+  },
+  process: {
+    heading: 'How the work was shaped',
+    intro: 'Mostly a build-it-and-click-it approach. [Add a line about your research or references.]',
+    items: [
+      {
+        title: 'Started from a small sitemap',
+        text: 'Four navigation items and a cart: Bouquets, Weddings & Events, Gifts & Glass, Visit. Everything else hangs off those.',
+      },
+      {
+        title: 'Designed desktop and mobile together',
+        text: 'Each of the nine pages has a desktop and a mobile layout, built from the same system so they stay in step.',
+      },
+      {
+        title: 'Prototyped the buying path',
+        text: 'The product, cart and checkout screens are interactive: pick a size, change quantities, switch between delivery and pickup, and watch the totals update.',
+      },
+    ],
+  },
+  outcomes: {
+    heading: 'What it is, and what it isn’t',
+    shipped: [
+      { title: 'Home', text: 'Occasion-led, with this week’s bouquets and a visit card' },
+      { title: 'Bouquets and product', text: 'Sizes with stem counts, a card message, care tips' },
+      { title: 'Cart to confirmation', text: 'Delivery or pickup, live totals, a next-steps page' },
+      { title: 'Weddings, Gifts & Glass, Visit', text: 'The three pages around the shop' },
+      { title: 'Mobile', text: 'A layout for every page, plus a full-screen menu' },
+    ],
+    honest:
+      'This is a self-initiated concept, so there are no users or sales to report, and the shop details are placeholders. It is here to show how I think through a whole buying path, from first browse to confirmation. [Add what you would test first with a real shop, or what you would change.]',
+  },
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
+export const caseStudies: readonly CaseStudy[] = [foxed, flowerShop, adminConsole, constructionPlatform, thinkingDifferently]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)
