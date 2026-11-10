@@ -577,21 +577,21 @@ export const constructionPlatform: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-// Placeholder: Digital Canvas (Promevo). Anonymous until Sarah supplies the details.
+// Placeholder: Digital Canvas. Details to come from Sarah.
 export const professionalFour: CaseStudy = {
   ...textOnlyTemplate,
-  slug: 'professional-4',
-  title: '[Project title]',
+  slug: 'digital-canvas',
+  title: 'Digital Canvas',
   tagline: '[One line: what it helped people do]',
   description: 'Text-only case study of a previous-employer project. Details are kept anonymous.',
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-// Placeholder: Safewave (Promevo). Anonymous until Sarah supplies the details.
+// Placeholder: Safewave. Details to come from Sarah.
 export const professionalFive: CaseStudy = {
   ...textOnlyTemplate,
-  slug: 'professional-5',
-  title: '[Project title]',
+  slug: 'safewave',
+  title: 'Safewave',
   tagline: '[One line: what it helped people do]',
   description: 'Text-only case study of a previous-employer project. Details are kept anonymous.',
   next: { title: 'Back to selected work', to: '/#work' },
