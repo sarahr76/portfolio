@@ -585,7 +585,7 @@ export const ebbetsAI: CaseStudy = {
   summary: {
     problem:
       'Construction teams lose profit to poor communication and follow-through, with paperwork scattered across too many places.',
-    did: 'Set the product direction, designed Submittals and RFIs around keeping a person in the loop, ran research with the pilot team, and turned the plan into PRDs and about 75 tickets.',
+    did: 'Set the product direction, designed document and email ingestion, Submittals and RFIs, ran research with the pilot team, and turned the plan into PRDs and about 75 tickets.',
     result:
       'A working core platform and a pilot team warming to the AI-first direction, with Submittals and RFIs scoped, wireframed and ready for the next phase.',
   },
@@ -605,8 +605,18 @@ export const ebbetsAI: CaseStudy = {
   decisions: {
     heading: 'The choices that shaped the product',
     intro:
-      'Most of the thinking went into making an AI-first product feel trustworthy and keeping people’s follow-through visible. These are the calls that mattered most.',
+      'Most of the thinking went into making project information easy to find, making an AI-first product feel trustworthy, and keeping follow-through visible. These are the calls that mattered most.',
     items: [
+      {
+        title: 'Let the AI do the filing',
+        tag: 'Document and email ingestion',
+        problem:
+          'Project information lived in too many places, mainly SharePoint and email, and a lot of a team’s time went to finding things and organizing them by hand.',
+        approach:
+          'The platform ingests documents from SharePoint and emails. The AI reads them, writes a summary, auto-tags the items and organizes them, so the information arrives already sorted.',
+        outcome:
+          'People can go in and easily view and search for items, instead of hunting through folders and inboxes.',
+      },
       {
         title: 'Keep a person in the loop',
         tag: 'An AI-first workflow people can trust',
@@ -671,6 +681,7 @@ export const ebbetsAI: CaseStudy = {
   outcomes: {
     heading: 'Where it stood, and what I learned',
     shipped: [
+      { title: 'Document and email ingestion', text: 'AI reads SharePoint documents and emails, summarizes them, tags them and organizes them for easy viewing and search' },
       { title: 'The core platform', text: 'Dashboard, projects, contacts, companies, tasks, activities, and admin and user settings' },
       { title: 'A pilot research kit', text: 'Interview note templates, a facilitator guide and a synthesis of what we heard' },
       { title: 'Submittals and RFIs, ready for the next phase', text: 'Scoped, wireframed and broken into tickets' },
