@@ -779,7 +779,15 @@ export const plumbing: CaseStudy = {
     { value: '5', label: 'Components' },
     { value: '2', label: 'Layouts' },
   ],
-  hero: { label: 'Hero: Reilly Plumbing, desktop and mobile home pages' },
+  hero: {
+    label: 'Hero: Reilly Plumbing',
+    src: '/plumbing/hero.webp',
+    srcMobile: '/plumbing/hero-mobile.webp',
+    alt: 'Reilly Plumbing, a website and brand guide for a family plumbing company: the headline “Honest plumbing, made easy to ask for.” beside three phones showing the services, home and request-service screens.',
+    priority: true,
+    width: 1600,
+    height: 900,
+  },
   summary: {
     problem:
       'Someone with a leak or a clog wants to know whether this company can help and what happens when they ask. Trade-company sites often answer with jargon and a “contact us” button.',
@@ -854,6 +862,13 @@ export const plumbing: CaseStudy = {
           'The guide sets a voice (a neighbor who happens to know plumbing), asks for everyday words like “leak” and “drain,” and says what happens next instead of hiding behind “contact us.” Headings and buttons use sentence case, and an exclamation point appears only to say thanks.',
         outcome:
           'Copy that sounds like the family, and a rule a future writer can follow without asking.',
+        shot: {
+          label: 'Confirmation screen, mobile',
+          src: '/plumbing/m-confirmation.webp',
+          alt: 'The confirmation screen: “Thanks! Your request is in.”, a note that a member of the Reilly family will call, and three numbered steps explaining what happens next.',
+          width: 640,
+          height: 1385,
+        },
       },
       {
         title: 'Never invent facts',
@@ -884,6 +899,14 @@ export const plumbing: CaseStudy = {
           'Below 768px the site uses a four-tab bottom bar: Home, Services, Request and Family. From 768px up it becomes a header with links, the phone number and one Request service button. The active tab is marked with a pill and a bolder label, never color alone.',
         outcome:
           'The most important action, asking for service, is one thumb-tap away on a phone, and the desktop version keeps the same four destinations.',
+        shot: {
+          label: 'Request service, desktop',
+          src: '/plumbing/request.webp',
+          alt: 'The desktop request-service page: a header with Home, Services and Our family links, the phone number and a Request service button, above a short form.',
+          wide: true,
+          width: 1280,
+          height: 1060,
+        },
       },
     ],
   },
