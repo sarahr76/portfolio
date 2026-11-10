@@ -5,10 +5,12 @@ export type ProjectSummary = {
   title: string
   summary: string
   tags: readonly string[]
-  group: 'selected' | 'professional'
+  group: 'selected' | 'professional' | 'small'
   imageSrc?: string
   imageAlt?: string
   imageSrcMobile?: string
+  /** Hidden from the Home page until the project is ready to show. The page itself still builds. */
+  unlisted?: boolean
 }
 
 export const projects: readonly ProjectSummary[] = [
@@ -54,5 +56,17 @@ export const projects: readonly ProjectSummary[] = [
     summary: '[One line on the problem and your part in it.]',
     tags: ['UX/UI design', 'AI-first product'],
     group: 'professional',
+  },
+  {
+    slug: 'thinking-differently',
+    kicker: 'Small project · Brand identity',
+    title: 'Thinking Differently',
+    summary: 'A small brand guide for a coaching practice whose logo is the owner’s own painted mark.',
+    tags: ['Brand identity', 'Logo system'],
+    group: 'small',
+    // Remove once the client has OK'd showing her logo and brand name.
+    unlisted: true,
+    imageSrc: '/thinking-differently/logo-primary.webp',
+    imageAlt: 'The Thinking Differently logo: a circular painted mark above the line “Thinking Differently. Starting with Me.”',
   },
 ]

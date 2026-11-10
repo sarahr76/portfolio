@@ -12,10 +12,14 @@ type Props = {
   priority?: boolean
   width?: number
   height?: number
+  /** Landscape content image: callers use it to skip the phone treatment. */
+  wide?: boolean
+  /** Cap the rendered width in px (landscape images). */
+  maxWidth?: number
 }
 
 /** A real screenshot when `src` is set; otherwise a labeled placeholder showing what to add. */
-export function Shot({ label, src, srcMobile, alt = '', caption, phone = false, priority = false, width, height }: Props) {
+export function Shot({ label, src, srcMobile, alt = '', caption, phone = false, priority = false, width, height, maxWidth }: Props) {
   if (src) {
     const img = (
       <img
@@ -24,6 +28,7 @@ export function Shot({ label, src, srcMobile, alt = '', caption, phone = false, 
         alt={alt}
         width={phone ? 640 : width}
         height={phone ? 1299 : height}
+        style={maxWidth ? { maxWidth } : undefined}
         loading={priority ? 'eager' : 'lazy'}
         {...(priority ? ({ fetchpriority: 'high' } as Record<string, string>) : {})}
       />

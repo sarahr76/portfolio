@@ -9,6 +9,9 @@ export type Shot = {
   priority?: boolean
   width?: number
   height?: number
+  /** Landscape image (not a phone screen): shown at full column width. */
+  wide?: boolean
+  maxWidth?: number
 }
 
 export type Decision = {
@@ -45,6 +48,7 @@ export type CaseStudy = {
     shots?: readonly Shot[]
   }
   system?: {
+    title?: string
     intro: string
     palette: readonly { name: string; hex: string; note: string }[]
     paletteTitle: string
@@ -377,5 +381,187 @@ export const constructionPlatform: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, adminConsole, constructionPlatform]
+export const thinkingDifferently: CaseStudy = {
+  slug: 'thinking-differently',
+  // Draft until the client has OK'd showing her logo and brand name. Remove to publish.
+  draft: true,
+  title: 'Thinking Differently',
+  kicker: 'Small project · Brand identity',
+  tagline: 'A logo system and brand guide for a coaching practice.',
+  dek: 'A small brand guide for a coaching practice whose logo is the owner’s own painted mark. It turns one textured painting, two lines of words and a single typeface into rules anyone can follow on a business card, a document or a sticker.',
+  description:
+    'A small brand guide for a coaching practice: one painted mark, one typeface, four logo versions and clear rules for print and digital use.',
+  meta: {
+    role: '[Confirm your role: e.g. brand guide & logo system]',
+    timeline: '[Dates or duration]',
+    tools: '[Confirm tools: e.g. Claude Design, Canva]',
+    deliverables: 'Brand guide (PDF), logo versions, colour and type specs, print notes',
+  },
+  hero: {
+    label: 'The primary logo',
+    src: '/thinking-differently/logo-primary.webp',
+    alt: 'The primary logo: a circular painted mark of black and white swirls, above the line “Thinking Differently. Starting with Me.” and the italic tagline “Exploring what’s possible.”',
+    priority: true,
+    width: 1400,
+    height: 610,
+    wide: true,
+  },
+  summary: {
+    problem:
+      'A painted, textured mark is hard to reproduce. It blurs at small sizes, and anything else on the page can compete with it.',
+    did: 'Wrote a short guide that keeps everything else plain: white paper, one typeface, one dark colour taken from the mark, and four logo versions with a size rule for each.',
+    result:
+      'A guide that covers cards, documents, stickers and digital use. A vector and a one-colour version of the mark are still to do, and the guide says so.',
+  },
+  problem: {
+    heading: 'A painting makes a lovely logo and a difficult one.',
+    paragraphs: [
+      'Thinking Differently helps people accept the way they think while staying true to themselves. The mark comes from the owner’s paintings: black and white paint that has been moved, with nothing added and nothing taken away. That is the promise of the brand, and it had to survive being printed on a business card.',
+      'Painted texture is the hard part. It blurs at small sizes, falls apart in one-colour printing and loses its edge on a busy background. So the job was less about decoration and more about restraint: deciding what everything else on the page should not do.',
+    ],
+    constraintsIntro: 'The guide starts from three constraints:',
+    constraints: [
+      'One painted mark is the only thing with texture.',
+      'One typeface, Glacial Indifference, free and already in Canva.',
+      'Print in black ink only, on white uncoated stock.',
+    ],
+  },
+  system: {
+    title: 'The rules, kept short enough to follow',
+    intro: 'Excerpts from the real guide: the colours, the type and the words that are part of the logo.',
+    paletteTitle: 'Colour: the brand is mostly white',
+    palette: [
+      { name: 'White', hex: '#FFFFFF', note: 'All backgrounds' },
+      { name: 'Black', hex: '#000000', note: 'Main line' },
+      { name: 'Charcoal', hex: '#1F1E1B', note: 'Tagline, body text, dark card backs' },
+      { name: 'Ring', hex: '#585752', note: 'Mark ring, secondary text' },
+      { name: 'Pebble', hex: '#A8A49C', note: 'Mark only, never text' },
+      { name: 'Hairline', hex: '#D9D5CC', note: 'Rules and dividers, never text' },
+    ],
+    type: {
+      title: 'Type: one family, two styles',
+      rows: [
+        { role: 'Regular', spec: 'Main line, headings, body text, names' },
+        { role: 'Italic', spec: 'The tagline, job titles, one stressed word at most' },
+        { role: 'Bold', spec: 'Short labels inside documents, never in the logo' },
+        { role: 'Print size', spec: 'No smaller than 8 pt; documents 10–11 pt' },
+      ],
+    },
+    voice: {
+      quote:
+        'One sentence in Regular, never italic. If it has to break, break only after “Differently.”',
+      lines: ['“Thinking Differently. Starting with Me.”', '“Exploring what’s possible.”'],
+    },
+    rules: {
+      title: 'Don’t',
+      items: [
+        'Don’t recolour, outline or add a shadow to the mark.',
+        'Don’t put the mark on a busy photo. On a dark background, keep a white disc behind it.',
+        'Don’t set the main line in italic or the tagline upright.',
+        'Don’t use any typeface other than Glacial Indifference.',
+      ],
+    },
+  },
+  decisions: {
+    heading: 'The choices that shaped the guide',
+    intro: 'Not every rule. These are the calls that let the painting do the work.',
+    items: [
+      {
+        title: 'Plain on purpose',
+        tag: 'Restraint around one textured thing',
+        problem:
+          'The mark is the only thing with texture, so anything else with personality competes with it: extra colours, a second typeface, borders, gradients.',
+        approach:
+          'Everything else is quiet. White backgrounds, one typeface and a single dark colour, Charcoal, taken from the mark’s own ring so it belongs to the painting instead of sitting beside it. Pebble and Hairline are never used for text.',
+        outcome:
+          'The painting gets the attention and the page stays calm. A rule of one dark area per piece (the back of a card, or nothing at all) stops a layout from drifting.',
+      },
+      {
+        title: 'Two lines of words, with the order built in',
+        tag: 'A tagline that can leave, a main line that can’t',
+        problem:
+          'A logo with words invites small edits: italics here, a missing full stop there, a break in the wrong place.',
+        approach:
+          'The main line is one sentence in Regular, never italic, and breaks only after “Differently.” The tagline is always italic, about 60% of the main line’s size, and can be dropped when space is tight. The main line can’t.',
+        outcome: 'When space runs out there is already an answer: drop the tagline first.',
+      },
+      {
+        title: 'Four versions, each with a size rule',
+        tag: 'Deciding in advance what happens when space runs out',
+        problem: 'A detailed painted mark and a long line of words don’t shrink gracefully.',
+        approach:
+          'Four versions: primary centred for cards and covers, horizontal for headers and signatures, compact with no tagline for anything under 2 in wide, and the mark alone for profile photos and stickers. The smallest sizes are written down: the mark at 0.35 in / 32 px and the main line at 8 pt.',
+        outcome:
+          'Nobody has to guess which version to use. The answer depends on the space, not on taste.',
+        shots: [
+          {
+            label: 'Logo versions',
+            src: '/thinking-differently/logo-versions.webp',
+            alt: 'Three logo layouts. Horizontal: the mark beside the main line and tagline. Compact: a small mark beside the main line only. Mark only: the painted circle on its own at two sizes.',
+            caption: 'Horizontal, compact and mark-only versions, each with a stated use.',
+            wide: true,
+          },
+          {
+            label: 'Business card front',
+            src: '/thinking-differently/card-front.webp',
+            alt: 'The front of a business card: the primary logo centred on white, with the main line and italic tagline beneath the painted mark.',
+            caption: 'The business card front uses the primary version.',
+            wide: true,
+            maxWidth: 420,
+          },
+        ],
+      },
+      {
+        title: 'Say what isn’t finished',
+        tag: 'An honest list of what’s still open',
+        problem:
+          'The master mark is a 995 px transparent PNG that prints sharp to about 3.3 in, and one-colour methods such as embroidery or stamps would lose the texture.',
+        approach:
+          'The guide says so instead of papering over it: don’t print the mark below 0.35 in or in one colour until a simplified version exists, and get a vector version made for signage. Both are listed as still to do.',
+        outcome:
+          'Limits are written where the next person will see them, before a print run rather than after.',
+      },
+    ],
+  },
+  process: {
+    heading: 'How the guide is organised',
+    intro: 'It reads in the order someone would need it, from the idea to the files.',
+    items: [
+      {
+        title: 'The idea and the words',
+        text: 'It starts with why the mark looks the way it does, then fixes the wording so nothing downstream gets rewritten.',
+      },
+      {
+        title: 'Logo, space and size',
+        text: 'Four versions, clear space equal to a third of the mark’s height, and minimum sizes.',
+      },
+      {
+        title: 'Colour and type',
+        text: 'Six colours with their nearest Pantone references and one typeface, so a printer or a Canva user gets the same result.',
+      },
+      {
+        title: 'Where it gets used',
+        text: 'Business card, documents, stickers, profile photo, email signature and website: what goes where, at what size.',
+      },
+      {
+        title: 'Don’ts and files',
+        text: 'A short list of things not to do, then print notes and what is still to do.',
+      },
+    ],
+  },
+  outcomes: {
+    heading: 'What came out of it, and what’s still open',
+    shipped: [
+      { title: 'Brand guide', text: 'Eleven short sections, from the idea to print notes' },
+      { title: 'Four logo versions', text: 'With clear space and minimum sizes' },
+      { title: 'Colour and type specs', text: 'Six colours, one typeface' },
+      { title: 'Applications', text: 'Business card, documents, stickers, email, website' },
+    ],
+    honest:
+      'This is a small project for a small practice, so there are no metrics to report. Still to do: a vector version of the mark and a simplified one-colour version for small sizes and stamps. The painting is the identity, and the guide’s job is to protect it.',
+  },
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
+export const caseStudies: readonly CaseStudy[] = [foxed, adminConsole, constructionPlatform, thinkingDifferently]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)

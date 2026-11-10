@@ -23,6 +23,8 @@ const approach = [
   { title: 'Build & refine', text: 'I can build what I design, and I use it for real before it ships.' },
 ] as const
 
+const smallProjects = projects.filter((p) => p.group === 'small' && !p.unlisted)
+
 export function Home() {
   return (
     <>
@@ -82,6 +84,23 @@ export function Home() {
               <ProjectCard
                 key={p.slug}
                 textOnly
+                kicker={p.kicker}
+                title={p.title}
+                summary={p.summary}
+                tags={p.tags}
+                to={`/work/${p.slug}`}
+                imageSrc={p.imageSrc}
+                imageSrcMobile={p.imageSrcMobile}
+                imageAlt={p.imageAlt}
+              />
+            ))}
+          </div>
+
+          {smallProjects.length > 0 && <h3 style={{ margin: 'var(--space-6) 0 var(--space-4)' }}>Smaller projects</h3>}
+          <div className={styles.workGrid}>
+            {smallProjects.map((p) => (
+              <ProjectCard
+                key={p.slug}
                 kicker={p.kicker}
                 title={p.title}
                 summary={p.summary}

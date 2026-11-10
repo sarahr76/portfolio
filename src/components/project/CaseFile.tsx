@@ -24,7 +24,7 @@ export function CaseFile({ n, decision }: { n: number; decision: Decision }) {
         ))}
         {shots.length > 0 && (
           <div className={styles.shot}>
-            {shots.map((s) => <Shot key={s.label} phone {...s} />)}
+            {shots.map((s) => <Shot key={s.label} {...s} phone={!s.wide} />)}
           </div>
         )}
       </div>

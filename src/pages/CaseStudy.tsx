@@ -97,7 +97,7 @@ export function CaseStudy() {
 
           {cs.system && (
           <section id="system">
-            <SectionHeader label={`${num('system')} · Design system`} title="A system decided before a single screen was drawn">
+            <SectionHeader label={`${num('system')} · Design system`} title={cs.system.title ?? 'A system decided before a single screen was drawn'}>
               {cs.system.intro}
             </SectionHeader>
             <div className={styles.exhibits}>
