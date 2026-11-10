@@ -660,7 +660,7 @@ export const ebbetsAI: CaseStudy = {
       },
       {
         title: 'Earn the pilot team’s trust',
-        text: 'I prepared and supported user interview and demo sessions: interview note templates, demo scripts with SAY, DO and WATCH columns, a facilitator guide, and a synthesis of what we heard. Once they saw the AI-first direction the product was built on, the pilot team began to buy in, and their feedback fed a backlog that shaped what we prioritized next.',
+        text: 'I prepared and supported user interview sessions and guided tours of the app, with interview note templates, a facilitator guide, and a synthesis of what we heard. Once they saw the AI-first direction the product was built on, the pilot team began to buy in, and their feedback fed a backlog that shaped what we prioritized next.',
       },
       {
         title: 'Turn big ideas into buildable work',
@@ -672,7 +672,7 @@ export const ebbetsAI: CaseStudy = {
     heading: 'Where it stood, and what I learned',
     shipped: [
       { title: 'The core platform', text: 'Dashboard, projects, contacts, companies, tasks, activities, and admin and user settings' },
-      { title: 'A pilot research kit', text: 'Interview templates, SAY, DO and WATCH demo scripts, a facilitator guide and a synthesis' },
+      { title: 'A pilot research kit', text: 'Interview note templates, a facilitator guide and a synthesis of what we heard' },
       { title: 'Submittals and RFIs, ready for the next phase', text: 'Scoped, wireframed and broken into tickets' },
       { title: 'A 66-item backlog', text: 'Organized from meetings with the pilot team' },
     ],
