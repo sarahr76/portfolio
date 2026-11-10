@@ -1170,5 +1170,193 @@ export const flowerShop: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, thinkingDifferently]
+export const tallymark: CaseStudy = {
+  slug: 'tallymark',
+  title: 'Tallymark',
+  kicker: 'Small project · Designed & built',
+  liveSite: {
+    label: 'Open the app',
+    href: '/tallymark/',
+    note: 'Free and installable. Class lists and scores stay on your device, and nothing is uploaded.',
+  },
+  tagline: 'Sheets and games, scrambled fresh every week.',
+  dek: 'A free web app that makes scrambled one-minute fluency sheets, bingo, flashcards and matching cards for letters, numbers, shapes, colors and sight words. It began as one worksheet for my son and grew into a small teacher tool, designed and built solo with Claude Code as a coding partner.',
+  description:
+    'Tallymark is a free, installable web app for printable one-minute fluency sheets and games, with a fresh weekly scramble, teacher scoring copies and no data leaving the browser.',
+  meta: {
+    role: 'Product design, brand and solo development',
+    timeline: 'Nov 2026',
+    tools: 'HTML, CSS and JavaScript, jsPDF, Claude Code · Andika, Inter',
+    deliverables: 'Installable web app, printable sheet and game designs, logo, one-page brand guide',
+  },
+  stats: [
+    { value: '4', label: 'Printable formats' },
+    { value: 'Weekly', label: 'Fresh scramble' },
+    { value: 'Offline', label: 'Works installed' },
+    { value: '0', label: 'Servers' },
+  ],
+  hero: {
+    label: 'Hero: the Tallymark app',
+    src: '/tallymark-study/hero.webp',
+    alt: 'The Tallymark app: the headline “Sheets and games, scrambled fresh every week.”, a list of formats (fluency sheet, bingo, flashcards, matching cards) and a preview of a letter-name sheet with Print and Save PDF buttons.',
+    priority: true,
+    width: 1600,
+    height: 900,
+  },
+  summary: {
+    problem:
+      'A fixed practice sheet gets memorized within a week, and a teacher needs a different sheet for each child plus a copy for scoring.',
+    did: 'Designed a sheet system with a seeded weekly scramble, student and teacher copies and four printable formats, then built it as an installable app with its own brand.',
+    result:
+      'A working app that runs offline and keeps every name and score on the device. I use it at home each week. It hasn’t been tested with teachers yet.',
+  },
+  problem: {
+    heading: 'The sheet worked until he memorized it',
+    paragraphs: [
+      'I time my son for one minute on letter names and sounds, and count how many he gets right. The same page every week turns into a memory test, so each week needs a new order that still covers every letter evenly.',
+      'Teachers have the same need at class size. Each student needs a different sheet, a teacher copy for scoring, and a simple way to see whether the numbers are climbing.',
+    ],
+    constraintsIntro: 'A few constraints shaped everything else:',
+    constraints: [
+      'It has to print well on plain US Letter paper, in black and white.',
+      'It has to be free to host and work with no account or server.',
+      'Children’s names and scores must never leave the device.',
+    ],
+  },
+  system: {
+    title: 'A small brand, written down once',
+    intro:
+      'The interface stays quiet so the printed sheets are the loudest thing on the screen: navy ink, one red grading-pen accent and a highlighter-yellow mark behind a key word.',
+    paletteTitle: 'Palette: navy ink, one pen red, a highlighter',
+    palette: [
+      { name: 'Navy', hex: '#1B2F5E', note: 'Primary actions and the logo bars' },
+      { name: 'Pen red', hex: '#D4283B', note: 'The logo slash, teacher marks and errors' },
+      { name: 'Highlighter', hex: '#FFE27A', note: 'Behind one key word per heading' },
+      { name: 'Blue', hex: '#2457C5', note: 'Secondary action and the focus ring' },
+      { name: 'Ink', hex: '#111827', note: 'Text on printed sheets' },
+      { name: 'Mist', hex: '#F2F5F9', note: 'Page ground' },
+    ],
+    type: {
+      title: 'Type: a reader’s typeface for the paper, a plain sans for the tool',
+      rows: [
+        { role: 'Sheets and headings', spec: 'Andika, made for early readers, with distinct a, g, I and l' },
+        { role: 'Interface', spec: 'Inter 15 px, labels 13 px semibold' },
+        { role: 'Rule', spec: 'Never a decorative or handwriting face for a letter or number on a sheet' },
+      ],
+    },
+    voice: {
+      quote: 'Write like a busy teacher’s colleague: plain, warm and brief.',
+      lines: [
+        '“Pick what to make and what to practice, then print or save a PDF.”',
+        '“Class lists and scores stay on this device. Nothing is uploaded.”',
+      ],
+    },
+    rules: {
+      title: 'Rules the screens follow',
+      items: [
+        'Sheets stay white with dark ink in light and dark mode, because they model paper.',
+        'Body and secondary text clear 5:1 contrast in both themes.',
+        'Red and green are never the only cue; each comes with a word.',
+        'Focus rings are always visible: 3 px, with a 2 px offset.',
+      ],
+    },
+  },
+  decisions: {
+    heading: 'The choices that shaped it',
+    intro: 'Not a feature tour. These are the calls that made the sheets useful to a parent or a teacher.',
+    items: [
+      {
+        title: 'A scramble that is fair and repeatable',
+        tag: 'Seeded by the week',
+        problem: 'A random shuffle can repeat a letter back to back or skip one, and a different result every time you press Print makes two printouts disagree.',
+        approach:
+          'The week’s date seeds the shuffle, so the same week always gives the same sheet. Every letter appears equally often, and the order is repaired so the same letter never sits next to itself. Teachers can also type a code, like “Room 12 Unit 3”, for a sheet of their own.',
+        outcome: 'The student copy and the teacher copy always match, and next week brings a new order.',
+      },
+      {
+        title: 'The teacher copy does the counting',
+        tag: 'Two copies, one scramble',
+        problem: 'Scoring a one-minute timing while a child reads aloud leaves no hands free to count.',
+        approach:
+          'The teacher copy repeats the same letters with the running count at the end of each row. Slash each miss, draw a line where time ran out, then fill in Reached, Errors and Correct. Correct is reached minus errors.',
+        outcome: 'Scoring is a glance and a subtraction, and the numbers can go straight into the progress chart.',
+        shot: {
+          label: 'Teacher copy',
+          src: '/tallymark-study/sheet-teacher.webp',
+          alt: 'A teacher copy of a letter-name sheet with running counts at the end of each row and boxes for Reached, Errors and Correct.',
+          wide: true,
+          maxWidth: 440,
+          width: 937,
+          height: 1212,
+        },
+      },
+      {
+        title: 'Separate what you practice from what you print',
+        tag: 'Sets and formats',
+        problem: 'Letters, numbers, shapes, colors and sight words each want sheets, bingo and flashcards. Building each pair by hand would never end.',
+        approach:
+          'Content is a set, and a format is a way to print it. Any set works in any format, so adding sight words or a teacher’s own list adds every game at once. Shapes and colors carry an outline and a text label so color is never the only cue.',
+        outcome: 'New ideas become one line of content, and the four formats stay consistent.',
+        shot: {
+          label: 'Bingo cards',
+          src: '/tallymark-study/bingo.webp',
+          alt: 'Two bingo cards of uppercase letters, each with a free space in the middle and a name line.',
+          wide: true,
+          maxWidth: 440,
+          width: 937,
+          height: 1212,
+        },
+      },
+      {
+        title: 'Let parents track the week',
+        tag: 'A practice-days row',
+        problem: 'A single sheet shows one attempt. A parent wants to see whether the week is going well.',
+        approach:
+          'The student copy ends with seven small boxes, Monday to Sunday, to write the number correct. The grid shrinks a little to make room, and it still prints cleanly on one page.',
+        outcome: 'Progress is visible on the fridge, without opening the app.',
+        shot: {
+          label: 'Student copy',
+          src: '/tallymark-study/sheet-student.webp',
+          alt: 'A student copy of a letter-name sheet with a practice-days row of seven boxes, Monday to Sunday, at the bottom.',
+          wide: true,
+          maxWidth: 440,
+          width: 937,
+          height: 1212,
+        },
+      },
+      {
+        title: 'Privacy by construction',
+        tag: 'No server, so nothing to leak',
+        problem: 'A class list is a list of children’s names. The safest place for it is nowhere I control.',
+        approach:
+          'There are no accounts, no analytics and no uploads. Class lists and scores live in the browser, with a JSON or CSV backup the teacher keeps. PDFs are drawn in the browser, so the app also works offline once installed.',
+        outcome: 'Nothing about a child leaves the device, and there is nothing for me to store or secure.',
+      },
+    ],
+  },
+  process: {
+    heading: 'How I worked',
+    intro: 'I treated it as a small product: start from one real use, then grow the structure only when a second use showed up.',
+    items: [
+      { title: 'Start with one sheet', text: 'A single page of uppercase letters, timed for a minute, printed and tested at home. The first lesson was that print quality is the product.' },
+      { title: 'Generalize the structure', text: 'Teachers’ needs (class lists, progress, custom lists) turned letters into sets and sheets into formats. I rebuilt around that split before adding more content.' },
+      { title: 'Write the brand down', text: 'With the app working, I made the logo, tokens and a one-page guide with contrast checked in both themes, so new formats look like the same product.' },
+      { title: 'Build with Claude Code', text: 'I designed the sheets and decisions, and used Claude Code to implement and test them. I reviewed every printed page and PDF myself.' },
+    ],
+  },
+  outcomes: {
+    heading: 'What it is, and what it isn’t',
+    shipped: [
+      { title: 'Fluency sheets', text: 'Student and teacher copies, with a practice-days row' },
+      { title: 'Bingo, flashcards, matching', text: 'Printable games from the same sets' },
+      { title: 'Class lists and progress', text: 'Per-student sheets, scores and a weekly chart, with backups' },
+      { title: 'An installable app', text: 'Works offline, with a logo and a one-page brand guide' },
+    ],
+    honest:
+      'I use it at home every week, but it hasn’t been tested in a classroom, so I can’t claim results for teachers yet. The name is a working one, and the first thing I would do next is watch a teacher use it and see which games actually get printed.',
+  },
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
+export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, thinkingDifferently, tallymark]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)

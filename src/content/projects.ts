@@ -61,6 +61,16 @@ export const projects: readonly ProjectSummary[] = [
     group: 'professional',
   },
   {
+    slug: 'tallymark',
+    kicker: 'Small project · Designed & built',
+    title: 'Tallymark',
+    summary: 'A free, installable app that makes scrambled fluency sheets and printable games, with teacher scoring copies and nothing uploaded.',
+    tags: ['Product design', 'Brand identity', 'PWA'],
+    group: 'small',
+    imageSrc: '/tallymark-study/hero.webp',
+    imageAlt: 'The Tallymark app: the headline “Sheets and games, scrambled fresh every week.” beside a preview of a letter-name sheet.',
+  },
+  {
     slug: 'thinking-differently',
     kicker: 'Small project · Brand identity',
     title: 'Thinking Differently',
