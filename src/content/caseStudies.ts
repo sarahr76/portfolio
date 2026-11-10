@@ -585,7 +585,7 @@ export const ebbetsAI: CaseStudy = {
   summary: {
     problem:
       'Construction teams lose profit to poor communication and follow-through, with paperwork scattered across too many places.',
-    did: 'Set the product direction, designed document and email ingestion, Submittals and RFIs, ran research with the pilot team, and turned the plan into PRDs and about 75 tickets.',
+    did: 'Set the product direction, designed document and email ingestion, Submittals and RFIs around one idea (the AI does the first pass, and a person stays in control), ran research with the pilot team, and turned the plan into PRDs and about 75 tickets.',
     result:
       'A working core platform, with document and email ingestion running in the pilot, and a pilot team warming to the AI-first direction. Submittals and RFIs were scoped, wireframed and ready for the next phase.',
   },
@@ -605,7 +605,7 @@ export const ebbetsAI: CaseStudy = {
   decisions: {
     heading: 'The choices that shaped the product',
     intro:
-      'Most of the thinking went into making project information easy to find, making an AI-first product feel trustworthy, and keeping follow-through visible. These are the calls that mattered most.',
+      'One idea ran through all of it: the AI does the first pass, and a person stays in control. Around it, the thinking went into making project information easy to find and keeping follow-through visible. These are the calls that mattered most.',
     items: [
       {
         title: 'Let the AI do the filing, and let people correct it',
