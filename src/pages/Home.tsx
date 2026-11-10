@@ -32,7 +32,7 @@ export function Home() {
         <title>Sarah Reilly | UX/UI designer who builds design systems</title>
         <meta
           name="description"
-          content="Portfolio of Sarah Reilly, a UX/UI designer who designs and builds design systems."
+          content="Portfolio of Sarah Reilly, a UX/UI designer with a front-end background who designs and builds design systems."
         />
         <meta property="og:title" content="Sarah Reilly | UX/UI designer who builds design systems" />
       </Head>
@@ -42,7 +42,7 @@ export function Home() {
         <section className={styles.hero} aria-labelledby="hero-title">
           <div className={styles.heroText}>
             <h1 id="hero-title">I design systems that make software feel human.</h1>
-            <p className={styles.lead}>[Draft: one or two sentences on what you do and for whom.]</p>
+            <p className={styles.lead}>I’m a UX/UI designer with a front-end developer’s background. I design the system first, then build it, so what ships matches what was drawn.</p>
             <div className={styles.actions}>
               <Button to="/#work">See my work</Button>
               <Button variant="secondary" to="/about#contact">Get in touch</Button>
