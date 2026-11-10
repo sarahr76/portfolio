@@ -216,7 +216,20 @@ export const foxed: CaseStudy = {
           'Every note, fact and connection in the Companion is stamped with the series position it was written at. The page only ever reveals what’s at or before wherever the reader currently stands, with no manual spoiler tagging. Categories aren’t pre-defined either: the app notices a reader has been tracking “characters” or “places” as the notes accumulate, instead of handing over empty buckets labeled in advance.',
         outcome:
           'A notes feature that works while a series is still unfolding, not only in hindsight after it’s finished. That is the harder and more useful version of the idea.',
-        shot: { label: 'Screenshot: Companion, spoiler-gated entity page' },
+        shots: [
+          {
+            label: 'The Companion, series home',
+            src: '/foxed/companion.webp',
+            alt: 'The Companion for Throne of Glass. A dark header reads “Reading with you, Book 2, page 120. Everything here stops where you are.” Below are a search field, an Add a thing button, and lists of characters, locations and glossary entries.',
+            caption: 'The header says it plainly: everything here stops where you are.',
+          },
+          {
+            label: 'The Companion, a character page',
+            src: '/foxed/companion-entity.webp',
+            alt: 'A character page: facts under “What you know,” connections to two other characters with short notes, and a personal margin note stamped Book 1, page 300.',
+            caption: 'Facts, connections and margin notes, each stamped with where you were when you wrote it.',
+          },
+        ],
       },
       {
         title: 'The celebration economy',
