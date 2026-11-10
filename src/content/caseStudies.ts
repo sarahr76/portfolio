@@ -498,7 +498,7 @@ export const adminConsole: CaseStudy = {
         title: 'The rule builder breaks our own rule',
         tag: 'A deliberate exception to the stepper',
         problem:
-          'Creating a rule involves trigger logic, a Sources panel that maps events to source types, and condition blocks with AND/OR patterns. The original stepper-style wizard made people move back and forth to check how their choices fit together. A second problem was conceptual: telling users apart the two kinds of automation, Policies (scheduled, time-driven) and the Rules Engine (real-time, event-driven), on the Automation landing page.',
+          'Creating a rule involves trigger logic, a Sources panel that maps events to source types, and condition blocks with AND/OR patterns. The original stepper-style wizard made people move back and forth to check how their choices fit together. A second problem was conceptual: helping users tell apart two kinds of automation, Policies (scheduled, time-driven) and the Rules Engine (real-time, event-driven), on the Automation landing page.',
         approach:
           'I redesigned it as a single “If → Then → Do” layout with a summary card that keeps everything set so far visible in one place. Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
         outcome:

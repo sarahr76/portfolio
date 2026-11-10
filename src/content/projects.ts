@@ -48,7 +48,7 @@ export const projects: readonly ProjectSummary[] = [
     slug: 'admin-console',
     kicker: 'Professional work · Text only',
     title: 'A multi-module SaaS admin console',
-    summary: '[One line on the problem and your part in it.]',
+    summary: 'Patterns had drifted as the product grew. I built the component system and redesigned the key flows so it felt consistent and easier to use.',
     tags: ['UX/UI design', 'Design system'],
     group: 'professional',
   },
