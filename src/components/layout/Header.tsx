@@ -37,15 +37,15 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.bar}`}>
-        <Link className={styles.logo} to="/">{site.name}</Link>
+        <Link viewTransition className={styles.logo} to="/">{site.name}</Link>
 
         <nav className={styles.nav} aria-label="Main">
           {site.nav.map((item) =>
             item.to.includes('#') ? (
               // Hash links point inside a page, so they are never "current".
-              <Link key={item.label} className={styles.navLink} to={item.to}>{item.label}</Link>
+              <Link viewTransition key={item.label} className={styles.navLink} to={item.to}>{item.label}</Link>
             ) : (
-              <NavLink key={item.label} className={linkClass} to={item.to}>{item.label}</NavLink>
+              <NavLink viewTransition key={item.label} className={linkClass} to={item.to}>{item.label}</NavLink>
             ),
           )}
           <ExternalLink className={styles.navLink} href={site.resume.href} kind="PDF">{site.resume.label}</ExternalLink>
@@ -84,7 +84,7 @@ export function Header() {
         </div>
         <ul className={styles.overlayList}>
           {site.nav.map((item) => (
-            <li key={item.label}><Link className={styles.overlayLink} to={item.to}>{item.label}</Link></li>
+            <li key={item.label}><Link viewTransition className={styles.overlayLink} to={item.to}>{item.label}</Link></li>
           ))}
           <li><ExternalLink className={styles.overlayLink} href={site.resume.href} kind="PDF">{site.resume.label}</ExternalLink></li>
         </ul>

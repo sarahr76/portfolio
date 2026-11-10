@@ -1,7 +1,7 @@
-import type { ElementType, ReactNode } from 'react'
+import type { CSSProperties, ElementType, ReactNode } from 'react'
 import { useReveal } from './useReveal'
 
-type Props = { as?: ElementType; className?: string; id?: string; children: ReactNode }
+type Props = { as?: ElementType; className?: string; id?: string; style?: CSSProperties; children: ReactNode }
 
 /** Wrapper form of useReveal, for blocks that need no other ref. */
 export function Reveal({ as: Tag = 'div', children, ...rest }: Props) {

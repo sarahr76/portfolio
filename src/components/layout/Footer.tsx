@@ -10,7 +10,7 @@ export function Footer() {
         <nav aria-label="Footer">
           <ul className={styles.links}>
             {site.nav.map((item) => (
-              <li key={item.label}><Link to={item.to}>{item.label}</Link></li>
+              <li key={item.label}><Link viewTransition to={item.to}>{item.label}</Link></li>
             ))}
             <li><ExternalLink href={site.resume.href} kind="PDF">{site.resume.label}</ExternalLink></li>
           </ul>

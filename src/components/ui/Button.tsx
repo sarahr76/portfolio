@@ -22,7 +22,7 @@ type Props = {
 export function Button({ variant = 'primary', children, external = false, kind, ...rest }: Props) {
   const className = `${styles.btn} ${styles[variant]}`
   if (rest.to !== undefined) {
-    return <Link className={className} to={rest.to}>{children}</Link>
+    return <Link viewTransition className={className} to={rest.to}>{children}</Link>
   }
   if (rest.href !== undefined) {
     if (external) {

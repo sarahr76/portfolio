@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Head } from 'vite-react-ssg'
 import { Link } from 'react-router-dom'
 import { projects } from '../content/projects'
@@ -26,7 +27,14 @@ const approach = [
 
 const smallProjects = projects.filter((p) => p.group === 'small' && !p.unlisted)
 
+// Plays the hero entrance on the first visit to Home only; later trips back skip it.
+let introPlayed = false
+
 export function Home() {
+  const [intro] = useState(() => !introPlayed)
+  useEffect(() => {
+    introPlayed = true
+  }, [])
   return (
     <>
       <Head>
@@ -40,7 +48,7 @@ export function Home() {
 
       {/* 1. Hero */}
       <div className="container">
-        <section className={styles.hero} aria-labelledby="hero-title">
+        <section className={`${styles.hero} ${intro ? styles.intro : ''}`} aria-labelledby="hero-title">
           <div className={styles.heroText}>
             <h1 id="hero-title">I design systems that make software feel human.</h1>
             <p className={styles.lead}>I’m a UX/UI designer with a front-end developer’s background. I design the system first, then build it, so what ships matches what was drawn.</p>
@@ -121,8 +129,8 @@ export function Home() {
         <Reveal className="container">
           <h2 id="peek-title">A peek at how I build systems</h2>
           <div className={styles.swatches}>
-            {peek.map(([token, hex]) => (
-              <div key={token} className={styles.swatch}>
+            {peek.map(([token, hex], i) => (
+              <Reveal key={token} className={`${styles.swatch} reveal-pop`} style={{ transitionDelay: `${i * 70}ms` }}>
                 <div
                   className={styles.chip}
                   style={hex ? { background: hex } : { background: 'var(--color-cream)', display: 'flex', alignItems: 'center', padding: 'var(--space-4)' }}
@@ -131,7 +139,7 @@ export function Home() {
                   {!hex && <div style={{ width: 'var(--space-4)', height: 16, background: 'var(--color-accent)' }} />}
                 </div>
                 <TokenCaption>{token}</TokenCaption>
-              </div>
+              </Reveal>
             ))}
           </div>
           <Button variant="secondary" to="/process">See the process →</Button>
@@ -150,7 +158,7 @@ export function Home() {
               </Card>
             ))}
           </div>
-          <p style={{ marginTop: 'var(--space-4)' }}><Link to="/process">Read my full process →</Link></p>
+          <p style={{ marginTop: 'var(--space-4)' }}><Link viewTransition to="/process">Read my full process →</Link></p>
         </div>
       </section>
 
@@ -163,7 +171,7 @@ export function Home() {
             <p style={{ marginTop: 'var(--space-2)', maxWidth: 'var(--reading-width)', color: 'var(--color-ink-soft)' }}>
               [Two or three warm sentences: who you are and what you care about.]
             </p>
-            <p style={{ marginTop: 'var(--space-3)' }}><Link to="/about">More about me →</Link></p>
+            <p style={{ marginTop: 'var(--space-3)' }}><Link viewTransition to="/about">More about me →</Link></p>
           </div>
         </Reveal>
       </section>

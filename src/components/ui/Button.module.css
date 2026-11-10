@@ -12,8 +12,9 @@
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s, transform 0.08s;
 }
+.btn:active { transform: translateY(1px); }
 .primary { background: var(--color-accent); color: var(--color-cream); }
 .primary:hover { background: var(--color-accent-deep); color: var(--color-cream); }
 .secondary { background: transparent; color: var(--color-ink); border-color: var(--color-ink); }

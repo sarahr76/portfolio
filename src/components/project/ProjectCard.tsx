@@ -32,7 +32,7 @@ export function ProjectCard({ kicker, title, summary, tags, to, imageSrc, imageA
       <div className={styles.body}>
         <p className="label">{kicker}</p>
         <h3 className={styles.title}>
-          <Link className={styles.link} to={to}>{title}</Link>
+          <Link viewTransition className={styles.link} to={to}>{title}</Link>
         </h3>
         <p className={styles.summary}>{summary}</p>
         <TagList items={tags} onSand />

@@ -8,7 +8,7 @@ export function NotFound() {
       <div className="container" style={{ paddingBlock: 'var(--space-8)' }}>
         <p className="label">404</p>
         <h1 style={{ marginBlock: 'var(--space-3)' }}>That page isn't here</h1>
-        <p><Link to="/">Back to the home page</Link></p>
+        <p><Link viewTransition to="/">Back to the home page</Link></p>
       </div>
     </>
   )

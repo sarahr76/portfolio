@@ -179,7 +179,7 @@ export function CaseStudy() {
         <div className="container">
           <p className="label">Next project</p>
           <p style={{ marginTop: 'var(--space-2)' }}>
-            <Link className={styles.nextLink} to={cs.next.to}>{cs.next.title} →</Link>
+            <Link viewTransition className={styles.nextLink} to={cs.next.to}>{cs.next.title} →</Link>
           </p>
         </div>
       </section>

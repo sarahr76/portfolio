@@ -91,3 +91,26 @@ img, svg { max-width: 100%; display: block; }
 [data-reveal='shown'] { opacity: 1; transform: none; }
 [data-reveal]:nth-child(3n + 2) { transition-delay: 70ms; }
 [data-reveal]:nth-child(3n + 3) { transition-delay: 140ms; }
+
+.reveal-pop[data-reveal='pending'] { transform: translateY(10px) scale(0.92); }
+
+/* Plain text links in page content: a thin underline, and a full-strength one that slides in on hover. */
+main a:not([class]) {
+  text-decoration: none;
+  background:
+    linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat,
+    linear-gradient(color-mix(in srgb, currentColor 45%, transparent), color-mix(in srgb, currentColor 45%, transparent)) 0 100% / 100% 1px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size 0.25s ease-out, color 0.15s;
+}
+main a:not([class]):hover { background-size: 100% 2px, 100% 1px; }
+
+/* Keyboard focus ring eases in from slightly further out. Still always visible. */
+@keyframes focus-in { from { outline-offset: 7px; } to { outline-offset: 3px; } }
+:focus-visible { animation: focus-in 0.15s ease-out; }
+
+/* Page-to-page crossfade (View Transitions API; browsers without it just navigate). */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.2s; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

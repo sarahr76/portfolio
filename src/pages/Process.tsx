@@ -46,7 +46,7 @@ export function Process() {
           <div className={`${styles.grid} ${styles.grid2}`}>
             {process.inPractice.map((p) => (
               <Card key={p.to}>
-                <Link className={styles.cardLink} to={p.to}>
+                <Link viewTransition className={styles.cardLink} to={p.to}>
                   <h3>{p.title} →</h3>
                   <p style={{ color: 'var(--color-ink-soft)' }}>{p.text}</p>
                 </Link>
@@ -68,7 +68,7 @@ export function Process() {
             ))}
           </div>
           <p style={{ marginTop: 'var(--space-4)' }}>
-            See it for real: <Link to="/style">this site’s own style guide →</Link>
+            See it for real: <Link viewTransition to="/style">this site’s own style guide →</Link>
           </p>
         </div>
       </section>
