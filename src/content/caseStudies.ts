@@ -573,7 +573,7 @@ export const constructionPlatform: CaseStudy = {
   meta: {
     role: 'Product direction, UX, requirements and tickets, with a designer who did all the final Figma design',
     timeline: 'About a year, from first concepts to a pilot-ready product',
-    tools: 'Figma Make, Gemini, Claude',
+    tools: 'Figma Make, Figma, Tailwind, Gemini, Claude',
     deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, about 75 feature tickets, interview note templates, demo guides and feedback sheets, and a 66-item backlog',
   },
   hero: {
@@ -694,7 +694,7 @@ export const constructionPlatform: CaseStudy = {
     items: [
       {
         title: 'Start fast, with concepts',
-        text: 'We began with the core CRM features every project team needs: a dashboard, projects with their own sub-navigation, contacts, companies, tasks, activities, and admin and user settings. I developed the direction in Figma Make alongside my own ideas, which let me put many concepts in front of the team quickly. I handed those to our designer, who did all of the actual design work in Figma, building out the final components and visual style, so we could spend our time improving the experience instead of building every small piece from scratch.',
+        text: 'We began with the core CRM features every project team needs: a dashboard, projects with their own sub-navigation, contacts, companies, tasks, activities, and admin and user settings. I developed the direction in Figma Make alongside my own ideas, which let me put many concepts in front of the team quickly. I handed those to our designer, who did all of the actual design work in Figma, building out the final components and visual style on Tailwind as the base for our component designs, so we could spend our time improving the experience instead of building every small piece from scratch.',
       },
       {
         title: 'Earn the pilot team’s trust',
