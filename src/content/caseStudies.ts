@@ -588,12 +588,12 @@ export const constructionPlatform: CaseStudy = {
     role: 'Product direction, UX, requirements and tickets, with a designer who did all the final Figma design',
     timeline: 'About a year, from first concepts to a pilot-ready product',
     tools: 'Figma Make, Figma, Tailwind, Gemini, Claude',
-    deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, 100+ feature tickets, interview note templates, demo guides and feedback sheets, and a 66-item backlog',
+    deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, 100+ feature tickets, interview note templates, demo guides, feedback sheets and a pilot-team backlog',
   },
   hero: {
     label: 'Diagram: one project, five kinds of work',
     src: '/construction/roles.webp',
-    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, demo guides and feedback sheets), UX and workflow design (the documents view with email ingestion, CRM, tasks and activity pages, the Submittals flow, the RFI board, with all final Figma design done by a designer), requirements (a PRD per feature), and tickets and backlog (100+ feature tickets, a 66-item backlog).',
+    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, demo guides and feedback sheets), UX and workflow design (the documents view with email ingestion, CRM, tasks and activity pages, the Submittals flow, the RFI board, with all final Figma design done by a designer), requirements (a PRD per feature), and tickets and backlog (100+ feature tickets, a backlog from pilot meetings).',
     priority: true,
     wide: true,
     width: 1400,
@@ -711,7 +711,7 @@ export const constructionPlatform: CaseStudy = {
       },
       {
         title: 'Turn big ideas into buildable work',
-        text: 'For each major feature I wrote a combined PRD covering goals, scope, flows and edge cases. I broke the features into more than 100 tickets. The Submittals and RFI work was next in line, with about 75 Submittals tickets across six epics, wrote a scoping proposal with low-fidelity wireframes to help stakeholders decide what belonged in a first version, and organized a 66-item backlog from meetings with the pilot team.',
+        text: 'For each major feature I wrote a combined PRD covering goals, scope, flows and edge cases. I broke the features into more than 100 tickets. Submittals and RFIs were next in line, so I wrote a scoping proposal with low-fidelity wireframes to help stakeholders decide what belonged in a first version, and organized a backlog from meetings with the pilot team.',
       },
     ],
   },
@@ -722,7 +722,7 @@ export const constructionPlatform: CaseStudy = {
       { title: 'The core platform', text: 'Dashboard, projects, contacts, companies, tasks, activities, and admin and user settings' },
       { title: 'Research materials', text: 'Interview note templates, demo guides and feedback sheets' },
       { title: 'Submittals and RFIs, ready for the next phase', text: 'Scoped, wireframed and broken into tickets' },
-      { title: 'A 66-item backlog', text: 'Organized from meetings with the pilot team' },
+      { title: 'A pilot-team backlog', text: 'Organized from meetings with the pilot team' },
     ],
     honest:
       'By the time I left, the core platform was in place and the pilot team was warming to the AI-first direction. I don’t have measured results to share. On a small team my role grew into a mix of UX and workflow designer, requirements writer and ticket writer. If I did it again, I would work out early where my role sits within a small team, so I could be deliberate about which hat I was wearing instead of picking them up as I went. Using AI tools for both research and design let a small team move quickly across the whole process.',
