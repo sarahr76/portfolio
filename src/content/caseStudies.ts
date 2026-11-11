@@ -1126,8 +1126,8 @@ export const plumbing: CaseStudy = {
     'A website and design system for a family-owned plumbing company: a warm, plain-spoken brand, five components, and a guide that never invents facts.',
   meta: {
     role: 'UX/UI design, brand guide and design system',
-    timeline: '[Dates or duration]',
-    tools: '[Confirm tools: e.g. Claude Design, Claude Code] · Fraunces, DM Sans',
+    timeline: 'About a week',
+    tools: 'Claude Code · Fraunces, DM Sans',
     deliverables: 'Mobile and desktop page designs, a brand guide with tokens, voice and five components, and live component previews',
   },
   stats: [
@@ -1150,13 +1150,13 @@ export const plumbing: CaseStudy = {
       'Someone with a leak or a clog wants to know whether this company can help and what happens when they ask. Trade-company sites often answer with jargon and a “contact us” button.',
     did: 'Designed the pages for phone and desktop, then wrote the brand down as a design system: a voice, 16 color tokens, a type scale and five components, with rules for what never to do.',
     result:
-      '[Is the site live? Say so plainly, and what the family has said about it.]',
+      'A working demo site, built from the guide, with placeholder business details. It isn’t published for the client yet.',
   },
   problem: {
     heading: 'A stressed customer, a plain question',
     paragraphs: [
-      'Reilly Plumbing is a family-owned local company. People who reach the site usually have something wrong at home: a leak, a clog, a water heater that stopped. They aren’t browsing. They want to know whether this is the right company and what happens next. [Confirm or reword.]',
-      'The business already had its character, a family you can trust, but nothing written down to keep a site true to it. [Add what existed before: a logo, a flyer, an older site.]',
+      'Reilly Plumbing is a family-owned local company. People who reach the site usually have something wrong at home: a leak, a clog, a water heater that stopped. They aren’t browsing. They want to know whether this is the right company and what happens next.',
+      'The business already had its character, a family you can trust, but nothing written down to keep a site true to it.',
     ],
     constraintsIntro: 'The design works inside a few constraints:',
     constraints: [
@@ -1269,11 +1269,11 @@ export const plumbing: CaseStudy = {
   },
   process: {
     heading: 'How I worked',
-    intro: '[One or two sentences on working with the family: who gave feedback, and how.]',
+    intro: 'I started this as a favor for a family-owned local company, and built it in about a week with Claude Code.',
     items: [
       {
         title: 'Design the pages',
-        text: '[Describe designing the mobile and desktop pages: home, services, request service, the family and the confirmation.]',
+        text: 'I designed the mobile and desktop pages first: home, services, request service, the family and the confirmation.',
       },
       {
         title: 'Write the system down',
@@ -1281,7 +1281,7 @@ export const plumbing: CaseStudy = {
       },
       {
         title: 'Build from the guide',
-        text: '[Describe building the site from the guide, and what you used.]',
+        text: 'I built the site from the guide in React and Tailwind with Claude Code, using the guide’s tokens as the theme, so the code and the guide stay in step.',
       },
     ],
   },
@@ -1292,7 +1292,7 @@ export const plumbing: CaseStudy = {
       { title: 'Mobile and desktop layouts', text: 'Designed for a request-service flow that ends in a clear confirmation' },
     ],
     honest:
-      '[Is the site live, and what has the family said? Say what’s still placeholder: the real logo, family photos and business details.]',
+      'The site runs as a demo, and it isn’t published for the client yet. The business details, real logo and family photos are still placeholders, and the request form sends nothing until a real backend replaces the stand-in. I started it as a favor, and what it shows is how I take a brand from a written guide to a working site.',
   },
   next: { title: 'Petals-n-Glass', to: '/work/flower-shop' },
 }
