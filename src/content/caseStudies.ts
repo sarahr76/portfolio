@@ -828,7 +828,8 @@ export const documentPortal: CaseStudy = {
 export const professionalFive: CaseStudy = {
   ...textOnlyTemplate,
   slug: 'safewave',
-  draft: false,
+  // Draft until Sarah confirms she may show the real Safewave app. Brand icons in the screenshots are already blurred.
+  draft: true,
   title: 'Safewave',
   kicker: 'Professional work · Mobile app',
   tagline: 'A companion app for a wristband that turns phone alerts into vibrations.',
