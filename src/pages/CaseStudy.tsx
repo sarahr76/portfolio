@@ -4,6 +4,7 @@ import { getCaseStudy } from '../content/caseStudies'
 import { Card } from '../components/ui/Card'
 import { SectionHeader } from '../components/ui/SectionHeader'
 import { Shot } from '../components/ui/Shot'
+import { ShotGroup } from '../components/ui/ShotGroup'
 import { Swatch } from '../components/ui/Swatch'
 import { CaseFile } from '../components/project/CaseFile'
 import { CaseStudyMeta } from '../components/project/CaseStudyMeta'
@@ -97,9 +98,7 @@ export function CaseStudy() {
               </ul>
             )}
             {cs.problem.shots && (
-              <div className={styles.pair}>
-                {cs.problem.shots.map((s) => <Shot key={s.label} phone {...s} />)}
-              </div>
+              <ShotGroup shots={cs.problem.shots} />
             )}
           </Reveal>
 
@@ -146,9 +145,7 @@ export function CaseStudy() {
             </SectionHeader>
             {cs.decisions.items.map((d, i) => <CaseFile key={d.title} n={i + 1} decision={d} />)}
             {cs.decisions.gallery && (
-              <div className={styles.gallery}>
-                {cs.decisions.gallery.map((s) => <Shot key={s.label} phone {...s} />)}
-              </div>
+              <ShotGroup shots={cs.decisions.gallery} />
             )}
           </Reveal>
 

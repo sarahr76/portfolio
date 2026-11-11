@@ -1,5 +1,5 @@
 import type { Decision } from '../../content/caseStudies'
-import { Shot } from '../ui/Shot'
+import { ShotGroup } from '../ui/ShotGroup'
 import styles from './CaseFile.module.css'
 
 /** One key decision: problem, approach, outcome. The part to rehearse for interviews. */
@@ -23,9 +23,7 @@ export function CaseFile({ n, decision }: { n: number; decision: Decision }) {
           </div>
         ))}
         {shots.length > 0 && (
-          <div className={styles.shot}>
-            {shots.map((s) => <Shot key={s.label} {...s} phone={!s.wide} />)}
-          </div>
+          <ShotGroup shots={shots} />
         )}
       </div>
     </article>
