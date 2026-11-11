@@ -698,7 +698,7 @@ export const constructionPlatform: CaseStudy = {
       },
       {
         title: 'Earn the pilot team’s trust',
-        text: 'I prepared and supported guided tours of the app and feedback sessions with the pilot team, using interview note templates, demo guides and feedback sheets. Once they saw the AI-first direction the product was built on, the pilot team began to buy in, and their feedback fed a backlog that shaped what we prioritized next.',
+        text: 'We ran guided tours of the app with the pilot team and gathered their feedback. To prepare, I made interview note templates, demo guides and feedback sheets. We didn’t get to formal interviews, so the tours and feedback are what we learned from. Once they saw the AI-first direction the product was built on, the pilot team began to buy in, and their feedback fed a backlog that shaped what we prioritized next.',
       },
       {
         title: 'Turn big ideas into buildable work',
