@@ -1280,6 +1280,32 @@ export const plumbing: CaseStudy = {
         },
       },
     ],
+    gallery: [
+      {
+        label: 'Home, mobile',
+        src: '/plumbing/m-home.webp',
+        alt: 'The mobile home screen: a forest-green hero panel reading “Honest plumbing from a family you can trust,” a gold Request service button, four service tiles and a Meet the Reillys card, above the four-tab bar.',
+        caption: 'Home: one clear ask, then the four main services.',
+      },
+      {
+        label: 'Services, mobile',
+        src: '/plumbing/m-services.webp',
+        alt: 'The mobile Services screen: a list of plumbing services, each with an icon, a name and a short description.',
+        caption: 'Services: a plain list, with a clear path for emergencies.',
+      },
+      {
+        label: 'Request service, mobile',
+        src: '/plumbing/m-request.webp',
+        alt: 'The mobile Request service screen: a short form with name, phone, address, what is going on and how soon it is needed.',
+        caption: 'Request: a short form, with urgency as a plain choice.',
+      },
+      {
+        label: 'Our family, mobile',
+        src: '/plumbing/m-family.webp',
+        alt: 'The mobile Our family screen: an introduction to the family behind the company, with placeholders for photos and details.',
+        caption: 'Family: room for the story, a photo and the team. Placeholders until the family supplies them.',
+      },
+    ],
   },
   process: {
     heading: 'How I worked',
