@@ -574,12 +574,12 @@ export const constructionPlatform: CaseStudy = {
     role: 'Product direction, UX, requirements and tickets, with a designer who did all the final Figma design',
     timeline: 'About a year, from first concepts to a pilot-ready product',
     tools: 'Figma Make, Figma, Tailwind, Gemini, Claude',
-    deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, about 75 feature tickets, interview note templates, demo guides and feedback sheets, and a 66-item backlog',
+    deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, 100+ feature tickets, interview note templates, demo guides and feedback sheets, and a 66-item backlog',
   },
   hero: {
     label: 'Diagram: one project, five kinds of work',
     src: '/construction/roles.webp',
-    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, demo guides and feedback sheets), UX and workflow design (the documents view with email ingestion, CRM, tasks and activity pages, the Submittals flow, the RFI board, with all final Figma design done by a designer), requirements (a PRD per feature), and tickets and backlog (about 75 Submittals tickets across six epics, a 66-item backlog).',
+    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, demo guides and feedback sheets), UX and workflow design (the documents view with email ingestion, CRM, tasks and activity pages, the Submittals flow, the RFI board, with all final Figma design done by a designer), requirements (a PRD per feature), and tickets and backlog (100+ feature tickets, a 66-item backlog).',
     priority: true,
     wide: true,
     width: 1400,
@@ -587,14 +587,14 @@ export const constructionPlatform: CaseStudy = {
   },
   stats: [
     { value: '~1 yr', label: 'Concept to pilot-ready' },
-    { value: '~75', label: 'Submittals tickets' },
-    { value: '6', label: 'Epics' },
+    { value: '100+', label: 'Feature tickets' },
+    { value: '~75', label: 'Submittals tickets, up next' },
     { value: '66', label: 'Backlog items' },
   ],
   summary: {
     problem:
       'Construction teams lose profit to poor communication and follow-through, with paperwork scattered across too many places.',
-    did: 'Set the product direction, designed document and email ingestion, Submittals and RFIs around one idea (the AI does the first pass, and a person stays in control), ran research with the pilot team, and turned the plan into PRDs and about 75 tickets.',
+    did: 'Set the product direction, shaped the product’s features around one idea (the AI does the first pass, and a person stays in control), supported research with the pilot team, and turned the plan into PRDs and more than 100 tickets.',
     result:
       'A working core platform, with document and email ingestion running in the pilot, and a pilot team warming to the AI-first direction. Submittals and RFIs were scoped, wireframed and ready for the next phase.',
   },
@@ -699,7 +699,7 @@ export const constructionPlatform: CaseStudy = {
       },
       {
         title: 'Turn big ideas into buildable work',
-        text: 'For each major feature I wrote a combined PRD covering goals, scope, flows and edge cases. I broke the Submittals PRD into about 75 feature tickets across six epics, wrote a scoping proposal with low-fidelity wireframes to help stakeholders decide what belonged in a first version, and organized a 66-item backlog from meetings with the pilot team.',
+        text: 'For each major feature I wrote a combined PRD covering goals, scope, flows and edge cases. I broke the features into more than 100 tickets. The Submittals and RFI work was next in line, with about 75 Submittals tickets across six epics, wrote a scoping proposal with low-fidelity wireframes to help stakeholders decide what belonged in a first version, and organized a 66-item backlog from meetings with the pilot team.',
       },
     ],
   },
