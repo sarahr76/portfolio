@@ -19,6 +19,9 @@ function ScrollToHash() {
 }
 
 export function Layout() {
+  const { pathname } = useLocation()
+  // Cloudflare serves /about, not /about/, so the canonical drops the trailing slash.
+  const path = pathname.length > 1 ? pathname.replace(/\/+$/, '') : ''
   return (
     <>
       {/* Site-wide defaults. Each page overrides the title and description. */}
@@ -26,6 +29,8 @@ export function Layout() {
         <title>{site.title}</title>
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={site.title} />
+        <link rel="canonical" href={path ? `${site.url}${path}` : `${site.url}/`} />
+        <meta property="og:url" content={path ? `${site.url}${path}` : `${site.url}/`} />
       </Head>
       <ScrollToHash />
       <a className="skip-link" href="#main">Skip to content</a>

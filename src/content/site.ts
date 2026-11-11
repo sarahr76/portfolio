@@ -1,6 +1,7 @@
 // Site-wide content. Edit here, not inside components.
 export const site = {
   name: 'Sarah Reilly',
+  url: 'https://sarahmreilly.com',
   title: 'Sarah Reilly | UX/UI designer',
   nav: [
     { label: 'Work', to: '/#work' },
