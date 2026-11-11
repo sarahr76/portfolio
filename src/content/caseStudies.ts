@@ -432,13 +432,13 @@ const textOnlyTemplate: CaseStudy = {
 export const adminConsole: CaseStudy = {
   ...textOnlyTemplate,
   slug: 'admin-console',
-  draft: true,
+  draft: false,
   title: 'A multi-module SaaS admin console',
   kicker: 'Professional work · Previous employer',
   tagline: 'Making a growing admin console modern, consistent and easier to use.',
   dek: 'A multi-module SaaS tool that gives administrators one place to manage their company’s workspace. Over about four years, with one other designer and the development team, I redesigned its patterns and built the component library that keeps every module consistent.',
   description:
-    'Text-only case study: designing and systematizing a multi-module SaaS admin console. Product details are kept anonymous.',
+    'Designing and systematizing a multi-module SaaS admin console: a component library, consistent containers and a redesigned rule builder. Product details are kept anonymous.',
   meta: {
     role: 'UX/UI designer, with one other designer and the development team',
     timeline: 'About four years',
@@ -525,13 +525,13 @@ export const adminConsole: CaseStudy = {
         problem:
           'Creating a rule involves trigger logic, a Sources panel that maps events to source types, and condition blocks with AND/OR patterns. The original stepper-style wizard made people move back and forth to check how their choices fit together. A second problem was conceptual: helping users tell apart two kinds of automation, Policies (scheduled, time-driven) and the Rules Engine (real-time, event-driven), on the Automation landing page.',
         approach:
-          'I redesigned it as a single page with three sections, When, If and Then, and a summary card that keeps everything set so far visible in one place. The page also warns when a similar rule already exists and previews the estimated impact before you save. [Confirm those two details.] Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
+          'I redesigned it as a single page with three sections, When, If and Then, and a summary card that keeps everything set so far visible in one place. The page also warns you when a similar rule already exists for the same event. Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
         outcome:
           'Rules read the way people think about them: if this happens, under these conditions, do this. Users see the whole rule without navigating between steps.',
         shot: {
           label: 'Illustration: the Create rule page',
           src: '/gpanel-create-rule.webp',
-          alt: 'A simplified illustration of the Create rule page. Steps along the top read Basic info, When, If and Then. Three stacked sections follow: basic information, When this happens with a trigger event, a warning about a similar rule, frequency and trigger sources, and If these conditions are met, which is empty. A dark Rule summary card on the right fills in as the rule is built and shows an estimated impact preview.',
+          alt: 'A simplified illustration of the Create rule page. Steps along the top read Basic info, When, If and Then. Three stacked sections follow: basic information, When this happens with a trigger event, a warning about a similar rule, frequency and trigger sources, and If these conditions are met, which is empty. A dark Rule summary card on the right fills in as the rule is built.',
           caption: 'The Create rule page, redrawn and simplified: three sections on one page, with the summary always beside them. Not the real interface.',
           wide: true,
           width: 1400,
@@ -568,7 +568,7 @@ export const adminConsole: CaseStudy = {
       { title: 'Reusable pieces', text: 'New screens built from existing patterns, even as new APIs and features arrived' },
     ],
     honest:
-      'If I did it again, I’d build the component library much earlier, before the patterns had a chance to drift. Having worked on both the development and design sides, I now see a shared library as the foundation of a design system rather than something to tidy up afterward.',
+      'I don’t have measured results to share; the gains above are what the team observed. If I did it again, I’d build the component library much earlier, before the patterns had a chance to drift. Having worked on both the development and design sides, I now see a shared library as the foundation of a design system rather than something to tidy up afterward.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
