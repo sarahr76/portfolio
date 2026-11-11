@@ -738,7 +738,7 @@ export const documentPortal: CaseStudy = {
   title: 'A document portal for a health organization',
   kicker: 'Professional work · Small project',
   tagline: 'A simple front end for seeing what’s required, what’s missing and what’s been added.',
-  dek: 'A regional health organization needed a simple front end where users could see which documents were required, spot anything missing, and upload or update files. I helped design that experience, with a focus on keeping it clear and light on effort for the people using it. The client is kept anonymous.',
+  dek: 'A regional health organization needed a simple front end where users could see which documents were required, spot anything missing, and upload or update files. I designed the layout for that experience, with a focus on keeping it clear and light on effort for the people using it. The client is kept anonymous.',
   description:
     'Designing a document portal for a regional health organization, with status at a glance and a Google Drive connection that cuts out manual uploading. Client kept anonymous.',
   meta: {
@@ -750,9 +750,9 @@ export const documentPortal: CaseStudy = {
   summary: {
     problem:
       'Collecting required documents means hunting for files, uploading them one at a time, and wondering what is still missing.',
-    did: 'Helped design a portal that groups required documents into collapsible categories, shows the status of each one, and lets users connect Google Drive so an AI agent finds their documents for them.',
+    did: 'Designed the layout of a portal that groups required documents into collapsible categories, shows the status of each one, and lets users connect Google Drive so an AI agent finds their documents for them.',
     result:
-      'A deliberately simple interface that shows users where things stand. I can’t share the end result.',
+      'A deliberately simple interface that shows users where things stand.',
   },
   problem: {
     heading: 'Collecting documents is mostly hunting and wondering',
@@ -801,7 +801,7 @@ export const documentPortal: CaseStudy = {
   },
   process: {
     heading: 'How I approached it',
-    intro: 'This was a small project of about a week, and I was one of the designers on it.',
+    intro: 'This was a small project of about a week, and I designed the layout.',
     items: [
       {
         title: 'Start with what users need to know',
@@ -820,7 +820,7 @@ export const documentPortal: CaseStudy = {
   outcomes: {
     heading: 'Outcomes and what I learned',
     honest:
-      'I can’t share the end result. What I’d point to is the approach: when the AI does the heavy lifting, the design’s job is to show users clearly where things stand and stay out of the way.',
+      'What I’d point to is the approach: when the AI does the heavy lifting, the design’s job is to show users clearly where things stand and stay out of the way.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
