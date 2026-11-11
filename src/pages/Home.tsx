@@ -84,7 +84,45 @@ export function Home() {
             ))}
           </div>
 
-          <h3 style={{ margin: 'var(--space-6) 0 var(--space-1)' }}>Professional work</h3>
+        </div>
+      </section>
+
+      {/* 3. How I work, with a peek at the system */}
+      <section className={`${styles.section} ${styles.band}`}>
+        <Reveal className="container">
+          <SectionHeader label="Approach" title="How I work" />
+          <div className={styles.three}>
+            {approach.map((a) => (
+              <Card key={a.title} outline>
+                <h3>{a.title}</h3>
+                <p style={{ marginTop: 'var(--space-2)', color: 'var(--color-ink-soft)' }}>{a.text}</p>
+              </Card>
+            ))}
+          </div>
+          <h3 id="peek-title" style={{ marginTop: 'var(--space-6)' }}>A peek at the system behind it</h3>
+          <div className={styles.swatches}>
+            {peek.map(([token, hex], i) => (
+              <Reveal key={token} className={`${styles.swatch} reveal-pop`} style={{ transitionDelay: `${i * 70}ms` }}>
+                <div
+                  className={styles.chip}
+                  style={hex ? { background: hex } : { background: 'var(--color-cream)', display: 'flex', alignItems: 'center', padding: 'var(--space-4)' }}
+                  aria-hidden="true"
+                >
+                  {!hex && <div style={{ width: 'var(--space-4)', height: 'var(--space-4)', background: 'var(--color-accent)', borderRadius: 4 }} />}
+                </div>
+                <TokenCaption>{token}</TokenCaption>
+              </Reveal>
+            ))}
+          </div>
+          <Button variant="secondary" to="/process">Read my full process →</Button>
+        </Reveal>
+      </section>
+
+      {/* 4. More work */}
+      <section className={styles.section} aria-labelledby="more-title">
+        <div className="container">
+          <h2 id="more-title" style={{ marginBottom: 'var(--space-5)' }}>More work</h2>
+          <h3 style={{ margin: '0 0 var(--space-1)' }}>Professional work</h3>
           <p style={{ marginBottom: 'var(--space-4)', color: 'var(--color-ink-soft)', maxWidth: 'var(--reading-width)' }}>
             Past employer projects. Most are shared as text only and kept anonymous.
           </p>
@@ -125,43 +163,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* 3. System peek */}
-      <section className={`${styles.section} ${styles.band}`} aria-labelledby="peek-title">
-        <Reveal className="container">
-          <h2 id="peek-title">A peek at how I build systems</h2>
-          <div className={styles.swatches}>
-            {peek.map(([token, hex], i) => (
-              <Reveal key={token} className={`${styles.swatch} reveal-pop`} style={{ transitionDelay: `${i * 70}ms` }}>
-                <div
-                  className={styles.chip}
-                  style={hex ? { background: hex } : { background: 'var(--color-cream)', display: 'flex', alignItems: 'center', padding: 'var(--space-4)' }}
-                  aria-hidden="true"
-                >
-                  {!hex && <div style={{ width: 'var(--space-4)', height: 'var(--space-4)', background: 'var(--color-accent)', borderRadius: 4 }} />}
-                </div>
-                <TokenCaption>{token}</TokenCaption>
-              </Reveal>
-            ))}
-          </div>
-          <Button variant="secondary" to="/process">See the process →</Button>
-        </Reveal>
-      </section>
-
-      {/* 4. How I work */}
-      <section className={styles.section}>
-        <div className="container">
-          <SectionHeader label="Approach" title="How I work" />
-          <div className={styles.three}>
-            {approach.map((a) => (
-              <Card key={a.title} outline>
-                <h3>{a.title}</h3>
-                <p style={{ marginTop: 'var(--space-2)', color: 'var(--color-ink-soft)' }}>{a.text}</p>
-              </Card>
-            ))}
-          </div>
-          <p style={{ marginTop: 'var(--space-4)' }}><Link viewTransition to="/process">Read my full process →</Link></p>
-        </div>
-      </section>
 
       {/* 5. About teaser */}
       <section className={styles.section} aria-labelledby="about-title">
