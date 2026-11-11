@@ -170,7 +170,7 @@ export function Home() {
           <div>
             <h2 id="about-title">A little about me</h2>
             <p style={{ marginTop: 'var(--space-2)', maxWidth: 'var(--reading-width)', color: 'var(--color-ink-soft)' }}>
-              [Two or three warm sentences: who you are and what you care about.]
+              I’m a UX/UI designer in Cincinnati who started out writing React and grew into design. I care about the system underneath a screen, the tokens, components and rules that make a product feel considered, and I can build what I design. Before tech I spent fifteen years as a florist, which taught me to design for real people on real deadlines.
             </p>
             <p style={{ marginTop: 'var(--space-3)' }}><Link viewTransition to="/about">More about me →</Link></p>
           </div>
