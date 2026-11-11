@@ -137,7 +137,7 @@ export function Home() {
                   style={hex ? { background: hex } : { background: 'var(--color-cream)', display: 'flex', alignItems: 'center', padding: 'var(--space-4)' }}
                   aria-hidden="true"
                 >
-                  {!hex && <div style={{ width: 'var(--space-4)', height: 16, background: 'var(--color-accent)' }} />}
+                  {!hex && <div style={{ width: 'var(--space-4)', height: 'var(--space-4)', background: 'var(--color-accent)', borderRadius: 4 }} />}
                 </div>
                 <TokenCaption>{token}</TokenCaption>
               </Reveal>
