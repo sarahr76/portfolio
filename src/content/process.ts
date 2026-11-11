@@ -41,8 +41,8 @@ export const process = {
       text: 'Branding guides, wireframes and prototypes, plus the requirements and tickets that carried the work into development.',
     },
     {
-      to: '/work/ebbetsai',
-      title: 'EbbetsAI, an AI-first construction platform',
+      to: '/work/ai-construction-platform',
+      title: 'An AI-first construction platform',
       text: 'Research with the pilot team first, then design, requirements and tickets built from what we heard.',
     },
   ],

@@ -559,32 +559,32 @@ export const adminConsole: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const ebbetsAI: CaseStudy = {
+export const constructionPlatform: CaseStudy = {
   ...textOnlyTemplate,
-  slug: 'ebbetsai',
-  // Draft: confirm with Sarah that the product name and pilot details can be shown. Remove `draft` to publish.
+  slug: 'ai-construction-platform',
+  // Draft: product name is intentionally generic. Confirm remaining details, then remove `draft` to publish.
   draft: true,
-  title: 'EbbetsAI',
+  title: 'AI-first construction platform',
   kicker: 'Professional work · Previous employer · Text only',
-  tagline: 'An AI-first construction platform, from an empty canvas to a pilot-ready product.',
-  dek: 'A construction platform built from the ground up over about a year. I set the product direction, ran research with the pilot team, designed the Submittals and RFI workflows, and turned the plan into requirements and tickets the developers could build from, working with a designer who built out the final components and styling.',
+  tagline: 'From an empty canvas to a pilot-ready product.',
+  dek: 'A construction platform built from the ground up over about a year. I set the product direction, supported research with the pilot team, shaped the Submittals and RFI workflows, and turned the plan into requirements and tickets the developers could build from. A designer I worked with did all of the final design work in Figma.',
   description:
-    'Text-only case study: product and design direction for EbbetsAI, an AI-first construction software platform, from first concepts to a pilot-ready product.',
+    'Text-only case study: product direction, UX and requirements for an AI-first construction software platform, from first concepts to a pilot-ready product.',
   meta: {
-    role: 'Product and design direction, with a designer who built the final components and styling',
+    role: 'Product direction, UX, requirements and tickets, with a designer who did all the final Figma design',
     timeline: 'About a year, from first concepts to a pilot-ready product',
-    tools: 'Figma Make, AI tools for research and design [confirm any others, e.g. Figma]',
-    deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, about 75 feature tickets, a pilot research kit and a 66-item backlog',
+    tools: 'Figma Make, Gemini, Claude',
+    deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, about 75 feature tickets, interview note templates, demo guides and feedback sheets, and a 66-item backlog',
   },
   hero: {
     label: 'Diagram: one project, five kinds of work',
-    src: '/ebbetsai/roles.webp',
-    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, a facilitator guide and synthesis), UX/UI design (document and email ingestion, the Submittals flow, the RFI board, with final components and styling built out by a designer), requirements (a PRD per feature), and tickets and backlog (about 75 Submittals tickets across six epics, a 66-item backlog).',
+    src: '/construction/roles.webp',
+    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, demo guides and feedback sheets), UX and workflow design (document and email ingestion, the Submittals flow, the RFI board, with all final Figma design done by a designer), requirements (a PRD per feature), and tickets and backlog (about 75 Submittals tickets across six epics, a 66-item backlog).',
     caption: 'A simplified illustration of how the work fit together. Not a project plan.',
     priority: true,
     wide: true,
     width: 1400,
-    height: 821,
+    height: 827,
   },
   stats: [
     { value: '~1 yr', label: 'Concept to pilot-ready' },
@@ -603,7 +603,7 @@ export const ebbetsAI: CaseStudy = {
     heading: 'Profit lost between the steps',
     paragraphs: [
       'A large share of a construction team’s time goes to tasks that end up off schedule or add little value. Communication breaks down between the different parts of the process, and paperwork is scattered across too many places.',
-      'The goal was a single platform that keeps project information connected and uses AI to take the repetitive work off people’s plates. EbbetsAI was built from an empty canvas, with the next phase focused on the two workflows that matter most to construction teams: submittals and RFIs.',
+      'The goal was a single platform that keeps project information connected and uses AI to take the repetitive work off people’s plates. The platform was built from an empty canvas, with the next phase focused on the two workflows that matter most to construction teams: submittals and RFIs.',
     ],
     constraintsIntro: 'The conditions:',
     constraints: [
@@ -623,12 +623,12 @@ export const ebbetsAI: CaseStudy = {
         problem:
           'Project information lived in too many places, mainly SharePoint and email, and a lot of a team’s time went to finding things and organizing them by hand.',
         approach:
-          'The platform ingests documents from SharePoint and emails. The AI reads them, writes a summary, auto-tags the items and organizes them, so the information arrives already sorted. My design partner and I designed everything the user sees: how the documents appear in the app and how the AI’s information is displayed. People can correct, edit or delete anything the AI did, and then view, search and filter the results, with saved views for the ones they return to.',
+          'The platform ingests documents from SharePoint and emails. The AI reads them, writes a summary, auto-tags the items and organizes them, so the information arrives already sorted. My design partner and I worked out what the user sees: how the documents appear in the app and how the AI’s information is displayed, which he then designed in Figma. People can correct, edit or delete anything the AI did, and then view, search and filter the results, with saved views for the ones they return to.',
         outcome:
           'It worked in the pilot, and it was the part the pilot team seemed most interested in: having items sorted and tagged for them automatically, and then easy to find.',
         shot: {
           label: 'Diagram: document and email ingestion',
-          src: '/ebbetsai/ingestion.webp',
+          src: '/construction/ingestion.webp',
           alt: 'A simplified diagram: documents from SharePoint and emails flow into the AI, which summarizes, auto-tags and organizes them. A person can then view, search, correct, edit or delete anything the AI did.',
           caption: 'A simplified illustration of the flow, not the real interface.',
           wide: true,
@@ -657,7 +657,7 @@ export const ebbetsAI: CaseStudy = {
           'Designed to cut review time significantly, so people spend less time copying and more time reviewing what matters.',
         shot: {
           label: 'Diagram: the Submittals flow',
-          src: '/ebbetsai/submittals.webp',
+          src: '/construction/submittals.webp',
           alt: 'A simplified diagram of the Submittals flow as a chain of connected screens.',
           caption: 'A simplified illustration of the Submittals flow, not the real interface.',
           wide: true,
@@ -694,11 +694,11 @@ export const ebbetsAI: CaseStudy = {
     items: [
       {
         title: 'Start fast, with concepts',
-        text: 'We began with the core CRM features every project team needs: a dashboard, projects with their own sub-navigation, contacts, companies, tasks, activities, and admin and user settings. I developed the direction in Figma Make alongside my own ideas, which let me put many concepts in front of the team quickly. I handed those to our designer, who built out the final components and visual style, so we could spend our time improving the experience instead of building every small piece from scratch.',
+        text: 'We began with the core CRM features every project team needs: a dashboard, projects with their own sub-navigation, contacts, companies, tasks, activities, and admin and user settings. I developed the direction in Figma Make alongside my own ideas, which let me put many concepts in front of the team quickly. I handed those to our designer, who did all of the actual design work in Figma, building out the final components and visual style, so we could spend our time improving the experience instead of building every small piece from scratch.',
       },
       {
         title: 'Earn the pilot team’s trust',
-        text: 'I prepared and supported user interview sessions and guided tours of the app, with interview note templates, a facilitator guide, and a synthesis of what we heard. Once they saw the AI-first direction the product was built on, the pilot team began to buy in, and their feedback fed a backlog that shaped what we prioritized next.',
+        text: 'I prepared and supported guided tours of the app and feedback sessions with the pilot team, using interview note templates, demo guides and feedback sheets. Once they saw the AI-first direction the product was built on, the pilot team began to buy in, and their feedback fed a backlog that shaped what we prioritized next.',
       },
       {
         title: 'Turn big ideas into buildable work',
@@ -711,12 +711,12 @@ export const ebbetsAI: CaseStudy = {
     shipped: [
       { title: 'Document and email ingestion', text: 'Working in the pilot: AI reads SharePoint documents and emails, summarizes, tags and organizes them, and users can correct, edit, delete, search and filter' },
       { title: 'The core platform', text: 'Dashboard, projects, contacts, companies, tasks, activities, and admin and user settings' },
-      { title: 'A pilot research kit', text: 'Interview note templates, a facilitator guide and a synthesis of what we heard' },
+      { title: 'Research materials', text: 'Interview note templates, demo guides and feedback sheets' },
       { title: 'Submittals and RFIs, ready for the next phase', text: 'Scoped, wireframed and broken into tickets' },
       { title: 'A 66-item backlog', text: 'Organized from meetings with the pilot team' },
     ],
     honest:
-      'By the time I left, the core platform was in place and the pilot team was warming to the AI-first direction. I don’t have measured results to share. On a small team my role grew into a mix of UX/UI designer, requirements writer and ticket writer. If I did it again, I would work out early where my role sits within a small team, so I could be deliberate about which hat I was wearing instead of picking them up as I went. Using AI tools for both research and design let a small team move quickly across the whole process.',
+      'By the time I left, the core platform was in place and the pilot team was warming to the AI-first direction. I don’t have measured results to share. On a small team my role grew into a mix of UX and workflow designer, requirements writer and ticket writer. If I did it again, I would work out early where my role sits within a small team, so I could be deliberate about which hat I was wearing instead of picking them up as I went. Using AI tools for both research and design let a small team move quickly across the whole process.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
@@ -1541,5 +1541,5 @@ export const tallymark: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, ebbetsAI, professionalFour, professionalFive, thinkingDifferently, tallymark]
+export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, professionalFour, professionalFive, thinkingDifferently, tallymark]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)
