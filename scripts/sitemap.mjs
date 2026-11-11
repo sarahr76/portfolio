@@ -15,7 +15,7 @@ function walk(dir) {
       if (/<meta[^>]+name="robots"[^>]+noindex/i.test(html)) continue
       const rel = relative(root, dir).split(sep).join('/')
       if (rel === '404') continue
-      urls.push(rel ? `${SITE}/${rel}` : `${SITE}/`)
+      urls.push(rel ? `${SITE}/${rel}/` : `${SITE}/`)
     }
   }
 }
