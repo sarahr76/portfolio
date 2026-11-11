@@ -716,6 +716,93 @@ export const constructionPlatform: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
+// Small project, text only. Add `draft: false` once tools are confirmed.
+export const documentPortal: CaseStudy = {
+  ...textOnlyTemplate,
+  slug: 'document-portal',
+  draft: true,
+  title: 'A document portal for a health organization',
+  kicker: 'Professional work · Text only · Small project',
+  tagline: 'A simple front end for seeing what’s required, what’s missing and what’s been added.',
+  dek: 'A regional health organization needed a simple front end where users could see which documents were required, spot anything missing, and upload or update files. I helped design that experience, with a focus on keeping it clear and light on effort for the people using it. The client is kept anonymous.',
+  description:
+    'Text-only case study: designing a document portal for a regional health organization, with status at a glance and a Google Drive connection that cuts out manual uploading. Client kept anonymous.',
+  meta: {
+    role: 'UX/UI designer',
+    timeline: 'About one week',
+    tools: '[Confirm tools]',
+    deliverables: 'Portal front-end design: grouped document list, status indicators, Drive connection',
+  },
+  summary: {
+    problem:
+      'Collecting required documents means hunting for files, uploading them one at a time, and wondering what is still missing.',
+    did: 'Helped design a portal that groups required documents into collapsible categories, shows the status of each one, and lets users connect Google Drive so an AI agent finds their documents for them.',
+    result:
+      'A deliberately simple interface that shows users where things stand. I can’t share the end result.',
+  },
+  problem: {
+    heading: 'Collecting documents is mostly hunting and wondering',
+    paragraphs: [
+      'Collecting required documents usually means people hunting for files, uploading them one at a time, and wondering what is still missing.',
+      'The goal was to make it easy to see what was needed and what was outstanding, and to cut down the manual uploading as much as possible.',
+    ],
+  },
+  decisions: {
+    heading: 'What I designed',
+    intro: 'Three choices shaped the portal, each aimed at saving users effort.',
+    items: [
+      {
+        title: 'A list of accordions grouped by category',
+        tag: 'A short overview first',
+        problem: 'A long flat list of required documents is hard to scan and easy to give up on.',
+        approach:
+          'Required documents are organized into collapsible groups, so users see a short, scannable overview first and open only the section they need. Inside each group, the required documents are listed with the key details for each one.',
+        outcome: 'Users open only the section they need.',
+      },
+      {
+        title: 'Status on every category and document',
+        tag: 'Gaps visible without opening anything',
+        problem: 'People are left wondering what is still missing.',
+        approach:
+          'Each category and each document shows its status, so users can tell at a glance what is still missing and what has been added, along with when it was added. The statuses on the collapsed groups mean users can spot gaps without opening anything.',
+        outcome: 'What’s missing and what’s done is clear at a glance.',
+      },
+      {
+        title: 'A shortcut to skip the uploading',
+        tag: 'Connect Google Drive',
+        problem: 'Hunting down and uploading each file one at a time is the part people least want to do.',
+        approach:
+          'The main idea of the product is that users connect their Google Drive and an AI agent automatically finds the documents they need. A user just adds their documents to their Drive, and the portal picks them up. Users can still view, upload and update documents directly in the portal when something is missing or needs to change.',
+        outcome: 'Most of the manual uploading goes away, and the portal still allows direct changes.',
+      },
+    ],
+  },
+  process: {
+    heading: 'How I approached it',
+    intro: 'This was a small project of about a week, and I was one of the designers on it.',
+    items: [
+      {
+        title: 'Start with what users need to know',
+        text: 'Which documents are required, which are missing, and what has been added and when.',
+      },
+      {
+        title: 'Let the AI do the heavy lifting',
+        text: 'Because the agent finds the documents in Drive, the design didn’t need to be complicated.',
+      },
+      {
+        title: 'Keep the interface deliberately simple',
+        text: 'The design only needs to show users where things stand.',
+      },
+    ],
+  },
+  outcomes: {
+    heading: 'Outcomes and what I learned',
+    honest:
+      'I can’t share the end result. What I’d point to is the approach: when the AI does the heavy lifting, the design’s job is to show users clearly where things stand and stay out of the way.',
+  },
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
 export const professionalFive: CaseStudy = {
   ...textOnlyTemplate,
   slug: 'safewave',
@@ -1632,5 +1719,5 @@ export const tallymark: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, professionalFive, thinkingDifferently, tallymark]
+export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, documentPortal, professionalFive, thinkingDifferently, tallymark]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)

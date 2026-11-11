@@ -64,6 +64,14 @@ export const projects: readonly ProjectSummary[] = [
     group: 'professional',
   },
   {
+    slug: 'document-portal',
+    kicker: 'Professional work · Text only',
+    title: 'A document portal for a health organization',
+    summary: 'A simple front end for seeing what’s required and what’s missing, with a Google Drive connection to skip manual uploading.',
+    tags: ['UX/UI design', 'AI-assisted workflow'],
+    group: 'professional',
+  },
+  {
     slug: 'safewave',
     kicker: 'Professional work · Mobile app',
     title: 'Safewave',
