@@ -61,12 +61,12 @@ export const process = {
     },
   ],
   ai: [
-    'I use Claude Code to produce branding guides, wireframes and prototypes, and Gemini to draft requirements and research a domain. They make me faster.',
+    'I use Gemini and Claude, whichever the team or project calls for, to produce branding guides, wireframes and prototypes, draft requirements and research a domain. They make me faster.',
     'The judgment stays with me. I decide what to build, what to cut and what ships, and I read and use what comes back before it goes anywhere. Speed from AI only helps if the decisions behind it are good.',
   ],
   tools: [
     { group: 'Design', items: 'Figma, wireframing, prototyping, branding guides, product requirements, Jira' },
-    { group: 'AI', items: 'Claude Code, Gemini' },
+    { group: 'AI', items: 'Gemini, Claude, Claude Code' },
     { group: 'Front-end', items: 'HTML, CSS, React, TypeScript' },
     { group: 'Web & media', items: 'Wix, WordPress, Canva' },
   ],
