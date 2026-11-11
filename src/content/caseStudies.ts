@@ -588,8 +588,6 @@ export const constructionPlatform: CaseStudy = {
   stats: [
     { value: '~1 yr', label: 'Concept to pilot-ready' },
     { value: '100+', label: 'Feature tickets' },
-    { value: '~75', label: 'Submittals tickets, up next' },
-    { value: '66', label: 'Backlog items' },
   ],
   summary: {
     problem:
