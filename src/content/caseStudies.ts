@@ -1125,8 +1125,7 @@ export const thinkingDifferently: CaseStudy = {
 
 export const plumbing: CaseStudy = {
   slug: 'plumbing',
-  // Draft: bracketed lines need Sarah's own words. Remove `draft` to publish.
-  draft: true,
+  draft: false,
   title: 'Reilly Plumbing',
   kicker: 'Case study 02 · A family business',
   liveSite: {
@@ -1141,7 +1140,7 @@ export const plumbing: CaseStudy = {
   meta: {
     role: 'UX/UI design, brand guide and design system',
     timeline: 'About a week',
-    tools: 'Claude Code · Fraunces, DM Sans',
+    tools: 'Claude Design, Claude Code · Fraunces, DM Sans',
     deliverables: 'Mobile and desktop page designs, a brand guide with tokens, voice and five components, and live component previews',
   },
   stats: [
