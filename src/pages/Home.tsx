@@ -43,6 +43,7 @@ export function Home() {
           content="Portfolio of Sarah Reilly, a UX/UI designer with a front-end background who designs and builds design systems."
         />
         <meta property="og:title" content="Sarah Reilly | UX/UI designer who builds design systems" />
+        <meta property="og:description" content="Portfolio of Sarah Reilly, a UX/UI designer with a front-end background who designs and builds design systems." />
       </Head>
 
       {/* 1. Hero */}

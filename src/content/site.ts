@@ -2,6 +2,9 @@
 export const site = {
   name: 'Sarah Reilly',
   url: 'https://sarahmreilly.com',
+  // Link-preview card shown when a page is shared. Each published case study has its own at /og/<slug>.png.
+  ogImage: '/og/site.png',
+  ogImageAlt: 'Sarah Reilly, UX/UI designer: I design systems that make software feel human.',
   title: 'Sarah Reilly | UX/UI designer',
   nav: [
     { label: 'Work', to: '/#work' },

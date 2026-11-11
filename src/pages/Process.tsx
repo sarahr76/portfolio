@@ -11,6 +11,8 @@ export function Process() {
     <>
       <Head>
         <title>Process & tools | Sarah Reilly</title>
+        <meta property="og:title" content="How Sarah Reilly works" />
+        <meta property="og:description" content="How Sarah Reilly works: from understanding a problem to a documented design system and shipped product, with the tools she uses." />
         <meta
           name="description"
           content="How Sarah Reilly works: from understanding a problem to a documented design system and shipped product, with the tools she uses."

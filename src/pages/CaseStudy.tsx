@@ -1,3 +1,4 @@
+import { site } from '../content/site'
 import { Head } from 'vite-react-ssg'
 import { Link, useParams } from 'react-router-dom'
 import { getCaseStudy } from '../content/caseStudies'
@@ -43,6 +44,8 @@ export function CaseStudy() {
         {cs.draft && <meta name="robots" content="noindex" />}
         <meta property="og:title" content={`${cs.title}: ${cs.tagline}`} />
         <meta property="og:description" content={cs.description} />
+        {!cs.draft && <meta property="og:image" content={`${site.url}/og/${cs.slug}.png`} />}
+        {!cs.draft && <meta property="og:image:alt" content={`${cs.title}: ${cs.tagline}`} />}
       </Head>
 
       <header className={`container ${styles.header}`}>
