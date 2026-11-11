@@ -1338,8 +1338,7 @@ export const plumbing: CaseStudy = {
 
 export const flowerShop: CaseStudy = {
   slug: 'flower-shop',
-  // Draft: bracketed lines need Sarah's own words. Remove `draft` to publish.
-  draft: true,
+  draft: false,
   title: 'Petals-n-Glass',
   kicker: 'Case study 03 · Self-initiated concept',
   tagline: 'Flowers, gathered gently.',
@@ -1369,7 +1368,7 @@ export const flowerShop: CaseStudy = {
   },
   summary: {
     problem:
-      'People shop for flowers for a moment, not a product, and florist sites often hand them a long grid and leave them to sort it out. [Confirm or reword: the problem you set out to solve.]',
+      'People shop for flowers for a moment, not a product, and florist sites often hand them a long grid and leave them to sort it out. The goal was a site for a small florist who relied heavily on Facebook to show her work. People now expect to browse and order online, especially when they are spending real money on flowers.',
     did: 'Designed nine pages in desktop and mobile, from an occasion-led home page through product, cart, checkout and confirmation, in a warm sage-and-terracotta system with two typefaces.',
     result:
       'A complete, clickable concept for one shop. It is a self-initiated design, not a live site, so there are no metrics to report.',
@@ -1378,7 +1377,7 @@ export const flowerShop: CaseStudy = {
     heading: 'People shop for a moment, not for “flowers”.',
     paragraphs: [
       'A neighborhood flower shop sells things people rarely browse for fun. They arrive with an occasion: a birthday, a thank-you, a funeral, a wedding. The site starts from the occasion instead of a catalog.',
-      'This is a self-initiated concept, and I spent years working as a florist, so I designed it around the practical questions a customer has at the counter. [Add the questions you remember hearing most: what is it for, how big, when can it be there, can you add a note.]',
+      'This is a self-initiated concept, and I spent years working as a florist, so I designed it around the practical questions a customer has at the counter. The most common were whether we deliver and where, what certain sizes and services cost, and whether we could recreate an inspiration photo they had brought in.',
     ],
     constraintsIntro: 'The design works inside a few constraints:',
     constraints: [
@@ -1438,7 +1437,7 @@ export const flowerShop: CaseStudy = {
         approach:
           'The home page leads with “Find the right flowers”: everyday bouquets, sympathy and remembrance, weddings and events, and gifts and glass. Weddings & Events and Gifts & Glass get their own pages and their own place in a four-item navigation.',
         outcome:
-          'A first-time visitor can tell where they belong in one look, and the shop’s bigger services have a front door of their own. [Add why you grouped it this way.]',
+          'A first-time visitor can tell where they belong in one look, and the shop’s bigger services have a front door of their own. Weddings are a large part of the business and deserve space alongside other events. The shop also sells small items next to its larger services, so splitting the two keeps each easy to find.',
         shot: {
           label: 'Find the right flowers',
           src: '/petals/occasions.webp',
@@ -1477,7 +1476,7 @@ export const flowerShop: CaseStudy = {
             label: 'Checkout, delivery selected',
             src: '/petals/checkout.webp',
             alt: 'Desktop checkout page. Local delivery is selected above fields for details, delivery address, gift message and payment, with an order summary on the right totaling $108.',
-            caption: 'Delivery selected. The address block appears only for delivery; the pickup state is still to come.',
+            caption: 'Delivery selected. The address block appears only for delivery.',
             wide: true,
             width: 1400,
             height: 1516,
@@ -1528,7 +1527,7 @@ export const flowerShop: CaseStudy = {
   },
   process: {
     heading: 'How the work was shaped',
-    intro: 'Mostly a build-it-and-click-it approach. [Add a line about your research or references.]',
+    intro: 'Mostly a build-it-and-click-it approach, drawing on my own years of working for a florist. I first built a version of this as a college HTML and CSS project, and I know what people look for.',
     items: [
       {
         title: 'Started from a small sitemap',
@@ -1554,7 +1553,7 @@ export const flowerShop: CaseStudy = {
       { title: 'Mobile', text: 'A layout for every page, plus a full-screen menu' },
     ],
     honest:
-      'This is a self-initiated concept, so there are no users or sales to report, and the shop details are placeholders. It is here to show how I think through a whole buying path, from first browse to confirmation. [Add what you would test first with a real shop, or what you would change.]',
+      'This is a self-initiated concept, so there are no users or sales to report, and the shop details are placeholders. It is here to show how I think through a whole buying path, from first browse to confirmation. With a real shop I would first test whether requesting delivery online works better than taking it by phone: does it help a very busy owner, or just give her a second place to check for orders? I would also verify that delivery windows and distances match the shop’s real location.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
