@@ -65,7 +65,7 @@ export const projects: readonly ProjectSummary[] = [
   },
   {
     slug: 'document-portal',
-    kicker: 'Professional work · Text only',
+    kicker: 'Professional work',
     title: 'A document portal for a health organization',
     summary: 'A simple front end for seeing what’s required and what’s missing, with a Google Drive connection to skip manual uploading.',
     tags: ['UX/UI design', 'AI-assisted workflow'],

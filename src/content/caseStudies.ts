@@ -583,7 +583,7 @@ export const constructionPlatform: CaseStudy = {
   tagline: 'From an empty canvas to a pilot-ready product.',
   dek: 'A construction platform built from the ground up over about a year. I set the product direction, supported research with the pilot team, shaped the product’s features, from the documents view, CRM, tasks and activity pages to the Submittals and RFI workflows, and turned the plan into requirements and tickets the developers could build from. A designer I worked with did all of the final design work in Figma.',
   description:
-    'Text-only case study: product direction, UX and requirements for an AI-first construction software platform, from first concepts to a pilot-ready product.',
+    'Case study: product direction, UX and requirements for an AI-first construction software platform, from first concepts to a pilot-ready product.',
   meta: {
     role: 'Product direction, UX, requirements and tickets, with a designer who did all the final Figma design',
     timeline: 'About a year, from first concepts to a pilot-ready product',
@@ -736,11 +736,11 @@ export const documentPortal: CaseStudy = {
   slug: 'document-portal',
   draft: false,
   title: 'A document portal for a health organization',
-  kicker: 'Professional work · Text only · Small project',
+  kicker: 'Professional work · Small project',
   tagline: 'A simple front end for seeing what’s required, what’s missing and what’s been added.',
   dek: 'A regional health organization needed a simple front end where users could see which documents were required, spot anything missing, and upload or update files. I helped design that experience, with a focus on keeping it clear and light on effort for the people using it. The client is kept anonymous.',
   description:
-    'Text-only case study: designing a document portal for a regional health organization, with status at a glance and a Google Drive connection that cuts out manual uploading. Client kept anonymous.',
+    'Designing a document portal for a regional health organization, with status at a glance and a Google Drive connection that cuts out manual uploading. Client kept anonymous.',
   meta: {
     role: 'UX/UI designer',
     timeline: 'About one week',
