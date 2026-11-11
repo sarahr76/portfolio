@@ -729,8 +729,7 @@ export const professionalFour: CaseStudy = {
 export const professionalFive: CaseStudy = {
   ...textOnlyTemplate,
   slug: 'safewave',
-  // Draft until timeline and tools are filled in. Remove `draft` to publish.
-  draft: true,
+  draft: false,
   title: 'Safewave',
   kicker: 'Professional work · Mobile app',
   tagline: 'A companion app for a wristband that turns phone alerts into vibrations.',
@@ -739,8 +738,8 @@ export const professionalFive: CaseStudy = {
     'Case study: designing the companion app for Safewave, a vibrating wristband for Deaf and hard-of-hearing users. A calm dark theme, one clear action on the home screen and simple alert setup.',
   meta: {
     role: 'UX/UI designer',
-    timeline: '[Add timeline]',
-    tools: '[Confirm tools]',
+    timeline: 'About six months',
+    tools: 'Figma',
     deliverables: 'Mobile app design: login, overall look, Home, Alerts and navigation',
   },
   hero: {
