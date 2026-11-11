@@ -72,14 +72,16 @@ export const projects: readonly ProjectSummary[] = [
     tags: ['UX/UI design'],
     group: 'professional',
   },
-  // Placeholder: Safewave. Details to come from Sarah.
-  {
+    {
     slug: 'safewave',
-    kicker: 'Professional work · Text only',
+    kicker: 'Professional work · Mobile app',
     title: 'Safewave',
-    summary: '[One line on the problem and your part in it.]',
-    tags: ['UX/UI design'],
+    summary: 'The companion app for a vibrating wristband made for Deaf and hard-of-hearing users, designed from scratch.',
+    tags: ['UX/UI design', 'Mobile app'],
     group: 'professional',
+    imageSrc: '/safewave/hero.webp',
+    imageSrcMobile: '/safewave/hero-mobile.webp',
+    imageAlt: 'Two phones showing the Safewave login and notification settings screens.',
   },
   {
     slug: 'tallymark',

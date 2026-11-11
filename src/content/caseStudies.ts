@@ -726,13 +726,120 @@ export const professionalFour: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-// Placeholder: Safewave. Details to come from Sarah.
 export const professionalFive: CaseStudy = {
   ...textOnlyTemplate,
   slug: 'safewave',
+  // Draft until timeline and tools are filled in. Remove `draft` to publish.
+  draft: true,
   title: 'Safewave',
-  tagline: '[One line: what it helped people do]',
-  description: 'Text-only case study of a previous-employer project. Details are kept anonymous.',
+  kicker: 'Professional work · Mobile app',
+  tagline: 'A companion app for a wristband that turns phone alerts into vibrations.',
+  dek: 'Safewave makes a wristband that turns phone notifications into vibrations, so Deaf and hard-of-hearing people don’t miss important alerts like home security, baby monitors, alarms and texts. The companion app is how users connect their band and decide what they feel. I designed the app from scratch, including the login, the overall look, and the simple, approachable feel of the experience.',
+  description:
+    'Case study: designing the companion app for Safewave, a vibrating wristband for Deaf and hard-of-hearing users. A calm dark theme, one clear action on the home screen and simple alert setup.',
+  meta: {
+    role: 'UX/UI designer',
+    timeline: '[Add timeline]',
+    tools: '[Confirm tools]',
+    deliverables: 'Mobile app design: login, overall look, Home, Alerts and navigation',
+  },
+  hero: {
+    label: 'The Safewave app: login and notification settings',
+    src: '/safewave/hero.webp',
+    alt: 'Two phones showing the Safewave app. One shows the login screen with the Safewave logo, email and password fields, a Login button and a Sign in with Google button. The other shows notification settings for one app, with an Enabled switch and sliders for notification strength and number of vibrations.',
+    priority: true,
+    width: 1600,
+    height: 800,
+  },
+  summary: {
+    problem:
+      'The app is the only way Safewave users control what their band makes them feel, so a confusing setup could mean a missed security alert or a crying baby.',
+    did: 'Designed the app from scratch: a dark theme with one blue accent, a home screen with a single action, a simple alert setup and three-tab navigation.',
+    result: 'The app is still in use today, paired with the company’s wristband.',
+  },
+  problem: {
+    heading: 'The app is the only way to control what you feel',
+    paragraphs: [
+      'For Safewave’s users, the app is the only way to control what they feel. Choosing which apps can trigger the band, and how strongly, directly affects whether someone wakes up to a security alert or a crying baby.',
+      'That raised the bar for the design: setup had to be quick and clear, nothing important could be hidden, and the app had to feel trustworthy and easy to use at any hour.',
+    ],
+  },
+  decisions: {
+    heading: 'What I designed',
+    intro: 'Four choices shaped the app, each aimed at making setup quick and the app easy to trust.',
+    items: [
+      {
+        title: 'A simple, welcoming first impression',
+        tag: 'Login and overall look',
+        problem:
+          'The app is the only way users control their band, so it had to feel trustworthy from the very first screen.',
+        approach:
+          'I designed the login and the overall look of the app. It uses a dark theme with a single blue accent, which keeps screens calm and readable.',
+        outcome: 'The brand has a consistent identity from the first screen.',
+        shot: {
+          label: 'Login screen',
+          src: '/safewave/login.webp',
+          alt: 'The Safewave login screen on a dark blue background: the shield-and-knight logo, the Safewave wordmark, email and password fields, a blue Login button, a Sign in with Google button and a Create Account link.',
+        },
+      },
+      {
+        title: 'One clear action on the home screen',
+        tag: 'Connect the band',
+        problem: 'The home screen has a single job: connect the band.',
+        approach:
+          'A large Bluetooth button and one line of instruction: “Please press the button above to connect your Safewave band.”',
+        outcome: 'It is obvious what to do next.',
+        shot: {
+          label: 'Home screen',
+          src: '/safewave/home.webp',
+          alt: 'The Safewave Home screen. A large white circle with a blue Bluetooth symbol sits under the heading Admin, with the line “Please press the button above to connect your Safewave band.” A bottom bar shows Home, Alerts and History.',
+        },
+      },
+      {
+        title: 'Straightforward alert setup',
+        tag: 'Choosing what to feel',
+        problem:
+          'Choosing which apps can trigger the band, and how strongly, decides whether someone wakes up to a security alert or a crying baby.',
+        approach:
+          'The Alerts screen shows the apps that can trigger the band as a grid of familiar icons, with an add button for more. Each app has its own settings for vibration strength and number of vibrations.',
+        outcome: 'Users can tailor what they feel to what matters most to them.',
+        shot: {
+          label: 'Alerts screen',
+          src: '/safewave/alerts.webp',
+          alt: 'The Safewave Alerts screen. A grid of four app icons, including a messages app and a home security app, under the line “Click on the add button in the top right to add apps you’d like to receive notifications for.”',
+        },
+      },
+      {
+        title: 'Easy navigation',
+        tag: 'Three tabs',
+        problem: 'The app is a means to an end, so it shouldn’t feel bigger than the task.',
+        approach: 'Three tabs (Home, Alerts and History) cover everything users need.',
+        outcome: 'The app never feels bigger than the task.',
+      },
+    ],
+  },
+  process: {
+    heading: 'How I approached it',
+    intro: 'I designed the app from scratch. These were the principles behind it.',
+    items: [
+      {
+        title: 'Start from what’s at stake',
+        text: 'Missing a notification can mean missing a security alert or a baby. So setup had to be quick and clear, and nothing important could be hidden.',
+      },
+      {
+        title: 'Give each screen one job',
+        text: 'Home connects the band. Alerts chooses what triggers it. History is a tab away. Nothing competes with the task at hand.',
+      },
+      {
+        title: 'Keep it calm and trustworthy',
+        text: 'A dark theme with a single blue accent keeps the screens readable at any hour and gives the brand one consistent identity.',
+      },
+    ],
+  },
+  outcomes: {
+    heading: 'Where it stands',
+    honest: 'The Safewave app is still in use today, paired with the company’s wristband.',
+  },
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
