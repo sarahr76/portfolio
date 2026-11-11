@@ -766,6 +766,14 @@ export const documentPortal: CaseStudy = {
         approach:
           'Each category and each document shows its status, so users can tell at a glance what is still missing and what has been added, along with when it was added. The statuses on the collapsed groups mean users can spot gaps without opening anything.',
         outcome: 'What’s missing and what’s done is clear at a glance.',
+        shot: {
+          label: 'Diagram: status at a glance',
+          src: '/document-portal/status.webp',
+          alt: 'A simplified illustration with invented example content: four collapsed and expanded document categories. Identification and Training records are marked Complete; Licenses and certifications shows 1 missing and is open, listing two documents marked Added with dates and one marked Missing; Insurance shows 2 missing.',
+          wide: true,
+          width: 1400,
+          height: 750,
+        },
       },
       {
         title: 'A shortcut to skip the uploading',
