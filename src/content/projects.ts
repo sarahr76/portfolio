@@ -63,16 +63,7 @@ export const projects: readonly ProjectSummary[] = [
     tags: ['Product & UX/UI design', 'AI-first product'],
     group: 'professional',
   },
-  // Placeholder: Digital Canvas. Details to come from Sarah.
   {
-    slug: 'digital-canvas',
-    kicker: 'Professional work · Text only',
-    title: 'Digital Canvas',
-    summary: '[One line on the problem and your part in it.]',
-    tags: ['UX/UI design'],
-    group: 'professional',
-  },
-    {
     slug: 'safewave',
     kicker: 'Professional work · Mobile app',
     title: 'Safewave',

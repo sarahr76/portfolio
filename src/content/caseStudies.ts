@@ -716,16 +716,6 @@ export const constructionPlatform: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-// Placeholder: Digital Canvas. Details to come from Sarah.
-export const professionalFour: CaseStudy = {
-  ...textOnlyTemplate,
-  slug: 'digital-canvas',
-  title: 'Digital Canvas',
-  tagline: '[One line: what it helped people do]',
-  description: 'Text-only case study of a previous-employer project. Details are kept anonymous.',
-  next: { title: 'Back to selected work', to: '/#work' },
-}
-
 export const professionalFive: CaseStudy = {
   ...textOnlyTemplate,
   slug: 'safewave',
@@ -1642,5 +1632,5 @@ export const tallymark: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, professionalFour, professionalFive, thinkingDifferently, tallymark]
+export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, professionalFive, thinkingDifferently, tallymark]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)
