@@ -278,12 +278,26 @@ export const foxed: CaseStudy = {
           'Reading Focus is a single switch. Flip it, and every AO3- and fic-specific surface across the entire app disappears at once: filters, stat cards, the favorite-tags widget, the AO3 footer link, the Waiting status. Flip it back and nothing was lost. It was all just hidden, not deleted.',
         outcome:
           'The inverse of feature-flag sprawl: one well-placed decision point instead of a dozen half-measures scattered through the app.',
-        shot: {
-          label: 'Reading Focus setting',
-          src: '/foxed/reading-focus.webp',
-          alt: 'The AO3 & Library settings screen. Under Reading Focus, two choices: Fic & books, selected, and Books only. Below are the AO3 account, blocked tags and following sections.',
-          caption: 'Two plain choices, with the effect explained in one sentence.',
-        },
+        shots: [
+          {
+            label: 'Reading Focus setting',
+            src: '/foxed/reading-focus.webp',
+            alt: 'The AO3 & Library settings screen. Under Reading Focus, two choices: Fic & books, selected, and Books only. Below are the AO3 account, blocked tags and following sections.',
+            caption: 'Two plain choices, with the effect explained in one sentence.',
+          },
+          {
+            label: 'Home with Fic & books',
+            src: '/foxed/reading-focus-fic.webp',
+            alt: 'The Foxed Home screen with Fic & books on. A banner says AO3 looks like it is down right now. Below Currently Reading is a Waiting on Update shelf with two fics, then the Nightstand.',
+            caption: 'Fic & books: AO3 status and a Waiting on Update shelf.',
+          },
+          {
+            label: 'Home with Books only',
+            src: '/foxed/reading-focus-books.webp',
+            alt: 'The same Home screen with Books only on. The AO3 banner and the Waiting on Update shelf are gone, leaving Currently Reading, the Nightstand and the Shelf.',
+            caption: 'Books only: the same screen, with every AO3 and fic surface gone.',
+          },
+        ],
       },
       {
         title: 'Cutting the Ink Cellar',
