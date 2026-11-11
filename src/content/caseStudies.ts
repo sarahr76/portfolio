@@ -353,7 +353,7 @@ export const foxed: CaseStudy = {
       { title: 'Demo Mode', text: 'Show the app without exposing a real library' },
     ],
     honest:
-      'Foxed is in private beta, shared with a handful of friends via TestFlight. This isn’t a growth story with a user count worth bragging about. It’s a depth-of-craft one. The goal was never scale; it was building something specific and well-loved for people who actually live in this niche, including myself. One open design question is still sitting unresolved on purpose: whether streak milestones should stay silent or become a rare wax seal.',
+      'Foxed is in private beta, shared with a handful of friends via TestFlight. This isn’t a growth story with a user count worth bragging about. It’s a depth-of-craft one. The goal was never scale; it was building something specific and well-loved for people who actually live in this niche, including myself.',
   },
   next: { title: 'Reilly Plumbing', to: '/work/plumbing' },
 }
