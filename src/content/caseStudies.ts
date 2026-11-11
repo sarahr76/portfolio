@@ -1380,19 +1380,19 @@ export const flowerShop: CaseStudy = {
 export const tallymark: CaseStudy = {
   slug: 'tallymark',
   title: 'Tallymark',
-  kicker: 'Small project · Designed & built',
+  kicker: 'Small project · In progress',
   liveSite: {
     label: 'Open the app',
     href: '/tallymark/',
     note: 'Free and installable. Class lists and scores stay on your device, and nothing is uploaded.',
   },
   tagline: 'Sheets and games, scrambled fresh every week.',
-  dek: 'A free web app that makes scrambled one-minute fluency sheets, bingo, flashcards and matching cards for letters, numbers, shapes, colors and sight words. It began as one worksheet for my son and grew into a small teacher tool, designed and built solo with Claude Code as a coding partner.',
+  dek: 'A free web app that makes scrambled one-minute fluency sheets, bingo, flashcards and matching cards for letters, numbers, shapes, colors and sight words. It began as one worksheet for my son and grew into a small teacher tool, designed and built solo with Claude Code as a coding partner. It is still in progress, and I’m adding to it as I learn what teachers need.',
   description:
     'Tallymark is a free, installable web app for printable one-minute fluency sheets and games, with a fresh weekly scramble, teacher scoring copies and no data leaving the browser.',
   meta: {
     role: 'Product design, brand and solo development',
-    timeline: 'Nov 2026',
+    timeline: 'Started Nov 2026, still in progress',
     tools: 'HTML, CSS and JavaScript, jsPDF, Claude Code · Andika, Inter',
     deliverables: 'Installable web app, printable sheet and game designs, logo, one-page brand guide',
   },
@@ -1579,7 +1579,7 @@ export const tallymark: CaseStudy = {
       { title: 'An installable app', text: 'Works offline, with a logo and a one-page brand guide' },
     ],
     honest:
-      'I use it at home every week, but it hasn’t been tested in a classroom, so I can’t claim results for teachers yet. The name is a working one, and the first thing I would do next is watch a teacher use it and see which games actually get printed.',
+      'This project is still in progress. I use it at home every week, but it hasn’t been tested in a classroom, so I can’t claim results for teachers yet. The name is a working one, and the first thing I would do next is watch a teacher use it and see which games actually get printed.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }

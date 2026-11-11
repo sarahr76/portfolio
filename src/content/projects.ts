@@ -85,7 +85,7 @@ export const projects: readonly ProjectSummary[] = [
   // },
   {
     slug: 'tallymark',
-    kicker: 'Small project · Designed & built',
+    kicker: 'Small project · In progress',
     title: 'Tallymark',
     summary: 'A free, installable app that makes scrambled fluency sheets and printable games, with teacher scoring copies and nothing uploaded.',
     tags: ['Product design', 'Brand identity', 'PWA'],
