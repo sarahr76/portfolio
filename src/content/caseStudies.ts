@@ -567,7 +567,7 @@ export const constructionPlatform: CaseStudy = {
   title: 'AI-first construction platform',
   kicker: 'Professional work · Previous employer · Text only',
   tagline: 'From an empty canvas to a pilot-ready product.',
-  dek: 'A construction platform built from the ground up over about a year. I set the product direction, supported research with the pilot team, shaped the Submittals and RFI workflows, and turned the plan into requirements and tickets the developers could build from. A designer I worked with did all of the final design work in Figma.',
+  dek: 'A construction platform built from the ground up over about a year. I set the product direction, supported research with the pilot team, shaped the product’s features, from the documents view, CRM, tasks and activity pages to the Submittals and RFI workflows, and turned the plan into requirements and tickets the developers could build from. A designer I worked with did all of the final design work in Figma.',
   description:
     'Text-only case study: product direction, UX and requirements for an AI-first construction software platform, from first concepts to a pilot-ready product.',
   meta: {
@@ -579,12 +579,12 @@ export const constructionPlatform: CaseStudy = {
   hero: {
     label: 'Diagram: one project, five kinds of work',
     src: '/construction/roles.webp',
-    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, demo guides and feedback sheets), UX and workflow design (document and email ingestion, the Submittals flow, the RFI board, with all final Figma design done by a designer), requirements (a PRD per feature), and tickets and backlog (about 75 Submittals tickets across six epics, a 66-item backlog).',
+    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, demo guides and feedback sheets), UX and workflow design (the documents view with email ingestion, CRM, tasks and activity pages, the Submittals flow, the RFI board, with all final Figma design done by a designer), requirements (a PRD per feature), and tickets and backlog (about 75 Submittals tickets across six epics, a 66-item backlog).',
     caption: 'A simplified illustration of how the work fit together. Not a project plan.',
     priority: true,
     wide: true,
     width: 1400,
-    height: 827,
+    height: 923,
   },
   stats: [
     { value: '~1 yr', label: 'Concept to pilot-ready' },

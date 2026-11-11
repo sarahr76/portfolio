@@ -59,7 +59,7 @@ export const projects: readonly ProjectSummary[] = [
     slug: 'ai-construction-platform',
     kicker: 'Professional work · Text only',
     title: 'AI-first construction platform',
-    summary: 'Built from an empty canvas to a pilot. I set the direction, shaped Submittals and RFIs, and turned the plan into tickets.',
+    summary: 'Built from an empty canvas to a pilot. I set the direction, shaped the features from documents and CRM to Submittals and RFIs, and turned the plan into tickets.',
     tags: ['Product & UX/UI design', 'AI-first product'],
     group: 'professional',
   },
