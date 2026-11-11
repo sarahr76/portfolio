@@ -1309,8 +1309,8 @@ export const flowerShop: CaseStudy = {
     'Self-initiated concept: a neighborhood flower boutique designed across nine pages in desktop and mobile, from an occasion-led home page through product, cart and checkout.',
   meta: {
     role: 'UX/UI design (self-initiated)',
-    timeline: '[Dates or duration]',
-    tools: '[Confirm tools: e.g. Claude Design] · Fraunces, Nunito Sans',
+    timeline: 'About a week',
+    tools: 'Claude Code · Fraunces, Nunito Sans',
     deliverables: 'Nine pages in desktop and mobile, a mobile menu, and clickable product, cart and checkout flows',
   },
   stats: [
