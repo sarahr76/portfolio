@@ -66,9 +66,9 @@ export function CaseStudy() {
         <Reveal className="container">
           <p className="label" style={{ marginBottom: 'var(--space-3)' }}>The 30-second version</p>
           <div className={styles.three}>
-            <div><h3>The problem</h3><p>{cs.summary.problem}</p></div>
-            <div><h3>What I did</h3><p>{cs.summary.did}</p></div>
-            <div><h3>The result</h3><p>{cs.summary.result}</p></div>
+            <div><h2>The problem</h2><p>{cs.summary.problem}</p></div>
+            <div><h2>What I did</h2><p>{cs.summary.did}</p></div>
+            <div><h2>The result</h2><p>{cs.summary.result}</p></div>
           </div>
         </Reveal>
       </section>

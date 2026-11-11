@@ -13,8 +13,11 @@ export function ShotGroup({ shots, phone = true, className = '' }: { shots: read
   if (shots.length === 0) return null
   const stacked = shots.some((s) => s.wide)
   const n = stacked ? 1 : Math.min(shots.length, 6)
+  // On phones three or more screens scroll sideways, so that row needs a keyboard stop and a name.
+  const scrolls = !stacked && n >= 3
+  const scrollProps = scrolls ? { tabIndex: 0, role: 'group', 'aria-label': 'Screens. Scroll sideways to see more.' } : {}
   return (
-    <div className={`${styles.group} ${className}`} data-n={n} data-stacked={stacked || undefined}>
+    <div className={`${styles.group} ${className}`} data-n={n} data-stacked={stacked || undefined} {...scrollProps}>
       {shots.map((s) => (
         <Shot key={s.label} {...s} phone={stacked ? false : phone && !s.wide} />
       ))}
