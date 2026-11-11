@@ -716,11 +716,11 @@ export const constructionPlatform: CaseStudy = {
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-// Small project, text only. Add `draft: false` once tools are confirmed.
+// Small project, text only.
 export const documentPortal: CaseStudy = {
   ...textOnlyTemplate,
   slug: 'document-portal',
-  draft: true,
+  draft: false,
   title: 'A document portal for a health organization',
   kicker: 'Professional work · Text only · Small project',
   tagline: 'A simple front end for seeing what’s required, what’s missing and what’s been added.',
@@ -730,7 +730,7 @@ export const documentPortal: CaseStudy = {
   meta: {
     role: 'UX/UI designer',
     timeline: 'About one week',
-    tools: '[Confirm tools]',
+    tools: 'Figma and Claude Code, designed with Tailwind in mind',
     deliverables: 'Portal front-end design: grouped document list, status indicators, Drive connection',
   },
   summary: {
