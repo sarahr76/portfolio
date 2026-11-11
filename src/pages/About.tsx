@@ -26,6 +26,11 @@ export function About() {
             <div className={styles.prose}>
               {about.intro.map((p) => <p key={p.slice(0, 20)}>{p}</p>)}
             </div>
+            <p style={{ marginTop: 'var(--space-3)', color: 'var(--color-ink-soft)' }}>
+              <span className="label">Currently reading</span>{' '}
+              <span style={{ fontWeight: 700, color: 'var(--color-ink)' }}>{about.currently.reading}</span>
+              <span style={{ fontSize: 'var(--text-small)' }}> · updated {about.currently.updated}</span>
+            </p>
             <div className={styles.actions}>
               <Button href={site.resume.href} external kind="PDF">View résumé</Button>
               <Button variant="secondary" href={site.linkedin} external>Connect on LinkedIn</Button>
