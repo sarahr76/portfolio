@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Head } from 'vite-react-ssg'
-import { Link } from 'react-router-dom'
 import { projects } from '../content/projects'
 import { Button } from '../components/ui/Button'
 import { Reveal } from '../components/ui/Reveal'
@@ -163,20 +162,6 @@ export function Home() {
         </div>
       </section>
 
-
-      {/* 5. About teaser */}
-      <section className={styles.section} aria-labelledby="about-title">
-        <Reveal className={`container ${styles.about}`}>
-          <div className={styles.avatar}><img src="/desk-illustration.svg" width={200} height={200} alt="" /></div>
-          <div>
-            <h2 id="about-title">A little about me</h2>
-            <p style={{ marginTop: 'var(--space-2)', maxWidth: 'var(--reading-width)', color: 'var(--color-ink-soft)' }}>
-              I’m a UX/UI designer in Cincinnati who started out writing React and grew into design. I care about the system underneath a screen, the tokens, components and rules that make a product feel considered, and I can build what I design. Before tech I spent fifteen years as a florist, which taught me to design for real people on real deadlines.
-            </p>
-            <p style={{ marginTop: 'var(--space-3)' }}><Link viewTransition to="/about">More about me →</Link></p>
-          </div>
-        </Reveal>
-      </section>
 
       {/* 6. Closing call to action */}
       <section className={`${styles.section} ${styles.band} ${styles.cta}`} aria-labelledby="cta-title">
