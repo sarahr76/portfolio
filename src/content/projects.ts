@@ -49,7 +49,7 @@ export const projects: readonly ProjectSummary[] = [
   },
   {
     slug: 'admin-console',
-    kicker: 'Professional work · Text only',
+    kicker: 'Professional work',
     title: 'A multi-module SaaS admin console',
     summary: 'Patterns had drifted as the product grew. I built the component system and redesigned the key flows so it felt consistent and easier to use.',
     tags: ['UX/UI design', 'Design system'],
@@ -57,7 +57,7 @@ export const projects: readonly ProjectSummary[] = [
   },
   {
     slug: 'ai-construction-platform',
-    kicker: 'Professional work · Text only',
+    kicker: 'Professional work',
     title: 'AI-first construction platform',
     summary: 'Built from an empty canvas to a pilot. I set the direction, shaped the features from documents and CRM to Submittals and RFIs, and turned the plan into tickets.',
     tags: ['Product & UX/UI design', 'AI-first product'],
@@ -91,17 +91,5 @@ export const projects: readonly ProjectSummary[] = [
     group: 'small',
     imageSrc: '/tallymark-study/hero.webp',
     imageAlt: 'The Tallymark app: the headline “Sheets and games, scrambled fresh every week.” beside a preview of a letter-name sheet.',
-  },
-  {
-    slug: 'thinking-differently',
-    kicker: 'Small project · Brand identity',
-    title: 'Thinking Differently',
-    summary: 'A small brand guide for a coaching practice whose logo is the owner’s own painted mark.',
-    tags: ['Brand identity', 'Logo system'],
-    group: 'small',
-    // Remove once the client has OK'd showing her logo and brand name.
-    unlisted: true,
-    imageSrc: '/thinking-differently/logo-primary.webp',
-    imageAlt: 'The Thinking Differently logo: a circular painted mark above the line “Thinking Differently. Starting with Me.”',
   },
 ]
