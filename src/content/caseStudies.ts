@@ -576,10 +576,10 @@ export const adminConsole: CaseStudy = {
 export const constructionPlatform: CaseStudy = {
   ...textOnlyTemplate,
   slug: 'ai-construction-platform',
-  // Draft: product name is intentionally generic. Confirm remaining details, then remove `draft` to publish.
-  draft: true,
+  // Product name is intentionally generic.
+  draft: false,
   title: 'AI-first construction platform',
-  kicker: 'Professional work · Previous employer · Text only',
+  kicker: 'Professional work · Previous employer',
   tagline: 'From an empty canvas to a pilot-ready product.',
   dek: 'A construction platform built from the ground up over about a year. I set the product direction, supported research with the pilot team, shaped the product’s features, from the documents view, CRM, tasks and activity pages to the Submittals and RFI workflows, and turned the plan into requirements and tickets the developers could build from. A designer I worked with did all of the final design work in Figma.',
   description:
