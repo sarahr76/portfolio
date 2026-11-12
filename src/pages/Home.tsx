@@ -15,7 +15,7 @@ const peek = [
   ['--color-accent', '#B04A30'],
   ['--color-ink', '#2B2320'],
   ['--color-sage', '#6F8F72'],
-  ['--space-4', null],
+  ['--font-display', null],
 ] as const
 
 const approach = [
@@ -105,10 +105,10 @@ export function Home() {
               <Reveal key={token} className={`${styles.swatch} reveal-pop`} style={{ transitionDelay: `${i * 70}ms` }}>
                 <div
                   className={styles.chip}
-                  style={hex ? { background: hex } : { background: 'var(--color-cream)', display: 'flex', alignItems: 'center', padding: 'var(--space-4)' }}
+                  style={hex ? { background: hex } : { background: 'var(--color-cream)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                   aria-hidden="true"
                 >
-                  {!hex && <div style={{ width: 'var(--space-4)', height: 'var(--space-4)', background: 'var(--color-accent)', borderRadius: 4 }} />}
+                  {!hex && <span style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', lineHeight: 1, color: 'var(--color-ink)' }}>Aa</span>}
                 </div>
                 <TokenCaption>{token}</TokenCaption>
               </Reveal>
