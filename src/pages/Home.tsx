@@ -58,7 +58,7 @@ export function Home() {
             <p className={styles.status}>UX/UI designer · open to remote roles, full-time or part-time</p>
           </div>
           <div className={styles.portrait}>
-            <img src="/desk-illustration.svg" width={400} height={400} alt="Illustration of a designer’s desk: a laptop showing a color palette, a mug, a plant and a sketchbook." />
+            <img src="/home-illustration.webp" width={1200} height={800} alt="Illustration of a designer’s desk: a laptop, a trailing plant on a stack of books, a steaming mug and a cup of pencils." />
           </div>
         </section>
       </div>
