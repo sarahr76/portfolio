@@ -21,7 +21,7 @@ export function About() {
       <div className="container">
         <section className={styles.intro} aria-labelledby="about-title">
           <div className={styles.photo}>
-            <img src="/desk-illustration.svg" width={320} height={400} alt="Illustration of a designer’s desk: a laptop showing a color palette, a mug, a plant and a sketchbook." />
+            <img src="/sarah-portrait.webp" width={800} height={787} alt="Illustration of Sarah: a smiling woman with long wavy blonde hair, a striped shirt and overalls, framed by leafy branches." />
           </div>
           <div>
             <h1 id="about-title">Hi, I’m Sarah.</h1>
