@@ -9,7 +9,7 @@ export const about = {
   ],
   looking: [
     { label: 'Role', value: 'UX/UI or product designer' },
-    { label: 'Type', value: 'Full-time, or part-time for the right fit' },
+    { label: 'Type', value: 'Full-time, part-time or contract work' },
     { label: 'Where', value: 'Remote, based in Cincinnati, Ohio (Eastern time)' },
   ],
   path: [

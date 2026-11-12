@@ -91,7 +91,7 @@ export function About() {
           <p className="label">Contact</p>
           <h2 style={{ margin: 'var(--space-2) 0 0' }}>Let’s talk</h2>
           <p style={{ marginTop: 'var(--space-2)', color: 'var(--color-ink-soft)', maxWidth: 'var(--reading-width)' }}>
-            Looking for a remote UX/UI design role, full-time or part-time. The fastest way to reach me is below.
+            Looking for a remote UX/UI design role: full-time, part-time or contract. The fastest way to reach me is below.
           </p>
           <div className={styles.contactGrid}>
             {site.email && (

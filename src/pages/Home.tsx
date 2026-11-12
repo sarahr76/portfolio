@@ -55,7 +55,7 @@ export function Home() {
               <Button to="/#work">See my work</Button>
               <Button variant="secondary" to="/about#contact">Get in touch</Button>
             </div>
-            <p className={styles.status}>UX/UI designer · open to remote roles, full-time or part-time</p>
+            <p className={styles.status}>UX/UI designer · open to remote roles: full-time, part-time or contract</p>
           </div>
           <div className={styles.portrait}>
             <img src="/home-illustration.webp" width={1200} height={800} alt="Illustration of a designer’s desk: a laptop, a trailing plant on a stack of books, a steaming mug and a cup of pencils." />
@@ -167,7 +167,7 @@ export function Home() {
         <Reveal className="container">
           <h2 id="cta-title">Let's talk</h2>
           <p style={{ marginTop: 'var(--space-2)', color: 'var(--color-ink-soft)' }}>
-            Looking for a remote UX/UI design role, full-time or part-time.
+            Looking for a remote UX/UI design role: full-time, part-time or contract.
           </p>
           <div className={styles.actions}>
             <Button to="/about#contact">Email me</Button>
