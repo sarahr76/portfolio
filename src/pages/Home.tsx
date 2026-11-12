@@ -124,7 +124,7 @@ export function Home() {
           <h2 id="more-title" style={{ marginBottom: 'var(--space-5)' }}>More work</h2>
           <h3 style={{ margin: '0 0 var(--space-1)' }}>Professional work</h3>
           <p style={{ marginBottom: 'var(--space-4)', color: 'var(--color-ink-soft)', maxWidth: 'var(--reading-width)' }}>
-            Past employer projects. Most are shared as text only and kept anonymous.
+            Past employer projects, kept anonymous. The visuals are my own redrawn illustrations, not the real product.
           </p>
           <div className={styles.proGrid}>
             {projects.filter((p) => p.group === 'professional').map((p) => (

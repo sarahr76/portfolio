@@ -43,7 +43,7 @@ export function Process() {
       <section className={`${styles.section} ${styles.band}`}>
         <div className="container">
           <SectionHeader label="02 · In practice" title="Where this shows up">
-            Past employer work. Most is shared as text only and kept anonymous.
+            Past employer work, kept anonymous. The visuals are my own redrawn illustrations, not the real product.
           </SectionHeader>
           <div className={`${styles.grid} ${styles.grid2}`}>
             {process.inPractice.map((p) => (
