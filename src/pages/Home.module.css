@@ -30,7 +30,7 @@
   .workGrid > :first-child { grid-column: 1 / -1; }
   .proGrid { grid-template-columns: 1fr 1fr; }
   .smallGrid { grid-template-columns: repeat(3, 1fr); }
-  .swatches { grid-template-columns: repeat(6, 1fr); }
+  .swatches { grid-template-columns: repeat(5, 1fr); }
   .three { grid-template-columns: repeat(3, 1fr); }
     }
 
