@@ -58,16 +58,24 @@
     return K;
   };
 
-  TM.makePdf = function (pages) {
+  TM.makePdf = function (pages, paper) {
     var jsPDF = window.jspdf && window.jspdf.jsPDF;
     if (!jsPDF) throw new Error('jsPDF missing');
-    var doc = new jsPDF({ unit: 'in', format: 'letter', orientation: 'portrait' });
+    var a4 = paper === 'a4';
+    var doc = new jsPDF({ unit: 'in', format: a4 ? 'a4' : 'letter', orientation: 'portrait' });
     doc.addFileToVFS('Andika-Regular.ttf', window.TMFONTS.r); doc.addFont('Andika-Regular.ttf', 'Andika', 'normal');
     doc.addFileToVFS('Andika-Bold.ttf', window.TMFONTS.b); doc.addFont('Andika-Bold.ttf', 'Andika', 'bold');
     var K = TM.pdfKit(doc);
     pages.forEach(function (p, n) {
       if (n > 0) doc.addPage();
+      if (a4) {
+        // Pages are designed on US Letter. Scale to fit A4 and center, so nothing is cut off.
+        var sc = Math.min(595.28 / 612, 841.89 / 792), ty = (841.89 - 792 * sc) / 2, tx = (595.28 - 612 * sc) / 2;
+        doc.saveGraphicsState();
+        doc.setCurrentTransformationMatrix(new doc.Matrix(sc, 0, 0, sc, tx, ty));
+      }
       TM.pageTypes[p.type].pdf(doc, K, p);
+      if (a4) doc.restoreGraphicsState();
     });
     return doc;
   };

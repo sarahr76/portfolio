@@ -18,6 +18,8 @@
             if (Array.isArray(o.classes)) out.classes = o.classes;
             if (Array.isArray(o.entries)) out.entries = o.entries;
             if (o.goals && typeof o.goals === 'object') out.goals = o.goals;
+            if (Array.isArray(o.setups)) out.setups = o.setups;
+            if (o.meta && typeof o.meta === 'object') out.meta = o.meta;
           }
         }
       } catch (e) { this.ok = false; }

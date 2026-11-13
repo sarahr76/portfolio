@@ -77,6 +77,11 @@
   TM.makeGrid = function (kind, ctx, seedKey) {
     var r = rng(hash(seedKey));
     var pool = kind.pool(ctx), layout = kind.layout(pool);
+    if (ctx.large) {
+      layout = { cols: Math.max(3, Math.round(layout.cols * 0.6)), rows: Math.max(6, Math.round(layout.rows * 0.7)), font: layout.font * 1.3,
+        vis: layout.vis ? layout.vis * 1.25 : undefined };
+      if (layout.vis === undefined) delete layout.vis;
+    }
     return { list: sequence(pool, layout.cols, layout.rows, r), layout: layout };
   };
 

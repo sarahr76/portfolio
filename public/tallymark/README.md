@@ -60,3 +60,12 @@ When you change any file, bump `VERSION` in `sw.js` (for example `tallymark-v2-2
 
 ## Brand
 `brand/` holds the logo files, the app icon and `BRAND.md`, a one-page guide to color, type, voice and sheet layout. "Tallymark" is a working name: check trademarks, domain and app-store availability before launch. Stores will also need a privacy policy and terms.
+
+## Timer, setups and more
+- **Timer and score** (on the Make tab): a countdown with a chime and a screen wake lock where the browser allows it. When time is up, enter Reached and Errors and the score goes straight into the class progress chart, with a note on change since last time.
+- **Saved setups**: save the format, sets and options under a name and bring them back in one click. Stored with the rest of your data and included in backups.
+- **Help tab** and a first-visit guide that can be dismissed.
+- **Backup reminder** after 30 days (or if you have never backed up), with Back up now and Remind me in a week.
+- **Paper size**: US Letter or A4. A4 PDFs use the same layout scaled to about 97%.
+- **Larger type** on fluency sheets: fewer, bigger items per page.
+- Letter sheets now have 10 per row.

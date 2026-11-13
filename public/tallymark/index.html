@@ -14,6 +14,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Tallymark">
 <link rel="stylesheet" href="css/styles.css">
+<style id="pageStyle"></style>
 </head>
 <body>
 
@@ -27,6 +28,7 @@
       <a href="#make" data-tab="make">Make sheets</a>
       <a href="#class" data-tab="class">Classes</a>
       <a href="#progress" data-tab="progress">Progress</a>
+      <a href="#help" data-tab="help">Help</a>
     </nav>
     <button type="button" class="btn small" id="installBtn" hidden>Install app</button>
   </div>
@@ -34,8 +36,19 @@
 
 <main class="no-print">
 
+  <div id="nudge" class="nudge" role="status" hidden></div>
+
   <!-- MAKE -->
   <section class="view" id="view-make" data-view="make">
+    <div id="welcome" class="welcome" hidden>
+      <h2>New here? Three steps.</h2>
+      <ol>
+        <li><strong>Pick what to make</strong> on the left: a fluency sheet, bingo, flashcards or matching cards.</li>
+        <li><strong>Pick what to practice</strong>: letters, numbers, shapes, colors or words.</li>
+        <li><strong>Print or save a PDF.</strong> Then press Timer and score to time one minute and keep the result.</li>
+      </ol>
+      <div class="row"><button type="button" class="btn primary" id="welcomeOk">Got it</button><a class="btn" href="#help" style="text-decoration:none">Read the help page</a></div>
+    </div>
     <div class="intro">
       <h1>Sheets and games, <mark>scrambled fresh</mark> every week.</h1>
       <p>Pick what to make and what to practice, then print or save a PDF. Timed sheets come with a teacher copy for scoring. Bingo, flashcards and matching cards use the same content.</p>
@@ -43,6 +56,13 @@
 
     <div class="make">
       <form class="controls" id="controls" autocomplete="off">
+        <fieldset id="fsSetups">
+          <legend>Saved setups</legend>
+          <div id="setupList" class="setups"></div>
+          <div class="row"><label class="field" for="setupName">Save what you picked<input type="text" id="setupName" maxlength="40" placeholder="Monday letters"></label><button type="button" class="btn" id="setupSave">Save</button></div>
+          <p class="note" id="setupMsg" role="status"></p>
+        </fieldset>
+
         <fieldset>
           <legend>What to make</legend>
           <div class="seg col fmt" id="formatSeg" role="radiogroup" aria-label="What to make"></div>
@@ -104,6 +124,12 @@
             <label class="chip" id="chipTeacher"><input type="checkbox" id="copyTeacher"> <span id="lblTeacher">Teacher copies</span></label>
           </div>
         </fieldset>
+
+        <fieldset>
+          <legend>Printing</legend>
+          <label class="field" for="paper">Paper size<select id="paper"><option value="letter">US Letter</option><option value="a4">A4</option></select></label>
+          <p class="note">A4 pages are the same layout, scaled slightly to fit.</p>
+        </fieldset>
       </form>
 
       <div class="preview">
@@ -111,8 +137,22 @@
           <div class="bar-main">
             <button type="button" class="btn primary" id="printBtn">Print</button>
             <button type="button" class="btn primary alt" id="pdfBtn">Save PDF</button>
+            <button type="button" class="btn" id="timerBtn" aria-expanded="false" aria-controls="timerPanel">Timer and score</button>
           </div>
           <span class="count" id="count" role="status" aria-live="polite"></span>
+        </div>
+        <div class="panel timer" id="timerPanel" hidden>
+          <div class="timer-top">
+            <div class="clock" id="clock" role="timer" aria-label="Time left">1:00</div>
+            <div class="timer-ctl">
+              <button type="button" class="btn primary" id="tStart">Start</button>
+              <button type="button" class="btn" id="tReset">Reset</button>
+              <label class="field tlen" for="tLen">Seconds<input type="number" id="tLen" min="10" max="600" value="60" inputmode="numeric"></label>
+              <label class="chip"><input type="checkbox" id="tSound" checked> Sound</label>
+            </div>
+          </div>
+          <p class="timer-msg" id="tMsg" role="status" aria-live="polite"></p>
+          <div id="logBox" class="logbox"></div>
         </div>
         <div class="sheets" id="sheets"></div>
         <p class="note" id="moreNote"></p>
@@ -139,6 +179,33 @@
       <p>After each timing, enter what was reached and how many errors. Tallymark works out the score and charts it week by week.</p>
     </div>
     <div id="progressBody"></div>
+  </section>
+
+  <!-- HELP -->
+  <section class="view" id="view-help" data-view="help" hidden>
+    <div class="intro">
+      <h1>How <mark>Tallymark</mark> works.</h1>
+      <p>Short answers to the things people ask first.</p>
+    </div>
+    <div class="help">
+      <div class="panel"><h2>Timing a one-minute sheet</h2>
+        <ol><li>Make a fluency sheet and print the student copy and the teacher copy.</li>
+        <li>Press <strong>Timer and score</strong>, then Start. Say go, and the child reads across each row.</li>
+        <li>When the chime sounds, draw a line after the last letter reached on the teacher copy. Slash each miss.</li>
+        <li>Type what was reached and how many errors. Correct is reached minus errors. Save it to add it to the chart.</li></ol></div>
+      <div class="panel"><h2>How the weekly scramble works</h2>
+        <p>The week's Monday date decides the order, so the same week always gives the same sheet, and next week gives a new one. Each letter appears equally often, and the same letter never sits next to itself. To make your own, choose My own code and type any words, like Room 12 Unit 3.</p></div>
+      <div class="panel"><h2>Saved setups</h2>
+        <p>Once the format, sets and options are how you like them, type a name under Saved setups and press Save. Press the name any time to bring them back.</p></div>
+      <div class="panel"><h2>Printing tips</h2>
+        <ul><li>Choose US Letter or A4 under Printing. Set the print dialog to 100% or Actual size, with no headers and footers.</li>
+        <li>If a browser prints oddly, use Save PDF and print the file.</li>
+        <li>Larger type makes fewer, bigger items per page, which suits early readers.</li></ul></div>
+      <div class="panel"><h2>Your data and backups</h2>
+        <p>Class lists, scores and setups are saved only in this browser. Nothing is uploaded. If you clear your browsing data or switch devices, they will not come with you, so download a backup on the Progress tab now and then. Tallymark reminds you after 30 days.</p></div>
+      <div class="panel"><h2>Using it offline</h2>
+        <p>Open the site once, then use your browser's Install option to add it to your device. After that it works without internet. On an iPhone or iPad, tap Share, then Add to Home Screen.</p></div>
+    </div>
   </section>
 </main>
 
