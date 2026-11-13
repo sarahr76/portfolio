@@ -229,6 +229,8 @@
 
   function renderSetups() {
     var box = $('#setupList'); if (!box) return;
+    $('#badge-setups').textContent = S.setups.length ? S.setups.length + ' saved' : '';
+    if (!renderSetups.once) { renderSetups.once = 1; $('#fsSetups').open = S.setups.length > 0; }
     if (!S.setups.length) { box.innerHTML = '<p class="note">Save what you have picked so you can bring it back in one click.</p>'; return; }
     box.innerHTML = S.setups.map(function (u) {
       return '<div class="setup-row"><button type="button" class="btn use" data-use="' + u.id + '">' + esc(u.name) + '</button>' +
