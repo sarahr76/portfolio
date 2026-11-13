@@ -49,30 +49,33 @@
       </ol>
       <div class="row"><button type="button" class="btn primary" id="welcomeOk">Got it</button><a class="btn" href="#help" style="text-decoration:none">Read the help page</a></div>
     </div>
-    <div class="intro">
-      <h1>Sheets and games, <mark>scrambled fresh</mark> every week.</h1>
-      <p>Pick what to make and what to practice, then print or save a PDF. Timed sheets come with a teacher copy for scoring. Bingo, flashcards and matching cards use the same content.</p>
+    <div class="intro head">
+      <div>
+        <h1>Make this week&rsquo;s <mark>sheets</mark></h1>
+        <p>Pick what to make and what to practice. The order scrambles itself every Monday.</p>
+      </div>
+      <details class="setupmenu" id="fsSetups">
+        <summary class="btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4"/></svg>Saved setups <span class="badge" id="badge-setups"></span></summary>
+        <div class="pop">
+          <div id="setupList" class="setups"></div>
+          <div class="row"><label class="field" for="setupName">Save what you picked<input type="text" id="setupName" maxlength="40" placeholder="Monday letters"></label><button type="button" class="btn" id="setupSave">Save</button></div>
+          <p class="note" id="setupMsg" role="status"></p>
+        </div>
+      </details>
     </div>
 
     <div class="make">
       <form class="controls" id="controls" autocomplete="off">
-        <fieldset id="fsSetups">
-          <legend>Saved setups</legend>
-          <div id="setupList" class="setups"></div>
-          <div class="row"><label class="field" for="setupName">Save what you picked<input type="text" id="setupName" maxlength="40" placeholder="Monday letters"></label><button type="button" class="btn" id="setupSave">Save</button></div>
-          <p class="note" id="setupMsg" role="status"></p>
+        <fieldset>
+          <legend><span class="num">1</span>What to make</legend>
+          <div class="tiles" id="formatSeg" role="radiogroup" aria-label="What to make"></div>
+          <div class="group" id="optsGroup"><h3 id="optsTitle">Options</h3><div id="formatOpts" class="opts"></div></div>
         </fieldset>
 
         <fieldset>
-          <legend>What to make</legend>
-          <div class="seg col fmt" id="formatSeg" role="radiogroup" aria-label="What to make"></div>
-          <div id="formatOpts" class="opts"></div>
-        </fieldset>
-
-        <fieldset>
-          <legend>What to practice</legend>
+          <legend><span class="num">2</span>What to practice</legend>
           <div class="group"><h3>Letters</h3><div class="chips" id="chips-letters"></div>
-            <label class="field" for="letters">Only these letters <span class="sub">(blank means all 26)</span>
+            <label class="field" for="letters">Only these letters <span class="sub">(optional, blank means all 26)</span>
               <input type="text" id="letters" maxlength="26" autocapitalize="off" spellcheck="false" placeholder="a b c d e"></label></div>
           <div class="group"><h3>Numbers</h3><div class="chips" id="chips-numbers"></div></div>
           <div class="group"><h3>Shapes and colors</h3><div class="chips" id="chips-shapes"></div></div>
@@ -89,47 +92,53 @@
         </fieldset>
 
         <fieldset>
-          <legend>Scramble</legend>
-          <div class="seg" role="radiogroup" aria-label="Scramble by">
-            <label><input type="radio" name="mode" value="weekly"><span>Every week</span></label>
-            <label><input type="radio" name="mode" value="code"><span>My own code</span></label>
+          <legend><span class="num">3</span>Who and when</legend>
+          <div class="group" id="fsStudents">
+            <label class="field" for="classSel">Students<select id="classSel"></select></label>
+            <div class="seg col" role="radiogroup" aria-label="Sheets for students" id="stuMode">
+              <label><input type="radio" name="studentMode" value="same"><span>Same sheet for everyone</span></label>
+              <label><input type="radio" name="studentMode" value="diff"><span>A different sheet for each student</span></label>
+            </div>
+            <div class="seg col" role="radiogroup" aria-label="Names on pages" id="nameMode">
+              <label><input type="radio" name="names" value="blank"><span>Blank name lines</span></label>
+              <label><input type="radio" name="names" value="filled"><span>Print each student&rsquo;s name</span></label>
+            </div>
+            <p class="note" id="studentNote"></p>
           </div>
-          <div id="weeklyBox" class="ctl">
-            <button type="button" class="btn small" id="wkPrev" aria-label="Earlier week">&lsaquo;</button>
-            <span id="wkLabel" class="wk" aria-live="polite"></span>
-            <button type="button" class="btn small" id="wkNext" aria-label="Later week">&rsaquo;</button>
-            <button type="button" class="btn small" id="wkNow" hidden>This week</button>
-          </div>
-          <div id="codeBox" class="ctl" hidden>
-            <label class="field" for="code">Code<input type="text" id="code" maxlength="40" placeholder="Room 12 Unit 3"></label>
-          </div>
-          <p class="note" id="scrambleNote"></p>
-          <button type="button" class="btn" id="reshuffle">Shuffle again</button>
-        </fieldset>
-
-        <fieldset id="fsStudents">
-          <legend>Students</legend>
-          <label class="field" for="classSel">Class<select id="classSel"></select></label>
-          <div class="seg col" role="radiogroup" aria-label="Sheets for students" id="stuMode">
-            <label><input type="radio" name="studentMode" value="same"><span>Same sheet for everyone</span></label>
-            <label><input type="radio" name="studentMode" value="diff"><span>A different sheet for each student</span></label>
-          </div>
-          <div class="seg col" role="radiogroup" aria-label="Names on pages" id="nameMode">
-            <label><input type="radio" name="names" value="blank"><span>Blank name lines</span></label>
-            <label><input type="radio" name="names" value="filled"><span>Print each student's name</span></label>
-          </div>
-          <p class="note" id="studentNote"></p>
-          <div class="chips">
-            <label class="chip" id="chipStudent"><input type="checkbox" id="copyStudent"> <span id="lblStudent">Student copies</span></label>
-            <label class="chip" id="chipTeacher"><input type="checkbox" id="copyTeacher"> <span id="lblTeacher">Teacher copies</span></label>
+          <div class="group">
+            <h3>Scramble</h3>
+            <div class="seg" role="radiogroup" aria-label="Scramble by">
+              <label><input type="radio" name="mode" value="weekly"><span>Every week</span></label>
+              <label><input type="radio" name="mode" value="code"><span>My own code</span></label>
+            </div>
+            <div id="weeklyBox" class="ctl">
+              <button type="button" class="btn small sq" id="wkPrev" aria-label="Earlier week">&lsaquo;</button>
+              <span id="wkLabel" class="wk" aria-live="polite"></span>
+              <button type="button" class="btn small sq" id="wkNext" aria-label="Later week">&rsaquo;</button>
+              <button type="button" class="btn small" id="wkNow" hidden>This week</button>
+            </div>
+            <div id="codeBox" class="ctl" hidden>
+              <label class="field" for="code">Code<input type="text" id="code" maxlength="40" placeholder="Room 12 Unit 3"></label>
+            </div>
+            <p class="note" id="scrambleNote"></p>
+            <button type="button" class="btn" id="reshuffle">Shuffle again</button>
           </div>
         </fieldset>
 
-        <fieldset>
-          <legend>Printing</legend>
-          <label class="field" for="paper">Paper size<select id="paper"><option value="letter">US Letter</option><option value="a4">A4</option></select></label>
-          <p class="note">A4 pages are the same layout, scaled slightly to fit.</p>
-        </fieldset>
+        <details class="fs more" id="fsMore">
+          <summary><span class="mt">More options</span><span class="msum" id="moreSum"></span></summary>
+          <div class="group">
+            <h3>Copies</h3>
+            <div class="chips">
+              <label class="chip" id="chipStudent"><input type="checkbox" id="copyStudent"> <span id="lblStudent">Student copies</span></label>
+              <label class="chip" id="chipTeacher"><input type="checkbox" id="copyTeacher"> <span id="lblTeacher">Teacher copies</span></label>
+            </div>
+          </div>
+          <div class="group">
+            <label class="field" for="paper">Paper size<select id="paper"><option value="letter">US Letter</option><option value="a4">A4</option></select></label>
+            <p class="note">A4 pages are the same layout, scaled slightly to fit.</p>
+          </div>
+        </details>
       </form>
 
       <div class="preview">
@@ -141,6 +150,7 @@
           </div>
           <span class="count" id="count" role="status" aria-live="polite"></span>
         </div>
+        <div class="pagenav" id="pageNav" role="group" aria-label="Pages in the preview"></div>
         <div class="panel timer" id="timerPanel" hidden>
           <div class="timer-top">
             <div class="clock" id="clock" role="timer" aria-label="Time left">1:00</div>
@@ -185,33 +195,68 @@
   <section class="view" id="view-help" data-view="help" hidden>
     <div class="intro">
       <h1>How <mark>Tallymark</mark> works.</h1>
-      <p>Short answers to the things people ask first.</p>
+      <p>Everything runs in your browser. Nothing is uploaded and there is no account.</p>
     </div>
+
     <div class="help">
-      <div class="panel"><h2>Timing a one-minute sheet</h2>
-        <ol><li>Make a fluency sheet and print the student copy and the teacher copy.</li>
-        <li>Press <strong>Timer and score</strong>, then Start. Say go, and the child reads across each row.</li>
-        <li>When the chime sounds, draw a line after the last letter reached on the teacher copy. Slash each miss.</li>
-        <li>Type what was reached and how many errors. Correct is reached minus errors. Save it to add it to the chart.</li></ol></div>
-      <div class="panel"><h2>How the weekly scramble works</h2>
-        <p>The week's Monday date decides the order, so the same week always gives the same sheet, and next week gives a new one. Each letter appears equally often, and the same letter never sits next to itself. To make your own, choose My own code and type any words, like Room 12 Unit 3.</p></div>
-      <div class="panel"><h2>Saved setups</h2>
-        <p>Once the format, sets and options are how you like them, type a name under Saved setups and press Save. Press the name any time to bring them back.</p></div>
-      <div class="panel"><h2>Printing tips</h2>
-        <ul><li>Choose US Letter or A4 under Printing. Set the print dialog to 100% or Actual size, with no headers and footers.</li>
-        <li>If a browser prints oddly, use Save PDF and print the file.</li>
-        <li>Larger type makes fewer, bigger items per page, which suits early readers.</li></ul></div>
-      <div class="panel"><h2>Your data and backups</h2>
-        <p>Class lists, scores and setups are saved only in this browser. Nothing is uploaded. If you clear your browsing data or switch devices, they will not come with you, so download a backup on the Progress tab now and then. Tallymark reminds you after 30 days.</p></div>
-      <div class="panel"><h2>Using it offline</h2>
-        <p>Open the site once, then use your browser's Install option to add it to your device. After that it works without internet. On an iPhone or iPad, tap Share, then Add to Home Screen.</p></div>
+      <ol class="steps" aria-label="Time a one-minute sheet in four steps">
+        <li>
+          <svg class="tally" viewBox="0 0 40 32" aria-hidden="true"><path d="M20 5v22"/></svg>
+          <h2>Print the sheets</h2>
+          <p>Choose <strong>Fluency sheet</strong>, then print the student copy and the teacher copy.</p>
+        </li>
+        <li>
+          <svg class="tally" viewBox="0 0 40 32" aria-hidden="true"><path d="M14 5v22M26 5v22"/></svg>
+          <h2>Start the timer</h2>
+          <p>Press <strong>Timer and score</strong>, then Start. Say go, and the child reads across each row.</p>
+        </li>
+        <li>
+          <svg class="tally" viewBox="0 0 40 32" aria-hidden="true"><path d="M9 5v22M20 5v22M31 5v22"/></svg>
+          <h2>Mark the teacher copy</h2>
+          <p>Slash each miss. When the chime sounds, draw a line after the last item reached.</p>
+        </li>
+        <li>
+          <svg class="tally" viewBox="0 0 40 32" aria-hidden="true"><path d="M5 5v22M15 5v22M25 5v22M35 5v22"/></svg>
+          <h2>Save the score</h2>
+          <p>Enter reached and errors. Tallymark works out the rest and adds it to the chart.</p>
+        </li>
+      </ol>
+
+      <div class="example" aria-label="Scoring example">
+        <div class="ex-sheet" aria-hidden="true">
+          <div class="ex-row"><span>G</span><span>H</span><span class="miss">N</span><span>I</span><span>O</span><span>D</span></div>
+          <div class="ex-row"><span>Z</span><span>X</span><span>E</span><span class="miss">S</span><span class="stop">P</span><span>T</span></div>
+        </div>
+        <div class="ex-text">
+          <h2>How the score works</h2>
+          <p>The child reached 11 letters before time ran out and missed 2. The count at the end of each row on the teacher copy makes the total easy to find.</p>
+          <p class="sum"><span>11</span> reached <i>&minus;</i> <span>2</span> errors <i>=</i> <strong>9 correct</strong></p>
+          <p class="note">To save scores, add a class and its students on the Classes tab first.</p>
+        </div>
+      </div>
+
+      <h2 class="more">Good to know</h2>
+      <div class="faq">
+        <section><h3>The weekly scramble</h3>
+          <p>The week's Monday date decides the order, so the same week always gives the same sheet and next week brings a new one. For your own order, choose <strong>My own code</strong> and type any words.</p></section>
+        <section><h3>Saved setups</h3>
+          <p>Pick a format, sets and options once, then type a name under <strong>Saved setups</strong> and press Save. Press the name any time to bring them back.</p></section>
+        <section><h3>Printing and A4</h3>
+          <p>Choose US Letter or A4 under Printing. In the print dialog, use 100% scale and turn off headers and footers. If a browser prints oddly, press <strong>Save PDF</strong> and print the file.</p></section>
+        <section><h3>Your data and backups</h3>
+          <p>Classes, scores and setups live only in this browser, so they do not follow you to another device. Press <strong>Download backup</strong> on the Progress tab now and then. Tallymark reminds you after 30 days.</p></section>
+        <section><h3>Offline and install</h3>
+          <p>Open the site once, then use your browser's Install option. It works without internet after that. On an iPhone or iPad, tap Share, then Add to Home Screen.</p></section>
+        <section><h3>Cost and accounts</h3>
+          <p>It is free and needs no account. Nothing is uploaded, so there is nothing for anyone else to see.</p></section>
+      </div>
     </div>
   </section>
 </main>
 
 <footer class="foot-site no-print">
-  <p><strong>Privacy.</strong> Tallymark stores class lists and scores only on this device. Nothing is sent to a server, and there are no accounts or analytics.</p>
-  <p class="credits"><strong>Credits.</strong> Letterforms in Andika and Inter (SIL Open Font License). PDFs made with jsPDF (MIT). Sight words follow the Dolch lists (public domain). To install on an iPhone or iPad, tap Share, then Add to Home Screen.</p>
+  <p><strong>Privacy.</strong> Class lists, scores and setups stay on this device. Nothing is uploaded, and there are no accounts or analytics.</p>
+  <p class="credits"><strong>Credits.</strong> Andika and Inter fonts (SIL Open Font License), jsPDF (MIT), Dolch sight word lists (public domain).</p>
 </footer>
 
 <div id="printRoot" aria-hidden="true"></div>
