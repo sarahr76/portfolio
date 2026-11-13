@@ -23,13 +23,13 @@
   TM.DOLCH = DOLCH;
 
   /* ---------- Layouts ---------- */
-  var LETTER = function () { return { cols: 8, rows: 13, font: 0.44 }; };
+  var LETTER = function () { return { cols: 10, rows: 13, font: 0.44 }; };
   var NUMBER = function () { return { cols: 6, rows: 12, font: 0.40 }; };
   var VISUAL = function () { return { cols: 6, rows: 12, font: 0.40, vis: 0.44 }; };
   function textLayout(fixedRows) {
     return function (pool) {
       var m = 1; pool.forEach(function (it) { m = Math.max(m, it.v.length); });
-      if (m <= 1) return { cols: 8, rows: 13, font: 0.44 };
+      if (m <= 1) return { cols: 10, rows: 13, font: 0.44 };
       var cols = m <= 3 ? 6 : m <= 6 ? 5 : m <= 9 ? 4 : 3;
       var font = m <= 3 ? 0.40 : m <= 6 ? 0.32 : m <= 9 ? 0.28 : 0.24;
       return { cols: cols, rows: fixedRows || Math.min(12, Math.max(9, Math.ceil(pool.length / cols))), font: font };

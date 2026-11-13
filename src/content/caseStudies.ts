@@ -1575,7 +1575,8 @@ export const tallymark: CaseStudy = {
     shipped: [
       { title: 'Fluency sheets', text: 'Student and teacher copies, with a practice-days row' },
       { title: 'Bingo, flashcards, matching', text: 'Printable games from the same sets' },
-      { title: 'Class lists and progress', text: 'Per-student sheets, scores and a weekly chart, with backups' },
+      { title: 'Timer and progress', text: 'A one-minute timer, quick score entry, a weekly chart and backup reminders' },
+      { title: 'Saved setups', text: 'Bring back a favorite sheet in one click, in US Letter or A4' },
       { title: 'An installable app', text: 'Works offline, with a logo and a one-page brand guide' },
     ],
     honest:

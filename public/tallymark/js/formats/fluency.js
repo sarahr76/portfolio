@@ -115,12 +115,14 @@
 
   TM.registerFormat({
     id: 'fluency', name: 'Fluency sheet', blurb: 'One-minute timed sheets, with a teacher copy for scoring.',
-    students: 'full', copies: { student: 'Student copies', teacher: 'Teacher copies' }, options: [],
+    students: 'full', copies: { student: 'Student copies', teacher: 'Teacher copies' },
+    options: [{ key: 'large', label: 'Larger type, fewer per page', def: false }],
     plan: function (env) {
       var student = [], teacher = [];
       env.sets.forEach(function (set) {
         env.variants.forEach(function (v) {
-          var grid = TM.makeGrid(set, env.ctx, env.seed([set.id, env.sig, env.diff ? v.id : '']));
+          var gctx = env.opts && env.opts.large ? Object.assign({}, env.ctx, { large: true }) : env.ctx;
+          var grid = TM.makeGrid(set, gctx, env.seed([set.id, env.sig, env.diff ? v.id : '']));
           var page = { type: 'fluency', setId: set.id, title: TM.setTitle(set, env.ctx), dir: set.dir, teacherNote: set.teacherNote, unit: set.unit,
             list: grid.list, layout: grid.layout, student: v ? v.name : '', footer: env.footer };
           var a = Object.assign({}, page, { teacher: false }), b = Object.assign({}, page, { teacher: true });

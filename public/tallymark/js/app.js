@@ -7,14 +7,17 @@
   var DEFAULT = {
     v: 1,
     prefs: { format: 'fluency', opts: {}, kinds: ['upper', 'lower'], letters: '', mode: 'weekly', code: '', classId: '', studentMode: 'same', names: 'blank',
-      student: true, teacher: true, customTitle: '', customText: '' },
-    classes: [], entries: [], goals: {}
+      student: true, teacher: true, customTitle: '', customText: '', paper: 'letter' },
+    classes: [], entries: [], goals: {}, setups: [], meta: {}
   };
   var S = TM.store.load(DEFAULT), P = S.prefs;
   var offset = 0, salt = 0, editClassId = null;
   var PREVIEW_MAX = 6;
 
-  function save() { TM.store.save(S); }
+  function save() {
+    if (!S.meta.since && (S.classes.length || S.entries.length)) S.meta.since = U.today();
+    TM.store.save(S);
+  }
   function getClass(id) { for (var i = 0; i < S.classes.length; i++) if (S.classes[i].id === id) return S.classes[i]; return null; }
   function activeClass() {
     var c = getClass(P.classId);
@@ -93,7 +96,7 @@
     $('#customBox').hidden = P.kinds.indexOf('custom') < 0;
     $('#customTitle').value = P.customTitle; $('#customText').value = P.customText;
     $$('input[name=mode]').forEach(function (r) { r.checked = r.value === P.mode; });
-    $('#code').value = P.code;
+    $('#code').value = P.code; $('#paper').value = P.paper;
     $('#copyStudent').checked = P.student; $('#copyTeacher').checked = P.teacher;
     renderFormatOpts(); renderClassSelect();
   }
@@ -140,7 +143,14 @@
     $('#count').textContent = n ? n + (n === 1 ? ' page' : ' pages') + pl.info : '';
     $('#moreNote').textContent = n > PREVIEW_MAX ? 'Showing the first ' + PREVIEW_MAX + ' of ' + n + ' pages. Print and Save PDF include all of them.' : (pl.warn && n ? pl.warn : '');
     $('#printBtn').disabled = !n; $('#pdfBtn').disabled = !n;
+    applyPaper(); renderSetups();
     save();
+  }
+
+  function applyPaper() {
+    var a4 = P.paper === 'a4';
+    $('#sheets').classList.toggle('a4', a4); $('#printRoot').classList.toggle('a4', a4);
+    $('#pageStyle').textContent = '@page{size:' + (a4 ? 'A4' : 'letter') + ';margin:0}';
   }
 
   function fileName(pl) {
@@ -155,6 +165,7 @@
   }
   window.addEventListener('beforeprint', function () {
     var root = $('#printRoot');
+    root.classList.toggle('a4', P.paper === 'a4');
     if (!root.firstChild) root.innerHTML = plan().pages.map(TM.pageHTML).join('');
   });
   window.addEventListener('afterprint', function () { $('#printRoot').innerHTML = ''; });
@@ -163,7 +174,7 @@
     var pl = plan(); if (!pl.pages.length) return;
     var btn = $('#pdfBtn'), old = btn.textContent; btn.disabled = true; btn.textContent = 'Building...';
     setTimeout(function () {
-      try { TM.makePdf(pl.pages).save(fileName(pl)); }
+      try { TM.makePdf(pl.pages, P.paper).save(fileName(pl)); }
       catch (e) { $('#count').textContent = 'The PDF could not be built. Try Print instead.'; if (window.console) console.error(e); }
       btn.textContent = old; btn.disabled = false;
     }, 30);
@@ -185,9 +196,10 @@
       else if (t.name === 'mode') { P.mode = t.value; salt = 0; }
       else if (t.name === 'studentMode') P.studentMode = t.value;
       else if (t.name === 'names') P.names = t.value;
+      else if (t.id === 'paper') P.paper = t.value === 'a4' ? 'a4' : 'letter';
       else if (t.id === 'copyStudent') P.student = t.checked;
       else if (t.id === 'copyTeacher') P.teacher = t.checked;
-      else if (t.id === 'classSel') { P.classId = t.value; if (!t.value) P.studentMode = 'same'; }
+      else if (t.id === 'classSel') { P.classId = t.value; if (!t.value) P.studentMode = 'same'; lv.student = ''; renderLog(); }
       updateMake();
     });
     $('#controls').addEventListener('input', function (e) {
@@ -209,6 +221,201 @@
     $('#reshuffle').addEventListener('click', function () { salt++; updateMake(); });
     $('#printBtn').addEventListener('click', printAll);
     $('#pdfBtn').addEventListener('click', savePdf);
+  }
+
+  /* ---------- Saved setups ---------- */
+  var SNAP = ['format', 'opts', 'kinds', 'letters', 'mode', 'code', 'classId', 'studentMode', 'names', 'student', 'teacher', 'customTitle', 'customText', 'paper'];
+  function copy(o) { return JSON.parse(JSON.stringify(o)); }
+
+  function renderSetups() {
+    var box = $('#setupList'); if (!box) return;
+    if (!S.setups.length) { box.innerHTML = '<p class="note">Save what you have picked so you can bring it back in one click.</p>'; return; }
+    box.innerHTML = S.setups.map(function (u) {
+      return '<div class="setup-row"><button type="button" class="btn use" data-use="' + u.id + '">' + esc(u.name) + '</button>' +
+        '<button type="button" class="x" data-rm="' + u.id + '" aria-label="Remove setup ' + esc(u.name) + '">Remove</button></div>';
+    }).join('');
+  }
+
+  function wireSetups() {
+    $('#setupSave').addEventListener('click', saveSetup);
+    $('#setupName').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); saveSetup(); } });
+    function saveSetup() {
+      var name = $('#setupName').value.trim().slice(0, 40), m = $('#setupMsg');
+      if (!name) { m.textContent = 'Give the setup a name first.'; return; }
+      var snap = {}; SNAP.forEach(function (k) { snap[k] = copy(P[k]); });
+      var old = S.setups.filter(function (u) { return u.name.toLowerCase() === name.toLowerCase(); })[0];
+      if (old) { old.data = snap; old.name = name; m.textContent = 'Updated "' + name + '".'; }
+      else { S.setups.push({ id: U.uid(), name: name, data: snap }); m.textContent = 'Saved "' + name + '".'; }
+      $('#setupName').value = ''; save(); renderSetups();
+    }
+    $('#setupList').addEventListener('click', function (e) {
+      var t = e.target, id = t.getAttribute('data-use') || t.getAttribute('data-rm');
+      if (!id) return;
+      var u = S.setups.filter(function (x) { return x.id === id; })[0]; if (!u) return;
+      if (t.hasAttribute('data-rm')) { S.setups = S.setups.filter(function (x) { return x.id !== id; }); save(); renderSetups(); $('#setupMsg').textContent = 'Removed.'; return; }
+      SNAP.forEach(function (k) { if (u.data[k] !== undefined) P[k] = copy(u.data[k]); });
+      if (P.classId && !getClass(P.classId)) { P.classId = ''; P.studentMode = 'same'; }
+      offset = 0; salt = 0; lv.student = '';
+      syncControls(); updateMake(); renderLog();
+      $('#setupMsg').textContent = 'Using "' + u.name + '".';
+    });
+  }
+
+  /* ---------- Timer and quick score ---------- */
+  var lv = { student: '', kind: '' };
+  var T = { len: 60, left: 60, end: 0, id: 0, run: false, audio: null, lock: null, done: false };
+
+  function clockText(n) { var m = Math.floor(n / 60), r = n % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
+  function showClock() {
+    var c = $('#clock'); c.textContent = clockText(T.left); c.classList.toggle('done', T.done);
+    $('#tStart').textContent = T.run ? 'Pause' : (T.left < T.len && T.left > 0 ? 'Resume' : 'Start');
+  }
+  function ensureAudio() {
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+      T.audio = T.audio || new AC();
+      if (T.audio.state === 'suspended') T.audio.resume();
+    } catch (e) {}
+  }
+  function beep() {
+    if (!$('#tSound').checked || !T.audio) return;
+    try {
+      var a = T.audio, t = a.currentTime;
+      [0, 0.3, 0.6].forEach(function (d) {
+        var o = a.createOscillator(), g = a.createGain(); o.frequency.value = 880;
+        g.gain.setValueAtTime(0.0001, t + d); g.gain.exponentialRampToValueAtTime(0.3, t + d + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + d + 0.22);
+        o.connect(g); g.connect(a.destination); o.start(t + d); o.stop(t + d + 0.25);
+      });
+    } catch (e) {}
+  }
+  function holdScreen(on) {
+    try {
+      if (on && navigator.wakeLock) navigator.wakeLock.request('screen').then(function (l) { T.lock = l; }, function () {});
+      else if (!on && T.lock) { T.lock.release(); T.lock = null; }
+    } catch (e) {}
+  }
+  function stopTimer() { clearInterval(T.id); T.run = false; holdScreen(false); }
+  function tick() {
+    var ms = T.end - Date.now();
+    if (ms <= 0) {
+      stopTimer(); T.left = 0; T.done = true; showClock(); beep();
+      $('#tMsg').textContent = 'Time. Mark the last item reached, then enter the score below.';
+      var r = $('#lReached'); if (r) r.focus();
+      return;
+    }
+    var n = Math.ceil(ms / 1000);
+    if (n !== T.left) { T.left = n; showClock(); }
+  }
+  function startPause() {
+    if (T.run) { stopTimer(); T.left = Math.max(1, Math.ceil((T.end - Date.now()) / 1000)); $('#tMsg').textContent = 'Paused.'; showClock(); return; }
+    if (T.left <= 0) T.left = T.len;
+    T.done = false; ensureAudio(); holdScreen(true);
+    T.end = Date.now() + T.left * 1000; T.run = true; T.id = setInterval(tick, 200);
+    $('#tMsg').textContent = 'Timing. Say go.'; showClock();
+  }
+  function resetTimer() { stopTimer(); T.left = T.len; T.done = false; $('#tMsg').textContent = ''; showClock(); }
+
+  function prevCorrect(studentId, kind) {
+    var e = S.entries.filter(function (x) { return x.studentId === studentId && x.kind === kind; }).sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+    return e.length ? e[0].correct : null;
+  }
+  function addEntry(cls, studentId, kind, date, reached, errs) {
+    if (isNaN(reached) || reached < 0) return 'Enter how many were reached.';
+    if (errs < 0 || errs > reached) return 'Errors cannot be more than reached.';
+    S.entries.push({ id: U.uid(), classId: cls.id, studentId: studentId, kind: kind, date: date, reached: reached, errors: errs, correct: reached - errs });
+    save(); return '';
+  }
+  function trendWords(now, before) {
+    if (before === null) return 'This is the first score for this sheet.';
+    var d = now - before;
+    return d > 0 ? 'Up ' + d + ' from last time.' : d < 0 ? 'Down ' + (-d) + ' from last time.' : 'The same as last time.';
+  }
+
+  function renderLog() {
+    var box = $('#logBox'); if (!box) return;
+    var cls = activeClass();
+    if (!cls || !cls.students.length) {
+      box.innerHTML = '<p class="note">To save a score, <a href="#class">add a class and its students</a> first. You can still use the timer on its own.</p>'; return;
+    }
+    if (!cls.students.some(function (s) { return s.id === lv.student; })) lv.student = cls.students[0].id;
+    if (!lv.kind || !TM.kindById(lv.kind)) lv.kind = P.kinds[0] || 'upper';
+    var stu = cls.students.map(function (x) { return '<option value="' + x.id + '"' + (x.id === lv.student ? ' selected' : '') + '>' + esc(x.name) + '</option>'; }).join('');
+    box.innerHTML = '<div class="logrow">' +
+      '<label class="field" for="lStu">Student<select id="lStu">' + stu + '</select></label>' +
+      '<label class="field" for="lKind">Sheet<select id="lKind">' + kindOptions(lv.kind) + '</select></label>' +
+      '<label class="field" for="lReached">Reached<input type="number" id="lReached" min="0" max="999" inputmode="numeric"></label>' +
+      '<label class="field" for="lErrors">Errors<input type="number" id="lErrors" min="0" max="999" value="0" inputmode="numeric"></label>' +
+      '<p class="calc" id="lCalc" aria-live="polite">Correct: </p>' +
+      '<button type="button" class="btn primary" id="lAdd">Save score</button></div><p class="msg" id="lMsg" role="status"></p>';
+  }
+
+  function wireTimer() {
+    var panel = $('#timerPanel'), btn = $('#timerBtn');
+    btn.addEventListener('click', function () {
+      panel.hidden = !panel.hidden; btn.setAttribute('aria-expanded', String(!panel.hidden));
+      if (!panel.hidden) { renderLog(); showClock(); }
+    });
+    $('#tStart').addEventListener('click', startPause);
+    $('#tReset').addEventListener('click', resetTimer);
+    $('#tLen').addEventListener('input', function (e) {
+      var n = parseInt(e.target.value, 10);
+      if (n >= 10 && n <= 600) { T.len = n; if (!T.run) { T.left = n; T.done = false; showClock(); } }
+    });
+    var box = $('#logBox');
+    box.addEventListener('change', function (e) {
+      if (e.target.id === 'lStu') lv.student = e.target.value;
+      else if (e.target.id === 'lKind') lv.kind = e.target.value;
+    });
+    box.addEventListener('input', function (e) {
+      if (e.target.id !== 'lReached' && e.target.id !== 'lErrors') return;
+      var r = parseInt($('#lReached').value, 10), er = parseInt($('#lErrors').value, 10) || 0;
+      $('#lCalc').textContent = isNaN(r) ? 'Correct: ' : 'Correct: ' + Math.max(0, r - er);
+    });
+    box.addEventListener('keydown', function (e) { if (e.key === 'Enter' && (e.target.id === 'lReached' || e.target.id === 'lErrors')) { e.preventDefault(); $('#lAdd').click(); } });
+    box.addEventListener('click', function (e) {
+      if (e.target.id !== 'lAdd') return;
+      var cls = activeClass(), r = parseInt($('#lReached').value, 10), er = parseInt($('#lErrors').value, 10) || 0, m = $('#lMsg');
+      var before = prevCorrect(lv.student, lv.kind);
+      var err = addEntry(cls, lv.student, lv.kind, U.today(), r, er);
+      if (err) { m.textContent = err; return; }
+      var name = cls.students.filter(function (x) { return x.id === lv.student; })[0].name;
+      renderLog(); $('#lMsg').textContent = 'Saved for ' + name + ': ' + (r - er) + ' correct. ' + trendWords(r - er, before);
+      resetTimer(); $('#lReached').focus();
+    });
+  }
+
+  /* ---------- Backup reminder ---------- */
+  function daysSince(iso) { return Math.floor((new Date(U.today() + 'T00:00:00') - new Date(iso + 'T00:00:00')) / 86400000); }
+  function hasData() { return S.classes.length > 0 || S.entries.length > 0; }
+  function backupDue() {
+    if (!hasData()) return 0;
+    var base = S.meta.lastBackup || S.meta.since; if (!base) return 0;
+    if (S.meta.snooze && S.meta.snooze >= U.today()) return 0;
+    var n = daysSince(base); return n >= 30 ? n : 0;
+  }
+  function renderNudge() {
+    var el = $('#nudge'), n = backupDue();
+    el.hidden = !n;
+    if (!n) return;
+    el.innerHTML = '<p>' + (S.meta.lastBackup ? 'It has been ' + n + ' days since your last backup.' : 'You have not backed up yet.') +
+      ' Classes and scores live only on this device.</p><div class="row"><button type="button" class="btn primary small" id="nudgeNow">Back up now</button>' +
+      '<button type="button" class="btn small" id="nudgeLater">Remind me in a week</button></div>';
+  }
+  function downloadBackup() {
+    download('tallymark-backup-' + U.today() + '.json', JSON.stringify({ v: 1, classes: S.classes, entries: S.entries, goals: S.goals, setups: S.setups }, null, 1), 'application/json');
+    S.meta.lastBackup = U.today(); delete S.meta.snooze; save(); renderNudge();
+    var m = $('#dataMsg'); if (m) m.textContent = 'Backup downloaded.';
+    var lb = $('#lastBackup'); if (lb) lb.textContent = 'Last backup: ' + U.prettyFull(S.meta.lastBackup) + '.';
+  }
+  function wireNudge() {
+    $('#nudge').addEventListener('click', function (e) {
+      if (e.target.id === 'nudgeNow') downloadBackup();
+      else if (e.target.id === 'nudgeLater') {
+        var d = new Date(); d.setDate(d.getDate() + 7);
+        S.meta.snooze = U.iso(d); save(); renderNudge();
+      }
+    });
+    $('#welcomeOk').addEventListener('click', function () { S.meta.welcomed = true; save(); $('#welcome').hidden = true; });
   }
 
   /* ---------- Classes view ---------- */
@@ -328,6 +535,7 @@
     } else {
       right += '<div class="empty">No scores yet for this sheet. Log the first one on the left.</div>';
     }
+    if (mine.length) right += '<p class="trend">' + trendSummary(mine, goal) + '</p>';
     right += '<div class="row"><label class="field" for="pGoal">Goal, correct per minute <span class="sub">(optional)</span><input type="number" id="pGoal" min="0" max="999" value="' + esc(goal) + '" inputmode="numeric"></label></div>';
     if (mine.length) {
       right += '<div class="table-wrap"><table><thead><tr><th>Date</th><th>Reached</th><th>Errors</th><th>Correct</th><th></th></tr></thead><tbody>' +
@@ -339,11 +547,23 @@
 
     var overview = classOverview(cls);
     var tools = '<div class="panel"><h2>Your data</h2><p class="muted" style="margin:0">Saved only in this browser. Back it up if you use another computer or clear your browsing data.</p>' +
+      '<p class="muted" id="lastBackup" style="margin:0">' + (S.meta.lastBackup ? 'Last backup: ' + U.prettyFull(S.meta.lastBackup) + '.' : 'You have not made a backup yet.') + '</p>' +
       '<div class="row"><button type="button" class="btn" id="expJson">Download backup</button><button type="button" class="btn" id="expCsv">Download scores as CSV</button>' +
       '<label class="btn" for="impFile" style="cursor:pointer">Restore from backup</label><input type="file" id="impFile" accept=".json,application/json" hidden>' +
       '<button type="button" class="btn danger" id="wipe">Erase everything</button></div><p class="msg" id="dataMsg" role="status"></p></div>';
     body.innerHTML = '<div class="pgrid">' + left + right + '</div><div style="height:20px"></div>' + overview + '<div style="height:20px"></div>' + tools;
     updateCalc();
+  }
+
+  function trendSummary(mine, goal) {
+    var last = mine[mine.length - 1].correct, best = 0, parts = [];
+    mine.forEach(function (e) { if (e.correct > best) best = e.correct; });
+    parts.push('<strong>Latest: ' + last + ' correct.</strong>');
+    if (mine.length > 1) parts.push(trendWords(last, mine[mine.length - 2].correct));
+    if (mine.length > 2) { var d = last - mine[0].correct; parts.push(d > 0 ? 'Up ' + d + ' since the first score.' : d < 0 ? 'Down ' + (-d) + ' since the first score.' : 'Level with the first score.'); }
+    parts.push('Best: ' + best + '.');
+    if (goal) parts.push(last >= goal ? 'Goal of ' + goal + ' reached.' : (goal - last) + ' to go to reach the goal of ' + goal + '.');
+    return parts.join(' ');
   }
 
   function classOverview(cls) {
@@ -392,17 +612,16 @@
       var t = e.target;
       if (t.id === 'pAdd') {
         var reached = parseInt($('#pReached').value, 10), errs = parseInt($('#pErrors').value, 10) || 0, date = $('#pDate').value || U.today();
-        var cls = activeClass();
-        if (isNaN(reached) || reached < 0) { $('#pMsg').textContent = 'Enter how many were reached.'; return; }
-        if (errs > reached) { $('#pMsg').textContent = 'Errors cannot be more than reached.'; return; }
-        S.entries.push({ id: U.uid(), classId: cls.id, studentId: pv.student, kind: pv.kind, date: date, reached: reached, errors: errs, correct: reached - errs });
-        save(); renderProgress();
-        var m = $('#pMsg'); if (m) m.textContent = 'Saved.';
+        var cls = activeClass(), before = prevCorrect(pv.student, pv.kind);
+        var err = addEntry(cls, pv.student, pv.kind, date, reached, errs);
+        if (err) { $('#pMsg').textContent = err; return; }
+        renderProgress();
+        var m = $('#pMsg'); if (m) m.textContent = 'Saved: ' + (reached - errs) + ' correct. ' + trendWords(reached - errs, before);
         var r = $('#pReached'); if (r) r.focus();
       } else if (t.hasAttribute('data-del-entry')) {
         var id = t.getAttribute('data-del-entry'); S.entries = S.entries.filter(function (x) { return x.id !== id; }); save(); renderProgress();
       } else if (t.id === 'expJson') {
-        download('tallymark-backup-' + U.today() + '.json', JSON.stringify({ v: 1, classes: S.classes, entries: S.entries, goals: S.goals }, null, 1), 'application/json');
+        downloadBackup();
       } else if (t.id === 'expCsv') {
         var c = ctx(), rows = [['Date', 'Class', 'Student', 'Sheet', 'Reached', 'Errors', 'Correct']];
         S.entries.slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; }).forEach(function (e) {
@@ -427,6 +646,8 @@
         (o.classes || []).forEach(function (c) { if (c && c.id && Array.isArray(c.students) && !getClass(c.id)) { S.classes.push(c); nc++; } });
         var have = {}; S.entries.forEach(function (e) { have[e.id] = 1; });
         (o.entries || []).forEach(function (e) { if (e && e.id && !have[e.id]) { S.entries.push(e); ne++; } });
+        var haveS = {}; S.setups.forEach(function (u) { haveS[u.id] = 1; });
+        (o.setups || []).forEach(function (u) { if (u && u.id && u.name && u.data && !haveS[u.id]) S.setups.push(u); });
         Object.keys(o.goals || {}).forEach(function (k) { if (!S.goals[k]) S.goals[k] = o.goals[k]; });
         save(); renderProgress(); renderClassSelect();
         var m2 = $('#dataMsg'); if (m2) m2.textContent = 'Restored ' + nc + ' classes and ' + ne + ' scores.';
@@ -438,10 +659,12 @@
   /* ---------- Routing ---------- */
   function route() {
     var tab = (location.hash || '#make').replace('#', '');
-    if (['make', 'class', 'progress'].indexOf(tab) < 0) tab = 'make';
+    if (['make', 'class', 'progress', 'help'].indexOf(tab) < 0) tab = 'make';
     $$('.view').forEach(function (v) { v.hidden = v.getAttribute('data-view') !== tab; });
     $$('.tabs a').forEach(function (a) { if (a.getAttribute('data-tab') === tab) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
-    if (tab === 'make') { syncControls(); updateMake(); }
+    $('#welcome').hidden = !(tab === 'make' && !S.meta.welcomed);
+    renderNudge();
+    if (tab === 'make') { syncControls(); updateMake(); if (!$('#timerPanel').hidden) renderLog(); }
     if (tab === 'class') renderClasses();
     if (tab === 'progress') renderProgress();
     window.scrollTo(0, 0);
@@ -460,7 +683,7 @@
     window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
   }
 
-  wireMake(); wireClasses(); wireProgress();
+  wireMake(); wireSetups(); wireTimer(); wireNudge(); wireClasses(); wireProgress(); showClock();
   window.addEventListener('hashchange', route);
   route();
   if (!TM.store.ok) { var n = document.createElement('p'); n.className = 'note'; n.textContent = 'This browser is blocking saved data, so classes and scores will not be kept after you close the page.'; $('main').prepend(n); }
