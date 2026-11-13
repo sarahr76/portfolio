@@ -69,3 +69,9 @@ When you change any file, bump `VERSION` in `sw.js` (for example `tallymark-v2-2
 - **Paper size**: US Letter or A4. A4 PDFs use the same layout scaled to about 97%.
 - **Larger type** on fluency sheets: fewer, bigger items per page.
 - Letter sheets now have 10 per row.
+
+## Options by format
+Each format has its own options (js/formats/*.js, the `options` array). Fluency: timer length (30 sec, 1 min, 2 min), larger type, practice days row. Bingo: card size, free space, number of cards. Flashcards: 1 to 12 per page, optional printed backs for two-sided printing, cut lines, labels, scramble. Matching: pairs, card size, letter pairs (other case or a word that starts with the letter), cut lines, and an answer key (the teacher copy).
+
+## Make page layout
+The Make page is three numbered steps (what to make, what to practice, who and when) with a More options drawer for copies and paper size. The preview shows one page at a time, with tabs to switch. Saved setups are a menu at the top right.

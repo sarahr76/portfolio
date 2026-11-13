@@ -95,12 +95,14 @@
     id: 'bingo', name: 'Bingo cards', blurb: 'A different card for each student, with a caller list.',
     students: 'cards', copies: { teacher: 'Caller list' },
     options: [
-      { key: 'size', label: 'Card size', type: 'select', def: '5', choices: [{ v: '3', l: '3 x 3' }, { v: '4', l: '4 x 4' }, { v: '5', l: '5 x 5 with a free space' }] },
+      { key: 'size', label: 'Card size', type: 'select', def: '5', choices: [{ v: '3', l: '3 x 3' }, { v: '4', l: '4 x 4' }, { v: '5', l: '5 x 5' }] },
+      { key: 'free', label: 'Free space in the center', def: true },
       { key: 'cards', label: 'Number of cards when no class is chosen', type: 'number', def: 12, min: 2, max: 60 }
     ],
     plan: function (env) {
       var size0 = +env.opts.size || 5, student = [], teacher = [], warn = '', total = 0;
-      function need(n) { return n * n - (n % 2 ? 1 : 0); }
+      var free = env.opts.free !== false;
+      function need(n) { return n * n - (n % 2 && free ? 1 : 0); }
       env.sets.forEach(function (set) {
         var pool = set.pool(env.ctx), size = size0, name = TM.setName(set, env.ctx);
         while (size > 3 && need(size) > pool.length) size--;
@@ -108,7 +110,7 @@
         var count = env.students.length ? env.students.length : Math.max(1, Math.min(60, +env.opts.cards || 12)), cards = [];
         for (var i = 0; i < count; i++) {
           var cells = TM.deal(pool, need(size), env.seed([set.id, 'bingo', env.students.length ? env.students[i].id : i, env.sig]));
-          if (size % 2) cells.splice((size * size - 1) / 2, 0, 'free');
+          if (size % 2 && free) cells.splice((size * size - 1) / 2, 0, 'free');
           cards.push({ cells: cells, name: env.filled ? env.students[i].name : '' });
         }
         total += count;

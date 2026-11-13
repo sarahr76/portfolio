@@ -23,7 +23,7 @@
         rows += '<div class="r' + (t ? ' t' : '') + '">' + (t ? '<div class="cnt">' + ((i + 1) * L.cols) + '</div>' : '') + cells + '</div>';
       }
       var name = p.student ? '<span class="nm">' + esc(p.student) + '</span>' : '<i></i>';
-      var head = '<div class="top"><h2>' + esc(p.title) + '</h2><span class="tag' + (t ? ' t' : '') + '">' + (t ? 'Teacher copy' : '1 minute') + '</span></div>' +
+      var head = '<div class="top"><h2>' + esc(p.title) + '</h2><span class="tag' + (t ? ' t' : '') + '">' + (t ? 'Teacher copy' : (p.time || '1 minute')) + '</span></div>' +
         '<div class="meta"><div class="field">Name ' + name + '</div><div class="field">Date <i></i></div></div>' +
         '<div class="dir">' + esc(dirFor(p)) + '</div>';
       var foot;
@@ -32,8 +32,8 @@
           '<div class="missed">' + unitCap(p.unit) + 's missed <i></i></div>' +
           '<div class="foot"><span>' + esc(p.footer) + '</span><span>Correct = reached minus errors</span></div>';
       } else {
-        foot = '<div class="days"><div class="dl">Practice days <span>write the number correct</span></div><div class="dg">' +
-          DAYS.map(function (d) { return '<div class="dy"><b>' + d + '</b><i></i></div>'; }).join('') + '</div></div>' +
+        foot = (p.days === false ? '' : '<div class="days"><div class="dl">Practice days <span>write the number correct</span></div><div class="dg">' +
+          DAYS.map(function (d) { return '<div class="dy"><b>' + d + '</b><i></i></div>'; }).join('') + '</div></div>') +
           '<div class="foot"><span>' + esc(p.footer) + '</span><span>Stop when time is up</span></div>';
       }
       return '<section class="sheet" aria-label="' + esc(p.title) + (t ? ' teacher copy' : '') + '"><div class="page" style="--cols:' + L.cols + ';--rows:' + L.rows + ';--fs:' + (L.font / 0.085).toFixed(2) + 'cqw;--vs:' + vs + '">' +
@@ -43,7 +43,7 @@
     pdf: function (doc, K, p) {
       var t = p.teacher, L = p.layout, u = K.u, mx = K.mx, W = K.W, bottom = K.bottom, inner = K.inner, vis = visual(p);
       K.txt(p.title, mx, 0.88, 'Andika', 'bold', 4 * u, K.INK);
-      var tag = t ? 'Teacher copy' : '1 minute';
+      var tag = t ? 'Teacher copy' : (p.time || '1 minute');
       doc.setFont('helvetica', 'bold'); doc.setFontSize(K.pt(1.9 * u));
       var tw = doc.getTextWidth(tag), pw = tw + 2 * 2.4 * u, ph = 0.27, px = W - mx - pw, py = 0.88 - 0.2;
       doc.setLineWidth(0.02); doc.setDrawColor(K.RULE[0], K.RULE[1], K.RULE[2]);
@@ -64,7 +64,7 @@
       var lines = doc.splitTextToSize(K.safe(dirFor(p)), inner);
       var dy = y + 0.4, lh = 0.2;
       lines.forEach(function (l, i) { K.txt(l, mx, dy + i * lh, 'helvetica', 'normal', 2.1 * u, K.SOFT); });
-      var gt = dy + (lines.length - 1) * lh + 0.2, gb = t ? 9.2 : bottom - 0.28 - 1.1;
+      var gt = dy + (lines.length - 1) * lh + 0.2, gb = t ? 9.2 : bottom - 0.28 - (p.days === false ? 0.15 : 1.1);
       var rh = (gb - gt) / L.rows, off = t ? 4.5 * u : 0, cw = (inner - off) / L.cols, gx = mx + off;
       doc.setDrawColor(K.HAIR[0], K.HAIR[1], K.HAIR[2]); doc.setLineWidth(0.011);
       for (var r = 0; r < L.rows; r++) {
@@ -97,7 +97,7 @@
         doc.setFont('helvetica', 'normal'); doc.setFontSize(K.pt(1.9 * u));
         doc.setDrawColor(K.INK[0], K.INK[1], K.INK[2]); doc.line(mx + doc.getTextWidth(ml) + 0.12, 10.21, W - mx, 10.21);
         K.txt('Correct = reached minus errors', W - mx, bottom, 'helvetica', 'normal', 1.6 * u, K.FAINT, { align: 'right' });
-      } else {
+      } else if (p.days !== false) {
         var ty = bottom - 0.28 - 0.88, dw = (inner - 6 * 0.1) / 7;
         K.txt('Practice days', mx, ty, 'helvetica', 'bold', 1.9 * u, K.INK);
         K.txt('write the number correct', mx + 1.25, ty, 'helvetica', 'normal', 1.7 * u, K.FAINT);
@@ -107,24 +107,28 @@
           doc.roundedRect(bx, ty + 0.1, dw, 0.62, 0.085, 0.085, 'S');
           K.txt(d, bx + dw / 2, ty + 0.27, 'helvetica', 'bold', 1.6 * u, K.SOFT, { align: 'center' });
         });
-        K.txt('Stop when time is up', W - mx, bottom, 'helvetica', 'normal', 1.6 * u, K.FAINT, { align: 'right' });
       }
+      if (!t) K.txt('Stop when time is up', W - mx, bottom, 'helvetica', 'normal', 1.6 * u, K.FAINT, { align: 'right' });
       K.txt(p.footer, mx, bottom, 'helvetica', 'normal', 1.6 * u, K.FAINT);
     }
   });
 
   TM.registerFormat({
-    id: 'fluency', name: 'Fluency sheet', blurb: 'One-minute timed sheets, with a teacher copy for scoring.',
+    id: 'fluency', name: 'Fluency sheet', blurb: 'Timed sheets (one minute by default), with a teacher copy for scoring.',
     students: 'full', copies: { student: 'Student copies', teacher: 'Teacher copies' },
-    options: [{ key: 'large', label: 'Larger type, fewer per page', def: false }],
+    options: [
+      { key: 'time', label: 'Timer length', type: 'select', def: '60', choices: [{ v: '30', l: '30 seconds' }, { v: '60', l: '1 minute' }, { v: '120', l: '2 minutes' }] },
+      { key: 'large', label: 'Larger type, fewer per page', def: false },
+      { key: 'days', label: 'Practice days row on student copies', def: true }
+    ],
     plan: function (env) {
-      var student = [], teacher = [];
+      var student = [], teacher = [], tl = { '30': '30 seconds', '60': '1 minute', '120': '2 minutes' }[env.opts.time] || '1 minute';
       env.sets.forEach(function (set) {
         env.variants.forEach(function (v) {
           var gctx = env.opts && env.opts.large ? Object.assign({}, env.ctx, { large: true }) : env.ctx;
           var grid = TM.makeGrid(set, gctx, env.seed([set.id, env.sig, env.diff ? v.id : '']));
           var page = { type: 'fluency', setId: set.id, title: TM.setTitle(set, env.ctx), dir: set.dir, teacherNote: set.teacherNote, unit: set.unit,
-            list: grid.list, layout: grid.layout, student: v ? v.name : '', footer: env.footer };
+            list: grid.list, layout: grid.layout, student: v ? v.name : '', footer: env.footer, time: tl, days: env.opts.days !== false };
           var a = Object.assign({}, page, { teacher: false }), b = Object.assign({}, page, { teacher: true });
           student.push(a); teacher.push(b);
         });

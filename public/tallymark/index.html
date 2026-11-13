@@ -49,30 +49,33 @@
       </ol>
       <div class="row"><button type="button" class="btn primary" id="welcomeOk">Got it</button><a class="btn" href="#help" style="text-decoration:none">Read the help page</a></div>
     </div>
-    <div class="intro">
-      <h1>Sheets and games, <mark>scrambled fresh</mark> every week.</h1>
-      <p>Pick a format and what to practice. Print it or save a PDF, then time a minute and keep the score.</p>
+    <div class="intro head">
+      <div>
+        <h1>Make this week&rsquo;s <mark>sheets</mark></h1>
+        <p>Pick what to make and what to practice. The order scrambles itself every Monday.</p>
+      </div>
+      <details class="setupmenu" id="fsSetups">
+        <summary class="btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4"/></svg>Saved setups <span class="badge" id="badge-setups"></span></summary>
+        <div class="pop">
+          <div id="setupList" class="setups"></div>
+          <div class="row"><label class="field" for="setupName">Save what you picked<input type="text" id="setupName" maxlength="40" placeholder="Monday letters"></label><button type="button" class="btn" id="setupSave">Save</button></div>
+          <p class="note" id="setupMsg" role="status"></p>
+        </div>
+      </details>
     </div>
 
     <div class="make">
       <form class="controls" id="controls" autocomplete="off">
-        <details class="fs" id="fsSetups">
-          <summary>Saved setups <span class="badge" id="badge-setups"></span></summary>
-          <div id="setupList" class="setups"></div>
-          <div class="row"><label class="field" for="setupName">Save what you picked<input type="text" id="setupName" maxlength="40" placeholder="Monday letters"></label><button type="button" class="btn" id="setupSave">Save</button></div>
-          <p class="note" id="setupMsg" role="status"></p>
-        </details>
-
         <fieldset>
-          <legend>What to make</legend>
-          <div class="seg col fmt" id="formatSeg" role="radiogroup" aria-label="What to make"></div>
-          <div id="formatOpts" class="opts"></div>
+          <legend><span class="num">1</span>What to make</legend>
+          <div class="tiles" id="formatSeg" role="radiogroup" aria-label="What to make"></div>
+          <div class="group" id="optsGroup"><h3 id="optsTitle">Options</h3><div id="formatOpts" class="opts"></div></div>
         </fieldset>
 
         <fieldset>
-          <legend>What to practice</legend>
+          <legend><span class="num">2</span>What to practice</legend>
           <div class="group"><h3>Letters</h3><div class="chips" id="chips-letters"></div>
-            <label class="field" for="letters">Only these letters <span class="sub">(blank means all 26)</span>
+            <label class="field" for="letters">Only these letters <span class="sub">(optional, blank means all 26)</span>
               <input type="text" id="letters" maxlength="26" autocapitalize="off" spellcheck="false" placeholder="a b c d e"></label></div>
           <div class="group"><h3>Numbers</h3><div class="chips" id="chips-numbers"></div></div>
           <div class="group"><h3>Shapes and colors</h3><div class="chips" id="chips-shapes"></div></div>
@@ -89,47 +92,53 @@
         </fieldset>
 
         <fieldset>
-          <legend>Scramble</legend>
-          <div class="seg" role="radiogroup" aria-label="Scramble by">
-            <label><input type="radio" name="mode" value="weekly"><span>Every week</span></label>
-            <label><input type="radio" name="mode" value="code"><span>My own code</span></label>
+          <legend><span class="num">3</span>Who and when</legend>
+          <div class="group" id="fsStudents">
+            <label class="field" for="classSel">Students<select id="classSel"></select></label>
+            <div class="seg col" role="radiogroup" aria-label="Sheets for students" id="stuMode">
+              <label><input type="radio" name="studentMode" value="same"><span>Same sheet for everyone</span></label>
+              <label><input type="radio" name="studentMode" value="diff"><span>A different sheet for each student</span></label>
+            </div>
+            <div class="seg col" role="radiogroup" aria-label="Names on pages" id="nameMode">
+              <label><input type="radio" name="names" value="blank"><span>Blank name lines</span></label>
+              <label><input type="radio" name="names" value="filled"><span>Print each student&rsquo;s name</span></label>
+            </div>
+            <p class="note" id="studentNote"></p>
           </div>
-          <div id="weeklyBox" class="ctl">
-            <button type="button" class="btn small" id="wkPrev" aria-label="Earlier week">&lsaquo;</button>
-            <span id="wkLabel" class="wk" aria-live="polite"></span>
-            <button type="button" class="btn small" id="wkNext" aria-label="Later week">&rsaquo;</button>
-            <button type="button" class="btn small" id="wkNow" hidden>This week</button>
-          </div>
-          <div id="codeBox" class="ctl" hidden>
-            <label class="field" for="code">Code<input type="text" id="code" maxlength="40" placeholder="Room 12 Unit 3"></label>
-          </div>
-          <p class="note" id="scrambleNote"></p>
-          <button type="button" class="btn" id="reshuffle">Shuffle again</button>
-        </fieldset>
-
-        <fieldset id="fsStudents">
-          <legend>Students</legend>
-          <label class="field" for="classSel">Class<select id="classSel"></select></label>
-          <div class="seg col" role="radiogroup" aria-label="Sheets for students" id="stuMode">
-            <label><input type="radio" name="studentMode" value="same"><span>Same sheet for everyone</span></label>
-            <label><input type="radio" name="studentMode" value="diff"><span>A different sheet for each student</span></label>
-          </div>
-          <div class="seg col" role="radiogroup" aria-label="Names on pages" id="nameMode">
-            <label><input type="radio" name="names" value="blank"><span>Blank name lines</span></label>
-            <label><input type="radio" name="names" value="filled"><span>Print each student's name</span></label>
-          </div>
-          <p class="note" id="studentNote"></p>
-          <div class="chips">
-            <label class="chip" id="chipStudent"><input type="checkbox" id="copyStudent"> <span id="lblStudent">Student copies</span></label>
-            <label class="chip" id="chipTeacher"><input type="checkbox" id="copyTeacher"> <span id="lblTeacher">Teacher copies</span></label>
+          <div class="group">
+            <h3>Scramble</h3>
+            <div class="seg" role="radiogroup" aria-label="Scramble by">
+              <label><input type="radio" name="mode" value="weekly"><span>Every week</span></label>
+              <label><input type="radio" name="mode" value="code"><span>My own code</span></label>
+            </div>
+            <div id="weeklyBox" class="ctl">
+              <button type="button" class="btn small sq" id="wkPrev" aria-label="Earlier week">&lsaquo;</button>
+              <span id="wkLabel" class="wk" aria-live="polite"></span>
+              <button type="button" class="btn small sq" id="wkNext" aria-label="Later week">&rsaquo;</button>
+              <button type="button" class="btn small" id="wkNow" hidden>This week</button>
+            </div>
+            <div id="codeBox" class="ctl" hidden>
+              <label class="field" for="code">Code<input type="text" id="code" maxlength="40" placeholder="Room 12 Unit 3"></label>
+            </div>
+            <p class="note" id="scrambleNote"></p>
+            <button type="button" class="btn" id="reshuffle">Shuffle again</button>
           </div>
         </fieldset>
 
-        <fieldset>
-          <legend>Printing</legend>
-          <label class="field" for="paper">Paper size<select id="paper"><option value="letter">US Letter</option><option value="a4">A4</option></select></label>
-          <p class="note">A4 pages are the same layout, scaled slightly to fit.</p>
-        </fieldset>
+        <details class="fs more" id="fsMore">
+          <summary><span class="mt">More options</span><span class="msum" id="moreSum"></span></summary>
+          <div class="group">
+            <h3>Copies</h3>
+            <div class="chips">
+              <label class="chip" id="chipStudent"><input type="checkbox" id="copyStudent"> <span id="lblStudent">Student copies</span></label>
+              <label class="chip" id="chipTeacher"><input type="checkbox" id="copyTeacher"> <span id="lblTeacher">Teacher copies</span></label>
+            </div>
+          </div>
+          <div class="group">
+            <label class="field" for="paper">Paper size<select id="paper"><option value="letter">US Letter</option><option value="a4">A4</option></select></label>
+            <p class="note">A4 pages are the same layout, scaled slightly to fit.</p>
+          </div>
+        </details>
       </form>
 
       <div class="preview">
@@ -141,6 +150,7 @@
           </div>
           <span class="count" id="count" role="status" aria-live="polite"></span>
         </div>
+        <div class="pagenav" id="pageNav" role="group" aria-label="Pages in the preview"></div>
         <div class="panel timer" id="timerPanel" hidden>
           <div class="timer-top">
             <div class="clock" id="clock" role="timer" aria-label="Time left">1:00</div>

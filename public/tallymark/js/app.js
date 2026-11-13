@@ -12,7 +12,7 @@
   };
   var S = TM.store.load(DEFAULT), P = S.prefs;
   var offset = 0, salt = 0, editClassId = null;
-  var PREVIEW_MAX = 6;
+  var PREVIEW_MAX = 6, curPage = 0;
 
   function save() {
     if (!S.meta.since && (S.classes.length || S.entries.length)) S.meta.since = U.today();
@@ -58,8 +58,14 @@
 
   /* ---------- Make view ---------- */
   function buildFormats() {
+    var ICON = {
+      fluency: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+      bingo: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9.3h16M4 14.7h16M9.3 4v16M14.7 4v16"/>',
+      flashcards: '<rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/>',
+      memory: '<rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/><path d="M15 7h4M5 17h4"/>'
+    }, SHORT = { fluency: 'One-minute timed page', bingo: 'A card for each player', flashcards: 'Big cards to cut apart', memory: 'Memory pairs to cut apart' };
     $('#formatSeg').innerHTML = TM.formatList.map(function (f) {
-      return '<label><input type="radio" name="format" value="' + f.id + '"><span><strong>' + esc(f.name) + '</strong><small>' + esc(f.blurb) + '</small></span></label>';
+      return '<label><input type="radio" name="format" value="' + f.id + '"><span class="tile"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICON[f.id] || ICON.fluency) + '</svg><strong>' + esc(f.name) + '</strong><small>' + esc(SHORT[f.id] || f.blurb) + '</small></span></label>';
     }).join('');
   }
 
@@ -86,7 +92,7 @@
       }
     });
     $('#formatOpts').innerHTML = h;
-    $('#formatOpts').hidden = !h;
+    $('#optsGroup').hidden = !h; $('#optsTitle').textContent = 'Options for ' + fmt.name.toLowerCase();
   }
 
   function syncControls() {
@@ -116,10 +122,14 @@
       ? 'The order changes every Monday. Use the arrows to print another week.'
       : 'The same code always gives the same result. Share it with a teammate so you both print the same thing.';
     $('#fsStudents').hidden = fmt.students === 'none';
-    $('#stuMode').hidden = fmt.students !== 'full';
+    $('#stuMode').hidden = fmt.students !== 'full' || !hasStu; $('#nameMode').hidden = !hasStu;
     $('#chipStudent').hidden = !fmt.copies.student; $('#chipTeacher').hidden = !fmt.copies.teacher;
     if (fmt.copies.student) $('#lblStudent').textContent = fmt.copies.student;
     if (fmt.copies.teacher) $('#lblTeacher').textContent = fmt.copies.teacher;
+    var mo = [P.paper === 'a4' ? 'A4' : 'US Letter'];
+    if (fmt.copies.student && P.student) mo.push(fmt.copies.student.toLowerCase());
+    if (fmt.copies.teacher && P.teacher) mo.push(fmt.copies.teacher.toLowerCase());
+    $('#moreSum').textContent = mo.join(' \u00b7 ');
     $$('input[name=studentMode]').forEach(function (r) { r.checked = r.value === P.studentMode; r.disabled = !hasStu && r.value === 'diff'; });
     var diff = fmt.students === 'full' && P.studentMode === 'diff' && hasStu;
     $$('input[name=names]').forEach(function (r) { r.checked = (diff ? 'filled' : P.names) === r.value; r.disabled = !hasStu || diff; });
@@ -140,11 +150,36 @@
     } else {
       sheets.innerHTML = pl.pages.slice(0, PREVIEW_MAX).map(TM.pageHTML).join('');
     }
+    renderPageNav(pl.pages.slice(0, PREVIEW_MAX));
     $('#count').textContent = n ? n + (n === 1 ? ' page' : ' pages') + pl.info : '';
     $('#moreNote').textContent = n > PREVIEW_MAX ? 'Showing the first ' + PREVIEW_MAX + ' of ' + n + ' pages. Print and Save PDF include all of them.' : (pl.warn && n ? pl.warn : '');
     $('#printBtn').disabled = !n; $('#pdfBtn').disabled = !n;
     applyPaper(); renderSetups();
     save();
+  }
+
+  function pageLabel(p, i) {
+    var t = p.title || ('Page ' + (i + 1));
+    if (p.type === 'fluency') t += p.teacher ? ' \u00b7 Teacher' : ' \u00b7 Student';
+    return t;
+  }
+  function renderPageNav(pages) {
+    var nav = $('#pageNav');
+    if (curPage >= pages.length) curPage = 0;
+    nav.hidden = pages.length < 2;
+    var base = pages.map(pageLabel), seen = {};
+    base.forEach(function (l) { seen[l] = (seen[l] || 0) + 1; });
+    var run = {};
+    nav.innerHTML = pages.length < 2 ? '' : pages.map(function (p, i) {
+      var l = base[i];
+      if (seen[l] > 1) { run[l] = (run[l] || 0) + 1; l += ' (' + run[l] + ')'; }
+      return '<button type="button" class="pill" data-page="' + i + '" title="' + esc(l) + '" aria-pressed="false">' + esc(l) + '</button>';
+    }).join('');
+    showPage();
+  }
+  function showPage() {
+    $$('#sheets .sheet').forEach(function (el, i) { el.classList.toggle('cur', i === curPage); });
+    $$('#pageNav .pill').forEach(function (b, i) { b.setAttribute('aria-pressed', String(i === curPage)); });
   }
 
   function applyPaper() {
@@ -192,7 +227,8 @@
       } else if (t.hasAttribute('data-opt')) {
         var fmt = currentFormat(); P.opts[fmt.id] = P.opts[fmt.id] || {};
         P.opts[fmt.id][t.getAttribute('data-opt')] = t.type === 'checkbox' ? t.checked : t.type === 'number' ? (parseInt(t.value, 10) || 0) : t.value;
-      } else if (t.name === 'format') { P.format = t.value; renderFormatOpts(); }
+        if (t.getAttribute('data-opt') === 'time') syncTimeOpt();
+      } else if (t.name === 'format') { P.format = t.value; curPage = 0; renderFormatOpts(); }
       else if (t.name === 'mode') { P.mode = t.value; salt = 0; }
       else if (t.name === 'studentMode') P.studentMode = t.value;
       else if (t.name === 'names') P.names = t.value;
@@ -230,7 +266,6 @@
   function renderSetups() {
     var box = $('#setupList'); if (!box) return;
     $('#badge-setups').textContent = S.setups.length ? S.setups.length + ' saved' : '';
-    if (!renderSetups.once) { renderSetups.once = 1; $('#fsSetups').open = S.setups.length > 0; }
     if (!S.setups.length) { box.innerHTML = '<p class="note">Save what you have picked so you can bring it back in one click.</p>'; return; }
     box.innerHTML = S.setups.map(function (u) {
       return '<div class="setup-row"><button type="button" class="btn use" data-use="' + u.id + '">' + esc(u.name) + '</button>' +
@@ -239,6 +274,10 @@
   }
 
   function wireSetups() {
+    $('#fsSetups').addEventListener('click', function (e) { if (e.target.hasAttribute('data-use')) $('#fsSetups').open = false; });
+    document.addEventListener('click', function (e) { var d = $('#fsSetups'); if (d.open && !d.contains(e.target)) d.open = false; });
+    document.addEventListener('keydown', function (e) { var d = $('#fsSetups'); if (e.key === 'Escape' && d.open) { d.open = false; d.querySelector('summary').focus(); } });
+    $('#pageNav').addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-page]'); if (b) { curPage = +b.getAttribute('data-page'); showPage(); } });
     $('#setupSave').addEventListener('click', saveSetup);
     $('#setupName').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); saveSetup(); } });
     function saveSetup() {
@@ -267,6 +306,11 @@
   var lv = { student: '', kind: '' };
   var T = { len: 60, left: 60, end: 0, id: 0, run: false, audio: null, lock: null, done: false };
 
+  function syncTimeOpt() {
+    var n = parseInt(optsFor(TM.formats.fluency).time, 10) || 60;
+    if (T.run || n === T.len) return;
+    T.len = n; T.left = n; T.done = false; $('#tLen').value = n; showClock();
+  }
   function clockText(n) { var m = Math.floor(n / 60), r = n % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
   function showClock() {
     var c = $('#clock'); c.textContent = clockText(T.left); c.classList.toggle('done', T.done);
@@ -357,6 +401,7 @@
       panel.hidden = !panel.hidden; btn.setAttribute('aria-expanded', String(!panel.hidden));
       if (!panel.hidden) { renderLog(); showClock(); }
     });
+    syncTimeOpt();
     $('#tStart').addEventListener('click', startPause);
     $('#tReset').addEventListener('click', resetTimer);
     $('#tLen').addEventListener('input', function (e) {

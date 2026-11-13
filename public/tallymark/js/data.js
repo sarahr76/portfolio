@@ -21,6 +21,9 @@
     nouns: words('apple baby back ball bear bed bell bird birthday boat box boy bread brother cake car cat chair chicken children corn cow day dog doll door duck egg eye farm farmer father feet fire fish floor flower game garden girl goodbye grass ground hand head hill home horse house kitty leg letter man men milk money morning mother name nest night paper party picture pig rabbit rain ring robin school seed sheep shoe sister snow song squirrel stick street sun table thing time top toy tree watch water way wind window wood')
   };
   TM.DOLCH = DOLCH;
+  // One easy word for each letter, used by matching cards that pair a letter with a word.
+  TM.ALPHA_WORDS = { a: 'apple', b: 'ball', c: 'cat', d: 'dog', e: 'egg', f: 'fish', g: 'goat', h: 'hat', i: 'igloo', j: 'jam', k: 'kite', l: 'lion', m: 'moon',
+    n: 'nest', o: 'octopus', p: 'pig', q: 'queen', r: 'rain', s: 'sun', t: 'tree', u: 'umbrella', v: 'van', w: 'web', x: 'x-ray', y: 'yo-yo', z: 'zebra' };
 
   /* ---------- Layouts ---------- */
   var LETTER = function () { return { cols: 10, rows: 13, font: 0.44 }; };
