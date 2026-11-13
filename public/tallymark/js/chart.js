@@ -3,11 +3,10 @@
   var TM = window.TM = window.TM || {};
   var esc = TM.util.esc;
 
-  function niceMax(v) {
-    if (v <= 10) return 10;
-    var p = Math.pow(10, Math.floor(Math.log10(v))), n = v / p;
-    var step = n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10;
-    return step * p;
+  // Four even steps with whole-number labels (10, 20, 30, 40 rather than 12.5, 25, 37.5).
+  function niceStep(v) {
+    var raw = Math.max(v / 4, 1), p = Math.pow(10, Math.floor(Math.log10(raw))), n = raw / p;
+    return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * p;
   }
   function parse(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2], 12).getTime(); }
   function short(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2], 12).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
@@ -18,14 +17,15 @@
     var iw = W - ml - mr, ih = H - mt - mb;
     var top = 0; points.forEach(function (p) { top = Math.max(top, p.value); });
     if (goal) top = Math.max(top, goal);
-    var max = niceMax(Math.max(top * 1.08, 5));
+    var step = niceStep(Math.max(top * 1.08, 4)), max = step * 4;
     function y(v) { return mt + ih - (v / max) * ih; }
     var t0 = points.length ? parse(points[0].date) : 0, t1 = points.length ? parse(points[points.length - 1].date) : 0;
-    function x(d) { return points.length < 2 || t1 === t0 ? ml + iw / 2 : ml + ((parse(d) - t0) / (t1 - t0)) * iw; }
+    var pad = 16;
+    function x(d) { return points.length < 2 || t1 === t0 ? ml + iw / 2 : ml + pad + ((parse(d) - t0) / (t1 - t0)) * (iw - 2 * pad); }
 
     var g = '';
     for (var i = 0; i <= 4; i++) {
-      var v = (max / 4) * i, yy = y(v);
+      var v = step * i, yy = y(v);
       g += '<line class="gl" x1="' + ml + '" x2="' + (W - mr) + '" y1="' + yy + '" y2="' + yy + '"/>';
       g += '<text class="ax" x="' + (ml - 8) + '" y="' + (yy + 4) + '" text-anchor="end">' + (Math.round(v * 10) / 10) + '</text>';
     }
