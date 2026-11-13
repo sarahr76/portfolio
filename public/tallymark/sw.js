@@ -1,7 +1,7 @@
 /* Tallymark service worker: makes the app work offline.
    Pages and files are fetched fresh when online, and served from the saved copy when offline.
    Change VERSION whenever you add or rename files, so old copies are cleared. */
-var VERSION = 'tallymark-v2-6';
+var VERSION = 'tallymark-v2-7';
 var FILES = [
   './',
   'css/styles.css',

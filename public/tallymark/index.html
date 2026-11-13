@@ -185,32 +185,61 @@
   <section class="view" id="view-help" data-view="help" hidden>
     <div class="intro">
       <h1>How <mark>Tallymark</mark> works.</h1>
-      <p>Everything here runs in your browser. Nothing is uploaded and there is no account.</p>
+      <p>Everything runs in your browser. Nothing is uploaded and there is no account.</p>
     </div>
+
     <div class="help">
-      <div class="panel quick">
-        <h2>Time a one-minute sheet</h2>
-        <ol>
-          <li>On Make sheets, choose <strong>Fluency sheet</strong> and print the student copy and the teacher copy.</li>
-          <li>Press <strong>Timer and score</strong>, then <strong>Start</strong>. Say go, and the child reads across each row.</li>
-          <li>When the chime sounds, draw a line after the last item reached on the teacher copy. Slash each miss.</li>
-          <li>Type what was reached and how many errors. <strong>Correct = reached minus errors.</strong> Save it to add it to the chart on the Progress tab.</li>
-        </ol>
-        <p class="note">To save scores, add a class and its students on the Classes tab first.</p>
+      <ol class="steps" aria-label="Time a one-minute sheet in four steps">
+        <li>
+          <svg class="tally" viewBox="0 0 40 32" aria-hidden="true"><path d="M20 5v22"/></svg>
+          <h2>Print the sheets</h2>
+          <p>Choose <strong>Fluency sheet</strong>, then print the student copy and the teacher copy.</p>
+        </li>
+        <li>
+          <svg class="tally" viewBox="0 0 40 32" aria-hidden="true"><path d="M14 5v22M26 5v22"/></svg>
+          <h2>Start the timer</h2>
+          <p>Press <strong>Timer and score</strong>, then Start. Say go, and the child reads across each row.</p>
+        </li>
+        <li>
+          <svg class="tally" viewBox="0 0 40 32" aria-hidden="true"><path d="M9 5v22M20 5v22M31 5v22"/></svg>
+          <h2>Mark the teacher copy</h2>
+          <p>Slash each miss. When the chime sounds, draw a line after the last item reached.</p>
+        </li>
+        <li>
+          <svg class="tally" viewBox="0 0 40 32" aria-hidden="true"><path d="M5 5v22M15 5v22M25 5v22M35 5v22"/></svg>
+          <h2>Save the score</h2>
+          <p>Enter reached and errors. Tallymark works out the rest and adds it to the chart.</p>
+        </li>
+      </ol>
+
+      <div class="example" aria-label="Scoring example">
+        <div class="ex-sheet" aria-hidden="true">
+          <div class="ex-row"><span>G</span><span>H</span><span class="miss">N</span><span>I</span><span>O</span><span>D</span></div>
+          <div class="ex-row"><span>Z</span><span>X</span><span>E</span><span class="miss">S</span><span class="stop">P</span><span>T</span></div>
+        </div>
+        <div class="ex-text">
+          <h2>How the score works</h2>
+          <p>The child reached 11 letters before time ran out and missed 2. The count at the end of each row on the teacher copy makes the total easy to find.</p>
+          <p class="sum"><span>11</span> reached <i>&minus;</i> <span>2</span> errors <i>=</i> <strong>9 correct</strong></p>
+          <p class="note">To save scores, add a class and its students on the Classes tab first.</p>
+        </div>
       </div>
-      <h2 class="more">More answers</h2>
-      <details><summary>How does the weekly scramble work?</summary>
-        <p>The week's Monday date decides the order, so the same week always gives the same sheet and next week gives a new one. Every item appears equally often, and the same item never sits next to itself. Prefer your own? Choose <strong>My own code</strong> and type any words, like Room 12 Unit 3. The same code always gives the same sheet.</p></details>
-      <details><summary>What are saved setups?</summary>
-        <p>A setup remembers your format, sets and options. Pick them once, type a name under <strong>Saved setups</strong> and press Save. Press the name any time to bring them back.</p></details>
-      <details><summary>How do I print well, or print on A4?</summary>
-        <p>Choose US Letter or A4 under Printing. In the print dialog, set scale to 100% (Actual size) and turn off headers and footers. If a browser prints oddly, use <strong>Save PDF</strong> and print the file. <strong>Larger type</strong> gives fewer, bigger items per page, which suits early readers.</p></details>
-      <details><summary>Where is my data, and how do I back it up?</summary>
-        <p>Class lists, scores and setups are saved only in this browser. They will not follow you to another device, and clearing your browsing data erases them. On the Progress tab, press <strong>Download backup</strong> now and then, and <strong>Restore from backup</strong> to bring it back. Tallymark reminds you after 30 days.</p></details>
-      <details><summary>Can I use it offline or install it?</summary>
-        <p>Open the site once, then use your browser's Install option. After that it works without internet. On an iPhone or iPad, tap Share, then Add to Home Screen.</p></details>
-      <details><summary>Is it free? Do I need an account?</summary>
-        <p>It is free and needs no account. Because nothing is uploaded, there is nothing for anyone else to see.</p></details>
+
+      <h2 class="more">Good to know</h2>
+      <div class="faq">
+        <section><h3>The weekly scramble</h3>
+          <p>The week's Monday date decides the order, so the same week always gives the same sheet and next week brings a new one. For your own order, choose <strong>My own code</strong> and type any words.</p></section>
+        <section><h3>Saved setups</h3>
+          <p>Pick a format, sets and options once, then type a name under <strong>Saved setups</strong> and press Save. Press the name any time to bring them back.</p></section>
+        <section><h3>Printing and A4</h3>
+          <p>Choose US Letter or A4 under Printing. In the print dialog, use 100% scale and turn off headers and footers. If a browser prints oddly, press <strong>Save PDF</strong> and print the file.</p></section>
+        <section><h3>Your data and backups</h3>
+          <p>Classes, scores and setups live only in this browser, so they do not follow you to another device. Press <strong>Download backup</strong> on the Progress tab now and then. Tallymark reminds you after 30 days.</p></section>
+        <section><h3>Offline and install</h3>
+          <p>Open the site once, then use your browser's Install option. It works without internet after that. On an iPhone or iPad, tap Share, then Add to Home Screen.</p></section>
+        <section><h3>Cost and accounts</h3>
+          <p>It is free and needs no account. Nothing is uploaded, so there is nothing for anyone else to see.</p></section>
+      </div>
     </div>
   </section>
 </main>
