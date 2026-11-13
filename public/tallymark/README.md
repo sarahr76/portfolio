@@ -75,3 +75,7 @@ Each format has its own options (js/formats/*.js, the `options` array). Fluency:
 
 ## Make page layout
 The Make page is three numbered steps (what to make, what to practice, who and when) with a More options drawer for copies and paper size. The preview shows one page at a time, with tabs to switch. Saved setups are a menu at the top right.
+
+## Sample classroom
+
+`js/demo.js` builds two made-up classes, about ten weeks of scores and three saved setups. Buttons labelled "Load a sample classroom" appear on the Classes page, the Progress page and under Your data. Every sample record has an id starting with `demo-`, so "Remove sample classroom" deletes only sample data and never your own.
