@@ -1405,7 +1405,7 @@ export const tallymark: CaseStudy = {
   hero: {
     label: 'Hero: the Tallymark app',
     src: '/tallymark-study/hero.webp',
-    alt: 'The Tallymark app: the headline “Sheets and games, scrambled fresh every week.”, a list of formats (fluency sheet, bingo, flashcards, matching cards) and a preview of a letter-name sheet with Print and Save PDF buttons.',
+    alt: 'The Tallymark app: the headline “Sheets and games, scrambled fresh every week.”, a list of formats (fluency sheet, bingo, flashcards, matching cards) and a preview of a letter-name sheet with Print, Save PDF and Timer and score buttons.',
     priority: true,
     width: 1600,
     height: 900,
@@ -1425,7 +1425,7 @@ export const tallymark: CaseStudy = {
     ],
     constraintsIntro: 'A few constraints shaped everything else:',
     constraints: [
-      'It has to print well on plain US Letter paper, in black and white.',
+      'It has to print well on plain paper in black and white, on US Letter or A4.',
       'It has to be free to host and work with no account or server.',
       'Children’s names and scores must never leave the device.',
     ],
