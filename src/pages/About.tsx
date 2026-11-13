@@ -10,6 +10,8 @@ export function About() {
     <>
       <Head>
         <title>About | Sarah Reilly</title>
+        <meta property="og:title" content="About Sarah Reilly" />
+        <meta property="og:description" content="Sarah Reilly is a UX/UI designer in Cincinnati, Ohio, who designs and builds design systems. Open to remote roles." />
         <meta
           name="description"
           content="Sarah Reilly is a UX/UI designer in Cincinnati, Ohio, who designs and builds design systems. Open to remote roles."
@@ -19,13 +21,18 @@ export function About() {
       <div className="container">
         <section className={styles.intro} aria-labelledby="about-title">
           <div className={styles.photo}>
-            <img src="/desk-illustration.svg" width={320} height={400} alt="Illustration of a designer’s desk: a laptop showing a color palette, a mug, a plant and a sketchbook." />
+            <img src="/sarah-portrait.webp" width={800} height={787} alt="Illustration of Sarah: a smiling woman with long wavy blonde hair, a striped shirt and overalls, framed by leafy branches." />
           </div>
           <div>
             <h1 id="about-title">Hi, I’m Sarah.</h1>
             <div className={styles.prose}>
               {about.intro.map((p) => <p key={p.slice(0, 20)}>{p}</p>)}
             </div>
+            <p style={{ marginTop: 'var(--space-3)', color: 'var(--color-ink-soft)' }}>
+              <span className="label">Currently reading</span>{' '}
+              <span style={{ fontWeight: 700, color: 'var(--color-ink)' }}>{about.currently.reading}</span>
+              <span style={{ fontSize: 'var(--text-small)' }}> · updated {about.currently.updated}</span>
+            </p>
             <div className={styles.actions}>
               <Button href={site.resume.href} external kind="PDF">View résumé</Button>
               <Button variant="secondary" href={site.linkedin} external>Connect on LinkedIn</Button>
@@ -84,7 +91,7 @@ export function About() {
           <p className="label">Contact</p>
           <h2 style={{ margin: 'var(--space-2) 0 0' }}>Let’s talk</h2>
           <p style={{ marginTop: 'var(--space-2)', color: 'var(--color-ink-soft)', maxWidth: 'var(--reading-width)' }}>
-            Looking for a remote UX/UI design role, full-time or part-time. The fastest way to reach me is below.
+            Looking for a remote UX/UI design role: full-time, part-time or contract. The fastest way to reach me is below.
           </p>
           <div className={styles.contactGrid}>
             {site.email && (

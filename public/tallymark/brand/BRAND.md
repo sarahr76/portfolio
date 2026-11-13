@@ -12,10 +12,10 @@ Tallymark makes printable fluency sheets, bingo, flashcards and matching cards f
 - No emoji. No exclamation marks.
 
 ## Logo
-- Use `assets/Logo/logo-lockup.svg` on light grounds and `logo-lockup-on-dark.svg` on dark. Use `logo-lockup-one-color.svg` for single-ink print and `logo-mark.svg` when the name is already nearby.
+- Use `brand/logo-lockup.svg` on light grounds and `logo-lockup-on-dark.svg` on dark. Use `logo-lockup-one-color.svg` for single-ink print and `logo-mark.svg` when the name is already nearby.
 - The mark is four vertical bars and one diagonal slash: a tally. Bars are `primary`; the slash is `pen`. On dark, bars are white and the slash is `#ff6b78`.
 - Keep clear space of one bar width on every side, and a minimum mark height of 16px. Never recolor, rotate, outline or add effects.
-- App icon: `assets/Logo/app-icon.svg`, a navy tile with a coral slash. Maskable icons keep the mark inside the central 80%.
+- App icon: `brand/app-icon.svg`, a navy tile with a coral slash. Maskable icons keep the mark inside the central 80%.
 - `<img>` cannot inherit color, so the one-color lockup is navy `#1b2f5e`; make a white copy for dark ink-on-print needs.
 
 ## Color
@@ -23,7 +23,7 @@ Tallymark makes printable fluency sheets, bingo, flashcards and matching cards f
 - `primary` fills the main action; text on it is `primary-fg`. `alt` is the secondary action and the 3px focus ring.
 - `pen` is for teacher marks, the logo slash and errors, always with a word beside it. `ok` is for confirmation, always with a word or check.
 - `hi` sits behind a single key word per heading; keep `fg` text on it.
-- Printed sheets are always `paper` with `ink`, in both themes, because they model paper.
+- Printed sheets are always `paper` with `ink`, in both themes, because they model paper. Small printed text (counts, footers, labels) uses `faint`, which clears 5:1 on paper; the dashed cut lines use it too.
 - Dark theme lightens `primary` and `alt` and darkens their text (`primary-fg`, `alt-fg`) rather than using white.
 
 ## Type
@@ -34,7 +34,8 @@ Tallymark makes printable fluency sheets, bingo, flashcards and matching cards f
 ## Layout and shape
 - Buttons and inputs use `radius-md`, panels `radius-lg`, chips and the page tag `radius-pill`. Keep a 16px minimum gutter on phones and a 1180px maximum content width.
 - Prefer borders in `line` to shadows.
-- Tap targets are at least 44px tall.
+- Tap targets are at least 44px tall (`--tap`), including chips, tabs, inputs and the small buttons.
+- Radii are tokens: `--radius-md` 10px, `--radius-lg` 14px, `--radius-pill` for chips and tags.
 
 ## Printed sheets
 - US Letter, 0.595in side margins, one title, a Name and Date line, one-line directions, then the grid, then a footer with the week.
@@ -44,7 +45,7 @@ Tallymark makes printable fluency sheets, bingo, flashcards and matching cards f
 ## Accessibility
 - Body and secondary text meet 4.5:1 in light and dark; the focus ring is a solid 3px `alt` outline with 2px offset.
 - Never rely on red or green alone: pair `pen` and `ok` with words.
-- Respect the system color scheme and reduced motion; there is no animation to disable.
+- Respect the system color scheme and reduced motion. The one animation, the logo slash drawing in on load, is turned off when reduced motion is requested.
 
 ## Naming
 - "Tallymark" is a working name. Check trademarks, domains and app-store names before launch.

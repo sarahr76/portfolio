@@ -11,6 +11,8 @@ export function Process() {
     <>
       <Head>
         <title>Process & tools | Sarah Reilly</title>
+        <meta property="og:title" content="How Sarah Reilly works" />
+        <meta property="og:description" content="How Sarah Reilly works: from understanding a problem to a documented design system and shipped product, with the tools she uses." />
         <meta
           name="description"
           content="How Sarah Reilly works: from understanding a problem to a documented design system and shipped product, with the tools she uses."
@@ -41,7 +43,7 @@ export function Process() {
       <section className={`${styles.section} ${styles.band}`}>
         <div className="container">
           <SectionHeader label="02 · In practice" title="Where this shows up">
-            Past employer work, shared as text only and kept anonymous.
+            Past employer work, kept anonymous. The visuals are my own redrawn illustrations, not the real product.
           </SectionHeader>
           <div className={`${styles.grid} ${styles.grid2}`}>
             {process.inPractice.map((p) => (

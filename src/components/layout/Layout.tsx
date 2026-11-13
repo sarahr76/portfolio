@@ -19,6 +19,10 @@ function ScrollToHash() {
 }
 
 export function Layout() {
+  const { pathname } = useLocation()
+  // The live site serves every page with a trailing slash (/about/), so the canonical does too.
+  const path = pathname.replace(/\/+$/, '')
+  const pageUrl = `${site.url}${path}/`
   return (
     <>
       {/* Site-wide defaults. Each page overrides the title and description. */}
@@ -26,6 +30,13 @@ export function Layout() {
         <title>{site.title}</title>
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={site.title} />
+        <link rel="canonical" href={pageUrl} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={`${site.url}${site.ogImage}`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={site.ogImageAlt} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <ScrollToHash />
       <a className="skip-link" href="#main">Skip to content</a>

@@ -7,39 +7,31 @@
 .status { margin-top: var(--space-3); font-size: var(--text-small); color: var(--color-ink-soft); }
 .portrait {
   display: flex; align-items: center; justify-content: center; text-align: center;
-  width: 100%; max-width: 340px; aspect-ratio: 1; margin-inline: auto;
-  border-radius: 50%; background: var(--color-sand); color: var(--color-ink-soft); font-size: var(--text-small);
-  overflow: hidden;
+  width: 100%; max-width: 540px; aspect-ratio: 3 / 2; margin-inline: auto;
+  background: transparent; color: var(--color-ink-soft); font-size: var(--text-small);
 }
-.portrait img, .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .workGrid { display: grid; gap: var(--space-4); }
 .proGrid { display: grid; gap: var(--space-4); }
+.smallGrid { display: grid; gap: var(--space-3); }
 .swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); margin-block: var(--space-4); }
 .swatch { display: grid; gap: 6px; }
 .chip { height: 56px; border-radius: var(--radius-sm); border: 1px solid var(--color-line); }
 .three { display: grid; gap: var(--space-4); }
-.about { display: grid; gap: var(--space-4); align-items: center; }
-.avatar {
-  display: flex; align-items: center; justify-content: center; text-align: center;
-  width: 160px; aspect-ratio: 1; border-radius: 50%;
-  background: var(--color-sand); color: var(--color-ink-soft); font-size: var(--text-small);
-  overflow: hidden;
-}
 .cta { text-align: center; }
 .cta .actions { justify-content: center; }
 
 @media (min-width: 720px) {
   .section { padding-block: var(--space-7); }
-  .hero { grid-template-columns: 1.3fr 0.8fr; align-items: center; gap: var(--space-6); padding-block: var(--space-7); }
+  .hero { grid-template-columns: 1fr 1fr; align-items: center; gap: var(--space-5); padding-block: var(--space-7); }
   .hero .portrait { margin-inline: 0; }
   .workGrid { grid-template-columns: 1fr 1fr; }
   .workGrid > :first-child { grid-column: 1 / -1; }
   .proGrid { grid-template-columns: 1fr 1fr; }
-  .swatches { grid-template-columns: repeat(6, 1fr); }
+  .smallGrid { grid-template-columns: repeat(3, 1fr); }
+  .swatches { grid-template-columns: repeat(5, 1fr); }
   .three { grid-template-columns: repeat(3, 1fr); }
-  .about { grid-template-columns: 200px 1fr; gap: var(--space-5); }
-  .avatar { width: 200px; }
-}
+    }
 
 /* First-visit hero entrance: ~0.5s in total, headline first, illustration last. */
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }

@@ -15,12 +15,14 @@ type Props = {
   imageSrcMobile?: string
   /** Compact card with no image box, for projects without visuals. */
   textOnly?: boolean
+  /** Smaller card for the "Smaller projects" row: tighter padding and type. */
+  compact?: boolean
 }
 
-export function ProjectCard({ kicker, title, summary, tags, to, imageSrc, imageAlt = '', imageSrcMobile, textOnly = false }: Props) {
+export function ProjectCard({ kicker, title, summary, tags, to, imageSrc, imageAlt = '', imageSrcMobile, textOnly = false, compact = false }: Props) {
   const reveal = useReveal<HTMLElement>()
   return (
-    <article ref={reveal} className={styles.card}>
+    <article ref={reveal} className={`${styles.card} ${compact ? styles.compact : ''}`}>
       {textOnly ? null : imageSrc ? (
         <picture>
           {imageSrcMobile && <source media="(max-width: 719px)" srcSet={imageSrcMobile} />}

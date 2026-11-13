@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Head } from 'vite-react-ssg'
-import { Link } from 'react-router-dom'
 import { projects } from '../content/projects'
 import { Button } from '../components/ui/Button'
 import { Reveal } from '../components/ui/Reveal'
@@ -16,7 +15,6 @@ const peek = [
   ['--color-accent', '#B04A30'],
   ['--color-ink', '#2B2320'],
   ['--color-sage', '#6F8F72'],
-  ['--space-4', null],
 ] as const
 
 const approach = [
@@ -44,6 +42,7 @@ export function Home() {
           content="Portfolio of Sarah Reilly, a UX/UI designer with a front-end background who designs and builds design systems."
         />
         <meta property="og:title" content="Sarah Reilly | UX/UI designer who builds design systems" />
+        <meta property="og:description" content="Portfolio of Sarah Reilly, a UX/UI designer with a front-end background who designs and builds design systems." />
       </Head>
 
       {/* 1. Hero */}
@@ -56,10 +55,10 @@ export function Home() {
               <Button to="/#work">See my work</Button>
               <Button variant="secondary" to="/about#contact">Get in touch</Button>
             </div>
-            <p className={styles.status}>UX/UI designer · open to remote roles, full-time or part-time</p>
+            <p className={styles.status}>UX/UI designer · open to remote roles: full-time, part-time or contract</p>
           </div>
           <div className={styles.portrait}>
-            <img src="/desk-illustration.svg" width={400} height={400} alt="Illustration of a designer’s desk: a laptop showing a color palette, a mug, a plant and a sketchbook." />
+            <img src="/home-illustration.webp" width={1200} height={800} alt="Illustration of a designer’s desk: a laptop, a trailing plant on a stack of books, a steaming mug and a cup of pencils." />
           </div>
         </section>
       </div>
@@ -84,9 +83,46 @@ export function Home() {
             ))}
           </div>
 
-          <h3 style={{ margin: 'var(--space-6) 0 var(--space-1)' }}>Professional work</h3>
+        </div>
+      </section>
+
+      {/* 3. How I work, with a peek at the system */}
+      <section className={`${styles.section} ${styles.band}`}>
+        <Reveal className="container">
+          <SectionHeader label="Approach" title="How I work" />
+          <div className={styles.three}>
+            {approach.map((a) => (
+              <Card key={a.title} outline>
+                <h3>{a.title}</h3>
+                <p style={{ marginTop: 'var(--space-2)', color: 'var(--color-ink-soft)' }}>{a.text}</p>
+              </Card>
+            ))}
+          </div>
+          <h3 id="peek-title" style={{ marginTop: 'var(--space-6)' }}>A peek at the system behind it</h3>
+          <div className={styles.swatches}>
+            {peek.map(([token, hex], i) => (
+              <Reveal key={token} className={`${styles.swatch} reveal-pop`} style={{ transitionDelay: `${i * 70}ms` }}>
+                <div
+                  className={styles.chip}
+                  style={{ background: hex }}
+                  aria-hidden="true"
+                >
+                </div>
+                <TokenCaption>{token}</TokenCaption>
+              </Reveal>
+            ))}
+          </div>
+          <Button variant="secondary" to="/process">Read my full process →</Button>
+        </Reveal>
+      </section>
+
+      {/* 4. More work */}
+      <section className={styles.section} aria-labelledby="more-title">
+        <div className="container">
+          <h2 id="more-title" style={{ marginBottom: 'var(--space-5)' }}>More work</h2>
+          <h3 style={{ margin: '0 0 var(--space-1)' }}>Professional work</h3>
           <p style={{ marginBottom: 'var(--space-4)', color: 'var(--color-ink-soft)', maxWidth: 'var(--reading-width)' }}>
-            Past employer projects, shared as text only and kept anonymous.
+            Past employer projects, kept anonymous. The visuals are my own redrawn illustrations, not the real product.
           </p>
           <div className={styles.proGrid}>
             {projects.filter((p) => p.group === 'professional').map((p) => (
@@ -106,9 +142,10 @@ export function Home() {
           </div>
 
           {smallProjects.length > 0 && <h3 style={{ margin: 'var(--space-6) 0 var(--space-4)' }}>Smaller projects</h3>}
-          <div className={styles.workGrid}>
+          <div className={styles.smallGrid}>
             {smallProjects.map((p) => (
               <ProjectCard
+                compact
                 key={p.slug}
                 kicker={p.kicker}
                 title={p.title}
@@ -124,64 +161,13 @@ export function Home() {
         </div>
       </section>
 
-      {/* 3. System peek */}
-      <section className={`${styles.section} ${styles.band}`} aria-labelledby="peek-title">
-        <Reveal className="container">
-          <h2 id="peek-title">A peek at how I build systems</h2>
-          <div className={styles.swatches}>
-            {peek.map(([token, hex], i) => (
-              <Reveal key={token} className={`${styles.swatch} reveal-pop`} style={{ transitionDelay: `${i * 70}ms` }}>
-                <div
-                  className={styles.chip}
-                  style={hex ? { background: hex } : { background: 'var(--color-cream)', display: 'flex', alignItems: 'center', padding: 'var(--space-4)' }}
-                  aria-hidden="true"
-                >
-                  {!hex && <div style={{ width: 'var(--space-4)', height: 16, background: 'var(--color-accent)' }} />}
-                </div>
-                <TokenCaption>{token}</TokenCaption>
-              </Reveal>
-            ))}
-          </div>
-          <Button variant="secondary" to="/process">See the process →</Button>
-        </Reveal>
-      </section>
-
-      {/* 4. How I work */}
-      <section className={styles.section}>
-        <div className="container">
-          <SectionHeader label="Approach" title="How I work" />
-          <div className={styles.three}>
-            {approach.map((a) => (
-              <Card key={a.title} outline>
-                <h3>{a.title}</h3>
-                <p style={{ marginTop: 'var(--space-2)', color: 'var(--color-ink-soft)' }}>{a.text}</p>
-              </Card>
-            ))}
-          </div>
-          <p style={{ marginTop: 'var(--space-4)' }}><Link viewTransition to="/process">Read my full process →</Link></p>
-        </div>
-      </section>
-
-      {/* 5. About teaser */}
-      <section className={styles.section} aria-labelledby="about-title">
-        <Reveal className={`container ${styles.about}`}>
-          <div className={styles.avatar}><img src="/desk-illustration.svg" width={200} height={200} alt="" /></div>
-          <div>
-            <h2 id="about-title">A little about me</h2>
-            <p style={{ marginTop: 'var(--space-2)', maxWidth: 'var(--reading-width)', color: 'var(--color-ink-soft)' }}>
-              [Two or three warm sentences: who you are and what you care about.]
-            </p>
-            <p style={{ marginTop: 'var(--space-3)' }}><Link viewTransition to="/about">More about me →</Link></p>
-          </div>
-        </Reveal>
-      </section>
 
       {/* 6. Closing call to action */}
       <section className={`${styles.section} ${styles.band} ${styles.cta}`} aria-labelledby="cta-title">
         <Reveal className="container">
           <h2 id="cta-title">Let's talk</h2>
           <p style={{ marginTop: 'var(--space-2)', color: 'var(--color-ink-soft)' }}>
-            Looking for a remote UX/UI design role, full-time or part-time.
+            Looking for a remote UX/UI design role: full-time, part-time or contract.
           </p>
           <div className={styles.actions}>
             <Button to="/about#contact">Email me</Button>

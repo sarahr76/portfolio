@@ -278,12 +278,26 @@ export const foxed: CaseStudy = {
           'Reading Focus is a single switch. Flip it, and every AO3- and fic-specific surface across the entire app disappears at once: filters, stat cards, the favorite-tags widget, the AO3 footer link, the Waiting status. Flip it back and nothing was lost. It was all just hidden, not deleted.',
         outcome:
           'The inverse of feature-flag sprawl: one well-placed decision point instead of a dozen half-measures scattered through the app.',
-        shot: {
-          label: 'Reading Focus setting',
-          src: '/foxed/reading-focus.webp',
-          alt: 'The AO3 & Library settings screen. Under Reading Focus, two choices: Fic & books, selected, and Books only. Below are the AO3 account, blocked tags and following sections.',
-          caption: 'Two plain choices, with the effect explained in one sentence.',
-        },
+        shots: [
+          {
+            label: 'Reading Focus setting',
+            src: '/foxed/reading-focus.webp',
+            alt: 'The AO3 & Library settings screen. Under Reading Focus, two choices: Fic & books, selected, and Books only. Below are the AO3 account, blocked tags and following sections.',
+            caption: 'Two plain choices, with the effect explained in one sentence.',
+          },
+          {
+            label: 'Home with Fic & books',
+            src: '/foxed/reading-focus-fic.webp',
+            alt: 'The Foxed Home screen with Fic & books on. A banner says AO3 looks like it is down right now. Below Currently Reading is a Waiting on Update shelf with two fics, then the Nightstand.',
+            caption: 'Fic & books: AO3 status and a Waiting on Update shelf.',
+          },
+          {
+            label: 'Home with Books only',
+            src: '/foxed/reading-focus-books.webp',
+            alt: 'The same Home screen with Books only on. The AO3 banner and the Waiting on Update shelf are gone, leaving Currently Reading, the Nightstand and the Shelf.',
+            caption: 'Books only: the same screen, with every AO3 and fic surface gone.',
+          },
+        ],
       },
       {
         title: 'Cutting the Ink Cellar',
@@ -353,7 +367,7 @@ export const foxed: CaseStudy = {
       { title: 'Demo Mode', text: 'Show the app without exposing a real library' },
     ],
     honest:
-      'Foxed is in private beta, shared with a handful of friends via TestFlight. This isn’t a growth story with a user count worth bragging about. It’s a depth-of-craft one. The goal was never scale; it was building something specific and well-loved for people who actually live in this niche, including myself. One open design question is still sitting unresolved on purpose: whether streak milestones should stay silent or become a rare wax seal.',
+      'Foxed is in private beta, shared with a handful of friends via TestFlight. This isn’t a growth story with a user count worth bragging about. It’s a depth-of-craft one. The goal was never scale; it was building something specific and well-loved for people who actually live in this niche, including myself.',
   },
   next: { title: 'Reilly Plumbing', to: '/work/plumbing' },
 }
@@ -418,13 +432,13 @@ const textOnlyTemplate: CaseStudy = {
 export const adminConsole: CaseStudy = {
   ...textOnlyTemplate,
   slug: 'admin-console',
-  draft: true,
+  draft: false,
   title: 'A multi-module SaaS admin console',
-  kicker: 'Professional work · Previous employer · Text only',
+  kicker: 'Professional work · Previous employer',
   tagline: 'Making a growing admin console modern, consistent and easier to use.',
   dek: 'A multi-module SaaS tool that gives administrators one place to manage their company’s workspace. Over about four years, with one other designer and the development team, I redesigned its patterns and built the component library that keeps every module consistent.',
   description:
-    'Text-only case study: designing and systematizing a multi-module SaaS admin console. Product details are kept anonymous.',
+    'Designing and systematizing a multi-module SaaS admin console: a component library, consistent containers and a redesigned rule builder. Product details are kept anonymous.',
   meta: {
     role: 'UX/UI designer, with one other designer and the development team',
     timeline: 'About four years',
@@ -511,13 +525,13 @@ export const adminConsole: CaseStudy = {
         problem:
           'Creating a rule involves trigger logic, a Sources panel that maps events to source types, and condition blocks with AND/OR patterns. The original stepper-style wizard made people move back and forth to check how their choices fit together. A second problem was conceptual: helping users tell apart two kinds of automation, Policies (scheduled, time-driven) and the Rules Engine (real-time, event-driven), on the Automation landing page.',
         approach:
-          'I redesigned it as a single page with three sections, When, If and Then, and a summary card that keeps everything set so far visible in one place. The page also warns when a similar rule already exists and previews the estimated impact before you save. [Confirm those two details.] Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
+          'I redesigned it as a single page with three sections, When, If and Then, and a summary card that keeps everything set so far visible in one place. The page also warns you when a similar rule already exists for the same event. Steppers suit long, linear data entry; a rule is a set of interrelated pieces, and people need to see how they connect.',
         outcome:
           'Rules read the way people think about them: if this happens, under these conditions, do this. Users see the whole rule without navigating between steps.',
         shot: {
           label: 'Illustration: the Create rule page',
           src: '/gpanel-create-rule.webp',
-          alt: 'A simplified illustration of the Create rule page. Steps along the top read Basic info, When, If and Then. Three stacked sections follow: basic information, When this happens with a trigger event, a warning about a similar rule, frequency and trigger sources, and If these conditions are met, which is empty. A dark Rule summary card on the right fills in as the rule is built and shows an estimated impact preview.',
+          alt: 'A simplified illustration of the Create rule page. Steps along the top read Basic info, When, If and Then. Three stacked sections follow: basic information, When this happens with a trigger event, a warning about a similar rule, frequency and trigger sources, and If these conditions are met, which is empty. A dark Rule summary card on the right fills in as the rule is built.',
           caption: 'The Create rule page, redrawn and simplified: three sections on one page, with the summary always beside them. Not the real interface.',
           wide: true,
           width: 1400,
@@ -554,215 +568,383 @@ export const adminConsole: CaseStudy = {
       { title: 'Reusable pieces', text: 'New screens built from existing patterns, even as new APIs and features arrived' },
     ],
     honest:
-      'If I did it again, I’d build the component library much earlier, before the patterns had a chance to drift. Having worked on both the development and design sides, I now see a shared library as the foundation of a design system rather than something to tidy up afterward.',
+      'I don’t have measured results to share; the gains above are what the team observed. If I did it again, I’d build the component library much earlier, before the patterns had a chance to drift. Having worked on both the development and design sides, I now see a shared library as the foundation of a design system rather than something to tidy up afterward.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
 export const constructionPlatform: CaseStudy = {
   ...textOnlyTemplate,
-  slug: 'construction-platform',
-  title: 'An AI-first construction platform',
-  tagline: '[One line: what it helped construction teams do]',
-  dek: '[Two or three sentences: what the product is, who uses it, and your part in it. Keep it anonymous: no product, client or employer names.]',
+  slug: 'ai-construction-platform',
+  // Product name is intentionally generic.
+  draft: false,
+  title: 'AI-first construction platform',
+  kicker: 'Professional work · Previous employer',
+  tagline: 'From an empty canvas to a pilot-ready product.',
+  dek: 'A construction platform built from the ground up over about a year. I set the product direction, supported research with the pilot team, shaped the product’s features, from the documents view, CRM, tasks and activity pages to the Submittals and RFI workflows, and turned the plan into requirements and tickets the developers could build from. A designer I worked with did all of the final design work in Figma.',
   description:
-    'Text-only case study: designing an AI-first construction software platform. Product details are kept anonymous.',
-  problem: {
-    heading: '[A headline that states the problem]',
-    paragraphs: [
-      '[Context: who the users are (for example, site and office teams) and what was hard about their work.]',
-      '[What was different about designing for AI-first features, and the constraints you worked within.]',
-    ],
-  },
-  next: { title: 'Back to selected work', to: '/#work' },
-}
-
-export const thinkingDifferently: CaseStudy = {
-  slug: 'thinking-differently',
-  // Draft until the client has OK'd showing her logo and brand name. Remove to publish.
-  draft: true,
-  title: 'Thinking Differently',
-  kicker: 'Small project · Brand identity',
-  tagline: 'A logo system and brand guide for a coaching practice.',
-  dek: 'A small brand guide for a coaching practice whose logo is the owner’s own painted mark. It turns one textured painting, two lines of words and a single typeface into rules anyone can follow on a business card, a document or a sticker.',
-  description:
-    'A small brand guide for a coaching practice: one painted mark, one typeface, four logo versions and clear rules for print and digital use.',
+    'Case study: product direction, UX and requirements for an AI-first construction software platform, from first concepts to a pilot-ready product.',
   meta: {
-    role: 'Brand identity & guide, built around the client’s paintings',
-    timeline: 'About two weeks',
-    tools: '[Confirm tools: e.g. Claude Design, Canva]',
-    deliverables: 'Brand guide (PDF), logo versions, colour and type specs, print notes',
+    role: 'Product direction, UX, requirements and tickets, with a designer who did all the final Figma design',
+    timeline: 'About a year, from first concepts to a pilot-ready product',
+    tools: 'Figma Make, Figma, Tailwind, Gemini, Claude',
+    deliverables: 'Concepts, PRDs, a scoping proposal with low-fidelity wireframes, 100+ feature tickets, interview note templates, demo guides, feedback sheets and a pilot-team backlog',
   },
   hero: {
-    label: 'The primary logo',
-    src: '/thinking-differently/logo-primary.webp',
-    alt: 'The primary logo: a circular painted mark of black and white swirls, above the line “Thinking Differently. Starting with Me.” and the italic tagline “Exploring what’s possible.”',
+    label: 'Diagram: one project, five kinds of work',
+    src: '/construction/roles.webp',
+    alt: 'A simplified diagram of five kinds of work on the project, left to right: product direction (concepts in Figma Make, a scoping proposal), research (interview note templates, demo guides and feedback sheets), UX and workflow design (the documents view with email ingestion, CRM, tasks and activity pages, the Submittals flow, the RFI board, with all final Figma design done by a designer), requirements (a PRD per feature), and tickets and backlog (100+ feature tickets, a backlog from pilot meetings).',
     priority: true,
-    width: 1400,
-    height: 610,
     wide: true,
+    width: 1400,
+    height: 923,
   },
+  stats: [
+    { value: '~1 yr', label: 'Concept to pilot-ready' },
+    { value: '100+', label: 'Feature tickets' },
+  ],
   summary: {
     problem:
-      'A painted, textured mark is hard to reproduce. It blurs at small sizes, and anything else on the page can compete with it.',
-    did: 'Wrote a short guide that keeps everything else plain: white paper, one typeface, one dark colour taken from the mark, and four logo versions with a size rule for each.',
+      'Construction teams lose profit to poor communication and follow-through, with paperwork scattered across too many places.',
+    did: 'Set the product direction, shaped the product’s features around one idea (the AI does the first pass, and a person stays in control), supported research with the pilot team, and turned the plan into PRDs and more than 100 tickets.',
     result:
-      'A guide that covers cards, documents, stickers and digital use. A vector and a one-colour version of the mark are still to do, and the guide says so.',
+      'A working core platform, with document and email ingestion running in the pilot, and a pilot team warming to the AI-first direction. Submittals and RFIs were scoped, wireframed and ready for the next phase.',
   },
   problem: {
-    heading: 'A painting makes a lovely logo and a difficult one.',
+    heading: 'Profit lost between the steps',
     paragraphs: [
-      'Thinking Differently helps people accept the way they think while staying true to themselves. The mark comes from the owner’s paintings: black and white paint that has been moved, with nothing added and nothing taken away. That is the promise of the brand, and it had to survive being printed on a business card.',
-      'Painted texture is the hard part. It blurs at small sizes, falls apart in one-colour printing and loses its edge on a busy background. So the job was less about decoration and more about restraint: deciding what everything else on the page should not do.',
+      'A large share of a construction team’s time goes to tasks that end up off schedule or add little value. Communication breaks down between the different parts of the process, and paperwork is scattered across too many places.',
+      'The goal was a single platform that keeps project information connected and uses AI to take the repetitive work off people’s plates. The platform was built from an empty canvas, with the next phase focused on the two workflows that matter most to construction teams: submittals and RFIs.',
     ],
-    constraintsIntro: 'The guide starts from three constraints:',
+    constraintsIntro: 'The conditions:',
     constraints: [
-      'One painted mark is the only thing with texture.',
-      'One typeface, Glacial Indifference, free and already in Canva.',
-      'Print in black ink only, on white uncoated stock.',
+      'A small team, so each person covered more than one role.',
+      'A pilot team that started out unsure how yet another application would help them.',
+      'A product with no starting point, and two complex workflows still to be designed.',
     ],
-  },
-  system: {
-    title: 'The rules, kept short enough to follow',
-    intro: 'Excerpts from the real guide: the colours, the type and the words that are part of the logo.',
-    paletteTitle: 'Colour: the brand is mostly white',
-    palette: [
-      { name: 'White', hex: '#FFFFFF', note: 'All backgrounds' },
-      { name: 'Black', hex: '#000000', note: 'Main line' },
-      { name: 'Charcoal', hex: '#1F1E1B', note: 'Tagline, body text, dark card backs' },
-      { name: 'Ring', hex: '#585752', note: 'Mark ring, secondary text' },
-      { name: 'Pebble', hex: '#A8A49C', note: 'Mark only, never text' },
-      { name: 'Hairline', hex: '#D9D5CC', note: 'Rules and dividers, never text' },
-    ],
-    type: {
-      title: 'Type: one family, two styles',
-      rows: [
-        { role: 'Regular', spec: 'Main line, headings, body text, names' },
-        { role: 'Italic', spec: 'The tagline, job titles, one stressed word at most' },
-        { role: 'Bold', spec: 'Short labels inside documents, never in the logo' },
-        { role: 'Print size', spec: 'No smaller than 8 pt; documents 10–11 pt' },
-      ],
-    },
-    voice: {
-      quote:
-        'One sentence in Regular, never italic. If it has to break, break only after “Differently.”',
-      lines: ['“Thinking Differently. Starting with Me.”', '“Exploring what’s possible.”'],
-    },
-    rules: {
-      title: 'Don’t',
-      items: [
-        'Don’t recolour, outline or add a shadow to the mark.',
-        'Don’t put the mark on a busy photo. On a dark background, keep a white disc behind it.',
-        'Don’t set the main line in italic or the tagline upright.',
-        'Don’t use any typeface other than Glacial Indifference.',
-      ],
-    },
   },
   decisions: {
-    heading: 'The choices that shaped the guide',
-    intro: 'Not every rule. These are the calls that let the painting do the work.',
+    heading: 'The choices that shaped the product',
+    intro:
+      'One idea ran through all of it: the AI does the first pass, and a person stays in control. Around it, the thinking went into making project information easy to find and keeping follow-through visible. These are the calls that mattered most.',
     items: [
       {
-        title: 'Plain on purpose',
-        tag: 'Restraint around one textured thing',
+        title: 'Let the AI do the filing, and let people correct it',
+        tag: 'Document and email ingestion',
         problem:
-          'The mark is the only thing with texture, so anything else with personality competes with it: extra colours, a second typeface, borders, gradients.',
+          'Project information lived in too many places, mainly SharePoint and email, and a lot of a team’s time went to finding things and organizing them by hand.',
         approach:
-          'Everything else is quiet. White backgrounds, one typeface and a single dark colour, Charcoal, taken from the mark’s own ring so it belongs to the painting instead of sitting beside it. Pebble and Hairline are never used for text.',
+          'The platform ingests documents from SharePoint and emails. The AI reads them, writes a summary, auto-tags the items and organizes them, so the information arrives already sorted. My design partner and I worked out what the user sees: how the documents appear in the app and how the AI’s information is displayed, which he then designed in Figma. People can correct, edit or delete anything the AI did, and then view, search and filter the results, with saved views for the ones they return to.',
         outcome:
-          'The painting gets the attention and the page stays calm. A rule of one dark area per piece (the back of a card, or nothing at all) stops a layout from drifting.',
+          'It worked in the pilot, and it was the part the pilot team seemed most interested in: having items sorted and tagged for them automatically, and then easy to find.',
+        shot: {
+          label: 'Diagram: document and email ingestion',
+          src: '/construction/ingestion.webp',
+          alt: 'A simplified diagram: documents from SharePoint and emails flow into the AI, which summarizes, auto-tags and organizes them. A person can then view, search, correct, edit or delete anything the AI did.',
+          wide: true,
+          width: 1400,
+          height: 743,
+        },
       },
       {
-        title: 'Two lines of words, with the order built in',
-        tag: 'A tagline that can leave, a main line that can’t',
+        title: 'Keep a person in the loop',
+        tag: 'An AI-first workflow people can trust',
         problem:
-          'A logo with words invites small edits: italics here, a missing full stop there, a break in the wrong place.',
+          'In construction, mistakes are costly. A tool that acted on its own, without a way to check it, would not earn the pilot team’s trust.',
         approach:
-          'The main line is one sentence in Regular, never italic, and breaks only after “Differently.” The tagline is always italic, about 60% of the main line’s size, and can be dropped when space is tight. The main line can’t.',
-        outcome: 'When space runs out there is already an answer: drop the tagline first.',
+          'The AI does the first pass. When a PDF loads, it highlights the submittal items it extracts, using a combination of AI and rules. The project coordinator reviews the highlights and accepts or edits them before the log is finalized. Each entry keeps a link back to its spec source, and a coordinator can attach an alternative document when no spec sheet exists.',
+        outcome:
+          'The AI removes the repetitive work, and the coordinator always has the final say.',
       },
       {
-        title: 'Four versions, each with a size rule',
-        tag: 'Deciding in advance what happens when space runs out',
-        problem: 'A detailed painted mark and a long line of words don’t shrink gracefully.',
+        title: 'Three jobs in one place',
+        tag: 'Less copying, more reviewing',
+        problem:
+          'Reviewing submittals, adding log entries and creating cover sheets meant a lot of copying and pasting between documents.',
         approach:
-          'Four versions: primary centred for cards and covers, horizontal for headers and signatures, compact with no tagline for anything under 2 in wide, and the mark alone for profile photos and stickers. The smallest sizes are written down: the mark at 0.35 in / 32 px and the main line at 8 pt.',
+          'Submittals became a four-screen chain: spec-to-log automation; cover sheets that fill in from the log; a split screen with the document and the AI’s analysis side by side; and a revision timeline, where older rejection cycles collapse into an archive so the current revision stays in focus.',
         outcome:
-          'Nobody has to guess which version to use. The answer depends on the space, not on taste.',
-        shots: [
-          {
-            label: 'Logo versions',
-            src: '/thinking-differently/logo-versions.webp',
-            alt: 'Three logo layouts. Horizontal: the mark beside the main line and tagline. Compact: a small mark beside the main line only. Mark only: the painted circle on its own at two sizes.',
-            caption: 'Horizontal, compact and mark-only versions, each with a stated use.',
-            wide: true,
-          },
-          {
-            label: 'Business card front',
-            src: '/thinking-differently/card-front.webp',
-            alt: 'The front of a business card: the primary logo centred on white, with the main line and italic tagline beneath the painted mark.',
-            caption: 'The business card front uses the primary version.',
-            wide: true,
-            maxWidth: 420,
-          },
-        ],
+          'Designed to cut review time significantly, so people spend less time copying and more time reviewing what matters.',
+        shot: {
+          label: 'Diagram: the Submittals flow',
+          src: '/construction/submittals.webp',
+          alt: 'A simplified diagram of the Submittals flow as a chain of connected screens.',
+          wide: true,
+          width: 1400,
+          height: 771,
+        },
       },
       {
-        title: 'Say what isn’t finished',
-        tag: 'An honest list of what’s still open',
+        title: 'Make RFI follow-through visible',
+        tag: 'Questions shouldn’t fall through the cracks',
         problem:
-          'The master mark is a 995 px transparent PNG that prints sharp to about 3.3 in, and one-colour methods such as embroidery or stamps would lose the texture.',
+          'RFIs sit at the heart of the communication problem: a question goes out, and the answer, or the missing answer, can be easy to lose.',
         approach:
-          'The guide says so instead of papering over it: don’t print the mark below 0.35 in or in one colour until a simplified version exists, and get a vector version made for signage. Both are listed as still to do.',
+          'A Kanban board with five statuses (Draft, Pending, Submitted, Responded, Closed) and swimlanes for cost impact, time impact and priority. A tiered approval flow, where the coordinator drafts and a manager approves before anything goes to the owner. Automated reminders for overdue responses, with custom frequency. Related submittals, tasks, change orders and emails linked inside the RFI. Admin reopen controls that require a logged justification. And AI summaries, so a 20-response thread can be understood quickly.',
         outcome:
-          'Limits are written where the next person will see them, before a print run rather than after.',
+          'Nothing requires hunting through other screens, and overdue items don’t depend on someone remembering them.',
+      },
+      {
+        title: 'Reuse the full detail view',
+        tag: 'One version, not two',
+        problem:
+          'A slide-in preview for RFIs would have been a second, lighter version of the same information.',
+        approach:
+          'We reused the full detail view instead of building a separate preview.',
+        outcome:
+          'The experience stays consistent, and there is only one version to maintain.',
       },
     ],
   },
   process: {
-    heading: 'How the guide is organised',
-    intro: 'It reads in the order someone would need it, from the idea to the files.',
+    heading: 'How I worked',
+    intro:
+      'On a small team, my work spanned product direction, UX/UI design, research, requirements and tickets. Here is how those pieces fit together.',
     items: [
       {
-        title: 'The idea and the words',
-        text: 'It starts with why the mark looks the way it does, then fixes the wording so nothing downstream gets rewritten.',
+        title: 'Start fast, with concepts',
+        text: 'We began with the core CRM features every project team needs: a dashboard, projects with their own sub-navigation, contacts, companies, tasks, activities, and admin and user settings. I developed the direction in Figma Make alongside my own ideas, which let me put many concepts in front of the team quickly. I handed those to our designer, who did all of the actual design work in Figma, building out the final components and visual style on Tailwind as the base for our component designs, so we could spend our time improving the experience instead of building every small piece from scratch.',
       },
       {
-        title: 'Logo, space and size',
-        text: 'Four versions, clear space equal to a third of the mark’s height, and minimum sizes.',
+        title: 'Earn the pilot team’s trust',
+        text: 'We ran guided tours of the app with the pilot team and gathered their feedback. To prepare, I made interview note templates, demo guides and feedback sheets. We didn’t get to formal interviews, so the tours and feedback are what we learned from. Once they saw the AI-first direction the product was built on, the pilot team began to buy in, and their feedback fed a backlog that shaped what we prioritized next.',
       },
       {
-        title: 'Colour and type',
-        text: 'Six colours with their nearest Pantone references and one typeface, so a printer or a Canva user gets the same result.',
-      },
-      {
-        title: 'Where it gets used',
-        text: 'Business card, documents, stickers, profile photo, email signature and website: what goes where, at what size.',
-      },
-      {
-        title: 'Don’ts and files',
-        text: 'A short list of things not to do, then print notes and what is still to do.',
+        title: 'Turn big ideas into buildable work',
+        text: 'For each major feature I wrote a combined PRD covering goals, scope, flows and edge cases. I broke the features into more than 100 tickets. Submittals and RFIs were next in line, so I wrote a scoping proposal with low-fidelity wireframes to help stakeholders decide what belonged in a first version, and organized a backlog from meetings with the pilot team.',
       },
     ],
   },
   outcomes: {
-    heading: 'What came out of it, and what’s still open',
+    heading: 'Where it stood, and what I learned',
     shipped: [
-      { title: 'Brand guide', text: 'Eleven short sections, from the idea to print notes' },
-      { title: 'Four logo versions', text: 'With clear space and minimum sizes' },
-      { title: 'Colour and type specs', text: 'Six colours, one typeface' },
-      { title: 'Applications', text: 'Business card, documents, stickers, email, website' },
+      { title: 'Document and email ingestion', text: 'Working in the pilot: AI reads SharePoint documents and emails, summarizes, tags and organizes them, and users can correct, edit, delete, search and filter' },
+      { title: 'The core platform', text: 'Dashboard, projects, contacts, companies, tasks, activities, and admin and user settings' },
+      { title: 'Research materials', text: 'Interview note templates, demo guides and feedback sheets' },
+      { title: 'Submittals and RFIs, ready for the next phase', text: 'Scoped, wireframed and broken into tickets' },
+      { title: 'A pilot-team backlog', text: 'Organized from meetings with the pilot team' },
     ],
     honest:
-      'This is a small project for a small practice, so there are no metrics to report. The client later chose a different direction, so the guide was never put into use. Still to do on the guide itself: a vector version of the mark and a simplified one-colour version for small sizes and stamps. The painting is the identity, and the guide’s job is to protect it.',
+      'By the time I left, the core platform was in place and the pilot team was warming to the AI-first direction. I don’t have measured results to share. On a small team my role grew into a mix of UX and workflow designer, requirements writer and ticket writer. If I did it again, I would work out early where my role sits within a small team, so I could be deliberate about which hat I was wearing instead of picking them up as I went. Using AI tools for both research and design let a small team move quickly across the whole process.',
+  },
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
+// Small project, text only.
+export const documentPortal: CaseStudy = {
+  ...textOnlyTemplate,
+  slug: 'document-portal',
+  draft: false,
+  title: 'A document portal for a health organization',
+  kicker: 'Professional work · Small project',
+  tagline: 'A simple front end for seeing what’s required, what’s missing and what’s been added.',
+  dek: 'A regional health organization needed a simple front end where users could see which documents were required, spot anything missing, and upload or update files. I designed the layout for that experience, with a focus on keeping it clear and light on effort for the people using it. The client is kept anonymous.',
+  description:
+    'Designing a document portal for a regional health organization, with status at a glance and a Google Drive connection that cuts out manual uploading. Client kept anonymous.',
+  meta: {
+    role: 'UX/UI designer',
+    timeline: 'About one week',
+    tools: 'Figma and Claude Code, designed with Tailwind in mind',
+    deliverables: 'Portal front-end design: grouped document list, status indicators, Drive connection',
+  },
+  summary: {
+    problem:
+      'Collecting required documents means hunting for files, uploading them one at a time, and wondering what is still missing.',
+    did: 'Designed the layout of a portal that groups required documents into collapsible categories, shows the status of each one, and lets users connect Google Drive so an AI agent finds their documents for them.',
+    result:
+      'A deliberately simple interface that shows users where things stand.',
+  },
+  problem: {
+    heading: 'Collecting documents is mostly hunting and wondering',
+    paragraphs: [
+      'Collecting required documents usually means people hunting for files, uploading them one at a time, and wondering what is still missing.',
+      'The goal was to make it easy to see what was needed and what was outstanding, and to cut down the manual uploading as much as possible.',
+    ],
+  },
+  decisions: {
+    heading: 'What I designed',
+    intro: 'Three choices shaped the portal, each aimed at saving users effort.',
+    items: [
+      {
+        title: 'A list of accordions grouped by category',
+        tag: 'A short overview first',
+        problem: 'A long flat list of required documents is hard to scan and easy to give up on.',
+        approach:
+          'Required documents are organized into collapsible groups, so users see a short, scannable overview first and open only the section they need. Inside each group, the required documents are listed with the key details for each one.',
+        outcome: 'Users open only the section they need.',
+      },
+      {
+        title: 'Status on every category and document',
+        tag: 'Gaps visible without opening anything',
+        problem: 'People are left wondering what is still missing.',
+        approach:
+          'Each category and each document shows its status, so users can tell at a glance what is still missing and what has been added, along with when it was added. The statuses on the collapsed groups mean users can spot gaps without opening anything.',
+        outcome: 'What’s missing and what’s done is clear at a glance.',
+        shot: {
+          label: 'Diagram: status at a glance',
+          src: '/document-portal/status.webp',
+          alt: 'A simplified illustration with invented example content: four collapsed and expanded document categories. Identification and Training records are marked Complete; Licenses and certifications shows 1 missing and is open, listing two documents marked Added with dates and one marked Missing; Insurance shows 2 missing.',
+          wide: true,
+          width: 1400,
+          height: 750,
+        },
+      },
+      {
+        title: 'A shortcut to skip the uploading',
+        tag: 'Connect Google Drive',
+        problem: 'Hunting down and uploading each file one at a time is the part people least want to do.',
+        approach:
+          'The main idea of the product is that users connect their Google Drive and an AI agent automatically finds the documents they need. A user just adds their documents to their Drive, and the portal picks them up. Users can still view, upload and update documents directly in the portal when something is missing or needs to change.',
+        outcome: 'Most of the manual uploading goes away, and the portal still allows direct changes.',
+      },
+    ],
+  },
+  process: {
+    heading: 'How I approached it',
+    intro: 'This was a small project of about a week, and I designed the layout.',
+    items: [
+      {
+        title: 'Start with what users need to know',
+        text: 'Which documents are required, which are missing, and what has been added and when.',
+      },
+      {
+        title: 'Let the AI do the heavy lifting',
+        text: 'Because the agent finds the documents in Drive, the design didn’t need to be complicated.',
+      },
+      {
+        title: 'Keep the interface deliberately simple',
+        text: 'The design only needs to show users where things stand.',
+      },
+    ],
+  },
+  outcomes: {
+    heading: 'Outcomes and what I learned',
+    honest:
+      'What I’d point to is the approach: when the AI does the heavy lifting, the design’s job is to show users clearly where things stand and stay out of the way.',
+  },
+  next: { title: 'Back to selected work', to: '/#work' },
+}
+
+export const professionalFive: CaseStudy = {
+  ...textOnlyTemplate,
+  slug: 'safewave',
+  // Draft until Sarah confirms she may show the real Safewave app. Brand icons in the screenshots are already blurred.
+  draft: true,
+  title: 'Safewave',
+  kicker: 'Professional work · Mobile app',
+  tagline: 'A companion app for a wristband that turns phone alerts into vibrations.',
+  dek: 'Safewave makes a wristband that turns phone notifications into vibrations, so Deaf and hard-of-hearing people don’t miss important alerts like home security, baby monitors, alarms and texts. The companion app is how users connect their band and decide what they feel. I designed the app from scratch, including the login, the overall look, and the simple, approachable feel of the experience.',
+  description:
+    'Case study: designing the companion app for Safewave, a vibrating wristband for Deaf and hard-of-hearing users. A calm dark theme, one clear action on the home screen and simple alert setup.',
+  meta: {
+    role: 'UX/UI designer',
+    timeline: 'About six months',
+    tools: 'Figma',
+    deliverables: 'Mobile app design: login, overall look, Home, Alerts and navigation',
+  },
+  hero: {
+    label: 'The Safewave app: login and notification settings',
+    src: '/safewave/hero.webp',
+    alt: 'Two phones showing the Safewave app. One shows the login screen with the Safewave logo, email and password fields, a Login button and a Sign in with Google button. The other shows notification settings for one app, with an Enabled switch and sliders for notification strength and number of vibrations.',
+    priority: true,
+    width: 1600,
+    height: 800,
+  },
+  summary: {
+    problem:
+      'The app is the only way Safewave users control what their band makes them feel, so a confusing setup could mean a missed security alert or a crying baby.',
+    did: 'Designed the app from scratch: a dark theme with one blue accent, a home screen with a single action, a simple alert setup and three-tab navigation.',
+    result: 'The app is still in use today, paired with the company’s wristband.',
+  },
+  problem: {
+    heading: 'The app is the only way to control what you feel',
+    paragraphs: [
+      'For Safewave’s users, the app is the only way to control what they feel. Choosing which apps can trigger the band, and how strongly, directly affects whether someone wakes up to a security alert or a crying baby.',
+      'That raised the bar for the design: setup had to be quick and clear, nothing important could be hidden, and the app had to feel trustworthy and easy to use at any hour.',
+    ],
+  },
+  decisions: {
+    heading: 'What I designed',
+    intro: 'Four choices shaped the app, each aimed at making setup quick and the app easy to trust.',
+    items: [
+      {
+        title: 'A simple, welcoming first impression',
+        tag: 'Login and overall look',
+        problem:
+          'The app is the only way users control their band, so it had to feel trustworthy from the very first screen.',
+        approach:
+          'I designed the login and the overall look of the app. It uses a dark theme with a single blue accent, which keeps screens calm and readable.',
+        outcome: 'The brand has a consistent identity from the first screen.',
+        shot: {
+          label: 'Login screen',
+          src: '/safewave/login.webp',
+          alt: 'The Safewave login screen on a dark blue background: the shield-and-knight logo, the Safewave wordmark, email and password fields, a blue Login button, a Sign in with Google button and a Create Account link.',
+        },
+      },
+      {
+        title: 'One clear action on the home screen',
+        tag: 'Connect the band',
+        problem: 'The home screen has a single job: connect the band.',
+        approach:
+          'A large Bluetooth button and one line of instruction: “Please press the button above to connect your Safewave band.”',
+        outcome: 'It is obvious what to do next.',
+        shot: {
+          label: 'Home screen',
+          src: '/safewave/home.webp',
+          alt: 'The Safewave Home screen. A large white circle with a blue Bluetooth symbol sits under the heading Admin, with the line “Please press the button above to connect your Safewave band.” A bottom bar shows Home, Alerts and History.',
+        },
+      },
+      {
+        title: 'Straightforward alert setup',
+        tag: 'Choosing what to feel',
+        problem:
+          'Choosing which apps can trigger the band, and how strongly, decides whether someone wakes up to a security alert or a crying baby.',
+        approach:
+          'The Alerts screen shows the apps that can trigger the band as a grid of familiar icons, with an add button for more. Each app has its own settings for vibration strength and number of vibrations.',
+        outcome: 'Users can tailor what they feel to what matters most to them.',
+        shot: {
+          label: 'Alerts screen',
+          src: '/safewave/alerts.webp',
+          alt: 'The Safewave Alerts screen. A grid of four app icons, including a messages app and a home security app, under the line “Click on the add button in the top right to add apps you’d like to receive notifications for.”',
+        },
+      },
+      {
+        title: 'Easy navigation',
+        tag: 'Three tabs',
+        problem: 'The app is a means to an end, so it shouldn’t feel bigger than the task.',
+        approach: 'Three tabs (Home, Alerts and History) cover everything users need.',
+        outcome: 'The app never feels bigger than the task.',
+      },
+    ],
+  },
+  process: {
+    heading: 'How I approached it',
+    intro: 'I designed the app from scratch. These were the principles behind it.',
+    items: [
+      {
+        title: 'Start from what’s at stake',
+        text: 'Missing a notification can mean missing a security alert or a baby. So setup had to be quick and clear, and nothing important could be hidden.',
+      },
+      {
+        title: 'Give each screen one job',
+        text: 'Home connects the band. Alerts chooses what triggers it. History is a tab away. Nothing competes with the task at hand.',
+      },
+      {
+        title: 'Keep it calm and trustworthy',
+        text: 'A dark theme with a single blue accent keeps the screens readable at any hour and gives the brand one consistent identity.',
+      },
+    ],
+  },
+  outcomes: {
+    heading: 'Where it stands',
+    honest: 'The Safewave app is still in use today, paired with the company’s wristband.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
 export const plumbing: CaseStudy = {
   slug: 'plumbing',
-  // Draft: bracketed lines need Sarah's own words. Remove `draft` to publish.
-  draft: true,
+  draft: false,
   title: 'Reilly Plumbing',
   kicker: 'Case study 02 · A family business',
   liveSite: {
@@ -776,8 +958,8 @@ export const plumbing: CaseStudy = {
     'A website and design system for a family-owned plumbing company: a warm, plain-spoken brand, five components, and a guide that never invents facts.',
   meta: {
     role: 'UX/UI design, brand guide and design system',
-    timeline: '[Dates or duration]',
-    tools: '[Confirm tools: e.g. Claude Design, Claude Code] · Fraunces, DM Sans',
+    timeline: 'About a week',
+    tools: 'Claude Design, Claude Code · Fraunces, DM Sans',
     deliverables: 'Mobile and desktop page designs, a brand guide with tokens, voice and five components, and live component previews',
   },
   stats: [
@@ -800,13 +982,13 @@ export const plumbing: CaseStudy = {
       'Someone with a leak or a clog wants to know whether this company can help and what happens when they ask. Trade-company sites often answer with jargon and a “contact us” button.',
     did: 'Designed the pages for phone and desktop, then wrote the brand down as a design system: a voice, 16 color tokens, a type scale and five components, with rules for what never to do.',
     result:
-      '[Is the site live? Say so plainly, and what the family has said about it.]',
+      'A working demo site, built from the guide, with placeholder business details. It isn’t published for the client yet.',
   },
   problem: {
     heading: 'A stressed customer, a plain question',
     paragraphs: [
-      'Reilly Plumbing is a family-owned local company. People who reach the site usually have something wrong at home: a leak, a clog, a water heater that stopped. They aren’t browsing. They want to know whether this is the right company and what happens next. [Confirm or reword.]',
-      'The business already had its character, a family you can trust, but nothing written down to keep a site true to it. [Add what existed before: a logo, a flyer, an older site.]',
+      'Reilly Plumbing is a family-owned local company. People who reach the site usually have something wrong at home: a leak, a clog, a water heater that stopped. They aren’t browsing. They want to know whether this is the right company and what happens next.',
+      'The business already had its character, a family you can trust, but nothing written down to keep a site true to it.',
     ],
     constraintsIntro: 'The design works inside a few constraints:',
     constraints: [
@@ -916,14 +1098,40 @@ export const plumbing: CaseStudy = {
         },
       },
     ],
+    gallery: [
+      {
+        label: 'Home, mobile',
+        src: '/plumbing/m-home.webp',
+        alt: 'The mobile home screen: a forest-green hero panel reading “Honest plumbing from a family you can trust,” a gold Request service button, four service tiles and a Meet the Reillys card, above the four-tab bar.',
+        caption: 'Home: one clear ask, then the four main services.',
+      },
+      {
+        label: 'Services, mobile',
+        src: '/plumbing/m-services.webp',
+        alt: 'The mobile Services screen: a list of plumbing services, each with an icon, a name and a short description.',
+        caption: 'Services: a plain list, with a clear path for emergencies.',
+      },
+      {
+        label: 'Request service, mobile',
+        src: '/plumbing/m-request.webp',
+        alt: 'The mobile Request service screen: a short form with name, phone, address, what is going on and how soon it is needed.',
+        caption: 'Request: a short form, with urgency as a plain choice.',
+      },
+      {
+        label: 'Our family, mobile',
+        src: '/plumbing/m-family.webp',
+        alt: 'The mobile Our family screen: an introduction to the family behind the company, with placeholders for photos and details.',
+        caption: 'Family: room for the story, a photo and the team. Placeholders until the family supplies them.',
+      },
+    ],
   },
   process: {
     heading: 'How I worked',
-    intro: '[One or two sentences on working with the family: who gave feedback, and how.]',
+    intro: 'I started this as a favor for a family-owned local company, and built it in about a week with Claude Code.',
     items: [
       {
         title: 'Design the pages',
-        text: '[Describe designing the mobile and desktop pages: home, services, request service, the family and the confirmation.]',
+        text: 'I designed the mobile and desktop pages first: home, services, request service, the family and the confirmation.',
       },
       {
         title: 'Write the system down',
@@ -931,7 +1139,7 @@ export const plumbing: CaseStudy = {
       },
       {
         title: 'Build from the guide',
-        text: '[Describe building the site from the guide, and what you used.]',
+        text: 'I built the site from the guide in React and Tailwind with Claude Code, using the guide’s tokens as the theme, so the code and the guide stay in step.',
       },
     ],
   },
@@ -942,15 +1150,14 @@ export const plumbing: CaseStudy = {
       { title: 'Mobile and desktop layouts', text: 'Designed for a request-service flow that ends in a clear confirmation' },
     ],
     honest:
-      '[Is the site live, and what has the family said? Say what’s still placeholder: the real logo, family photos and business details.]',
+      'The site runs as a demo, and it isn’t published for the client yet. The business details, real logo and family photos are still placeholders, and the request form sends nothing until a real backend replaces the stand-in. I started it as a favor, and what it shows is how I take a brand from a written guide to a working site.',
   },
   next: { title: 'Petals-n-Glass', to: '/work/flower-shop' },
 }
 
 export const flowerShop: CaseStudy = {
   slug: 'flower-shop',
-  // Draft: bracketed lines need Sarah's own words. Remove `draft` to publish.
-  draft: true,
+  draft: false,
   title: 'Petals-n-Glass',
   kicker: 'Case study 03 · Self-initiated concept',
   tagline: 'Flowers, gathered gently.',
@@ -959,8 +1166,8 @@ export const flowerShop: CaseStudy = {
     'Self-initiated concept: a neighborhood flower boutique designed across nine pages in desktop and mobile, from an occasion-led home page through product, cart and checkout.',
   meta: {
     role: 'UX/UI design (self-initiated)',
-    timeline: '[Dates or duration]',
-    tools: '[Confirm tools: e.g. Claude Design] · Fraunces, Nunito Sans',
+    timeline: 'About a week',
+    tools: 'Claude Code · Fraunces, Nunito Sans',
     deliverables: 'Nine pages in desktop and mobile, a mobile menu, and clickable product, cart and checkout flows',
   },
   stats: [
@@ -980,7 +1187,7 @@ export const flowerShop: CaseStudy = {
   },
   summary: {
     problem:
-      'People shop for flowers for a moment, not a product, and florist sites often hand them a long grid and leave them to sort it out. [Confirm or reword: the problem you set out to solve.]',
+      'People shop for flowers for a moment, not a product, and florist sites often hand them a long grid and leave them to sort it out. The goal was a site for a small florist who relied heavily on Facebook to show her work. People now expect to browse and order online, especially when they are spending real money on flowers.',
     did: 'Designed nine pages in desktop and mobile, from an occasion-led home page through product, cart, checkout and confirmation, in a warm sage-and-terracotta system with two typefaces.',
     result:
       'A complete, clickable concept for one shop. It is a self-initiated design, not a live site, so there are no metrics to report.',
@@ -989,7 +1196,7 @@ export const flowerShop: CaseStudy = {
     heading: 'People shop for a moment, not for “flowers”.',
     paragraphs: [
       'A neighborhood flower shop sells things people rarely browse for fun. They arrive with an occasion: a birthday, a thank-you, a funeral, a wedding. The site starts from the occasion instead of a catalog.',
-      'This is a self-initiated concept, and I spent years working as a florist, so I designed it around the practical questions a customer has at the counter. [Add the questions you remember hearing most: what is it for, how big, when can it be there, can you add a note.]',
+      'This is a self-initiated concept, and I spent years working as a florist, so I designed it around the practical questions a customer has at the counter. The most common were whether we deliver and where, what certain sizes and services cost, and whether we could recreate an inspiration photo they had brought in.',
     ],
     constraintsIntro: 'The design works inside a few constraints:',
     constraints: [
@@ -1049,7 +1256,7 @@ export const flowerShop: CaseStudy = {
         approach:
           'The home page leads with “Find the right flowers”: everyday bouquets, sympathy and remembrance, weddings and events, and gifts and glass. Weddings & Events and Gifts & Glass get their own pages and their own place in a four-item navigation.',
         outcome:
-          'A first-time visitor can tell where they belong in one look, and the shop’s bigger services have a front door of their own. [Add why you grouped it this way.]',
+          'A first-time visitor can tell where they belong in one look, and the shop’s bigger services have a front door of their own. Weddings are a large part of the business and deserve space alongside other events. The shop also sells small items next to its larger services, so splitting the two keeps each easy to find.',
         shot: {
           label: 'Find the right flowers',
           src: '/petals/occasions.webp',
@@ -1088,7 +1295,7 @@ export const flowerShop: CaseStudy = {
             label: 'Checkout, delivery selected',
             src: '/petals/checkout.webp',
             alt: 'Desktop checkout page. Local delivery is selected above fields for details, delivery address, gift message and payment, with an order summary on the right totaling $108.',
-            caption: 'Delivery selected. The address block appears only for delivery; the pickup state is still to come.',
+            caption: 'Delivery selected. The address block appears only for delivery.',
             wide: true,
             width: 1400,
             height: 1516,
@@ -1139,7 +1346,7 @@ export const flowerShop: CaseStudy = {
   },
   process: {
     heading: 'How the work was shaped',
-    intro: 'Mostly a build-it-and-click-it approach. [Add a line about your research or references.]',
+    intro: 'Mostly a build-it-and-click-it approach, drawing on my own years of working for a florist. I first built a version of this as a college HTML and CSS project, and I know what people look for.',
     items: [
       {
         title: 'Started from a small sitemap',
@@ -1165,7 +1372,7 @@ export const flowerShop: CaseStudy = {
       { title: 'Mobile', text: 'A layout for every page, plus a full-screen menu' },
     ],
     honest:
-      'This is a self-initiated concept, so there are no users or sales to report, and the shop details are placeholders. It is here to show how I think through a whole buying path, from first browse to confirmation. [Add what you would test first with a real shop, or what you would change.]',
+      'This is a self-initiated concept, so there are no users or sales to report, and the shop details are placeholders. It is here to show how I think through a whole buying path, from first browse to confirmation. With a real shop I would first test whether requesting delivery online works better than taking it by phone: does it help a very busy owner, or just give her a second place to check for orders? I would also verify that delivery windows and distances match the shop’s real location.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
@@ -1173,19 +1380,19 @@ export const flowerShop: CaseStudy = {
 export const tallymark: CaseStudy = {
   slug: 'tallymark',
   title: 'Tallymark',
-  kicker: 'Small project · Designed & built',
+  kicker: 'Small project · In progress',
   liveSite: {
     label: 'Open the app',
     href: '/tallymark/',
     note: 'Free and installable. Class lists and scores stay on your device, and nothing is uploaded.',
   },
   tagline: 'Sheets and games, scrambled fresh every week.',
-  dek: 'A free web app that makes scrambled one-minute fluency sheets, bingo, flashcards and matching cards for letters, numbers, shapes, colors and sight words. It began as one worksheet for my son and grew into a small teacher tool, designed and built solo with Claude Code as a coding partner.',
+  dek: 'A free web app that makes scrambled one-minute fluency sheets, bingo, flashcards and matching cards for letters, numbers, shapes, colors and sight words. It began as one worksheet for my son and grew into a small teacher tool, designed and built solo with Claude Code as a coding partner. It is still in progress, and I’m adding to it as I learn what teachers need.',
   description:
     'Tallymark is a free, installable web app for printable one-minute fluency sheets and games, with a fresh weekly scramble, teacher scoring copies and no data leaving the browser.',
   meta: {
     role: 'Product design, brand and solo development',
-    timeline: 'Nov 2026',
+    timeline: 'Started Nov 2026, still in progress',
     tools: 'HTML, CSS and JavaScript, jsPDF, Claude Code · Andika, Inter',
     deliverables: 'Installable web app, printable sheet and game designs, logo, one-page brand guide',
   },
@@ -1255,6 +1462,7 @@ export const tallymark: CaseStudy = {
       title: 'Rules the screens follow',
       items: [
         'Sheets stay white with dark ink in light and dark mode, because they model paper.',
+        'Dark mode lightens the blues and puts dark text on them, rather than keeping white text on a saturated fill.',
         'Body and secondary text clear 5:1 contrast in both themes.',
         'Red and green are never the only cue; each comes with a word.',
         'Focus rings are always visible: 3 px, with a 2 px offset.',
@@ -1325,6 +1533,24 @@ export const tallymark: CaseStudy = {
         },
       },
       {
+        title: 'Light and dark, with paper that stays paper',
+        tag: 'Two themes, one printed page',
+        problem:
+          'Teachers and parents use the app at all hours, on screens set to light or dark. But a printed sheet is always black ink on white paper, so a dark preview that turned the sheet dark would lie about what comes out of the printer.',
+        approach:
+          'The app follows the device’s color setting. In dark mode the page and panels go navy, and the primary and secondary blues lighten with dark text on them, instead of staying saturated with white text. The highlighter dims to a muted gold behind the key word, and the pen red lightens so it still reads. The sheet itself is the exception: it stays white with dark ink in both themes, because it models paper. I checked body and secondary text against the 5:1 contrast target in both.',
+        outcome:
+          'The interface is comfortable in a dim room, and the preview always shows what will actually print.',
+        shot: {
+          label: 'Light and dark themes side by side',
+          src: '/tallymark-study/light-dark.webp',
+          alt: 'The Tallymark app in its light theme (pale blue-grey page, navy primary button) beside its dark theme (navy page, light blue buttons). In both, the preview sheet stays white with dark letters.',
+          wide: true,
+          width: 1600,
+          height: 500,
+        },
+      },
+      {
         title: 'Privacy by construction',
         tag: 'No server, so nothing to leak',
         problem: 'A class list is a list of children’s names. The safest place for it is nowhere I control.',
@@ -1354,10 +1580,10 @@ export const tallymark: CaseStudy = {
       { title: 'An installable app', text: 'Works offline, with a logo and a one-page brand guide' },
     ],
     honest:
-      'I use it at home every week, but it hasn’t been tested in a classroom, so I can’t claim results for teachers yet. The name is a working one, and the first thing I would do next is watch a teacher use it and see which games actually get printed.',
+      'This project is still in progress. I use it at home every week, but it hasn’t been tested in a classroom, so I can’t claim results for teachers yet. The name is a working one, and the first thing I would do next is watch a teacher use it and see which games actually get printed.',
   },
   next: { title: 'Back to selected work', to: '/#work' },
 }
 
-export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, thinkingDifferently, tallymark]
+export const caseStudies: readonly CaseStudy[] = [foxed, plumbing, flowerShop, adminConsole, constructionPlatform, documentPortal, professionalFive, tallymark]
 export const getCaseStudy = (slug: string | undefined) => caseStudies.find((c) => c.slug === slug)

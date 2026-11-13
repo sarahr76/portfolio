@@ -8,17 +8,17 @@
 @font-face { font-family: 'DM Sans'; src: url('../node_modules/@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2') format('woff2'); font-weight: 400; }
 @font-face { font-family: 'DM Sans'; src: url('../node_modules/@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2') format('woff2'); font-weight: 500; }
 @font-face { font-family: 'DM Sans'; src: url('../node_modules/@fontsource/dm-sans/files/dm-sans-latin-700-normal.woff2') format('woff2'); font-weight: 700; }
-@page { size: Letter; margin: 0.55in 0.65in; }
+@page { size: Letter; margin: 0.45in 0.6in; }
 * { box-sizing: border-box; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-body { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 9.6pt; line-height: 1.42; color: #2B2320; }
-h1 { margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: 27pt; line-height: 1.1; }
+body { margin: 0; font-family: 'DM Sans', sans-serif; font-size: 9.2pt; line-height: 1.36; color: #2B2320; }
+h1 { margin: 0; font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: 25pt; line-height: 1.1; }
 .role { margin: 3pt 0 0; font-size: 11pt; color: #8F3A24; font-weight: 500; }
 .contact { margin: 5pt 0 0; font-size: 9pt; color: #5E524C; }
 .contact a { color: #5E524C; text-decoration: none; }
 .contact span + span::before { content: '·'; margin: 0 6pt; color: #B04A30; }
 header { padding-bottom: 9pt; border-bottom: 2pt solid #2B2320; }
-h2 { margin: 13pt 0 5pt; padding-bottom: 3pt; border-bottom: 0.75pt solid #E3D5C3; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #8F3A24; }
+h2 { margin: 10pt 0 4pt; padding-bottom: 3pt; border-bottom: 0.75pt solid #E3D5C3; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #8F3A24; }
 p { margin: 0; }
 .job { margin-top: 8pt; break-inside: avoid; }
 .job:first-of-type { margin-top: 0; }
@@ -28,7 +28,7 @@ p { margin: 0; }
 ul { margin: 3pt 0 0; padding-left: 12pt; }
 li { margin: 0 0 2pt; padding-left: 1pt; }
 li::marker { color: #B04A30; }
-dl { margin: 0; display: grid; grid-template-columns: 72pt 1fr; gap: 2pt 8pt; }
+dl { margin: 0; display: grid; grid-template-columns: 82pt 1fr; gap: 2pt 8pt; }
 dt { font-weight: 700; }
 dd { margin: 0; }
 .edu p { margin-bottom: 2pt; }
@@ -38,32 +38,32 @@ dd { margin: 0; }
 <header>
   <h1>Sarah Reilly</h1>
   <p class="role">UX/UI Designer</p>
-  <p class="contact"><span>Cincinnati, Ohio</span><span><a href="mailto:sarahmreilly76@gmail.com">sarahmreilly76@gmail.com</a></span><span><a href="https://www.linkedin.com/in/sarahloebker">linkedin.com/in/sarahloebker</a></span></p>
+  <p class="contact"><span>Cincinnati, Ohio</span><span><a href="mailto:hello@sarahmreilly.com">hello@sarahmreilly.com</a></span><span><a href="https://sarahmreilly.com">sarahmreilly.com</a></span><span><a href="https://www.linkedin.com/in/sarahloebker">linkedin.com/in/sarahloebker</a></span></p>
 </header>
 
 <h2>Summary</h2>
-<p>UX/UI designer with nearly eight years in digital product work, from consulting at Sogeti to leading UX for SaaS products at Promevo. Designs in Figma, writes product requirements, and moves between design, front-end and consulting roles with ease. Picks up new tools quickly on the job and integrates AI into everyday design and development workflows.</p>
+<p>UX/UI designer who builds design systems, with nearly eight years in digital product work. Started as a React front-end developer and moved into design, so I design in terms developers can build from. Writes product requirements, ships component libraries and handoff tickets, and uses AI tools every day in design and development workflows.</p>
 
 <h2>Experience</h2>
 <div class="job">
   <div class="head"><b>Senior UX/UI Designer, Promevo</b><span>July 2022 – November 2026</span></div>
   <ul>
-    <li>Used Claude Code to create branding guides, wireframes and prototypes for a multi-module SaaS admin tool and for an AI-first construction SaaS platform.</li>
-    <li>Drafted product requirements documents (PRDs) and Jira tickets with Gemini to move work from idea to development.</li>
-    <li>Researched the construction industry with Gemini to ground design work on the construction platform.</li>
-    <li>Moved from React Developer/Designer to a Senior UX/UI Designer role, learning Figma and the company’s AI tools on the job.</li>
+    <li><b>Multi-module SaaS admin console (about four years, with one other designer and the dev team):</b> built a two-layer component system and token set on top of Material UI, and one consistent container for each kind of task: full-page steppers, a single details drawer, and modals only where they fit.</li>
+    <li>Redesigned the console’s most logic-heavy feature, the rule builder, around how people think about rules. Created a developer documentation hub with token data and component specs, and a reusable workflow that turns Figma screens into spec docs and dev tickets.</li>
+    <li><b>AI-first construction platform (about a year, concept to pilot-ready):</b> set product direction and shaped the UX and workflows, ran guided tours with the pilot team, and wrote the PRDs and 100+ feature tickets the developers built from. A partner designer did the final Figma design.</li>
+    <li>Moved from React Developer/Designer to Senior UX/UI Designer, learning Figma on the job. Uses Claude Code, Figma Make and Gemini for concepts, research and requirements.</li>
+    <li>Also designed the layout of a document-portal front end for a health organization.</li>
   </ul>
 </div>
 <div class="job">
   <div class="head"><b>Consultant / Associate Consultant, Sogeti</b><span>December 2018 – June 2022</span></div>
   <ul>
     <li>Developed front-end designs and components for projects for a global consumer-goods client.</li>
-    <li>Built in React. Worked alongside front-end and back-end developers and partnered directly with client stakeholders.</li>
-    <li>Improved the front-end design of multiple client products.</li>
+    <li>Built in React alongside front-end and back-end developers, partnered directly with client stakeholders, and improved the front-end design of multiple client products.</li>
   </ul>
 </div>
 <div class="job">
-  <div class="head"><b>Web and Digital Media Intern, Great Parks of Hamilton County</b><span>July 2018 – September 2019</span></div>
+  <div class="head"><b>Web and Digital Media Intern, Great Parks of Hamilton County</b><span>July 2018 – September 2018</span></div>
   <ul><li>Helped update the main Great Parks website and supported events at the parks.</li></ul>
 </div>
 
@@ -73,12 +73,16 @@ dd { margin: 0; }
   <li>Flight Attendant, ExpressJet Airlines (2014 – 2016); Public Relations Representative, Chambers Medical (2016); Marketing &amp; Promotions Intern, Clear Channel (2012).</li>
 </ul>
 
+<h2>Selected projects</h2>
+<ul style="margin-top:0">
+  <li><b>Foxed</b> (reading-tracker app, designed and built solo), <b>Reilly Plumbing</b> and <b>Petals-N-Glass</b> (small-business sites): see sarahmreilly.com/work.</li>
+</ul>
+
 <h2>Skills</h2>
 <dl>
-  <dt>Design</dt><dd>Figma, product requirements (PRDs), wireframing, prototyping, branding guides, Jira</dd>
-  <dt>AI</dt><dd>Claude Code, Gemini, integrating AI into design and development workflows</dd>
-  <dt>Front-end</dt><dd>HTML, CSS, React</dd>
-  <dt>Web &amp; media</dt><dd>Wix, WordPress, Canva</dd>
+  <dt>Design</dt><dd>Design systems and tokens, Figma, Material UI, PRDs, wireframing, prototyping, branding guides, Jira</dd>
+  <dt>AI</dt><dd>Claude Code, Figma Make, Gemini, integrating AI into design and development workflows</dd>
+  <dt>Front-end &amp; web</dt><dd>HTML, CSS, React, Wix, WordPress, Canva</dd>
 </dl>
 
 <h2>Education</h2>

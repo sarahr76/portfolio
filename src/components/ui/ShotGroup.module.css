@@ -1,0 +1,23 @@
+.group { display: grid; gap: var(--space-4); justify-content: center; align-items: start; justify-items: center; margin-top: var(--space-4); }
+.group > * { width: 100%; }
+.group[data-stacked] { justify-items: stretch; }
+.group[data-n='1']:not([data-stacked]) { justify-items: start; }
+.group[data-n='1']:not([data-stacked]) > * { max-width: 280px; }
+
+.group[data-n='1'] { grid-template-columns: minmax(0, 1fr); }
+.group[data-n='2'], .group[data-n='4'] { grid-template-columns: repeat(2, minmax(0, 280px)); }
+.group[data-n='3'], .group[data-n='5'], .group[data-n='6'] { grid-template-columns: repeat(3, minmax(0, 280px)); }
+
+/* Five screens: centre the last two under the first three. */
+.group[data-n='5'] > :nth-child(4) { grid-column: 1 / span 1; }
+
+@media (max-width: 719px) {
+  .group[data-n='2'], .group[data-n='4'] { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
+  /* Three or more screens become a swipeable row so none are shrunk or orphaned. */
+  .group[data-n='3'], .group[data-n='5'], .group[data-n='6'] {
+    display: flex; justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory;
+    gap: var(--space-3); padding-bottom: var(--space-2); margin-inline: calc(var(--space-3) * -1); padding-inline: var(--space-3);
+    scroll-padding-inline: var(--space-3);
+  }
+  .group[data-n='3'] > *, .group[data-n='5'] > *, .group[data-n='6'] > * { flex: 0 0 min(72%, 260px); scroll-snap-align: start; }
+}

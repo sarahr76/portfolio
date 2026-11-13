@@ -1,8 +1,8 @@
 .section { padding-block: var(--space-6); border-top: 1px solid var(--color-line); }
 .band { background: var(--color-sand); }
 .intro { display: grid; gap: var(--space-5); padding-block: var(--space-6); }
-.photo { display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; max-width: 320px; aspect-ratio: 4 / 5; margin-inline: auto; border-radius: var(--radius-md); background: var(--color-sand); color: var(--color-ink-soft); font-size: var(--text-small); overflow: hidden; }
-.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo { display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; max-width: 320px; aspect-ratio: 1 / 1; margin-inline: auto; background: transparent; color: var(--color-ink-soft); font-size: var(--text-small); overflow: hidden; }
+.photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .prose { display: grid; gap: var(--space-3); margin-top: var(--space-3); max-width: var(--reading-width); font-size: var(--text-lead); }
 .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-4); }
 .three { display: grid; gap: var(--space-3); }
@@ -14,8 +14,10 @@
 .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
 .chips li { padding: 6px 14px; border: 1.5px solid var(--color-ink); border-radius: var(--radius-pill); font-size: var(--text-small); }
 .edu { margin: var(--space-4) 0 0; padding-left: 1.1rem; display: grid; gap: var(--space-2); color: var(--color-ink-soft); max-width: var(--reading-width); }
-.contactGrid { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
-.contactCard { display: grid; gap: var(--space-2); justify-items: start; }
+.contactGrid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); margin-top: var(--space-4); }
+.contactCard { display: grid; gap: var(--space-2); justify-items: start; min-width: 0; }
+.contactCard a { max-width: 100%; height: auto; min-height: var(--tap-target); white-space: normal; overflow-wrap: anywhere; text-align: center; }
+@media (max-width: 380px) { .contactCard a { padding-inline: var(--space-2); font-size: var(--text-small); } }
 @media (min-width: 720px) {
   .intro { grid-template-columns: 0.8fr 1.2fr; gap: var(--space-7); align-items: center; padding-block: var(--space-7); }
   .photo { margin-inline: 0; }

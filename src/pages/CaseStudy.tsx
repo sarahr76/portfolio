@@ -1,9 +1,11 @@
+import { site } from '../content/site'
 import { Head } from 'vite-react-ssg'
 import { Link, useParams } from 'react-router-dom'
 import { getCaseStudy } from '../content/caseStudies'
 import { Card } from '../components/ui/Card'
 import { SectionHeader } from '../components/ui/SectionHeader'
 import { Shot } from '../components/ui/Shot'
+import { ShotGroup } from '../components/ui/ShotGroup'
 import { Swatch } from '../components/ui/Swatch'
 import { CaseFile } from '../components/project/CaseFile'
 import { CaseStudyMeta } from '../components/project/CaseStudyMeta'
@@ -42,6 +44,8 @@ export function CaseStudy() {
         {cs.draft && <meta name="robots" content="noindex" />}
         <meta property="og:title" content={`${cs.title}: ${cs.tagline}`} />
         <meta property="og:description" content={cs.description} />
+        {!cs.draft && <meta property="og:image" content={`${site.url}/og/${cs.slug}.png`} />}
+        {!cs.draft && <meta property="og:image:alt" content={`${cs.title}: ${cs.tagline}`} />}
       </Head>
 
       <header className={`container ${styles.header}`}>
@@ -65,9 +69,9 @@ export function CaseStudy() {
         <Reveal className="container">
           <p className="label" style={{ marginBottom: 'var(--space-3)' }}>The 30-second version</p>
           <div className={styles.three}>
-            <div><h3>The problem</h3><p>{cs.summary.problem}</p></div>
-            <div><h3>What I did</h3><p>{cs.summary.did}</p></div>
-            <div><h3>The result</h3><p>{cs.summary.result}</p></div>
+            <div><h2>The problem</h2><p>{cs.summary.problem}</p></div>
+            <div><h2>What I did</h2><p>{cs.summary.did}</p></div>
+            <div><h2>The result</h2><p>{cs.summary.result}</p></div>
           </div>
         </Reveal>
       </section>
@@ -97,9 +101,7 @@ export function CaseStudy() {
               </ul>
             )}
             {cs.problem.shots && (
-              <div className={styles.pair}>
-                {cs.problem.shots.map((s) => <Shot key={s.label} phone {...s} />)}
-              </div>
+              <ShotGroup shots={cs.problem.shots} />
             )}
           </Reveal>
 
@@ -146,9 +148,7 @@ export function CaseStudy() {
             </SectionHeader>
             {cs.decisions.items.map((d, i) => <CaseFile key={d.title} n={i + 1} decision={d} />)}
             {cs.decisions.gallery && (
-              <div className={styles.gallery}>
-                {cs.decisions.gallery.map((s) => <Shot key={s.label} phone {...s} />)}
-              </div>
+              <ShotGroup shots={cs.decisions.gallery} />
             )}
           </Reveal>
 
