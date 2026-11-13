@@ -306,8 +306,8 @@ td.n{font-variant-numeric:tabular-nums}
 .faq h3{font-size:17px}
 .faq p{margin:0;font-size:14px;color:var(--muted)}
 .faq strong{color:var(--fg);font-weight:600}
-@media (max-width:980px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.faq{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:640px){.steps,.faq{grid-template-columns:1fr}.example{grid-template-columns:1fr;padding:18px}.ex-row{font-size:24px}}
+@media (max-width:980px){.help .steps{grid-template-columns:repeat(2,minmax(0,1fr))}.faq{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.help .steps,.faq{grid-template-columns:1fr}.example{grid-template-columns:1fr;padding:18px}.ex-row{font-size:24px}}
 @media (max-width:860px){
   .make{display:flex;flex-direction:column;align-items:stretch;gap:14px}
   .preview{display:contents}
@@ -362,4 +362,19 @@ input[type=text],input[type=number],select{min-height:44px}
   .intro.head{align-items:stretch}
   .setupmenu summary{display:flex;justify-content:space-between}
   .setupmenu .pop{left:0;right:0;width:auto}
+}
+
+/* Step titles sit inside the card, with room above and below */
+.controls legend{float:left;width:100%;box-sizing:border-box;margin:0 0 4px;padding:0}
+.controls legend+*{clear:both}
+.controls fieldset{padding-top:22px}
+
+/* Empty status lines stay readable by screen readers but take no space */
+.msg:empty,.note:empty{position:absolute;width:1px;height:1px;min-height:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* Phones: scores table and chart */
+@media (max-width:560px){
+  th,td{padding:8px 6px;font-size:13px}
+  .chart .ax,.chart .val,.chart .goaltxt{font-size:19px}
+  .chart .line{stroke-width:4.5}
+  .chart .dot{stroke-width:4.5}
 }
