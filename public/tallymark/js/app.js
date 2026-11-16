@@ -472,11 +472,12 @@
     S.classes.forEach(function (c) {
       list += '<button type="button" class="cls-item" data-cls="' + c.id + '"' + (c.id === editClassId ? ' aria-current="true"' : '') + '><span>' + esc(c.name || 'Untitled') + '</span><small>' + c.students.length + '</small></button>';
     });
-    list += '<div class="row"><label class="field" for="newClass">New class<input type="text" id="newClass" maxlength="40" placeholder="Room 12"></label><button type="button" class="btn" id="addClass">Add</button></div>';
+    list += '<div class="row"><label class="field" for="newClass">New class<input type="text" id="newClass" maxlength="40" placeholder="Room 12"></label><button type="button" class="btn" id="addClass">Add</button></div>' +
+      '<div class="row demo">' + demoButtons() + '</div><p class="note">Sample data is made up, so you can see how every page works.</p>';
     $('#classList').innerHTML = list;
 
     var c = getClass(editClassId), ed = $('#classEditor');
-    if (!c) { ed.innerHTML = '<h2>No classes yet</h2><p class="muted">Add a class on the left, then list your students. You can print their names on the sheets and track their scores.</p>'; return; }
+    if (!c) { ed.innerHTML = '<h2>No classes yet</h2><p class="muted">Add a class on the left, then list your students. You can print their names on the sheets and track their scores.</p><div class="row">' + demoButtons() + '</div>'; return; }
     var h = '<h2>' + esc(c.name || 'Untitled') + '</h2>' +
       '<label class="field" for="clsName">Class name<input type="text" id="clsName" maxlength="40" value="' + esc(c.name) + '"></label>' +
       '<div class="stu-list" id="stuList">';
@@ -556,7 +557,7 @@
   function renderProgress() {
     var body = $('#progressBody'), cls = activeClass();
     if (!cls || !cls.students.length) {
-      body.innerHTML = '<div class="panel"><h2>Add students first</h2><p class="muted">Scores are saved for each child, so start by listing your class.</p><div class="row"><a class="btn primary" href="#class" style="text-decoration:none">Go to Classes</a></div></div>';
+      body.innerHTML = '<div class="panel"><h2>Add students first</h2><p class="muted">Scores are saved for each child, so start by listing your class.</p><div class="row"><a class="btn primary" href="#class" style="text-decoration:none">Go to Classes</a>' + demoButtons() + '</div></div>';
       return;
     }
     if (!cls.students.some(function (s) { return s.id === pv.student; })) pv.student = cls.students[0].id;
@@ -597,7 +598,7 @@
       '<p class="muted" id="lastBackup" style="margin:0">' + (S.meta.lastBackup ? 'Last backup: ' + U.prettyFull(S.meta.lastBackup) + '.' : 'You have not made a backup yet.') + '</p>' +
       '<div class="row"><button type="button" class="btn" id="expJson">Download backup</button><button type="button" class="btn" id="expCsv">Download scores as CSV</button>' +
       '<label class="btn" for="impFile" style="cursor:pointer">Restore from backup</label><input type="file" id="impFile" accept=".json,application/json" hidden>' +
-      '<button type="button" class="btn danger" id="wipe">Erase everything</button></div><p class="msg" id="dataMsg" role="status"></p></div>';
+      '' + demoButtons() + '<button type="button" class="btn danger" id="wipe">Erase everything</button></div><p class="msg" id="dataMsg" role="status"></p></div>';
     body.innerHTML = '<div class="pgrid">' + left + right + '</div><div style="height:20px"></div>' + overview + '<div style="height:20px"></div>' + tools;
     updateCalc();
   }
@@ -683,6 +684,35 @@
       }
     });
   }
+
+  /* ---------- Sample classroom ---------- */
+  function hasDemo() { return S.classes.some(TM.demo.isDemo); }
+  function demoButtons() {
+    return hasDemo()
+      ? '<button type="button" class="btn" data-demo="remove">Remove sample classroom</button>'
+      : '<button type="button" class="btn" data-demo="load">Load a sample classroom</button>';
+  }
+  function loadDemo() {
+    if (hasDemo()) return;
+    var d = TM.demo.build();
+    d.classes.forEach(function (c) { S.classes.push(c); });
+    d.entries.forEach(function (e) { S.entries.push(e); });
+    Object.keys(d.goals).forEach(function (k) { if (!S.goals[k]) S.goals[k] = d.goals[k]; });
+    d.setups.forEach(function (u) { S.setups.push(u); });
+    editClassId = P.classId = d.classes[0].id; pv.student = ''; pv.kind = 'upper';
+    save(); renderSetups(); renderClasses(); renderClassSelect(); renderProgress(); updateMake();
+  }
+  function removeDemo() {
+    var keep = function (x) { return !TM.demo.isDemo(x); };
+    S.classes = S.classes.filter(keep); S.entries = S.entries.filter(keep); S.setups = S.setups.filter(keep);
+    if (P.classId && !getClass(P.classId)) P.classId = '';
+    editClassId = null; pv.student = '';
+    save(); renderSetups(); renderClasses(); renderClassSelect(); renderProgress(); updateMake();
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-demo]'); if (!b) return;
+    if (b.getAttribute('data-demo') === 'load') loadDemo(); else removeDemo();
+  });
 
   function importBackup(file) {
     var rd = new FileReader();

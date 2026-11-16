@@ -1,7 +1,7 @@
 /* Tallymark service worker: makes the app work offline.
    Pages and files are fetched fresh when online, and served from the saved copy when offline.
    Change VERSION whenever you add or rename files, so old copies are cleared. */
-var VERSION = 'tallymark-v2-11';
+var VERSION = 'tallymark-v2-12';
 var FILES = [
   './',
   'css/styles.css',
@@ -22,6 +22,7 @@ var FILES = [
   'js/app.js',
   'js/chart.js',
   'js/data.js',
+  'js/demo.js',
   'js/engine.js',
   'js/fonts-data.js',
   'js/formats/bingo.js',
