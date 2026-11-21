@@ -3,7 +3,7 @@ export const about = {
   // Update these two lines whenever they change.
   currently: { reading: 'The Red Rising saga', updated: 'November 2026' },
   intro: [
-    'I’m a UX/UI designer in Cincinnati, Ohio, with nearly eight years in digital product work. I started out writing front-end code in React, and over time grew into design, most recently shaping UX for SaaS products.',
+    'I’m a UX/UI and product designer in Cincinnati, Ohio, with nearly eight years in digital product work. I started out writing front-end code in React, and over time grew into design, most recently shaping UX for SaaS products.',
     'I like the place where design and code meet: the system underneath a screen, and the details that make it feel considered. I use AI tools every day in my design and development work, and I pick up new tools quickly.',
     'Outside of work, I’m a mom of three, and my favorite thing is time with my kids. When I get a quiet moment I’m usually reading or playing video games. I even designed an app to keep track of my reading.',
   ],

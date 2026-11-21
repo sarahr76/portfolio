@@ -73,7 +73,7 @@ export const foxed: CaseStudy = {
   title: 'Foxed',
   kicker: 'Case study 01 · Designed & built',
   tagline: 'Your reading, well-loved.',
-  dek: 'A fic-and-book tracker for readers who live on AO3, designed and built solo, end to end, with Claude Code as an implementation partner. Four months, 141 commits, one very opinionated idea about what a reading app should feel like.',
+  dek: 'A fic-and-book tracker for readers who live on AO3, designed and built solo, end to end, with Claude Code as an implementation partner. Four months, one very opinionated idea about what a reading app should feel like.',
   description:
     'Foxed is a fic-and-book tracker for readers who live on AO3. Designed and built solo: no accounts, no servers, and a design system decided before the first screen.',
   meta: {
@@ -83,12 +83,12 @@ export const foxed: CaseStudy = {
     deliverables: 'iOS app (private beta), design system',
   },
   stats: [
-    { value: '141', label: 'Commits' },
+    { value: 'Solo', label: 'Design & build' },
     { value: '~4 mo', label: 'Timeline' },
-    { value: 'Solo', label: 'Team' },
     { value: 'iOS', label: 'Platform' },
+    { value: '5', label: 'Key design decisions' },
     { value: '9', label: 'Themes' },
-    { value: '0', label: 'Servers' },
+    { value: '0', label: 'Accounts or servers' },
   ],
   hero: {
     label: 'Hero: best Foxed screen or a short product clip',

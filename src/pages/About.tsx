@@ -11,10 +11,10 @@ export function About() {
       <Head>
         <title>About | Sarah Reilly</title>
         <meta property="og:title" content="About Sarah Reilly" />
-        <meta property="og:description" content="Sarah Reilly is a UX/UI designer in Cincinnati, Ohio, who designs and builds design systems. Open to remote roles." />
+        <meta property="og:description" content="Sarah Reilly is a UX/UI and product designer in Cincinnati, Ohio, who designs and builds design systems. Open to remote roles." />
         <meta
           name="description"
-          content="Sarah Reilly is a UX/UI designer in Cincinnati, Ohio, who designs and builds design systems. Open to remote roles."
+          content="Sarah Reilly is a UX/UI and product designer in Cincinnati, Ohio, who designs and builds design systems. Open to remote roles."
         />
       </Head>
 
