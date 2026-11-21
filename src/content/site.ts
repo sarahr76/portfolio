@@ -5,7 +5,7 @@ export const site = {
   // Link-preview card shown when a page is shared. Each published case study has its own at /og/<slug>.png.
   ogImage: '/og/site.png',
   ogImageAlt: 'Sarah Reilly, UX/UI designer: I design systems that make software feel human.',
-  title: 'Sarah Reilly | UX/UI designer',
+  title: 'Sarah Reilly | UX/UI & product designer',
   nav: [
     { label: 'Work', to: '/#work' },
     { label: 'Process', to: '/process' },

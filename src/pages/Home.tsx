@@ -20,7 +20,7 @@ const peek = [
 const approach = [
   { title: 'Understand', text: 'I learn the domain and the people first, then write the problem down so a team can build against it.' },
   { title: 'Systemize', text: 'Tokens, components and written rules get decided early, so every screen builds on the same foundation.' },
-  { title: 'Build & refine', text: 'I can build what I design, and I use it for real before it ships.' },
+  { title: 'Build & refine', text: 'I can build what I design, and I use it for real before it ships. I use AI tools daily (Claude Code, Figma Make, Gemini) to move faster, and I review everything before it goes out.' },
 ] as const
 
 const smallProjects = projects.filter((p) => p.group === 'small' && !p.unlisted)
@@ -36,13 +36,13 @@ export function Home() {
   return (
     <>
       <Head>
-        <title>Sarah Reilly | UX/UI designer who builds design systems</title>
+        <title>Sarah Reilly | UX/UI & product designer who builds design systems</title>
         <meta
           name="description"
-          content="Portfolio of Sarah Reilly, a UX/UI designer with a front-end background who designs and builds design systems."
+          content="Portfolio of Sarah Reilly, a UX/UI and product designer with a front-end background who designs and builds design systems."
         />
-        <meta property="og:title" content="Sarah Reilly | UX/UI designer who builds design systems" />
-        <meta property="og:description" content="Portfolio of Sarah Reilly, a UX/UI designer with a front-end background who designs and builds design systems." />
+        <meta property="og:title" content="Sarah Reilly | UX/UI & product designer who builds design systems" />
+        <meta property="og:description" content="Portfolio of Sarah Reilly, a UX/UI and product designer with a front-end background who designs and builds design systems." />
       </Head>
 
       {/* 1. Hero */}
@@ -50,12 +50,12 @@ export function Home() {
         <section className={`${styles.hero} ${intro ? styles.intro : ''}`} aria-labelledby="hero-title">
           <div className={styles.heroText}>
             <h1 id="hero-title">I design systems that make software feel human.</h1>
-            <p className={styles.lead}>I’m a UX/UI designer with a front-end developer’s background. I design the system first, then build it, so what ships matches what was drawn.</p>
+            <p className={styles.lead}>I’m a UX/UI and product designer with a front-end developer’s background. I design the system first, then build it, so what ships matches what was drawn.</p>
             <div className={styles.actions}>
               <Button to="/#work">See my work</Button>
               <Button variant="secondary" to="/about#contact">Get in touch</Button>
             </div>
-            <p className={styles.status}>UX/UI designer · open to remote roles: full-time, part-time or contract</p>
+            <p className={styles.status}>UX/UI & product designer · open to remote roles: full-time, part-time or contract</p>
           </div>
           <div className={styles.portrait}>
             <img src="/home-illustration.webp" width={1200} height={800} alt="Illustration of a designer’s desk: a laptop, a trailing plant on a stack of books, a steaming mug and a cup of pencils." />
