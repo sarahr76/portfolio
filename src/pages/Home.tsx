@@ -66,7 +66,10 @@ export function Home() {
       {/* 2. Selected work */}
       <section id="work" className={styles.section} aria-labelledby="work-title">
         <div className="container">
-          <h2 id="work-title" style={{ marginBottom: 'var(--space-5)' }}>Selected work</h2>
+          <h2 id="work-title" style={{ marginBottom: 'var(--space-2)' }}>Selected work</h2>
+          <p style={{ marginBottom: 'var(--space-5)', color: 'var(--color-ink-soft)', maxWidth: 'var(--reading-width)' }}>
+            Two projects from my past employer, kept anonymous (the visuals are my own redrawn illustrations, not the real product), and an app I designed and built myself.
+          </p>
           <div className={styles.workGrid}>
             {projects.filter((p) => p.group === 'selected').map((p) => (
               <ProjectCard
